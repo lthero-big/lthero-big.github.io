@@ -1,0 +1,478 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>raspi-car | lthero</title><meta name="keywords" content="折腾,树莓派"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="折腾·树莓派小车材料 智能小车x1 ，淘宝买2WD【包含车子底座、两个电机、两个轮子、电池模块】，20块钱 电机驱动x1，TB6612FNG直流电机驱动模块，30块钱【只能驱动两个轮子】 杜邦线若干 摄像头x1【可选】20块钱 树莓派4B  安装步骤小车底座安装 将各个模块安装好，并预留好两个电机的四个线出来    将智能小车底座安装好   TB6612FNG与树莓派连接 不看原理，直接跳到“具体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="raspi-car">
+<meta property="og:url" content="https://blog.lthero.cn/2022/07/08/raspi-car/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="折腾·树莓派小车材料 智能小车x1 ，淘宝买2WD【包含车子底座、两个电机、两个轮子、电池模块】，20块钱 电机驱动x1，TB6612FNG直流电机驱动模块，30块钱【只能驱动两个轮子】 杜邦线若干 摄像头x1【可选】20块钱 树莓派4B  安装步骤小车底座安装 将各个模块安装好，并预留好两个电机的四个线出来    将智能小车底座安装好   TB6612FNG与树莓派连接 不看原理，直接跳到“具体">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg">
+<meta property="article:published_time" content="2022-07-08T14:31:21.000Z">
+<meta property="article:modified_time" content="2022-07-08T15:29:44.018Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/07/08/raspi-car/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'raspi-car',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-08 23:29:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/x8d8gz.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">raspi-car</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-08T14:31:21.000Z" title="发表于 2022-07-08 22:31:21">2022-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-08T15:29:44.018Z" title="更新于 2022-07-08 23:29:44">2022-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="raspi-car"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="折腾·树莓派小车"><a href="#折腾·树莓派小车" class="headerlink" title="折腾·树莓派小车"></a>折腾·树莓派小车</h1><h2 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h2><ul>
+<li>智能小车x1 ，淘宝买<code>2WD</code>【包含车子底座、两个电机、两个轮子、电池模块】，20块钱</li>
+<li>电机驱动x1，<code>TB6612FNG直流电机驱动模块</code>，30块钱【只能驱动两个轮子】</li>
+<li>杜邦线若干</li>
+<li>摄像头x1【可选】20块钱</li>
+<li>树莓派4B</li>
+</ul>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><h2 id="小车底座安装"><a href="#小车底座安装" class="headerlink" title="小车底座安装"></a>小车底座安装</h2><ul>
+<li>将各个模块安装好，并预留好两个电机的四个线出来</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/2F781D2D7825E3D22F39DE1083AC14BD.jpg" alt="安装小车底座"></p>
+<ul>
+<li>将智能小车底座安装好</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/B094A14D7740AA29588E40BCA41EB625.jpg" alt="小车底座安装好"></p>
+<h2 id="TB6612FNG与树莓派连接"><a href="#TB6612FNG与树莓派连接" class="headerlink" title="TB6612FNG与树莓派连接"></a>TB6612FNG与树莓派连接</h2><blockquote>
+<p>不看原理，直接跳到“<strong>具体接线图</strong>”</p>
+</blockquote>
+<h3 id="TB6612FNG驱动"><a href="#TB6612FNG驱动" class="headerlink" title="TB6612FNG驱动"></a>TB6612FNG驱动</h3><p>TB6612FNG驱动如下图所示</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic2.zhimg.com/v2-059b8a0dcc48ca18f4eb9f5d6755be6d_r.jpg" alt="img"></p>
+<p>接口说明：</p>
+<ol>
+<li>VM：电机驱动电源输入（2.74-10.8V）</li>
+<li>VCC：逻辑电平输入（5.0V）</li>
+<li>AO1和AO2：接直流电机A</li>
+<li>BO2和BO1：接直流电机B</li>
+<li>PWMA：控制电机A的转速</li>
+<li>AIN1和AIN2：控制电机A（停止、正转、反转）</li>
+<li>STBY：正常工作&#x2F;待机状态控制端</li>
+<li>PWMB：控制电机B的转速</li>
+<li>BIN1和BIN2：控制电机B（停止、正转、反转）</li>
+<li>GND：接地</li>
+</ol>
+<p>AIN1和AIN2用于控制电机A停止、正转、反转，真值表如下</p>
+<table>
+<thead>
+<tr>
+<th>AIN1</th>
+<th>0</th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AIN2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>停止</td>
+<td>正转</td>
+<td>反转</td>
+</tr>
+</tbody></table>
+<p>BIN1和BIN2的真值表同上</p>
+<h3 id="树莓派40PIN引脚对照表"><a href="#树莓派40PIN引脚对照表" class="headerlink" title="树莓派40PIN引脚对照表"></a>树莓派40PIN引脚对照表</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic3.zhimg.com/v2-04e918076542859bd7b4e8c1743851f6_r.jpg" alt="img"></p>
+<p>树莓派GPIO和TB6612FNG的接线情况如下表</p>
+<table>
+<thead>
+<tr>
+<th>树莓派GPIO接口(BCM编码)</th>
+<th>TB6612FNG驱动接口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>27</td>
+<td>STBY</td>
+<td>设置TB6612FNG驱动模块的状态（工作&#x2F;待机）</td>
+</tr>
+<tr>
+<td>18</td>
+<td>PWMA</td>
+<td>基于PWM控制电机A转速</td>
+</tr>
+<tr>
+<td>14</td>
+<td>AIN1</td>
+<td>控制电机A停止、正转、反转</td>
+</tr>
+<tr>
+<td>15</td>
+<td>AIN2</td>
+<td>控制电机A停止、正转、反转</td>
+</tr>
+<tr>
+<td>19</td>
+<td>PWMB</td>
+<td>基于PWM控制电机B转速</td>
+</tr>
+<tr>
+<td>23</td>
+<td>BIN1</td>
+<td>控制电机B停止、正转、反转</td>
+</tr>
+<tr>
+<td>24</td>
+<td>BIN2</td>
+<td>控制电机B停止、正转、反转</td>
+</tr>
+</tbody></table>
+<p>电机驱动和树莓派4B共用一个5V、3A的电源</p>
+<h3 id="具体接线图"><a href="#具体接线图" class="headerlink" title="具体接线图"></a>具体接线图</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.zhimg.com/v2-83ef02efdd8394f597731a0d15f43dc4_r.jpg" alt="img"></p>
+<h2 id="树莓派测试控制电机"><a href="#树莓派测试控制电机" class="headerlink" title="树莓派测试控制电机"></a>树莓派测试控制电机</h2><p>安装好后，树莓派测试电机是否可以被正常控制，前进后退左转右转是否正常</p>
+<p>先安装RPi.GPIO模块，命令如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt<span class="operator">-</span><span class="keyword">get</span> install python3<span class="operator">-</span>rpi.gpio</span><br></pre></td></tr></table></figure>
+
+<p>安装好后，将下面的代码保存到<code>test.py</code>中，运行测试脚本<code>python3 test.py</code>，如果电机可以运转则正常！！！</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#motorTest.py</span></span><br><span class="line"><span class="comment">#导入 GPIO库</span></span><br><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置 GPIO 模式为 BCM</span></span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义引脚</span></span><br><span class="line">STBY = <span class="number">27</span></span><br><span class="line">PWMA = <span class="number">18</span></span><br><span class="line">AIN1 = <span class="number">14</span></span><br><span class="line">AIN2 = <span class="number">15</span></span><br><span class="line">PWMB = <span class="number">19</span></span><br><span class="line">BIN1 = <span class="number">23</span></span><br><span class="line">BIN2 = <span class="number">24</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置 GPIO 的工作方式</span></span><br><span class="line">GPIO.setup(STBY, GPIO.OUT)</span><br><span class="line">GPIO.setup(PWMA, GPIO.OUT)</span><br><span class="line">GPIO.setup(AIN1, GPIO.OUT)</span><br><span class="line">GPIO.setup(AIN2, GPIO.OUT)</span><br><span class="line">GPIO.setup(PWMB, GPIO.OUT)</span><br><span class="line">GPIO.setup(BIN1, GPIO.OUT)</span><br><span class="line">GPIO.setup(BIN2, GPIO.OUT)</span><br><span class="line">pwma = GPIO.PWM(PWMA,<span class="number">300</span>)</span><br><span class="line">pwmb = GPIO.PWM(PWMB,<span class="number">300</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前进或后退（大于零前进，小于零后退）</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">goForward</span>(<span class="params">speed</span>):</span><br><span class="line">    <span class="keyword">if</span>(speed&gt;=<span class="number">0</span>):</span><br><span class="line">        GPIO.output(AIN1,GPIO.LOW)</span><br><span class="line">        GPIO.output(AIN2,GPIO.HIGH)</span><br><span class="line">        GPIO.output(BIN1,GPIO.LOW)</span><br><span class="line">        GPIO.output(BIN2,GPIO.HIGH)</span><br><span class="line">        pwma.start(speed)</span><br><span class="line">        pwmb.start(speed)</span><br><span class="line">        time.sleep(<span class="number">0.02</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        GPIO.output(AIN2,GPIO.LOW)</span><br><span class="line">        GPIO.output(AIN1,GPIO.HIGH)</span><br><span class="line">        GPIO.output(BIN2,GPIO.LOW)</span><br><span class="line">        GPIO.output(BIN1,GPIO.HIGH)</span><br><span class="line">        pwma.start(-speed)</span><br><span class="line">        pwmb.start(-speed)</span><br><span class="line">        time.sleep(<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 左转或右转（大于零左转，小于零右转）</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">turnLeft</span>(<span class="params">speed</span>):</span><br><span class="line">    <span class="keyword">if</span>(speed&gt;=<span class="number">0</span>):</span><br><span class="line">        GPIO.output(AIN2,GPIO.LOW)</span><br><span class="line">        GPIO.output(AIN1,GPIO.HIGH)</span><br><span class="line">        GPIO.output(BIN1,GPIO.LOW)</span><br><span class="line">        GPIO.output(BIN2,GPIO.HIGH)</span><br><span class="line">        pwma.start(speed)</span><br><span class="line">        pwmb.start(speed)</span><br><span class="line">        time.sleep(<span class="number">0.02</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        GPIO.output(AIN1,GPIO.LOW)</span><br><span class="line">        GPIO.output(AIN2,GPIO.HIGH)</span><br><span class="line">        GPIO.output(BIN2,GPIO.LOW)</span><br><span class="line">        GPIO.output(BIN1,GPIO.HIGH)</span><br><span class="line">        pwma.start(-speed)</span><br><span class="line">        pwmb.start(-speed)</span><br><span class="line">        time.sleep(<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">motorStop</span>():</span><br><span class="line">    GPIO.output(AIN1,GPIO.LOW)</span><br><span class="line">    GPIO.output(AIN2,GPIO.LOW)</span><br><span class="line"></span><br><span class="line">GPIO.output(STBY,GPIO.HIGH)</span><br><span class="line"><span class="comment">#以60%的速度前进</span></span><br><span class="line">goForward(<span class="number">60</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#以60%的速度后退</span></span><br><span class="line">goForward(-<span class="number">60</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#左转</span></span><br><span class="line">turnLeft(<span class="number">60</span>)</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"><span class="comment">#右转</span></span><br><span class="line">turnLeft(-<span class="number">60</span>)</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"><span class="comment">#停止</span></span><br><span class="line">motorStop()</span><br><span class="line"></span><br><span class="line">pwma.stop()</span><br><span class="line">pwmb.stop()</span><br><span class="line">GPIO.cleanup()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="摄像头安装"><a href="#摄像头安装" class="headerlink" title="摄像头安装"></a>摄像头安装</h2><p>关机、断电、给摄像头安装摄像头。安装好后启动树莓派，输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcgencmd get_camera</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="检测摄像头"><a href="#检测摄像头" class="headerlink" title="检测摄像头"></a>检测摄像头</h3><ul>
+<li>如果输出以下内容，则可以直接到“<strong>测试摄像头</strong>”</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supported=1 detected=1, libcamera interfaces=0</span><br></pre></td></tr></table></figure>
+
+<p>​     </p>
+<ul>
+<li>如果输出以下内容，则需要一些设置后，才能使用</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supported=0 detected=0, libcamera interfaces=0</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="无法使用摄像头时方法一："><a href="#无法使用摄像头时方法一：" class="headerlink" title="无法使用摄像头时方法一："></a>无法使用摄像头时方法一：</h3><p>先打开树莓派的配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220708231413128.png" alt="image-20220708231413128"></p>
+<p>选择Interface Options：</p>
+<p>再选择Legacy Camera：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic2.zhimg.com/80/v2-2dbe2dff8833947df79fca7686439989_720w.jpg" alt="img"></p>
+<p>在这个页面回答Yes。</p>
+<p>系统会显示如下信息：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic4.zhimg.com/80/v2-ea12846c756378c7473c8a14dc3f3b67_720w.jpg" alt="img"></p>
+<p>回到主菜单，点击Finish：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic4.zhimg.com/80/v2-90ed2316ee7bcf4ba9fd13ce9b2976cf_720w.jpg" alt="img"></p>
+<p>重启树莓派。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<h3 id="无法使用摄像头时方法二"><a href="#无法使用摄像头时方法二" class="headerlink" title="无法使用摄像头时方法二"></a>无法使用摄像头时方法二</h3><ul>
+<li>将<strong>方法一</strong>中，<code>Legacy Camera</code>再关闭掉，先别重启</li>
+<li>再编辑<code>/boot/config.txt</code>，找到<strong>gpu_men</strong>，设置成128或者更高，我的原来就是128，所以改成了256，然后重启树莓派，可能是显存过低导致的。</li>
+<li><code>start_x=1</code>，并重启树莓派</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220708231748648.png" alt="image-20220708231748648"></p>
+<p>​    </p>
+<p>​    </p>
+<hr>
+<h3 id="测试摄像头"><a href="#测试摄像头" class="headerlink" title="测试摄像头"></a>测试摄像头</h3><p>打开<code>VNC桌面</code>，将下面代码保存为<code>testcamera.py</code>，并在VNC桌面运行<code>python3 testcamera.py</code>，如果跳出来一个摄像头窗口，则正常！！！</p>
+<p>测试摄像头代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该程序打开摄像头，显示视频，按q拍摄一张照片并储存下来</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">    <span class="comment"># 获得图片</span></span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    <span class="comment"># 展示图片</span></span><br><span class="line">    cv2.imshow(<span class="string">&quot;capture&quot;</span>, frame)</span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) &amp; <span class="number">0xFF</span> == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">        <span class="comment"># 存储图片</span></span><br><span class="line">        cv2.imwrite(<span class="string">&quot;camera.jpg&quot;</span>, frame)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>cv2看之前一篇安装opencv文章</li>
+</ul>
+</blockquote>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>下载:<a target="_blank" rel="noopener" href="https://wwd.lanzouy.com/iJp5207kqd9g">https://wwd.lanzouy.com/iJp5207kqd9g</a> 密码:7qp0</p>
+<p>代码下载好后，安装motion【一个将摄像头运行在后台的web服务】</p>
+<p>安装motion</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install motion -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑&#x2F;etc&#x2F;default&#x2F;motion文件，开启守护进程</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/default/motion</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>设置<code>start_motion_daemon=yes</code></p>
+</li>
+<li><p>编辑&#x2F;etc&#x2F;motion&#x2F;motion.conf文件</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/motion/motion.conf</span><br></pre></td></tr></table></figure>
+
+<p>以下仅列出部分配置，详细的配置文档见<a target="_blank" rel="noopener" href="http://lavrsen.dk/foswiki/bin/view/Motion/ConfigFileOptions">Motion - Config File Options</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将deamon off 改成 deamon on</span></span><br><span class="line">deamon on</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">设置视频分辨率</span></span><br><span class="line">width 800</span><br><span class="line">height 600</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">视频帧率</span></span><br><span class="line">framerate 24</span><br><span class="line">stream_maxrate 30</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">允许非本机访问总控制页面</span></span><br><span class="line">webcontrol_localhost off</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">允许非本机查看视频监控</span></span><br><span class="line">stream_localhost off</span><br></pre></td></tr></table></figure>
+
+<p>启动motion</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start motion</span><br><span class="line">sudo motion</span><br></pre></td></tr></table></figure>
+
+<p>​     </p>
+<p>安装gpac</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gpac -y</span><br></pre></td></tr></table></figure>
+
+<p>​          </p>
+<p>安装bottle</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install bottle</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>先运行一遍上面步骤中的<code>test.py</code>，命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 test.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p>再安装Start.py，命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 Start.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在浏览器中访问树莓派<strong>地址:8088</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/07/08/raspi-car/">https://blog.lthero.cn/2022/07/08/raspi-car/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%98%E8%85%BE/">折腾</a><a class="post-meta__tags" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/13/linux-systemctl-service/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">linux-systemctl-service</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/04/openCv-dlib/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【openCv &amp; dlib】安装</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/20/Fuck-RuiJie/" title="【校园网连接】认证|校园网多线"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-20</div><div class="title">【校园网连接】认证|校园网多线</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%98%E8%85%BE%C2%B7%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E8%BD%A6"><span class="toc-number">1.</span> <span class="toc-text">折腾·树莓派小车</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%90%E6%96%99"><span class="toc-number">1.1.</span> <span class="toc-text">材料</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%BD%A6%E5%BA%95%E5%BA%A7%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">小车底座安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TB6612FNG%E4%B8%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">TB6612FNG与树莓派连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TB6612FNG%E9%A9%B1%E5%8A%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">TB6612FNG驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE40PIN%E5%BC%95%E8%84%9A%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-number">2.2.2.</span> <span class="toc-text">树莓派40PIN引脚对照表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%8E%A5%E7%BA%BF%E5%9B%BE"><span class="toc-number">2.2.3.</span> <span class="toc-text">具体接线图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B5%8B%E8%AF%95%E6%8E%A7%E5%88%B6%E7%94%B5%E6%9C%BA"><span class="toc-number">2.3.</span> <span class="toc-text">树莓派测试控制电机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%89%E8%A3%85"><span class="toc-number">2.4.</span> <span class="toc-text">摄像头安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%91%84%E5%83%8F%E5%A4%B4"><span class="toc-number">2.4.1.</span> <span class="toc-text">检测摄像头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%97%B6%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="toc-number">2.4.2.</span> <span class="toc-text">无法使用摄像头时方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%97%B6%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number">2.4.3.</span> <span class="toc-text">无法使用摄像头时方法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%91%84%E5%83%8F%E5%A4%B4"><span class="toc-number">2.4.4.</span> <span class="toc-text">测试摄像头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">2.5.</span> <span class="toc-text">完整代码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'vercel-psi-seven.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

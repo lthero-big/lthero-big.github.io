@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【linux】服务器安装jupyter&amp;使用域名登陆 | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="原文：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;340249373 搭建环境的前期准备 一台服务器 一个备案的域名 ssl证书（在阿里云搜索ssl，可以免费申请）    Jupyter 环境的简单安装 我使用的ubuntu 20.04系统    安装anconda 详细方案参考：[icon-url href&#x3D;”https:&#x2F;&#x2F;www.lthero.cn&#x2F;?p&#x3D;1447&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【linux】服务器安装jupyter&amp;使用域名登陆">
+<meta property="og:url" content="https://blog.lthero.cn/2021/09/11/2021-09-11-[linux]%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E7%99%BB%E9%99%86/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="原文：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;340249373 搭建环境的前期准备 一台服务器 一个备案的域名 ssl证书（在阿里云搜索ssl，可以免费申请）    Jupyter 环境的简单安装 我使用的ubuntu 20.04系统    安装anconda 详细方案参考：[icon-url href&#x3D;”https:&#x2F;&#x2F;www.lthero.cn&#x2F;?p&#x3D;1447&amp;q">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png">
+<meta property="article:published_time" content="2021-09-11T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-08T14:14:18.392Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="技术&amp;生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2021/09/11/2021-09-11-[linux]%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E7%99%BB%E9%99%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【linux】服务器安装jupyter&使用域名登陆',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-08 22:14:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【linux】服务器安装jupyter&amp;使用域名登陆</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-11T00:00:00.000Z" title="发表于 2021-09-11 08:00:00">2021-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-08T14:14:18.392Z" title="更新于 2022-06-08 22:14:18">2022-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">872</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【linux】服务器安装jupyter&amp;使用域名登陆"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>原文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340249373">https://zhuanlan.zhihu.com/p/340249373</a></p>
+<h2 id="搭建环境的前期准备"><a href="#搭建环境的前期准备" class="headerlink" title="搭建环境的前期准备"></a>搭建环境的前期准备</h2><ul>
+<li>一台服务器</li>
+<li>一个备案的域名</li>
+<li>ssl证书（在阿里云搜索ssl，可以免费申请）</li>
+</ul>
+<p> </p>
+<h2 id="Jupyter-环境的简单安装"><a href="#Jupyter-环境的简单安装" class="headerlink" title="Jupyter 环境的简单安装"></a>Jupyter 环境的简单安装</h2><ul>
+<li>我使用的ubuntu 20.04系统</li>
+</ul>
+<p> </p>
+<h3 id="安装anconda"><a href="#安装anconda" class="headerlink" title="安装anconda"></a>安装anconda</h3><ul>
+<li>详细方案参考：[icon-url href&#x3D;”<a target="_blank" rel="noopener" href="https://www.lthero.cn/?p=1447&quot;">https://www.lthero.cn/?p=1447&quot;</a> target&#x3D;”_blank”]网址[&#x2F;icon-url]</li>
+</ul>
+<p> </p>
+<h3 id="安装-Jupyter-Notebook"><a href="#安装-Jupyter-Notebook" class="headerlink" title="安装 Jupyter Notebook"></a>安装 Jupyter Notebook</h3><ul>
+<li>切换到python环境下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(base)$ conda install jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<ul>
+<li>输入python，配置jupyter密码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(base)$ python</span><br><span class="line">&gt;&gt;&gt; from notebook.auth import passwd</span><br><span class="line">&gt;&gt;&gt; passwd() # 这一步之后输入你自己的密码并重复输入一次。会输出一长串加密后的东西，将其复制下来后面要用！！！</span><br><span class="line">&gt;&gt;&gt; quit() # 退出 Python 环境</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<ul>
+<li>上传SSL认证文件</li>
+</ul>
+<p>ssl申请后，点击下载，获得一个 pem 格式的证书文件和一个 key 格式的文件，并上传到服务器的文件夹里后面要用。</p>
+<p> </p>
+<ul>
+<li>配置jupyter</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base)$ jupyter notebook --generate-config   创建配置文件</span><br><span class="line">(base)$ cd ~/.jupyter # 进入 jupyter 配置目录 </span><br><span class="line">(base)$ vim jupyter_notebook_config.py # 打开配置文件</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<ul>
+<li>打开配置文件后，在最后添加</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.allow_origin = &#x27;*&#x27;</span><br><span class="line">c.NotebookApp.allow_remote_access = True</span><br><span class="line">c.NotebookApp.certfile = &#x27;/xxx/xx.com.pem&#x27; # 这里是 pem 证书文件的路径</span><br><span class="line">c.NotebookApp.ip = &#x27;127.0.0.1&#x27; # 除非 IP 裸连否则不要改成 &#x27;*&#x27;</span><br><span class="line">c.NotebookApp.keyfile = &#x27;/xxx/xx.com.key&#x27; # 这里是 key 文件的路径</span><br><span class="line">c.NotebookApp.notebook_dir = &#x27;/xxx/jupyter&#x27; # 这里是你想让 Jupyter 放项目的文件夹</span><br><span class="line">c.NotebookApp.password = &#x27;xxxxxxxx&#x27;# 这里放你刚刚设置密码的时候生成的那一长串东西</span><br><span class="line">c.NotebookApp.open_browser = False # 服务器没有浏览器 开什么开</span><br><span class="line">c.NotebookApp.port = 1111 # 这里是 Jupyter 的端口，自己选个就行，反正后面要做端口转发</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<ul>
+<li>完成了jupyter安装，运行测试(要先切换到对应的Python环境)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(base)$ jupyter notebook --allow-root</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<h2 id="jupyter通过域名访问"><a href="#jupyter通过域名访问" class="headerlink" title="jupyter通过域名访问"></a>jupyter通过域名访问</h2><ul>
+<li><strong>进入nginx目录</strong></li>
+</ul>
+<p><code>(base)$</code> <strong>cd &#x2F;www&#x2F;server&#x2F;nginx&#x2F;config</strong> #直接进入nginx的配置目录</p>
+<p>最初的配置目录没有<strong>jupyter.conf</strong>，要把jupyter的配置信息写入到jupyter.conf后，<strong>再让nginx.conf调用</strong>。</p>
+<ul>
+<li><strong>创建jupyter.conf</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(base)$ vim jupyter.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        # 将服务转发到 443 端口，通过 https 访问</span><br><span class="line">        listen       443 ssl;</span><br><span class="line"></span><br><span class="line">        # 这里填写你的域名</span><br><span class="line">        server_name  xxx.com;</span><br><span class="line"></span><br><span class="line">        # ssl 配置，填写你的 pem 和 key 路径</span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate      /home/ubuntu/.jupyter/xxx.pem;</span><br><span class="line">        ssl_certificate_key  /home/ubuntu/.jupyter/xxx.key;</span><br><span class="line"></span><br><span class="line">        ssl_session_cache    shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">        ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">        # 下面这段是 Websocket 配置</span><br><span class="line">        location / &#123;</span><br><span class="line">              # 注意这里 8888 改成你自己用的端口，更注意这里放 https 而不是 http</span><br><span class="line">              proxy_pass https://127.0.0.1:8888;</span><br><span class="line">              index  dashboard index;</span><br><span class="line"></span><br><span class="line">              #websocket额外配置开始</span><br><span class="line">              proxy_http_version 1.1;</span><br><span class="line">              proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">              proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">              # 连接超时时间，不能设置太长会浪费连接资源</span><br><span class="line">              proxy_connect_timeout 60s;</span><br><span class="line">              # 读超时时间</span><br><span class="line">              proxy_read_timeout 500s;</span><br><span class="line">              # 写超时时间</span><br><span class="line">              proxy_send_timeout 500s;</span><br><span class="line">              #websocket额外配置结束</span><br><span class="line"></span><br><span class="line">              proxy_set_header Host       $http_host;</span><br><span class="line">              proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">              proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        # 日志路径设置</span><br><span class="line">        access_log  /home/ubuntu/.jupyter/jupyter.log;</span><br><span class="line">        error_log   /home/ubuntu/.jupyter/error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<ul>
+<li><strong>（重要）引用jupyter.conf：</strong>在nginx.conf的http开头的括号内，添加<code>include jupyter.conf</code>  来</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(base) $ vim nginx.conf</span><br><span class="line">#在http括号内添加&#123;</span><br><span class="line">       include jupyter.conf</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<ul>
+<li><p><strong>重启nginx服务</strong>，如果期间遇到问题，百度查询下报错的信息，基本能解决</p>
+</li>
+<li><p><strong>开启jupyter</strong>：后台启动jupyter并保持运行，把运行信息写入jupyter.log</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(base) ubuntu$ nohup jupyter notebook --allow-root &gt; jupyter.log 2&gt;&amp;1 &amp; # 后台运行 Jupyter</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<p> </p>
+<h3 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91431056">jupyter插件</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2021/09/11/2021-09-11-[linux]%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E7%99%BB%E9%99%86/">https://blog.lthero.cn/2021/09/11/2021-09-11-[linux]%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E7%99%BB%E9%99%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/14/2021-09-14-%5Blinux%5Dssh%E9%BB%98%E8%AE%A422%E7%AB%AF%E5%8F%A3%E6%97%A0%E6%B3%95%E7%99%BB%E9%99%86/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【linux】ssh默认22端口无法登陆</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/09/2021-09-09-%5Blinux%5D%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E7%AC%A6%E4%BF%AE%E6%94%B9/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【linux】终端命令符修改</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83%E7%9A%84%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">搭建环境的前期准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jupyter-%E7%8E%AF%E5%A2%83%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">Jupyter 环境的简单安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85anconda"><span class="toc-number">2.1.</span> <span class="toc-text">安装anconda</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Jupyter-Notebook"><span class="toc-number">2.2.</span> <span class="toc-text">安装 Jupyter Notebook</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jupyter%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE"><span class="toc-number">3.</span> <span class="toc-text">jupyter通过域名访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%8E%A8%E8%8D%90"><span class="toc-number">3.1.</span> <span class="toc-text">相关推荐</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'vercel-psi-seven.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

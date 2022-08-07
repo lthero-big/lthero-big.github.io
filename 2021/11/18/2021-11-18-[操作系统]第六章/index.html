@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【操作系统】第六章问题与解答 | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、试说明I&#x2F;O系统的基本功能 方便用户使用I&#x2F;O设备 提高cpu与I&#x2F;O设备的利用率 保证用户在使用设备时提供方便，保证系统能够有条不紊的运行    2、简要说明I&#x2F;O软件四个层次的功能 用户层软件：提供与用户交互接口，用户可以直接调用接口以对设备进行操作 设备独立性软件：设备命名、保护、分配与释放，提供数据存储空间 设备驱动软件：将上层发来的“抽象的”I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【操作系统】第六章问题与解答">
+<meta property="og:url" content="https://blog.lthero.cn/2021/11/18/2021-11-18-[%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F]%E7%AC%AC%E5%85%AD%E7%AB%A0/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="1、试说明I&#x2F;O系统的基本功能 方便用户使用I&#x2F;O设备 提高cpu与I&#x2F;O设备的利用率 保证用户在使用设备时提供方便，保证系统能够有条不紊的运行    2、简要说明I&#x2F;O软件四个层次的功能 用户层软件：提供与用户交互接口，用户可以直接调用接口以对设备进行操作 设备独立性软件：设备命名、保护、分配与释放，提供数据存储空间 设备驱动软件：将上层发来的“抽象的”I">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/RD2.jpg">
+<meta property="article:published_time" content="2021-11-18T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-02T15:16:44.391Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="技术&amp;生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/RD2.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2021/11/18/2021-11-18-[%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F]%E7%AC%AC%E5%85%AD%E7%AB%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【操作系统】第六章问题与解答',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-02 23:16:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/RD2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【操作系统】第六章问题与解答</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-18T00:00:00.000Z" title="发表于 2021-11-18 08:00:00">2021-11-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-02T15:16:44.391Z" title="更新于 2022-06-02 23:16:44">2022-06-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【操作系统】第六章问题与解答"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1、试说明I-x2F-O系统的基本功能"><a href="#1、试说明I-x2F-O系统的基本功能" class="headerlink" title="1、试说明I&#x2F;O系统的基本功能"></a>1、试说明I&#x2F;O系统的基本功能</h2><ol>
+<li>方便用户使用I&#x2F;O设备</li>
+<li>提高cpu与I&#x2F;O设备的利用率</li>
+<li>保证用户在使用设备时提供方便，保证系统能够有条不紊的运行</li>
+</ol>
+<p> </p>
+<h2 id="2、简要说明I-x2F-O软件四个层次的功能"><a href="#2、简要说明I-x2F-O软件四个层次的功能" class="headerlink" title="2、简要说明I&#x2F;O软件四个层次的功能"></a>2、简要说明I&#x2F;O软件四个层次的功能</h2><ol>
+<li>用户层软件：<strong>提供</strong>与用户<strong>交互接口</strong>，用户可以<strong>直接调用接口</strong>以对<strong>设备进行操作</strong></li>
+<li>设备独立性软件：设备<strong>命名</strong>、<strong>保护</strong>、<strong>分配</strong>与<strong>释放</strong>，提供<strong>数据存储</strong>空间</li>
+<li>设备驱动软件：将<strong>上层</strong>发来的<strong>“抽象的”</strong>I&#x2F;O请求，转成<strong>“具体的”</strong>请求，再<strong>发给设备控制器</strong></li>
+<li>中断处理程序：<strong>保护</strong>被<strong>中断进程的cpu环境</strong>，并转入相应的中断处理程序，再<strong>恢复</strong>被中断进程的cpu环境，并从中断点继续运行。</li>
+</ol>
+<p> </p>
+<h2 id="3、I-x2F-O系统接口-与-软件-x2F-硬件-RW-x2F-HW-接口，分别是什么接口？"><a href="#3、I-x2F-O系统接口-与-软件-x2F-硬件-RW-x2F-HW-接口，分别是什么接口？" class="headerlink" title="3、I&#x2F;O系统接口  与   软件&#x2F;硬件(RW&#x2F;HW)接口，分别是什么接口？"></a>3、I&#x2F;O系统接口  与   软件&#x2F;硬件(RW&#x2F;HW)接口，分别是什么接口？</h2><h3 id="1、I-x2F-O系统接口"><a href="#1、I-x2F-O系统接口" class="headerlink" title="1、I&#x2F;O系统接口"></a>1、I&#x2F;O系统接口</h3><blockquote>
+<p>它是<strong>I&#x2F;O系统</strong>与<strong>上层系统（文件系统、虚拟存储器系统、用户进程）</strong>之间的接口，向上层提供对设备进行操作的抽象I&#x2F;O命令，方便上层对设备的使用</p>
+</blockquote>
+<p>I&#x2F;O系统接口也分为三种接口：<strong>块设备接口、流设备接口、网络通信接口</strong></p>
+<h3 id="1-1、块设备接口："><a href="#1-1、块设备接口：" class="headerlink" title="1.1、块设备接口："></a>1.1、块设备接口：</h3><p>块设备管理程序与高层的接口，块设备指<strong>“高速传输速率”</strong>、<strong>“能指定数据的输入地址及输出地址”</strong>、<strong>“常用DMA方式”</strong>的<strong>磁盘、光盘</strong></p>
+<h3 id="1-2、流设备接口："><a href="#1-2、流设备接口：" class="headerlink" title="1.2、流设备接口："></a>1.2、流设备接口：</h3><p>流设备管理程序与高层的接口，流设备指“<strong>低速传输速率</strong>”、“<strong>不能指定数据的输入地址及输出地址</strong>”、“<strong>常用中断方式</strong>”的<strong>打印机、键盘</strong></p>
+<h4 id="流设备接口还有两个函数：get与put"><a href="#流设备接口还有两个函数：get与put" class="headerlink" title="流设备接口还有两个函数：get与put"></a>流设备接口还有两个函数：get与put</h4><ul>
+<li>get：从字符缓冲区取得一个字符到内存</li>
+<li>put：从内存中将字符输出到字符缓冲区</li>
+</ul>
+<p> </p>
+<h3 id="2、软件-x2F-硬件（RW-x2F-HW）接口"><a href="#2、软件-x2F-硬件（RW-x2F-HW）接口" class="headerlink" title="2、软件&#x2F;硬件（RW&#x2F;HW）接口"></a>2、软件&#x2F;硬件（RW&#x2F;HW）接口</h3><p>它上层是<strong>I&#x2F;O系统</strong>，它下层是<strong>设备控制器</strong></p>
+<blockquote>
+<p>如下图可以看到，在<strong>I&#x2F;O系统接口</strong>与<strong>RW&#x2F;HW接口</strong>中间的，是<strong>I&#x2F;O系统</strong></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://cdn.lthero.cn/wp-store/2021/11/1637202213-1592121624976542.png"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/wp-store/2021/11/1637202213-1592121624976542.png"></a></p>
+<p> </p>
+<h2 id="4、设备独立性软件有什么含义？为什么要设置这层？"><a href="#4、设备独立性软件有什么含义？为什么要设置这层？" class="headerlink" title="4、设备独立性软件有什么含义？为什么要设置这层？"></a>4、设备独立性软件有什么含义？为什么要设置这层？</h2><p>设备独立性软件，在<strong>I&#x2F;O系统的顶层</strong>（如图）</p>
+<h3 id="功能："><a href="#功能：" class="headerlink" title="功能："></a><strong>功能：</strong></h3><p>提供<strong>设备命名</strong>、<strong>保护</strong>、<strong>分配与释放</strong>，也提供了<strong>数据存储</strong>空间</p>
+<h3 id="4-1、含义："><a href="#4-1、含义：" class="headerlink" title="4.1、含义："></a><strong>4.1、含义：</strong></h3><p><strong>I&#x2F;O软件独立于具体使用的设备</strong></p>
+<h3 id="4-2、好处："><a href="#4-2、好处：" class="headerlink" title="4.2、好处："></a><strong>4.2、好处</strong>：</h3><p>提高了I&#x2F;O系统的<strong>可适应性与扩展性</strong>，增加新设备或替换设备时，<strong>不需要修改I&#x2F;O软件</strong></p>
+<p> </p>
+<h2 id="5、说明设备控制器的组成"><a href="#5、说明设备控制器的组成" class="headerlink" title="5、说明设备控制器的组成"></a>5、说明设备控制器的组成</h2><h3 id="组成："><a href="#组成：" class="headerlink" title="组成："></a>组成：</h3><p>5.1、设备控制器<strong>与cpu接口</strong></p>
+<p>共有三种信号线：数据线、地址线、控制线</p>
+<p>5.2、设备控制器<strong>与设备的接口</strong></p>
+<p>控制器<strong>每连接一个设备，就对应一个设备接口；</strong>每个接口中都有“<strong>数据</strong>“、”<strong>控制</strong>“、”<strong>状态</strong>“三种信号</p>
+<p>5.3、<strong>I&#x2F;O逻辑</strong></p>
+<p>控制器收到cpu发来的<strong>命令和设备地址</strong>后，由控制器的I&#x2F;O逻辑对<strong>地址和命令译码</strong>，再对所选的设备进行控制</p>
+<p> </p>
+<h2 id="6、为了实现cpu与设备控制器的通信，设备控制器应该有什么功能？"><a href="#6、为了实现cpu与设备控制器的通信，设备控制器应该有什么功能？" class="headerlink" title="6、为了实现cpu与设备控制器的通信，设备控制器应该有什么功能？"></a>6、为了实现cpu与设备控制器的通信，设备控制器应该有什么功能？</h2><p>设备控制器</p>
+<h3 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h3><p><strong>控制一个或多个设备，以实现I&#x2F;O设备与cpu的数据交换</strong></p>
+<p>当控制多个设备时，每个设备对应一个设备地址</p>
+<h3 id="具体功能："><a href="#具体功能：" class="headerlink" title="具体功能："></a>具体功能：</h3><p>1、<strong>识别并接收命令：</strong>接收cpu发来的命令，并存入相应的寄存器中</p>
+<p>2、<strong>数据交互：</strong>通过数据总线，cpu并行地把数据写入控制器，或从控制器中读取数据</p>
+<p>3、<strong>标识与报道设备状态：</strong>设备控制器中应该有状态寄存器，记录管理的每个设备的状态，并反馈给cpu</p>
+<p>4、<strong>数据缓冲：</strong>为了解决I&#x2F;O设备传输低速与cpu传输高速的差异，缓冲区用来接收cpu发来的数据，再以与I&#x2F;O设备匹配的速率发送出去；或者接收I&#x2F;O设备发来的数据，再高速的传给cpu</p>
+<p> </p>
+<h2 id="7、什么是内存映像I-x2F-O？如何实现的？"><a href="#7、什么是内存映像I-x2F-O？如何实现的？" class="headerlink" title="7、什么是内存映像I&#x2F;O？如何实现的？"></a>7、什么是内存映像I&#x2F;O？如何实现的？</h2><p>将I&#x2F;O设备的设备控制器地址也放入内存</p>
+<p>如：k在0<del>n-1时，被认为是内存地址；在n</del>k时，被认为是某个控制器寄存器地址</p>
+<p> </p>
+<h2 id="8、为什么说中断是OS赖以生存的基础？"><a href="#8、为什么说中断是OS赖以生存的基础？" class="headerlink" title="8、为什么说中断是OS赖以生存的基础？"></a>8、为什么说中断是OS赖以生存的基础？</h2><p>因为进程之间的切换是通过中断来完成的。</p>
+<p> </p>
+<h2 id="9、设备中断处理程序通常需要完成哪些工作？"><a href="#9、设备中断处理程序通常需要完成哪些工作？" class="headerlink" title="9、设备中断处理程序通常需要完成哪些工作？"></a>9、设备中断处理程序通常需要完成哪些工作？</h2><p>1、保存当前被中断进程的运行环境，将相关资源和命令保存到中断堆栈中</p>
+<p>2、让cpu处理当前中断程序</p>
+<p>3、恢复被中断进程的运行环境，并从中断点继续运行</p>
+<p> </p>
+<h2 id="10、对多中断源的两种处理方式分别用于何种场合？"><a href="#10、对多中断源的两种处理方式分别用于何种场合？" class="headerlink" title="10、对多中断源的两种处理方式分别用于何种场合？"></a>10、对多中断源的两种处理方式分别用于何种场合？</h2><h3 id="1、屏蔽中断"><a href="#1、屏蔽中断" class="headerlink" title="1、屏蔽中断"></a>1、屏蔽中断</h3><p>当cpu正在处理一个中断时，<strong>会屏蔽其它所有中断</strong>，<strong>并将中断添加到中断请求队列中</strong>。当前中断处理完成后，再从队列中处理下一个中断</p>
+<h3 id="2、嵌套中断"><a href="#2、嵌套中断" class="headerlink" title="2、嵌套中断"></a>2、嵌套中断</h3><p>在设置了“<strong>中断优先级</strong>”的系统中，使用此规则</p>
+<ol>
+<li>当有多个中断请求时，cpu<strong>先响应优先级高的中断</strong></li>
+<li>任何时候，<strong>高优先级中断可以抢占当前运行的低级中断</strong></li>
+</ol>
+<p> </p>
+<h2 id="11、说明设备驱动程序具有哪些特点？"><a href="#11、说明设备驱动程序具有哪些特点？" class="headerlink" title="11、说明设备驱动程序具有哪些特点？"></a>11、说明设备驱动程序具有哪些特点？</h2><p>1、驱动程序是帮助“<strong>设备无关程序</strong>”和“<strong>设备控制器</strong>”<strong>通信</strong>和转换的程序，它将“<strong>抽象的I&#x2F;O请求</strong>“，转成”<strong>具体的I&#x2F;O请求</strong>“后再<strong>给设备控制器</strong></p>
+<p>2、驱动程序与”<strong>设备控制器</strong>“和”<strong>设备硬件</strong>“<strong>相关</strong>，<strong>不同设备</strong>需要有<strong>不同的驱动</strong></p>
+<p>3、驱动程序与”<strong>设备的控制方式</strong>“<strong>相关</strong>，常用的”<strong>控制方式</strong>“有<strong>中断</strong>和<strong>DMA</strong></p>
+<p> </p>
+<h2 id="12、驱动需要完成哪些工作？"><a href="#12、驱动需要完成哪些工作？" class="headerlink" title="12、驱动需要完成哪些工作？"></a>12、驱动需要完成哪些工作？</h2><p>1、接收来自“设备无关程序”的<strong>抽象的</strong>I&#x2F;O请求命令，并转换成<strong>具体的</strong>I&#x2F;O命令<strong>并给设备控制器</strong></p>
+<p>2、检测I&#x2F;O请求是否合法，如：从<strong>打印机</strong>请求<strong>读取数据</strong>即为<strong>非法</strong></p>
+<p>3、检测设备的状态，<strong>如果设备空闲，</strong>即可<strong>发送具体的I&#x2F;O命令，并将自己阻塞，等待中断；</strong>否则在设备等待队列中添加当前I&#x2F;O命令</p>
+<p>4、及时<strong>响应由设备控制器</strong>发来的<strong>中断请求</strong></p>
+<p> </p>
+<h2 id="13、说明推动I-x2F-O控制发展的主要原因是？"><a href="#13、说明推动I-x2F-O控制发展的主要原因是？" class="headerlink" title="13、说明推动I&#x2F;O控制发展的主要原因是？"></a>13、说明推动I&#x2F;O控制发展的主要原因是？</h2><p>减少处理机对I&#x2F;O控制的干预，以提高处理机的利用率，让处理机更多地执行数据处理任务。</p>
+<p> </p>
+<h2 id="14、有几种I-x2F-O控制方式？分别应用于什么场合"><a href="#14、有几种I-x2F-O控制方式？分别应用于什么场合" class="headerlink" title="14、有几种I&#x2F;O控制方式？分别应用于什么场合?"></a>14、有几种I&#x2F;O控制方式？分别应用于什么场合?</h2><h3 id="1、轮询"><a href="#1、轮询" class="headerlink" title="1、轮询"></a>1、轮询</h3><p>cpu一直等待I&#x2F;O设备完成数据处理，这个过程中，cpu要不断检测I&#x2F;O设备是否完成</p>
+<p>适合传输低速设备</p>
+<p> </p>
+<h3 id="2、中断"><a href="#2、中断" class="headerlink" title="2、中断"></a>2、中断</h3><p>cpu将I&#x2F;O请求交给“设备控制器”后继续处理其它任务，“设备控制器”完成I&#x2F;O任务后，向cpu发出中断，此时cpu再检测数据是否合法并完成I&#x2F;O请求</p>
+<p>适合传输高速设备</p>
+<p> </p>
+<h3 id="3、DMA"><a href="#3、DMA" class="headerlink" title="3、DMA"></a>3、DMA</h3><p>1、数据传输的单位为“<strong>数据块</strong>”，cpu与I&#x2F;O设备之间每次<strong>至少传输“一个数据块”</strong></p>
+<p>2、只有一个或多个数据块传输完成时，才有cpu干预，其它时间由DMA控制器处理</p>
+<p>3、传送的数据直接<strong>由设备送往内存</strong>或者直接<strong>从内存送出到设备</strong></p>
+<p> </p>
+<h2 id="15、DMA工作流程"><a href="#15、DMA工作流程" class="headerlink" title="15、DMA工作流程"></a>15、DMA工作流程</h2><p>假设命令：cpu从磁盘读取一数据块</p>
+<p>1、<strong>命令</strong>被送到“命令寄存器”</p>
+<p>2、数据在<strong>磁盘中的起始地址</strong>送到“I&#x2F;O控制逻辑”</p>
+<p>3、要读取数据的<strong>字节数</strong>目送到“数据计数器”</p>
+<p>4、数据要存<strong>放到内存的起始目标地址</strong>送到“地址寄存器”</p>
+<p>此后，DMA开始进行数据传输，cpu可以执行其它任务，当全部数据传输完成后，DMA控制器向cpu发出中断</p>
+<p> </p>
+<h2 id="16、为什么要引入设备无关性？如何实现设备无关性？"><a href="#16、为什么要引入设备无关性？如何实现设备无关性？" class="headerlink" title="16、为什么要引入设备无关性？如何实现设备无关性？"></a>16、为什么要引入设备无关性？如何实现设备无关性？</h2><p>1、让<strong>应用程序使用的设备</strong>，<strong>不局限</strong>于<strong>某个</strong>具体<strong>设备</strong></p>
+<p>2、在设备驱动程序上层再设置一个“<strong>设备无关性软件</strong>”层</p>
+<p> </p>
+<h2 id="17、设备无关性软件包括了哪些公有操作？"><a href="#17、设备无关性软件包括了哪些公有操作？" class="headerlink" title="17、设备无关性软件包括了哪些公有操作？"></a>17、设备无关性软件包括了哪些公有操作？</h2><p>1、设备驱动程序需要有统一接口</p>
+<p>2、需要有数据缓冲区，以缓和cpu与I&#x2F;O设备之间的矛盾</p>
+<p>3、差错控制</p>
+<p>4、对独立设备的分配与回收</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2021/11/18/2021-11-18-[%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F]%E7%AC%AC%E5%85%AD%E7%AB%A0/">https://blog.lthero.cn/2021/11/18/2021-11-18-[%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F]%E7%AC%AC%E5%85%AD%E7%AB%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/21/2021-11-21-%5B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%5D%E7%AC%AC%E5%9B%9B%E7%AB%A0%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E7%AD%94/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【操作系统】第四章问题与解答</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/14/2021-11-14-%5B%E7%94%B5%E8%84%91%5D%E6%8F%90%E9%AB%98%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【电脑】提高电脑使用体验</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E8%AF%95%E8%AF%B4%E6%98%8EI-x2F-O%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-number">1.</span> <span class="toc-text">1、试说明I&#x2F;O系统的基本功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8EI-x2F-O%E8%BD%AF%E4%BB%B6%E5%9B%9B%E4%B8%AA%E5%B1%82%E6%AC%A1%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">2、简要说明I&#x2F;O软件四个层次的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81I-x2F-O%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3-%E4%B8%8E-%E8%BD%AF%E4%BB%B6-x2F-%E7%A1%AC%E4%BB%B6-RW-x2F-HW-%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">3、I&#x2F;O系统接口  与   软件&#x2F;硬件(RW&#x2F;HW)接口，分别是什么接口？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81I-x2F-O%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.1.</span> <span class="toc-text">1、I&#x2F;O系统接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E3%80%81%E5%9D%97%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">1.1、块设备接口：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E3%80%81%E6%B5%81%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3%EF%BC%9A"><span class="toc-number">3.3.</span> <span class="toc-text">1.2、流设备接口：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3%E8%BF%98%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%9Aget%E4%B8%8Eput"><span class="toc-number">3.3.1.</span> <span class="toc-text">流设备接口还有两个函数：get与put</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%BD%AF%E4%BB%B6-x2F-%E7%A1%AC%E4%BB%B6%EF%BC%88RW-x2F-HW%EF%BC%89%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.4.</span> <span class="toc-text">2、软件&#x2F;硬件（RW&#x2F;HW）接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E8%BD%AF%E4%BB%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%90%AB%E4%B9%89%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E7%BD%AE%E8%BF%99%E5%B1%82%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">4、设备独立性软件有什么含义？为什么要设置这层？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E3%80%81%E5%90%AB%E4%B9%89%EF%BC%9A"><span class="toc-number">4.2.</span> <span class="toc-text">4.1、含义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E3%80%81%E5%A5%BD%E5%A4%84%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">4.2、好处：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%AF%B4%E6%98%8E%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">5.</span> <span class="toc-text">5、说明设备控制器的组成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E6%88%90%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">组成：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E4%B8%BA%E4%BA%86%E5%AE%9E%E7%8E%B0cpu%E4%B8%8E%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E9%80%9A%E4%BF%A1%EF%BC%8C%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E5%99%A8%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9F%E8%83%BD%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">6、为了实现cpu与设备控制器的通信，设备控制器应该有什么功能？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">主要功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">具体功能：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E6%98%A0%E5%83%8FI-x2F-O%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">7、什么是内存映像I&#x2F;O？如何实现的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E4%B8%AD%E6%96%AD%E6%98%AFOS%E8%B5%96%E4%BB%A5%E7%94%9F%E5%AD%98%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%9F"><span class="toc-number">8.</span> <span class="toc-text">8、为什么说中断是OS赖以生存的基础？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E9%80%9A%E5%B8%B8%E9%9C%80%E8%A6%81%E5%AE%8C%E6%88%90%E5%93%AA%E4%BA%9B%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number">9.</span> <span class="toc-text">9、设备中断处理程序通常需要完成哪些工作？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81%E5%AF%B9%E5%A4%9A%E4%B8%AD%E6%96%AD%E6%BA%90%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%88%86%E5%88%AB%E7%94%A8%E4%BA%8E%E4%BD%95%E7%A7%8D%E5%9C%BA%E5%90%88%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">10、对多中断源的两种处理方式分别用于何种场合？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD"><span class="toc-number">10.1.</span> <span class="toc-text">1、屏蔽中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%B5%8C%E5%A5%97%E4%B8%AD%E6%96%AD"><span class="toc-number">10.2.</span> <span class="toc-text">2、嵌套中断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81%E8%AF%B4%E6%98%8E%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%85%B7%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">11、说明设备驱动程序具有哪些特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12%E3%80%81%E9%A9%B1%E5%8A%A8%E9%9C%80%E8%A6%81%E5%AE%8C%E6%88%90%E5%93%AA%E4%BA%9B%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number">12.</span> <span class="toc-text">12、驱动需要完成哪些工作？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13%E3%80%81%E8%AF%B4%E6%98%8E%E6%8E%A8%E5%8A%A8I-x2F-O%E6%8E%A7%E5%88%B6%E5%8F%91%E5%B1%95%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0%E6%98%AF%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">13、说明推动I&#x2F;O控制发展的主要原因是？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14%E3%80%81%E6%9C%89%E5%87%A0%E7%A7%8DI-x2F-O%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F%EF%BC%9F%E5%88%86%E5%88%AB%E5%BA%94%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E5%9C%BA%E5%90%88"><span class="toc-number">14.</span> <span class="toc-text">14、有几种I&#x2F;O控制方式？分别应用于什么场合?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%BD%AE%E8%AF%A2"><span class="toc-number">14.1.</span> <span class="toc-text">1、轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%B8%AD%E6%96%AD"><span class="toc-number">14.2.</span> <span class="toc-text">2、中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81DMA"><span class="toc-number">14.3.</span> <span class="toc-text">3、DMA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15%E3%80%81DMA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">15.</span> <span class="toc-text">15、DMA工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BC%95%E5%85%A5%E8%AE%BE%E5%A4%87%E6%97%A0%E5%85%B3%E6%80%A7%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%AE%BE%E5%A4%87%E6%97%A0%E5%85%B3%E6%80%A7%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">16、为什么要引入设备无关性？如何实现设备无关性？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17%E3%80%81%E8%AE%BE%E5%A4%87%E6%97%A0%E5%85%B3%E6%80%A7%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%8B%AC%E4%BA%86%E5%93%AA%E4%BA%9B%E5%85%AC%E6%9C%89%E6%93%8D%E4%BD%9C%EF%BC%9F"><span class="toc-number">17.</span> <span class="toc-text">17、设备无关性软件包括了哪些公有操作？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'vercel-psi-seven.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

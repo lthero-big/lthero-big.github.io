@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Cryptography】密钥管理与分发 | lthero</title><meta name="keywords" content="密码学,数字签名,密钥管理分发"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数字签名 在数据完整性使用的那篇文章提到过  只要认证不要保密性流程  只要发送方对消息或文件产生Hash值，随着密文一起发送。接收方只要对消息计算Hash并与接收的Hash匹配即可  ​     既要认证也要保密性 【使用对称加密与数字结合】  流程图  与上面不同的是，这里将HASH值也加密了  ​     具体过程 发送方对消息或文件产生Hash值  发送方用自己的私钥对Hash值加密得到S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Cryptography】密钥管理与分发">
+<meta property="og:url" content="https://blog.lthero.cn/2022/06/15/Cryptography-Digital-Signature/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="数字签名 在数据完整性使用的那篇文章提到过  只要认证不要保密性流程  只要发送方对消息或文件产生Hash值，随着密文一起发送。接收方只要对消息计算Hash并与接收的Hash匹配即可  ​     既要认证也要保密性 【使用对称加密与数字结合】  流程图  与上面不同的是，这里将HASH值也加密了  ​     具体过程 发送方对消息或文件产生Hash值  发送方用自己的私钥对Hash值加密得到S">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg">
+<meta property="article:published_time" content="2022-06-15T13:54:55.000Z">
+<meta property="article:modified_time" content="2022-06-16T02:41:19.608Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="密码学">
+<meta property="article:tag" content="数字签名">
+<meta property="article:tag" content="密钥管理分发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/06/15/Cryptography-Digital-Signature/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Cryptography】密钥管理与分发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-16 10:41:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Cryptography】密钥管理与分发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-15T13:54:55.000Z" title="发表于 2022-06-15 21:54:55">2022-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-16T02:41:19.608Z" title="更新于 2022-06-16 10:41:19">2022-06-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">数字签名</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Cryptography】密钥管理与分发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><blockquote>
+<p>在数据完整性使用的那篇文章提到过</p>
+</blockquote>
+<h2 id="只要认证不要保密性"><a href="#只要认证不要保密性" class="headerlink" title="只要认证不要保密性"></a>只要认证不要保密性</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615221949732.png" alt="image-20220615221949732"></p>
+<ul>
+<li>只要<strong>发送方</strong>对消息或文件产生<code>Hash值</code>，随着<code>密文</code>一起发送。接收方只要<code>对消息计算Hash</code>并与<code>接收的Hash</code>匹配即可</li>
+</ul>
+<p>​    </p>
+<h2 id="既要认证也要保密性"><a href="#既要认证也要保密性" class="headerlink" title="既要认证也要保密性"></a>既要认证也要保密性</h2><blockquote>
+<p>【使用<strong>对称加密与数字结合</strong>】</p>
+</blockquote>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615222031740.png" alt="image-20220615222031740"></p>
+<ul>
+<li>与上面不同的是，这里将<strong>HASH值也加密了</strong></li>
+</ul>
+<p>​    </p>
+<h3 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h3><ul>
+<li>发送方对消息或文件产生<code>Hash值</code></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615215623867.png" alt="image-20220615215623867"></li>
+<li>发送方用自己的<code>私钥</code>对<code>Hash值</code>加密得到<code>Signature</code>【如果通信双方认识，<strong>发送方</strong>最好用<strong>接收方的公钥</strong>进行<strong>加密</strong>】</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615215735864.png" alt="image-20220615215735864"></li>
+<li>发送方再用<code>对称加密</code>中的<strong>密钥</strong>，将<code>Hash值和消息</code>一起<strong>加密</strong>再发送。</li>
+<li>接收方对接收的消息使用<code>对称加密密钥</code>解密</li>
+<li>再用发送方的<strong>公钥</strong>对<code>Signature</code>进行解密得到<code>Hash值</code></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615215816872.png" alt="image-20220615215816872"></li>
+<li>再<code>对消息计算Hash值</code>并与<code>接收的Hash值</code>进行匹配即可</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615215823508.png" alt="image-20220615215823508"></li>
+</ul>
+<h2 id="既要认证，也要保密性"><a href="#既要认证，也要保密性" class="headerlink" title="既要认证，也要保密性"></a>既要认证，也要保密性</h2><blockquote>
+<p>【使用<code>非</code><strong>对称加密与数字结合</strong>】</p>
+</blockquote>
+<ul>
+<li>因为<code>非对称加密</code>往往进行<code>密钥管理</code>，传输消息时不用非对称加密，如果要用也不是不行</li>
+</ul>
+<p>​    </p>
+<p>​    </p>
+<hr>
+<h1 id="集中密钥分发"><a href="#集中密钥分发" class="headerlink" title="集中密钥分发"></a>集中密钥分发</h1><ol>
+<li>A→KDC：IDA∥IDB∥N1</li>
+</ol>
+<p>A向KDC发出会话<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AF%86%E9%92%A5&spm=1001.2101.3001.7020">密钥</a>请求。请求的消息由两个数据项组成：一是A和B的身份IDA和IDB，二是本次业务的唯一标识符N1，每次请求所用的N1都应不同，常用一个时间戳、一个计数器或一个随机数作为这个标识符。</p>
+<ol start="2">
+<li>KDC→A：E(Ka[Ks∥IDA∥IDB∥N1∥<code>E(Kb[Ks∥IDA])</code>])。</li>
+</ol>
+<p>KDC对A的请求发出应答。应答是由<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%8A%A0%E5%AF%86&spm=1001.2101.3001.7020">加密</a>Ka加密的信息，因此只有A才能成功地对这一信息解密，并A相信信息的确是由KDC发出的。KDC并将使用Kb加密的ks数据发送给A</p>
+<ol start="3">
+<li>A→B：<code>E(Kb[ Ks∥IDA])</code>。</li>
+</ol>
+<p>A收到KDC响应的信息后，同时将会话密钥Ks存储起来，同时A将经过<code>KDC与B的共享密钥加密过的信息</code>传送给B。</p>
+<ol start="4">
+<li>B收到后，得到会话密钥Ks，并从IDA可知对方是A，而且还丛EKb知道<code>Ks确实来自KDC</code>。</li>
+</ol>
+<h1 id="基于非对称密钥分发"><a href="#基于非对称密钥分发" class="headerlink" title="基于非对称密钥分发"></a>基于非对称密钥分发</h1><h2 id="简单密钥分发"><a href="#简单密钥分发" class="headerlink" title="简单密钥分发"></a>简单密钥分发</h2><ol>
+<li>A产生一个公私钥对发送给B【<strong>可以插入中间人攻击</strong>】</li>
+<li>B产生<code>对称加密的密钥K</code>，用A的公钥加密发送给A</li>
+<li>A用私钥解密得到密钥K</li>
+<li>A丢弃公私钥，B丢弃A的公钥</li>
+<li>A、B使用<code>对称加密的密钥K</code>加密</li>
+</ol>
+<p>​    </p>
+<p>​    </p>
+<h2 id="保密性和身份认证密钥分发"><a href="#保密性和身份认证密钥分发" class="headerlink" title="保密性和身份认证密钥分发"></a>保密性和身份认证密钥分发</h2><blockquote>
+<p>解决简单密钥分发中间人攻击问题</p>
+<p>前提：假如“<strong>A与B使用安全的公钥分发方式</strong>”得到了<code>对方的公钥</code>【不存在中间人攻击】</p>
+<p>核心：因为确保能拿到对方公钥，再用<strong>临时数来进行通信双方的身份验证</strong>，身份验证后再产生出<code>共享密钥k</code></p>
+</blockquote>
+<ol>
+<li>A用<code>B的公钥</code>加密<strong>A的标志符IDa</strong>和<strong>一个临时数N1</strong>并发给B</li>
+<li>B用<code>B的私钥</code>解出<strong>A的标志符IDa</strong>和<strong>一个临时数N1</strong>，并用<code>A的公钥</code>加密<strong>N1和新临时数N2</strong>发送给A</li>
+<li>A用<code>A的私钥</code>解出<strong>临时数N1和新临时数N2</strong>，<code>A确定是来自B</code>，并用<code>B的公钥</code>加密<strong>N2</strong>发送给B</li>
+<li>B用<code>B的私钥</code>解出<strong>N2</strong>，<code>确定是来自A</code></li>
+<li>A发送<code>M=E(PUb,E(PRa,K))</code>，表示用<code>A的私钥</code>加密 <code>密钥k</code>，再用<code>B的公钥</code>加密一层。用<code>B的公钥</code>加密确保<strong>只有B可以读取这个消息</strong>，用<code>A的私钥</code>加密保证<strong>只有A可以发送这个消息</strong></li>
+<li>B收到后解出密钥k，以后再用这个<code>密钥k</code>通信</li>
+</ol>
+<p>​    </p>
+<p>​    </p>
+<hr>
+<h1 id="公钥分发"><a href="#公钥分发" class="headerlink" title="公钥分发"></a>公钥分发</h1><h2 id="数字证书【公钥证书】"><a href="#数字证书【公钥证书】" class="headerlink" title="数字证书【公钥证书】"></a>数字证书【公钥证书】</h2><blockquote>
+<p><strong>可以</strong>应用在<code>数字签名</code>之上，用来<strong>保护数字签名不被中间人攻击替换</strong>，数字签名只能确保<code>数据完整性</code>，消息内容本身的加密仍然可以用对称加密或非对称加密。</p>
+<p><strong>可以</strong>应用在<code>密钥交换</code>之上，用来<strong>保护发送方公钥不被中间人替换</strong></p>
+</blockquote>
+<p>​    </p>
+<p>​    </p>
+<h2 id="公钥证书的应用"><a href="#公钥证书的应用" class="headerlink" title="公钥证书的应用"></a>公钥证书的应用</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220616103128714.png" alt="公钥证书注册与下载"></p>
+<p>最典型的应用HTTPS，这个S就是指<code>TLS</code>，TLS将<code>对称加密</code>与<code>数字证书</code>结合，在<strong>服务器</strong>与<strong>客户端</strong>连接阶段，用<code>数字证书</code>来<strong>交换</strong>用来<code>对称加密的密钥</code>，TCP建立后续都用这个<code>对称加密的密钥来加密消息</code>，数字证书就没用了</p>
+<p>服务器向CA申请数字证书时,<code>服务器要把自己的公钥</code>也提交给CA，CA向服务器发送<code>CA证书</code>和<code>CA公钥</code>，CA已经将<code>服务器自己的公钥</code>加密到<code>CA证书</code>里面</p>
+<p>客户端用<code>CA公钥</code>从<code>CA证书</code>提取出<code>服务器的公钥</code>，再作其它传输操作【这样做的目标是，确定<code>服务器的公钥</code>的确是来自<code>服务器</code>的】</p>
+<h2 id="证书产生"><a href="#证书产生" class="headerlink" title="证书产生"></a>证书产生</h2><ol>
+<li>Bob要把<strong>预先部署了若干个共享的密钥</strong>【如RSA算法参数（模数p，基数g）】和自己的公钥【Bob的公钥】交给CA</li>
+<li>CA将{【算法参数（模数p，基数g）】、【Bob的公钥】、【CA信息】}这三个打包并产生一个<code>Hash</code>，并用<code>CA私钥</code>对<code>Hash</code>加密【只加密Hash】，并将加密后的Hash和前面三个值一起，打包成<code>证书</code>，所以<code>证书</code>包含{【算法参数（模数p，基数g）】、【Bob的公钥】、【CA信息】、【加密后的Hash】}</li>
+<li>Alice拿到<code>证书</code>后，因为{【算法参数（模数p，基数g）】、【Bob的公钥】、【CA信息】}未加密，Alice直接计算出这三个的<code>Hash</code>，Alice再用<code>CA公钥</code>对【加密后的Hash】解密，将两个Hash进行对比，如果没问题，则会提出<code>服务器公钥</code>【关于TLS加密，后面文章会讲】</li>
+</ol>
+<p>​    </p>
+<blockquote>
+<p>SSL&#x2F;TLS协议运行机制的概述：<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html</a></p>
+<p>SSL&#x2F;TLS 协议[3]：密钥交换（密钥协商）算法及其原理 <a target="_blank" rel="noopener" href="https://blog.csdn.net/andylau00j/article/details/54583769">https://blog.csdn.net/andylau00j/article/details/54583769</a></p>
+</blockquote>
+<h2 id="网页的证书"><a href="#网页的证书" class="headerlink" title="网页的证书"></a>网页的证书</h2><ul>
+<li>可以看到，网页与客户端的加密方式还是用RSA加密</li>
+</ul>
+<p>​    <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220616090801049.png" alt="blog.lthero.cn的证书"></p>
+<p>​      </p>
+<ul>
+<li>在服务器上添加CA证书与CA公钥</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615225944461.png" alt="服务器上添加证书的CA公钥与CA证书"></p>
+<p>​    </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615220009983.png" alt="公钥证书-将发送方的公钥保存到证书"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615220014856.png" alt="公钥证书-接收方拿到证书"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615220137156.png" alt="公钥证书-接收方从证书中提取出发送方公钥"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/06/15/Cryptography-Digital-Signature/">https://blog.lthero.cn/2022/06/15/Cryptography-Digital-Signature/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">数字签名</a><a class="post-meta__tags" href="/tags/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E5%88%86%E5%8F%91/">密钥管理分发</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/16/Cryptography-TLS/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Cryptography】传输层安全</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/15/MyUniversityLife/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的大学</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/16/Cryptography-Authentication/" title="【Cryptography】用户认证"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-16</div><div class="title">【Cryptography】用户认证</div></div></a></div><div><a href="/2022/06/15/Cryptography-DES-AES/" title="【Cryptography】DES、AES对称加密"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】DES、AES对称加密</div></div></a></div><div><a href="/2022/06/16/Cryptography-IPsec/" title="【Cryptography】IP安全"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-16</div><div class="title">【Cryptography】IP安全</div></div></a></div><div><a href="/2022/06/15/Cryptography-Integrity/" title="【Cryptography】数据完整性"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】数据完整性</div></div></a></div><div><a href="/2022/06/15/Cryptography-RSA/" title="【Cryptography】公钥、RSA、DH密钥交换"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】公钥、RSA、DH密钥交换</div></div></a></div><div><a href="/2022/05/30/Cryptography-SSH/" title="【Cryptography】ssh的本地端口转发与远程端口转发"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-30</div><div class="title">【Cryptography】ssh的本地端口转发与远程端口转发</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text">数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E8%A6%81%E8%AE%A4%E8%AF%81%E4%B8%8D%E8%A6%81%E4%BF%9D%E5%AF%86%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">只要认证不要保密性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A2%E8%A6%81%E8%AE%A4%E8%AF%81%E4%B9%9F%E8%A6%81%E4%BF%9D%E5%AF%86%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">既要认证也要保密性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">具体过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A2%E8%A6%81%E8%AE%A4%E8%AF%81%EF%BC%8C%E4%B9%9F%E8%A6%81%E4%BF%9D%E5%AF%86%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">既要认证，也要保密性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E4%B8%AD%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">2.</span> <span class="toc-text">集中密钥分发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">基于非对称密钥分发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">3.1.</span> <span class="toc-text">简单密钥分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E5%AF%86%E6%80%A7%E5%92%8C%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">3.2.</span> <span class="toc-text">保密性和身份认证密钥分发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">4.</span> <span class="toc-text">公钥分发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E3%80%90%E5%85%AC%E9%92%A5%E8%AF%81%E4%B9%A6%E3%80%91"><span class="toc-number">4.1.</span> <span class="toc-text">数字证书【公钥证书】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E8%AF%81%E4%B9%A6%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text">公钥证书的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E4%B9%A6%E4%BA%A7%E7%94%9F"><span class="toc-number">4.3.</span> <span class="toc-text">证书产生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E7%9A%84%E8%AF%81%E4%B9%A6"><span class="toc-number">4.4.</span> <span class="toc-text">网页的证书</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'vercel-psi-seven.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

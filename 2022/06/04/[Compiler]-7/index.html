@@ -1,0 +1,639 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Compiler-7】LR分析法 | lthero</title><meta name="keywords" content="编译原理"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="LR分析法 本章介绍上下文无关文法的LR分析方法及分析程序的自动构造。  LR:自左至右扫描，最右推导的逆过程。 基本思想在规范归约过程中，一方面记住已移进和归约出的整个符号串，另一方面根据所用的产生式推测未来可能碰到的输入符号。 优缺点优点:与其他技术相比，适应文法范围更广，能力更强，识别效率相当，尤其在自左向右扫描输入串时就能发现其中错误，并能准确指出出错位置。 缺点: 若用手工构造分析程序，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Compiler-7】LR分析法">
+<meta property="og:url" content="https://blog.lthero.cn/2022/06/04/[Compiler]-7/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="LR分析法 本章介绍上下文无关文法的LR分析方法及分析程序的自动构造。  LR:自左至右扫描，最右推导的逆过程。 基本思想在规范归约过程中，一方面记住已移进和归约出的整个符号串，另一方面根据所用的产生式推测未来可能碰到的输入符号。 优缺点优点:与其他技术相比，适应文法范围更广，能力更强，识别效率相当，尤其在自左向右扫描输入串时就能发现其中错误，并能准确指出出错位置。 缺点: 若用手工构造分析程序，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg">
+<meta property="article:published_time" content="2022-06-04T01:10:47.000Z">
+<meta property="article:modified_time" content="2022-06-21T07:32:31.852Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/06/04/[Compiler]-7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Compiler-7】LR分析法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-21 15:32:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Compiler-7】LR分析法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-04T01:10:47.000Z" title="发表于 2022-06-04 09:10:47">2022-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-21T07:32:31.852Z" title="更新于 2022-06-21 15:32:31">2022-06-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Compiler-7】LR分析法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h1><blockquote>
+<p>本章介绍<strong>上下文无关文法</strong>的LR分析方法及分析程序的自动构造。</p>
+</blockquote>
+<p>LR:自<strong>左至右扫描</strong>，<strong>最右推导的逆过程</strong>。</p>
+<h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>在<strong>规范归约过程</strong>中，一方面<strong>记住已移进和归约出的整个符号串</strong>，另一方面<strong>根据所用的产生式推测</strong>未来可能碰到的输入符号。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点:与其他技术相比，适应文法范围更广，能力更强，识别效率相当，尤其在自左向右扫描输入串时就能发现其中错误，并能准确指出出错位置。</p>
+<p>缺点:</p>
+<p>若用手工构造分析程序，<strong>工作量太大</strong>，且容易出错，所以必须使用<strong>自动产生这种分析程序的产生器</strong>。</p>
+<h1 id="LR分析器"><a href="#LR分析器" class="headerlink" title="LR分析器"></a>LR分析器</h1><blockquote>
+<p>实际上是个有下推栈的确定的有限状态自动机</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604091447757.png" alt="image-20220604091447757"></p>
+<p>从逻辑上说，<strong>LR分析器包括两部分</strong>:</p>
+<ul>
+<li><strong>总控程序</strong>，或称为语法分析程序</li>
+<li><strong>分析表;</strong></li>
+</ul>
+<p>注</p>
+<ul>
+<li>后面要学习的<strong>四种LR分析器的总控程序都相同</strong>，仅仅是它们的<strong>分析表不同</strong></li>
+</ul>
+<p>​    </p>
+<h2 id="总控程序"><a href="#总控程序" class="headerlink" title="总控程序"></a>总控程序</h2><ul>
+<li>查分析表，根据分析表的内容做若干简单动，如：<strong>读头后移，入栈，出栈</strong>等。</li>
+</ul>
+<h2 id="分析表"><a href="#分析表" class="headerlink" title="分析表"></a>分析表</h2><p>四种分析表范围</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604223042619.png" alt="image-20220604223042619"></p>
+<ul>
+<li><p>一个文法的LR分析器常常<strong>对应着若干不同分析表</strong>所有分析表都恰好识别文法所产生的所有语句。</p>
+</li>
+<li><p>一共有<strong>下列四种分析表</strong></p>
+</li>
+</ul>
+<h3 id="1、LR-0-分析表"><a href="#1、LR-0-分析表" class="headerlink" title="1、LR(0)分析表:"></a>1、LR(0)分析表:</h3><ul>
+<li>分析能力有限，但这是建立其他LR分析法的基础。</li>
+</ul>
+<h3 id="2、SLR分析表"><a href="#2、SLR分析表" class="headerlink" title="2、SLR分析表:"></a>2、SLR分析表:</h3><ul>
+<li>LR(0)的改进</li>
+<li><strong>简单LR分析表</strong>构造法，是一种容易实现又有实用价值的方法，但存在一些文法构造不出SLR分析表。</li>
+</ul>
+<h3 id="3、规范LR分析表—LR-1-分析表"><a href="#3、规范LR分析表—LR-1-分析表" class="headerlink" title="3、规范LR分析表—LR(1)分析表"></a>3、规范LR分析表—LR(1)分析表</h3><ul>
+<li>它能力最强，<strong>但实现代价过高，分析表尺寸太大</strong>。</li>
+</ul>
+<h3 id="4、LALR分析表"><a href="#4、LALR分析表" class="headerlink" title="4、LALR分析表"></a>4、LALR分析表</h3><ul>
+<li>LR(1)的改进</li>
+<li>向前看LR分析表构造法，也是一种常用方法。</li>
+</ul>
+<h2 id="LR分析法找句柄的依据"><a href="#LR分析法找句柄的依据" class="headerlink" title="LR分析法找句柄的依据"></a>LR分析法找句柄的依据</h2><ul>
+<li>历史:记录在<strong>栈内的符号串移进、归约</strong>的历史情况</li>
+<li>现实:<strong>读头下的符号</strong>。</li>
+<li>展望:<strong>预测</strong>句柄之后可能出现的信息;</li>
+</ul>
+<h1 id="下推栈"><a href="#下推栈" class="headerlink" title="下推栈"></a>下推栈</h1><blockquote>
+<p>上面提到过LR分析实际是个有下推栈的DFA</p>
+</blockquote>
+<ul>
+<li><p>下推栈用于存放分析输入串过程中的所有由“历史”及相应“展望”信息形成的抽象状态。</p>
+</li>
+<li><p>为了便于了解栈顶状态对正规分析过程的作用，我们把栈分为两栏:<strong>状态栏和符号栏</strong>。</p>
+</li>
+<li><p>符号栈仅用于记录迄今<strong>移进一归约所得到的文法符号</strong>，由于它们已经被概括在“状态”里了，所以对语法分析不起作用。</p>
+</li>
+<li><p>由于<strong>每个状态</strong>都<strong>概括了</strong>从<strong>分析开始到归约阶段的全部“历史和”展望”信息</strong>，所以LR分析器的每步动作<strong>可由栈顶状态和读头下符号唯一确定</strong>。</p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604095705054.png" alt="下推栈的初始状态"></p>
+<p>初始时，状态栈放S<del>0</del>(初态，符号栈放“#”(栈底符);栈顶S<del>m</del>代表符号栈内的符号串X<del>m</del>X<del>m-1</del>…X<del>1</del>及其展望信息。</p>
+<h1 id="分析表-1"><a href="#分析表-1" class="headerlink" title="分析表"></a>分析表</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604095815004.png" alt="分析表-行标是状态-列标是入栈符号"></p>
+<ul>
+<li>行标是状态-列标是入栈符号</li>
+<li>分析表是LR分析器的核心</li>
+<li>由<strong>动作表</strong>和<strong>转换表</strong>构成</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604095849628.png" alt="image-20220604095849628"></p>
+<h2 id="动作表"><a href="#动作表" class="headerlink" title="动作表"></a>动作表</h2><p>1)ACTION[S,a]表示:在当前<strong>状态S下</strong>，面临<strong>读头符号a</strong>所应采取的动作，该动作有四种可能:<strong>移进、归约、出错、接受</strong>。</p>
+<h3 id="移进"><a href="#移进" class="headerlink" title="移进"></a>移进</h3><ul>
+<li>栈顶<strong>不形成句柄</strong>，把<strong>读头符号入栈</strong></li>
+</ul>
+<h3 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h3><ul>
+<li>栈顶<strong>形成句柄</strong>，先<strong>将栈顶归约</strong></li>
+</ul>
+<h3 id="接受"><a href="#接受" class="headerlink" title="接受"></a>接受</h3><ul>
+<li>当读头<strong>遇到“#”，完成归约</strong></li>
+</ul>
+<h3 id="出错"><a href="#出错" class="headerlink" title="出错"></a>出错</h3><p>* </p>
+<h2 id="转换表"><a href="#转换表" class="headerlink" title="转换表"></a>转换表</h2><ul>
+<li>GOTO[S,X]表示:若<strong>X是终结符</strong>，表示在当前状态下，<strong>读入X应转向什么状态</strong>;若<strong>X是非终结符</strong>，表示当前<strong>栈顶句柄归约成X后</strong>，应转向什么状态。</li>
+<li>对<strong>终结符的移进</strong>动作和<strong>转向</strong>动作可以<strong>合并在一起填在动作表</strong>中，这样，转向表可以压缩，<strong>GOTO表只保留非终结符转向</strong>部分。</li>
+</ul>
+<h1 id="总控程序-1"><a href="#总控程序-1" class="headerlink" title="总控程序"></a>总控程序</h1><blockquote>
+<p><strong>根据</strong>当前<strong>栈顶状态</strong>和<strong>读头下符号</strong>查表决定</p>
+</blockquote>
+<h2 id="移进-1"><a href="#移进-1" class="headerlink" title="移进"></a>移进</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604093623666.png" alt="image-20220604093623666"></p>
+<h2 id="归约-1"><a href="#归约-1" class="headerlink" title="归约"></a>归约</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604101052378.png" alt="image-20220604101052378"></p>
+<ul>
+<li>像compiler-6里面的一个例子，如果栈内是#<code>if N then N else N</code> ，飘红的部分要归约成<code>N</code>，如果使用总控程序，就可以根据<code>N</code>-&gt; β进行归约，从栈顶弹出了6个元素，并让栈顶状态变成S<del>m-y</del> 再求出下一个状态S’&#x3D;GOTO(S<del>m-y</del>,<code>N</code>)，把N入栈，栈顶变成(S’,N)</li>
+</ul>
+<h2 id="接受-1"><a href="#接受-1" class="headerlink" title="接受"></a>接受</h2><ul>
+<li>接受分析成功，退出总控程序。</li>
+</ul>
+<h2 id="出错-1"><a href="#出错-1" class="headerlink" title="出错"></a>出错</h2><ul>
+<li>报错输入串出错，调用相应出错程序。</li>
+</ul>
+<h1 id="分析表含义"><a href="#分析表含义" class="headerlink" title="分析表含义"></a>分析表含义</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604103950487.png" alt="image-20220604103950487"></p>
+<ul>
+<li><code>0号</code>状态下，读头是<code>i</code>时，动作为：将<code>读头i入栈</code>，并转到<code>5号状态</code>。栈顶变成<code>(5,i)</code></li>
+<li><code>2号</code>状态下，读头是<code>+</code>时，动作为：按<code>第2号产生式</code>进行<code>归约</code></li>
+<li><code>4号</code>状态下，遇到<code>非终结符E</code>，将<code>8号状态入栈</code></li>
+<li><code>1号</code>状态下，<code>遇到#</code>，则分析成功</li>
+<li>如果<code>查到空，则表示出错</code></li>
+</ul>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604104610913.png" alt="image-20220604104610913"></p>
+<p>过程解读</p>
+<table>
+<thead>
+<tr>
+<th>状态栈</th>
+<th>符号栈</th>
+<th>读头</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0</code></td>
+<td>#</td>
+<td><code>i</code>*i+i#</td>
+<td><strong>0号和i&#x3D;s5</strong>，<code>5入状态栈，i入符号栈</code></td>
+</tr>
+<tr>
+<td>0 <code>5</code></td>
+<td>i</td>
+<td><code>*</code>i+i#</td>
+<td><em><em>5号和</em>&#x3D;r6</em>*，按<code>6号文法(F-&gt;i)</code>进行归约，<strong>产生F</strong>，弹出<code>1项</code></td>
+</tr>
+<tr>
+<td>0</td>
+<td>#</td>
+<td>*i+i#</td>
+<td><strong>0号和F&#x3D;3</strong>，<code>3入状态栈，F入符号栈</code></td>
+</tr>
+<tr>
+<td>0 <code>3</code></td>
+<td># F</td>
+<td><code>*</code>i+i#</td>
+<td><em><em>3号和</em>&#x3D;r4</em>*，按<code>4号文法(T-&gt;F)</code>进行归约，<strong>产生T</strong>，弹出<code>1项</code></td>
+</tr>
+<tr>
+<td>0</td>
+<td>#</td>
+<td>*i+i#</td>
+<td><strong>0号和T&#x3D;2</strong>，<code>2入状态栈，T入符号栈</code></td>
+</tr>
+<tr>
+<td>0 <code>2</code></td>
+<td># T</td>
+<td><code>*</code>i+i#</td>
+<td><em><em>2号和</em>&#x3D;s7</em>*，<code>7号入状态栈，*入符号栈</code></td>
+</tr>
+<tr>
+<td>0 2 <code>7</code></td>
+<td># T *</td>
+<td><code>i</code>+i#</td>
+<td><strong>7号和i&#x3D;s5</strong>，<code>5号入状态栈，i入符号栈</code></td>
+</tr>
+<tr>
+<td>0 2 7 <code>5</code></td>
+<td># T * i</td>
+<td><code>+</code>i#</td>
+<td><strong>5号和+&#x3D;r6</strong>，按<code>6号文法(F-&gt;i)</code>进行归约，<strong>产生F</strong>，弹出<code>1项</code></td>
+</tr>
+<tr>
+<td>0 2 7</td>
+<td># T *</td>
+<td>+i#</td>
+<td><strong>7号和F&#x3D;10</strong>，<code>10号入状态栈，F入符号栈</code></td>
+</tr>
+<tr>
+<td>0 2 7 <code>10</code></td>
+<td># T * F</td>
+<td><code>+</code>i#</td>
+<td><strong>10号和+&#x3D;r3</strong>，按<code>3号文法(T-&gt;T*F)</code>进行归约，<strong>产生T</strong>，弹出<code>3项</code></td>
+</tr>
+<tr>
+<td>0</td>
+<td>#</td>
+<td>+i#</td>
+<td><strong>0号和T&#x3D;2</strong>，<code>2号入状态栈，T入符号栈</code></td>
+</tr>
+<tr>
+<td>0 2</td>
+<td># T</td>
+<td>+i#</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>剩下的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604110010070.png" alt="image-20220604110010070"></p>
+<ul>
+<li><strong>最后，1号和#&#x3D;acc，识别成功</strong></li>
+</ul>
+<h1 id="LR-0-分析表"><a href="#LR-0-分析表" class="headerlink" title="LR(0)分析表"></a>LR(0)分析表</h1><blockquote>
+<p>定义:如果某一文法能够构造一张分析表，使得表中每一元素至多只有一种明确动作，则该文法称为LR文法。</p>
+</blockquote>
+<p>由上面知道，分析表一共有四种，其中最简单的是LR(0)分析表</p>
+<h2 id="LR-0-分析表构造"><a href="#LR-0-分析表构造" class="headerlink" title="LR(0)分析表构造"></a>LR(0)分析表构造</h2><p>构造LR(0)分析表的基本思想:</p>
+<ul>
+<li><strong>只根据历史信息</strong>识别呈现于栈顶的句柄。</li>
+</ul>
+<p>注:</p>
+<ul>
+<li>LR(0)分析表构造的思想和方法是构造其它LR分析表的基础。</li>
+</ul>
+<p>构造LR(0)分析表的基本策略:</p>
+<ul>
+<li>构造文法G的一个<strong>有限自动机</strong>，它能识别文法中的所有<strong>活前缀</strong>。</li>
+</ul>
+<h3 id="活前缀"><a href="#活前缀" class="headerlink" title="活前缀"></a>活前缀</h3><p>活前缀的概念:</p>
+<ul>
+<li>指规范句型的一个前缀，这种前缀<strong>不含句柄之后的任何符号</strong>。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604110836986.png" alt="image-20220604110836986"></p>
+<p>在普通的产生式后面添加序号，<strong>并按最右推导，形成对应式子</strong>，再按<strong>最左归约</strong>进行识别</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604110852260.png" alt="image-20220604110852260"></p>
+<ul>
+<li>最左归约时，<strong>只要看到一个序号</strong>，说明<strong>前面的几个符号会形成一个句柄</strong></li>
+<li>如ab[2]<strong>形成了2号产生式的句柄</strong>，根据2号产生式，把<code>b归约成A</code></li>
+<li>aAb[3]<strong>形成3号产生式句柄</strong>，再<code>根据3号产生式</code>，把<code>Ab归约成A</code></li>
+<li>aAcd[4]形成4号产生式句柄，把<code>d归约成B</code></li>
+<li>aAcBe[1]形成1号产生式句柄，<code>aAcBe归约成S</code></li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604111632437.png" alt="最左归约"></p>
+<h2 id="构造活前缀项目"><a href="#构造活前缀项目" class="headerlink" title="构造活前缀项目"></a>构造活前缀项目</h2><ul>
+<li>在文法的每个产生式右部添加一个圆点，就成为G的一个LR(0)项目（简称项目）。</li>
+<li>注:<strong>圆点</strong>在产生式中的<strong>位置不同则是不同项目</strong>。</li>
+</ul>
+<p>圆点<strong>前面的字符都已经入栈</strong>，圆点是栈内栈外的分界线</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604141608975.png" alt="image-20220604141608975"></p>
+<h2 id="LR-0-构造方法"><a href="#LR-0-构造方法" class="headerlink" title="LR(0)构造方法"></a>LR(0)构造方法</h2><blockquote>
+<p>首先要拓广文法，即如果文法开头不是一个非终结符到另一个非终结符的产生式则需要加入，如加入 S’-&gt;S .</p>
+</blockquote>
+<p>(1)将文法进行<strong>拓广</strong>，保证文法开始符号不出现在任何产生式右部，即增加产生式S’-&gt;S，并令S’→●S作为初态项目;</p>
+<p>(2)凡圆点在串的<strong>最右边的项目</strong>称终态项目或称<strong>归约项目</strong>，而S→●S称为接受项目;说明<strong>所有字符都在栈中</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604142330628.png" alt="image-20220604142330628"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604142449787.png" alt="image-20220604142449787"></p>
+<ul>
+<li>1)构造出的NFA是包含有空串的NFA，可以使用子集法使之确定化，使之成为一个以项目集为状态的DFA,这个DFA就是建立LR分析算法的基础。</li>
+<li>2)相应DFA的每个状态是一个项目集，称作LR(O)项目集，整个状态集称为LR(O)项目集规范簇。</li>
+<li>3)在DFA的一个状态对应的项目集内，每个项目是“等价”的，即从期待归约的角度看相同。</li>
+<li>4)有<strong>唯一的初态</strong>和<strong>唯一的接受态</strong>，但有若干个归约态，表示有若干种活前缀的识别状态。</li>
+<li>5)状态反映了识别句柄的情况，即句柄的多大部分已进栈，即知道了历史情况。</li>
+<li>6)手工构造文法的项目集规范簇很困难。</li>
+</ul>
+<h3 id="手写结果"><a href="#手写结果" class="headerlink" title="手写结果"></a>手写结果</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604145515291.png" alt="image-20220604145515291"></p>
+<h2 id="机器构造方法"><a href="#机器构造方法" class="headerlink" title="机器构造方法"></a>机器构造方法</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604145808879.png" alt="image-20220604145808879"></p>
+<h3 id="状态转换函数"><a href="#状态转换函数" class="headerlink" title="状态转换函数"></a>状态转换函数</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604145836290.png" alt="image-20220604145836290"></p>
+<h2 id="LR-0-项目集族图"><a href="#LR-0-项目集族图" class="headerlink" title="LR(0)项目集族图"></a>LR(0)项目集族图</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604151039988.png" alt="image-20220604151039988"></p>
+<ul>
+<li>如果遇到S’-&gt; α●E，则 E-&gt;●aA和E-&gt;●bB也属于closure(1)</li>
+<li>再按closure(1)出现的<strong>E,a,b</strong>，依次将●后移一位</li>
+</ul>
+<h3 id="LR-0-的文法范围小"><a href="#LR-0-的文法范围小" class="headerlink" title="LR(0)的文法范围小"></a>LR(0)的文法范围小</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604160800890.png" alt="image-20220604160800890"></p>
+<h1 id="SLR分析表"><a href="#SLR分析表" class="headerlink" title="SLR分析表"></a>SLR分析表</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604161054173.png" alt="image-20220604161054173"></p>
+<h2 id="消除冲突"><a href="#消除冲突" class="headerlink" title="消除冲突"></a>消除冲突</h2><p>以根据读头下符号的不同</p>
+<p>1、一个<strong>有冲突</strong>的项目集，可以根据<strong>读头下一个符号的不同</strong>来消除冲突。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604161319694.png" alt="image-20220604161319694"></p>
+<blockquote>
+<p>如果Follow(A)与Follow(B)不相交，则可以根据Follow集来判断</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604161455804.png" alt="image-20220604161455804"></p>
+<h2 id="构造SLR分析表算法"><a href="#构造SLR分析表算法" class="headerlink" title="构造SLR分析表算法"></a>构造SLR分析表算法</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604161727967.png" alt="image-20220604161727967"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604161812281.png" alt="image-20220604161812281"></p>
+<p>注: </p>
+<p>1)若文法G按上面算法构造出来的分析表不包含多重定义项，则该文法G是SLR文法。</p>
+<p>2)二义文法决不是LR文法。</p>
+<p>3)SLR分析法包含的展望信息是体现在利用了Follow(A)信息，<strong>可以解决“归约-归约冲突</strong></p>
+<p>4)SLR分析法没有包含足够的展望信息，<strong>不能完全解决“移进-归约””冲突</strong>，需要改进。</p>
+<h2 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604204546849.png" alt="image-20220604204546849"></p>
+<h3 id="项目簇中"><a href="#项目簇中" class="headerlink" title="项目簇中"></a>项目簇中</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604204619327.png" alt="image-20220604204619327"></p>
+<p>关注其中I1,I2,I9会产生<strong>归约-移进</strong>冲突</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604204723696.png" alt="image-20220604204723696"></p>
+<p>发生冲突原因</p>
+<ul>
+<li>I1：S’-&gt;E  Follow(S)&#x3D;{<code>#</code>}，所以只有遇到#做归约，E-&gt;E●+T，<code>遇到+进行移进</code>；有归约-移进冲突</li>
+<li>I2：Follow(E)&#x3D;{<code>#,+,)</code>}，遇到<code>#,+,)</code>做归约。因为T-&gt;T●*F，<code>遇到*进行移进</code>；有归约-移进冲突</li>
+<li>I9：Follow(E)&#x3D;{<code>#,+,)</code>}，遇到<code>#,+,)</code>做归约。因为T-&gt;T●*F，<code>遇到*进行移进</code>；有归约-移进冲突</li>
+</ul>
+<h3 id="最终可以得到SLR分析表"><a href="#最终可以得到SLR分析表" class="headerlink" title="最终可以得到SLR分析表"></a>最终可以得到SLR分析表</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604205226864.png" alt="image-20220604205226864"></p>
+<h2 id="举例2"><a href="#举例2" class="headerlink" title="举例2"></a>举例2</h2><p>下面的文法，无法使用SLR分析</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604205303886.png" alt="image-20220604205303886"></p>
+<h3 id="对应项目簇"><a href="#对应项目簇" class="headerlink" title="对应项目簇"></a>对应项目簇</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604210441086.png" alt="image-20220604210441086"></p>
+<ul>
+<li>I2中，因为Follow(R)&#x3D;{&#x3D;}，理论上<code>遇到=做归约</code>，但S-&gt;L●&#x3D;R，<code>遇到=移进</code></li>
+<li>这种冲突无法解决</li>
+<li>如下图，出现了冲突。需要用<code>规范LR分析表</code></li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604205951168.png" alt="image-20220604205951168"></p>
+<h1 id="规范LR-1-分析表"><a href="#规范LR-1-分析表" class="headerlink" title="规范LR(1)分析表"></a>规范LR(1)分析表</h1><blockquote>
+<p>对上面的SLR出现的“移进”-“归约”问题，规范LR可以进行解决</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604210700089.png" alt="image-20220604210700089"></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<li>由此看出，并非随符都出现在规范句型中。</li>
+</ul>
+<h2 id="对策"><a href="#对策" class="headerlink" title="对策"></a>对策</h2><ul>
+<li>给<strong>每个LR(0)项目添加展望信息</strong>，即:<strong>添加句柄之后可能跟的终结符</strong>，因为这些终结符确实是规范句型中跟在句柄之后的。这就是LR(1)的方法。</li>
+</ul>
+<h3 id="可能引起的问题"><a href="#可能引起的问题" class="headerlink" title="可能引起的问题"></a>可能引起的问题</h3><ul>
+<li>故，<strong>LR(1)项目是对LR(O)项目的分裂</strong>，若文法中终结符的数目为n，则<strong>每个LR(O)项目都可以分裂成n个LR(1)项目</strong>。这可能会引起分析表的膨胀。</li>
+</ul>
+<ol>
+<li><p>LR(1)项目:形如(A→α●β,a）的二元式称为LR(1)项目。其中， A→α●β是文法的一个产生式，<strong>a是终结符</strong>，称为<code>搜索符</code>。</p>
+</li>
+<li><p>(A→α●β)的含义:预期当<strong>栈顶句柄</strong>αβ形成后，在<strong>读头到a</strong>。此时，<strong>α在栈内，β还未入栈</strong>，即它<strong>展望了句柄后的一个符号</strong>。</p>
+</li>
+</ol>
+<h2 id="有效项目"><a href="#有效项目" class="headerlink" title="有效项目"></a>有效项目</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604211842834.png" alt="image-20220604211842834"></p>
+<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604211900916.png" alt="image-20220604211900916"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604212314526.png" alt="image-20220604212314526"></p>
+<h2 id="构造规范LR分析表"><a href="#构造规范LR分析表" class="headerlink" title="构造规范LR分析表"></a>构造规范LR分析表</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604212735279.png" alt="image-20220604212735279"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604212836214.png" alt="image-20220604212836214"></p>
+<h2 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604213226914.png" alt="image-20220604213226914"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604213513373.png" alt="image-20220604213513373"></p>
+<ul>
+<li>可见：<strong>当前非终结符</strong>的展望符号就是<strong>当前非终结符的LastVt</strong></li>
+<li>后面的操作就是扩展并求闭包</li>
+</ul>
+<h3 id="最终得到规范LR分析表"><a href="#最终得到规范LR分析表" class="headerlink" title="最终得到规范LR分析表"></a>最终得到规范LR分析表</h3><p>和上面的SLR分析表对比，可见，<strong>2号状态下的冲突解决了</strong></p>
+<p>  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604215639504.png" alt="image-20220604215639504"></p>
+<h2 id="几种LR文法的关系"><a href="#几种LR文法的关系" class="headerlink" title="几种LR文法的关系"></a>几种LR文法的关系</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604215748575.png" alt="image-20220604215748575"></p>
+<p>如果给个文法，来<strong>判断是哪个LR文法</strong></p>
+<p>方法：</p>
+<ul>
+<li><p><strong>先构造LR(1)文法</strong>，至少确定是否为LR文法。</p>
+</li>
+<li><p>再根据LR(1)文法表，再将每行都按归约填写，如下图</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604220034127.png" alt="image-20220604220034127"></li>
+<li>2号状态<strong>出现了冲突，说明不是LR(0)文法</strong>，如果可以<strong>用SLR来解决这个冲突，说明是SLR文法</strong></li>
+<li>如果<strong>未发现冲突，说明是LR(0)文法</strong></li>
+</ul>
+</li>
+<li><p>这种文法好处是，<strong>只用构造一张表</strong></p>
+</li>
+</ul>
+<h1 id="LALR分析表"><a href="#LALR分析表" class="headerlink" title="LALR分析表"></a>LALR分析表</h1><blockquote>
+<p>对LR(1)文法的简化</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604220259490.png" alt="image-20220604220259490"></p>
+<h2 id="构造的思想"><a href="#构造的思想" class="headerlink" title="构造的思想"></a>构造的思想</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604220612749.png" alt="image-20220604220612749"></p>
+<ul>
+<li>先构造了LR(1)表，再构造LALR分析表</li>
+</ul>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604220946721.png" alt="image-20220604220946721"></p>
+<ul>
+<li>将项目集相同，但展望符号不同的，合并</li>
+</ul>
+<h1 id="二义文法"><a href="#二义文法" class="headerlink" title="二义文法"></a>二义文法</h1><blockquote>
+<p>二义文法不是LR文法。</p>
+</blockquote>
+<p>注:虽然<strong>二义文法不是LR文法</strong>，但有些二义文法很有用，给它加上一些限制后,<strong>它可能成为描述某种语言的最简单的文法</strong>。</p>
+<ul>
+<li>本节讨论如何<strong>使用LR分析法的基本思想</strong>，<strong>凭借其他一些条件</strong>，来分析二义文法所定义的语言。</li>
+</ul>
+<h2 id="二义文法的优点"><a href="#二义文法的优点" class="headerlink" title="二义文法的优点"></a>二义文法的优点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604223644800.png" alt="image-20220604223644800"></p>
+<ul>
+<li>优点的例子如下，无需修改G1文法，就可以有不同的规则</li>
+</ul>
+<h3 id="优点举例"><a href="#优点举例" class="headerlink" title="优点举例"></a>优点举例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604223625592.png" alt="image-20220604223625592"></p>
+<h2 id="二义文法构造"><a href="#二义文法构造" class="headerlink" title="二义文法构造"></a>二义文法构造</h2><p>使用LR分析法的基本思想凭借其他一些条件，来分析二义文法所定义的语言。可以根据二义文法构造出LR分析表。其步骤是:</p>
+<ul>
+<li>1、**构造LR(0)**分析表;</li>
+<li>2、对于发生冲突的项目用<strong>SLR方法</strong>解决;</li>
+<li>3、对于SLR方法解决不了的冲突<strong>借助于其它条件</strong>解决。</li>
+</ul>
+<h2 id="构造举例"><a href="#构造举例" class="headerlink" title="构造举例"></a>构造举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604223843502.png" alt="image-20220604223843502"></p>
+<p>构造的项目集</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220604224137263.png" alt="二义文法的项目集"></p>
+<ul>
+<li>如I1可以根据SLR分析法，Follow(E’)&#x3D;</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/06/04/[Compiler]-7/">https://blog.lthero.cn/2022/06/04/[Compiler]-7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/04/%5Btools%5D/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【百宝箱】包含多种常用工具</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/02/%5BCompiler%5D-6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Compiler-6】自上而下分析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/Compiler-9/" title="【Compiler】期末题目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">【Compiler】期末题目</div></div></a></div><div><a href="/2022/05/27/%5BCompiler%5D-1/" title="【Compiler】-1-编译原理概述"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-27</div><div class="title">【Compiler】-1-编译原理概述</div></div></a></div><div><a href="/2022/05/28/%5BCompiler%5D-2/" title="【Compiler】-2-编译原理基础知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">【Compiler】-2-编译原理基础知识</div></div></a></div><div><a href="/2022/05/29/%5BCompiler%5D-4/" title="【Compiler】-4-词法分析程序"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="title">【Compiler】-4-词法分析程序</div></div></a></div><div><a href="/2022/06/01/%5BCompiler%5D-5/" title="【Compiler】-5 自上而下的语法分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-01</div><div class="title">【Compiler】-5 自上而下的语法分析</div></div></a></div><div><a href="/2022/06/02/%5BCompiler%5D-6/" title="【Compiler-6】自上而下分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-02</div><div class="title">【Compiler-6】自上而下分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LR%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">LR分析法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">1.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LR%E5%88%86%E6%9E%90%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">LR分析器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.1.</span> <span class="toc-text">总控程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81LR-0-%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、LR(0)分析表:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81SLR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、SLR分析表:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%A7%84%E8%8C%83LR%E5%88%86%E6%9E%90%E8%A1%A8%E2%80%94LR-1-%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、规范LR分析表—LR(1)分析表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81LALR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">2.2.4.</span> <span class="toc-text">4、LALR分析表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR%E5%88%86%E6%9E%90%E6%B3%95%E6%89%BE%E5%8F%A5%E6%9F%84%E7%9A%84%E4%BE%9D%E6%8D%AE"><span class="toc-number">2.3.</span> <span class="toc-text">LR分析法找句柄的依据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E6%8E%A8%E6%A0%88"><span class="toc-number">3.</span> <span class="toc-text">下推栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%A1%A8-1"><span class="toc-number">4.</span> <span class="toc-text">分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E4%BD%9C%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">动作表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E8%BF%9B"><span class="toc-number">4.1.1.</span> <span class="toc-text">移进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%92%E7%BA%A6"><span class="toc-number">4.1.2.</span> <span class="toc-text">归约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97"><span class="toc-number">4.1.3.</span> <span class="toc-text">接受</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BA%E9%94%99"><span class="toc-number">4.1.4.</span> <span class="toc-text">出错</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E8%A1%A8"><span class="toc-number">4.2.</span> <span class="toc-text">转换表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">5.</span> <span class="toc-text">总控程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E8%BF%9B-1"><span class="toc-number">5.1.</span> <span class="toc-text">移进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E7%BA%A6-1"><span class="toc-number">5.2.</span> <span class="toc-text">归约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97-1"><span class="toc-number">5.3.</span> <span class="toc-text">接受</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E9%94%99-1"><span class="toc-number">5.4.</span> <span class="toc-text">出错</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%A1%A8%E5%90%AB%E4%B9%89"><span class="toc-number">6.</span> <span class="toc-text">分析表含义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">6.1.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LR-0-%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">7.</span> <span class="toc-text">LR(0)分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LR-0-%E5%88%86%E6%9E%90%E8%A1%A8%E6%9E%84%E9%80%A0"><span class="toc-number">7.1.</span> <span class="toc-text">LR(0)分析表构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BB%E5%89%8D%E7%BC%80"><span class="toc-number">7.1.1.</span> <span class="toc-text">活前缀</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%B4%BB%E5%89%8D%E7%BC%80%E9%A1%B9%E7%9B%AE"><span class="toc-number">7.2.</span> <span class="toc-text">构造活前缀项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR-0-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">7.3.</span> <span class="toc-text">LR(0)构造方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E7%BB%93%E6%9E%9C"><span class="toc-number">7.3.1.</span> <span class="toc-text">手写结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">7.4.</span> <span class="toc-text">机器构造方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">7.4.1.</span> <span class="toc-text">状态转换函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR-0-%E9%A1%B9%E7%9B%AE%E9%9B%86%E6%97%8F%E5%9B%BE"><span class="toc-number">7.5.</span> <span class="toc-text">LR(0)项目集族图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LR-0-%E7%9A%84%E6%96%87%E6%B3%95%E8%8C%83%E5%9B%B4%E5%B0%8F"><span class="toc-number">7.5.1.</span> <span class="toc-text">LR(0)的文法范围小</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SLR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">8.</span> <span class="toc-text">SLR分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%86%B2%E7%AA%81"><span class="toc-number">8.1.</span> <span class="toc-text">消除冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0SLR%E5%88%86%E6%9E%90%E8%A1%A8%E7%AE%97%E6%B3%95"><span class="toc-number">8.2.</span> <span class="toc-text">构造SLR分析表算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="toc-number">8.3.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%B0%87%E4%B8%AD"><span class="toc-number">8.3.1.</span> <span class="toc-text">项目簇中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%88%B0SLR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">8.3.2.</span> <span class="toc-text">最终可以得到SLR分析表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2"><span class="toc-number">8.4.</span> <span class="toc-text">举例2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E9%A1%B9%E7%9B%AE%E7%B0%87"><span class="toc-number">8.4.1.</span> <span class="toc-text">对应项目簇</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%84%E8%8C%83LR-1-%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">9.</span> <span class="toc-text">规范LR(1)分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">9.1.</span> <span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%AD%96"><span class="toc-number">9.2.</span> <span class="toc-text">对策</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">9.2.1.</span> <span class="toc-text">可能引起的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E9%A1%B9%E7%9B%AE"><span class="toc-number">9.3.</span> <span class="toc-text">有效项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="toc-number">9.3.1.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E8%A7%84%E8%8C%83LR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">9.4.</span> <span class="toc-text">构造规范LR分析表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-3"><span class="toc-number">9.5.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E5%BE%97%E5%88%B0%E8%A7%84%E8%8C%83LR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">9.5.1.</span> <span class="toc-text">最终得到规范LR分析表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8DLR%E6%96%87%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">9.6.</span> <span class="toc-text">几种LR文法的关系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LALR%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">10.</span> <span class="toc-text">LALR分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%9A%84%E6%80%9D%E6%83%B3"><span class="toc-number">10.1.</span> <span class="toc-text">构造的思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0"><span class="toc-number">10.2.</span> <span class="toc-text">构造</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%96%87%E6%B3%95"><span class="toc-number">11.</span> <span class="toc-text">二义文法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%96%87%E6%B3%95%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">11.1.</span> <span class="toc-text">二义文法的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%E4%B8%BE%E4%BE%8B"><span class="toc-number">11.1.1.</span> <span class="toc-text">优点举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%96%87%E6%B3%95%E6%9E%84%E9%80%A0"><span class="toc-number">11.2.</span> <span class="toc-text">二义文法构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E4%B8%BE%E4%BE%8B"><span class="toc-number">11.3.</span> <span class="toc-text">构造举例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'vercel-psi-seven.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【linux】学习笔记Chap_23_File_目录文件结构 | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文件管理ordinary file–普通文件普通文件包含两种类型 text file &amp; binary file Test files 一般用于存储文本数据，shell脚本，源程序等等  Binary file 包含非文本数据，和一些只能被程序读懂的文件  如照片 音乐 视频等等 directory–目录文件目录用于装载其它文件或目录，来整理文件系统以形成一个体系 而Unix系统是一个大型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【linux】学习笔记Chap_23_File_目录文件结构">
+<meta property="og:url" content="https://blog.lthero.cn/2021/07/27/2021-07-27-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_23_fie/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="文件管理ordinary file–普通文件普通文件包含两种类型 text file &amp; binary file Test files 一般用于存储文本数据，shell脚本，源程序等等  Binary file 包含非文本数据，和一些只能被程序读懂的文件  如照片 音乐 视频等等 directory–目录文件目录用于装载其它文件或目录，来整理文件系统以形成一个体系 而Unix系统是一个大型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/3zexv9.jpg">
+<meta property="article:published_time" content="2021-07-27T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-08T14:15:37.879Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="技术&amp;生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/3zexv9.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2021/07/27/2021-07-27-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_23_fie/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【linux】学习笔记Chap_23_File_目录文件结构',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-08 22:15:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/3zexv9.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【linux】学习笔记Chap_23_File_目录文件结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-27T00:00:00.000Z" title="发表于 2021-07-27 08:00:00">2021-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-08T14:15:37.879Z" title="更新于 2022-06-08 22:15:37">2022-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【linux】学习笔记Chap_23_File_目录文件结构"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><h2 id="ordinary-file–普通文件"><a href="#ordinary-file–普通文件" class="headerlink" title="ordinary file–普通文件"></a>ordinary file–普通文件</h2><p>普通文件包含两种类型</p>
+<p>text file &amp; binary file</p>
+<h3 id="Test-files"><a href="#Test-files" class="headerlink" title="Test files"></a>Test files</h3><ul>
+<li>一般用于存储文本数据，shell脚本，源程序等等</li>
+</ul>
+<h3 id="Binary-file"><a href="#Binary-file" class="headerlink" title="Binary file"></a>Binary file</h3><ul>
+<li>包含非文本数据，和一些只能被程序读懂的文件</li>
+</ul>
+<p>如照片 音乐 视频等等</p>
+<h2 id="directory–目录文件"><a href="#directory–目录文件" class="headerlink" title="directory–目录文件"></a>directory–目录文件</h2><p>目录用于装载其它<strong>文件或目录</strong>，来整理文件系统以形成一个体系</p>
+<p>而Unix系统是一个大型层次树结构（文件包含文件）</p>
+<h2 id="pseudo-file–伪文件"><a href="#pseudo-file–伪文件" class="headerlink" title="pseudo file–伪文件"></a>pseudo file–伪文件</h2><p>非普通文件或目录，本身不用来存储数据，也<strong>不占用空间</strong></p>
+<h4 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h4><ul>
+<li>用来执行一些由kernel提供的服务</li>
+</ul>
+<blockquote>
+<p>access a service provided by the kernel</p>
+</blockquote>
+<h2 id="special-file-x2F-device-file–特殊文件"><a href="#special-file-x2F-device-file–特殊文件" class="headerlink" title="special file &#x2F; device file–特殊文件"></a>special file &#x2F; device file–特殊文件</h2><h4 id="代表："><a href="#代表：" class="headerlink" title="代表："></a>代表：</h4><ul>
+<li>物理设备 如键盘，显示器，监视器</li>
+</ul>
+<p>Linux将这类文件放在**&#x2F;dev**(device)目录中，这些文件一般被系统程序应用</p>
+<p>其中一些平时会见到的文件如下表:</p>
+<p> </p>
+<h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><p>[start-plane type&#x3D;”1”]</p>
+<p>&#x2F;dev&#x2F;sda1 SCSI hard disk SCSI硬盘</p>
+<p>&#x2F;dev&#x2F;fd0 floppy disk 软盘分区 数字0代表第一个分区</p>
+<p>&#x2F;dev&#x2F;hda hard disk 硬盘</p>
+<p>[&#x2F;start-plane]</p>
+<p> </p>
+<h4 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h4><p>[start-plane type&#x3D;”1”]</p>
+<p>&#x2F;dev&#x2F;tty 当前终端</p>
+<p>&#x2F;dev&#x2F;tyy1 虚拟终端 本地登陆</p>
+<p>tty 再代指终端，原意思是Teletype machines 电传打字机</p>
+<p>另外 输入命令tty可以查看当前使用的终端位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tty</span><br><span class="line">/dev/pts/4 #说明我正在远程连接，并使用了虚拟终端4</span><br><span class="line">#如果输入</span><br><span class="line">cp /etc/passwd /dev/pts/4</span><br><span class="line">#结果是将passwd内容显示在终端</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;dev&#x2F;pts&#x2F;0 伪终端 远程登陆或用使用GUI</p>
+<p>&#x2F;dev&#x2F;ttyp0 伪终端</p>
+<p>[&#x2F;start-plane]</p>
+<p> </p>
+<h4 id="伪设备"><a href="#伪设备" class="headerlink" title="伪设备"></a>伪设备</h4><p>[start-plane type&#x3D;”1”]</p>
+<p>&#x2F;dev&#x2F;null 黑洞</p>
+<p>&#x2F;dev zero 小黑洞</p>
+<p>运行 cat &#x2F;dev&#x2F;zero时消耗流量速度很大，但没有任何输出！</p>
+<p>&#x2F;dev&#x2F;random 随机数</p>
+<p>[&#x2F;start-plane]</p>
+<h2 id="named-pipe–可命名管道符"><a href="#named-pipe–可命名管道符" class="headerlink" title="named pipe–可命名管道符"></a>named pipe–可命名管道符</h2><p>是<strong>pipe facility</strong>的高级版本，将一个程序的输出与 下一程序输入相连接</p>
+<p>一般使用pipe时，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | grep root</span><br></pre></td></tr></table></figure>
+
+<p>这里的pipe是<strong>自动创建的</strong>，而且<strong>只在程序运行时存在</strong></p>
+<p> </p>
+<p> </p>
+<p>现在，可以使用**<code>mkfifo</code>** 命令来创建一个可一直存在的pipe</p>
+<p>如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfifo fifotest</span><br></pre></td></tr></table></figure>
+
+<p>现在创建了一个<strong>fifotest</strong>的pipe</p>
+<p> </p>
+<p>在<strong>第一个终端下</strong>，使用以下命令</p>
+<p> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">grep root /etc/passwd &gt;fifotest </span><br><span class="line">#将root的内容，传给fifotest 这个pipe</span><br><span class="line"></span><br><span class="line">#在第二个终端下，命令以下读取命令</span><br><span class="line">wc -c &lt; fifotest</span><br><span class="line">#此Pipe的目的是，让不同终端间，可以相互传输信息</span><br><span class="line"></span><br><span class="line">#如要删除pipe</span><br><span class="line">rm fifotest</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<h2 id="proc-file—进程文件"><a href="#proc-file—进程文件" class="headerlink" title="proc file—进程文件"></a>proc file—进程文件</h2><p>允许我们接入kernel</p>
+<p>最初，这些文件被用来提供有关<strong>正在运行的程序</strong>（processes)的<strong>信息</strong></p>
+<p>全部的进程文件被保存在&#x2F;proc 目录中，目录里面有许多子目录，目录名是进程的id</p>
+<p> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如 ：正在运行的进程是#1099 则对应的进程信息在/proc/1099中找到</span><br><span class="line"></span><br><span class="line">cat /proc/cpuinfo 查看当前cpu信息</span><br><span class="line"></span><br><span class="line">cat /proc/version 显示当前Linux版本</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<p> </p>
+<h2 id="FileSystem–文件系统"><a href="#FileSystem–文件系统" class="headerlink" title="FileSystem–文件系统"></a>FileSystem–文件系统</h2><ul>
+<li>终级目录 root（目录中包含另一个root是<strong>管理员的home目录</strong>） 是唯一的主目录，其它所有文件或目录都是root的子文件</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cdn.lthero.cn/wp-store/2021/07/1627385056-Snipaste_2021-07-27_09-53-55.png"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/wp-store/2021/07/1627385056-Snipaste_2021-07-27_09-53-55.png"></a></p>
+<p>Linux系统至少包含10万个文件，一个有序的树结构将这些文件显示清</p>
+<p>用 <code>ls -R / | wc -l</code> 可以给出root(main)包含的文件数40000+多个</p>
+<p>因为root directory 根目录太重要了，如果一直用root代表根目录就有些麻烦，所以</p>
+<p>用<code>/</code> (slash) 代表root目录</p>
+<p>如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls /   #查看根目录下文件</span><br><span class="line"></span><br><span class="line">ls /bin #查看根目录下的bin 目录</span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<h2 id="Mount-挂载"><a href="#Mount-挂载" class="headerlink" title="Mount 挂载"></a>Mount 挂载</h2><ul>
+<li>Linux文件系统中，这些目录并<strong>不存储在同一物理设备中</strong>，往往存放在不同设备中，包括多磁盘分区中</li>
+<li>每个磁盘中有<strong>独立的文件系统</strong>，包含目录和子目录</li>
+</ul>
+<p>当我们连接这些子文件系统时，可用<code>Mount</code> 断开连接用<code>umount</code></p>
+<p>当一个unix系统启动时，一系列的文件系统将自动连接到一起。但有时，也要手动连接一些文件系统<strong>（只有root有此权限）</strong></p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#将软盘/dev/fd0 附加到主区 /media/floppy</span><br><span class="line">mount /dev/fd0 /media/floppy</span><br></pre></td></tr></table></figure>
+
+<p>可以让用户通用media floppy来使用dev fd0文件</p>
+<p> </p>
+<h2 id="简介根目录"><a href="#简介根目录" class="headerlink" title="简介根目录"></a>简介根目录</h2><h3 id="bin目录"><a href="#bin目录" class="headerlink" title="bin目录"></a>bin目录</h3><ul>
+<li>bin下面存放的都是<strong>二进制文件</strong>，是各种<strong>最最重要的</strong>系统程序，和一些基本的工具</li>
+</ul>
+<p>一般运行程序在bin中，管理员程序在sbin中，第三方程序在opt中</p>
+<h3 id="dev目录"><a href="#dev目录" class="headerlink" title="dev目录"></a>dev目录</h3><ul>
+<li>设备文件，每个特殊文件代表一个物理设备，一些代表伪设备</li>
+</ul>
+<h3 id="etc目录设置文件"><a href="#etc目录设置文件" class="headerlink" title="etc目录设置文件"></a>etc目录设置文件</h3><ul>
+<li>当<strong>系统启动</strong>时就会执行的<strong>设置文件</strong>，包含一些影响系统的命令</li>
+<li>其中就有rc文件（初始化文件）</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cdn.lthero.cn/wp-store/2021/07/1627385469-Snipaste_2021-07-27_18-33-18.png"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/wp-store/2021/07/1627385469-Snipaste_2021-07-27_18-33-18.png"></a></p>
+<p> </p>
+<h3 id="home用户目录"><a href="#home用户目录" class="headerlink" title="home用户目录"></a>home用户目录</h3><ul>
+<li>所有的用户，会有个单独以用户名为名字的目录，存放个人文件</li>
+</ul>
+<p> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/home/lthero</span><br><span class="line">/home/linda</span><br><span class="line">#查看当前用户在home中文件位置</span><br><span class="line">echo $HOME或echo ~ </span><br></pre></td></tr></table></figure>
+
+<p> </p>
+<p> </p>
+<h3 id="lib目录"><a href="#lib目录" class="headerlink" title="lib目录"></a>lib目录</h3><p>libary</p>
+<ul>
+<li>基本的共享库，内核模块。这些模块是<strong>运行&#x2F;bin下程序的基础</strong></li>
+</ul>
+<p> </p>
+<h3 id="lost-and-found-目录：损坏文件"><a href="#lost-and-found-目录：损坏文件" class="headerlink" title="lost and found 目录：损坏文件"></a>lost and found 目录：损坏文件</h3><ul>
+<li>如果Linux突然关闭，下次重启时，fsck(filesystem check)程序会检查文件系统并修复问题，如果有一些被打断的文件被找到，fsck 将他们移动到lost and found目录中，管理员可以从中恢复数据。</li>
+</ul>
+<p> </p>
+<h3 id="media目录"><a href="#media目录" class="headerlink" title="media目录"></a>media目录</h3><ul>
+<li>可移动媒体挂载点，用来挂载CD,DVD，软盘等</li>
+</ul>
+<p>mnt 用来挂载修复的媒体</p>
+<h3 id="opt目录"><a href="#opt目录" class="headerlink" title="opt目录"></a>opt目录</h3><ul>
+<li>第三方应用(optional software)</li>
+</ul>
+<h3 id="proc目录"><a href="#proc目录" class="headerlink" title="proc目录"></a>proc目录</h3><ul>
+<li>进程信息文件</li>
+</ul>
+<p> </p>
+<h3 id="root目录"><a href="#root目录" class="headerlink" title="root目录"></a>root目录</h3><ul>
+<li>管理员home目录，类似于用户home目录</li>
+</ul>
+<h3 id="sbin目录"><a href="#sbin目录" class="headerlink" title="sbin目录"></a>sbin目录</h3><ul>
+<li>（system binaries ）<strong>最最基本的管理员程序</strong>，包含一些系统管理程序，这里的程序只能由管理员运行</li>
+</ul>
+<p> </p>
+<h3 id="srv目录"><a href="#srv目录" class="headerlink" title="srv目录"></a>srv目录</h3><ul>
+<li>本地系统提供的服务数据</li>
+</ul>
+<h3 id="tmp—临时文件夹"><a href="#tmp—临时文件夹" class="headerlink" title="tmp—临时文件夹"></a>tmp—临时文件夹</h3><ul>
+<li>所有人都能用，但这里的文件将被自动删除，所以只能短时间存放文件</li>
+</ul>
+<p> </p>
+<h3 id="usr目录"><a href="#usr目录" class="headerlink" title="usr目录"></a>usr目录</h3><ul>
+<li>静态数据的第二大文件系统，静态数据是没有管理员干预不会改变的数据</li>
+</ul>
+<h4 id="x2F-usr下包含一些常用的程序"><a href="#x2F-usr下包含一些常用的程序" class="headerlink" title="&#x2F;usr下包含一些常用的程序"></a>&#x2F;usr下包含一些常用的程序</h4><h4 id="x2F-usr-x2F-bin"><a href="#x2F-usr-x2F-bin" class="headerlink" title="&#x2F;usr&#x2F;bin"></a>&#x2F;usr&#x2F;bin</h4><ul>
+<li>包含可执行程序，而且数据比&#x2F;bin更多，系统大部分可执行程序都来源于&#x2F;usr&#x2F;bin</li>
+</ul>
+<p><strong>为什么有两个bin文件夹呢？</strong></p>
+<blockquote>
+<p>由于历史问题，原来应该存放在一起的文件，因为容量不足，开发者们将文件分成两组，&#x2F;bin下面将装载最基本的启动程序，和最基本的系统文件，余下的部分装在&#x2F;usr&#x2F;bin下面。在系统启动时，最先进入drum,也就是&#x2F;bin下文件。系统运行后再挂载&#x2F;usr&#x2F;bin文件系统，接入剩下文件</p>
+</blockquote>
+<h4 id="x2F-usr-x2F-games"><a href="#x2F-usr-x2F-games" class="headerlink" title="&#x2F;usr&#x2F;games"></a>&#x2F;usr&#x2F;games</h4><ul>
+<li>包含一些游戏和有趣程序像 fortune\sl(火车)\</li>
+</ul>
+<h4 id="x2F-usr-x2F-include"><a href="#x2F-usr-x2F-include" class="headerlink" title="&#x2F;usr&#x2F;include"></a>&#x2F;usr&#x2F;include</h4><ul>
+<li>包含被c c++用的文件</li>
+</ul>
+<h4 id="x2F-usr-x2F-lib"><a href="#x2F-usr-x2F-lib" class="headerlink" title="&#x2F;usr&#x2F;lib"></a>&#x2F;usr&#x2F;lib</h4><ul>
+<li>像&#x2F;lib 存放预先存在的数据模型、资源库和一些被程序接入服务使用的代码</li>
+</ul>
+<p>同&#x2F;usr&#x2F;bin一样，最基本的模型和资源被存放在&#x2F;lib中，系统启动时用&#x2F;lib内容。之后再挂载&#x2F;usr&#x2F;lib文件，接入剩下的资源</p>
+<h4 id="x2F-usr-x2F-local"><a href="#x2F-usr-x2F-local" class="headerlink" title="&#x2F;usr&#x2F;local"></a>&#x2F;usr&#x2F;local</h4><ul>
+<li>为管理员支持本地用户时使用，可以在此找到本地文档和程序，典型用途是创建&#x2F;usr&#x2F;local&#x2F;bin目录，来保存不属于主系统的程序</li>
+</ul>
+<h4 id="x2F-usr-x2F-sbin"><a href="#x2F-usr-x2F-sbin" class="headerlink" title="&#x2F;usr&#x2F;sbin"></a>&#x2F;usr&#x2F;sbin</h4><ul>
+<li>被管理员用的系统程序 system binaries</li>
+</ul>
+<h3 id="var目录"><a href="#var目录" class="headerlink" title="var目录"></a>var目录</h3><ul>
+<li>动态数据的第二文件系统</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2021/07/27/2021-07-27-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_23_fie/">https://blog.lthero.cn/2021/07/27/2021-07-27-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_23_fie/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/07/27/2021-07-27-%5Btips%5D%E8%A7%A3%E5%86%B3anaconda%E7%9A%84shell%E4%B8%8D%E5%9C%A8%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E4%B8%AD/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Tips】解决Anaconda的shell不在开始菜单中</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/27/2021-07-27-%5Blinux%5D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_24_directory/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【linux】学习笔记Chap_24_目录的相关用法</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ordinary-file%E2%80%93%E6%99%AE%E9%80%9A%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">ordinary file–普通文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Test-files"><span class="toc-number">1.1.1.</span> <span class="toc-text">Test files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binary-file"><span class="toc-number">1.1.2.</span> <span class="toc-text">Binary file</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#directory%E2%80%93%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">directory–目录文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pseudo-file%E2%80%93%E4%BC%AA%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">pseudo file–伪文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">功能：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#special-file-x2F-device-file%E2%80%93%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">special file &#x2F; device file–特殊文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E8%A1%A8%EF%BC%9A"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">代表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">硬件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">终端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%AA%E8%AE%BE%E5%A4%87"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">伪设备</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#named-pipe%E2%80%93%E5%8F%AF%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93%E7%AC%A6"><span class="toc-number">1.5.</span> <span class="toc-text">named pipe–可命名管道符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#proc-file%E2%80%94%E8%BF%9B%E7%A8%8B%E6%96%87%E4%BB%B6"><span class="toc-number">1.6.</span> <span class="toc-text">proc file—进程文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FileSystem%E2%80%93%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.7.</span> <span class="toc-text">FileSystem–文件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mount-%E6%8C%82%E8%BD%BD"><span class="toc-number">1.8.</span> <span class="toc-text">Mount 挂载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B%E6%A0%B9%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.</span> <span class="toc-text">简介根目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bin%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.1.</span> <span class="toc-text">bin目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dev%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.2.</span> <span class="toc-text">dev目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etc%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.3.</span> <span class="toc-text">etc目录设置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#home%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.4.</span> <span class="toc-text">home用户目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lib%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.5.</span> <span class="toc-text">lib目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lost-and-found-%E7%9B%AE%E5%BD%95%EF%BC%9A%E6%8D%9F%E5%9D%8F%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.6.</span> <span class="toc-text">lost and found 目录：损坏文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#media%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.7.</span> <span class="toc-text">media目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#opt%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.8.</span> <span class="toc-text">opt目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proc%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.9.</span> <span class="toc-text">proc目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.10.</span> <span class="toc-text">root目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sbin%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.11.</span> <span class="toc-text">sbin目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srv%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.12.</span> <span class="toc-text">srv目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmp%E2%80%94%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.9.13.</span> <span class="toc-text">tmp—临时文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usr%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.14.</span> <span class="toc-text">usr目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr%E4%B8%8B%E5%8C%85%E5%90%AB%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.9.14.1.</span> <span class="toc-text">&#x2F;usr下包含一些常用的程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr-x2F-bin"><span class="toc-number">1.9.14.2.</span> <span class="toc-text">&#x2F;usr&#x2F;bin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr-x2F-games"><span class="toc-number">1.9.14.3.</span> <span class="toc-text">&#x2F;usr&#x2F;games</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr-x2F-include"><span class="toc-number">1.9.14.4.</span> <span class="toc-text">&#x2F;usr&#x2F;include</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr-x2F-lib"><span class="toc-number">1.9.14.5.</span> <span class="toc-text">&#x2F;usr&#x2F;lib</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr-x2F-local"><span class="toc-number">1.9.14.6.</span> <span class="toc-text">&#x2F;usr&#x2F;local</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x2F-usr-x2F-sbin"><span class="toc-number">1.9.14.7.</span> <span class="toc-text">&#x2F;usr&#x2F;sbin</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#var%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.15.</span> <span class="toc-text">var目录</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"/></a><div class="content"><a class="title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'vercel-psi-seven.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
