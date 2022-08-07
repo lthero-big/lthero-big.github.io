@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2022/08/07/hexo-cant-update/</loc>
+    
+    <lastmod>2022-08-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2021/07/20/2021-07-20-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6%EF%BC%9F%E8%AF%95%E8%AF%95gtmetrix/</loc>
     
     <lastmod>2022-08-07</lastmod>

@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>【hexo更新到GitHub后博客内容未变】</title>
+      <link href="/2022/08/07/hexo-cant-update/"/>
+      <url>/2022/08/07/hexo-cant-update/</url>
+      
+        <content type="html"><![CDATA[<h1 id="hexo更新到GitHub后博客内容未变"><a href="#hexo更新到GitHub后博客内容未变" class="headerlink" title="hexo更新到GitHub后博客内容未变"></a>hexo更新到GitHub后博客内容未变</h1><blockquote><p>问题描述：hexo d -g可以将文章上传到github的仓库，但打开网页(<code>github-page</code>)后，<strong>发现内容并未更新</strong></p><p>原因：<strong>github-page对私有仓库不免费</strong></p><p>解决方法：<strong>将仓库设置为公开</strong></p></blockquote><p>过程：我尝试过网上各种方法，清除<code>.deploy_git</code>、<code>hexo clean</code>等，但都无效。我检查了github-pages 的更新状态，一直是 <strong>17 days ago</strong> <code>Active</code>。再联想到“github-page”对私有仓库不是免费的，而我虽然之前一直把项目设置为私有，但我开过github学生包，里面包含免费的私有仓库的权益，但最近学生包过期了，于是就不能使用gihub-page。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【linux】学习笔记Chap_26_系统进程管理</title>
       <link href="/2022/08/02/linux-learningPathChp26/"/>
       <url>/2022/08/02/linux-learningPathChp26/</url>

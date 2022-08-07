@@ -6,7 +6,7 @@
   <link href="https://blog.lthero.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.lthero.cn/"/>
-  <updated>2022-08-02T13:15:35.541Z</updated>
+  <updated>2022-08-07T11:08:45.486Z</updated>
   <id>https://blog.lthero.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【hexo更新到GitHub后博客内容未变】</title>
+    <link href="https://blog.lthero.cn/2022/08/07/hexo-cant-update/"/>
+    <id>https://blog.lthero.cn/2022/08/07/hexo-cant-update/</id>
+    <published>2022-08-07T11:02:23.000Z</published>
+    <updated>2022-08-07T11:08:45.486Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo更新到GitHub后博客内容未变"><a href="#hexo更新到GitHub后博客内容未变" class="headerlink" title="hexo更新到GitHub后博客内容未变"></a>hexo更新到GitHub后博客内容未变</h1><blockquote><p>问题描述：hexo d -g可以将文章上传到github的仓库，但打开网页(<code>github-page</code>)后，<strong>发现内容并未更新</strong></p><p>原因：<strong>github-page对私有仓库不免费</strong></p><p>解决方法：<strong>将仓库设置为公开</strong></p></blockquote><p>过程：我尝试过网上各种方法，清除<code>.deploy_git</code>、<code>hexo clean</code>等，但都无效。我检查了github-pages 的更新状态，一直是 <strong>17 days ago</strong> <code>Active</code>。再联想到“github-page”对私有仓库不是免费的，而我虽然之前一直把项目设置为私有，但我开过github学生包，里面包含免费的私有仓库的权益，但最近学生包过期了，于是就不能使用gihub-page。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;hexo更新到GitHub后博客内容未变&quot;&gt;&lt;a href=&quot;#hexo更新到GitHub后博客内容未变&quot; class=&quot;headerlink&quot; title=&quot;hexo更新到GitHub后博客内容未变&quot;&gt;&lt;/a&gt;hexo更新到GitHub后博客内容未变&lt;/h1&gt;&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>【linux】学习笔记Chap_26_系统进程管理</title>
@@ -502,30 +522,6 @@
     
     
     <category term="汇编" scheme="https://blog.lthero.cn/tags/%E6%B1%87%E7%BC%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Compiler】期末题目</title>
-    <link href="https://blog.lthero.cn/2022/06/21/Compiler-9/"/>
-    <id>https://blog.lthero.cn/2022/06/21/Compiler-9/</id>
-    <published>2022-06-21T02:57:51.000Z</published>
-    <updated>2022-06-21T09:16:59.490Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>第1题,编译程序的工作情况有三种，分别是解释型、编译型和（ ）。<br>A、综合型<br>B、并列型<br>C、汇编型<br>D、不确定型<br>正确答案: C</p><p>第2题,文法中不包含左公共因子是LL(1)文法的（ ）。<br>A、充分条件<br>B、必要条件<br>C、充要条件<br>D、即不充分也不必要的条件<br>正确答案: B</p><p>LL(1)方法要求：无左递归、无公共左因子</p><p>第3题,在规范归约中用来刻画可归约串的是（ ）。<br>A、短语<br>B、句柄<br>C、最左素短语<br>D、素短语<br>正确答案:B</p><p>在”算符优先分析”中，用“<code>最左素短语</code>”来刻画“可归约串”</p><p>在“规范归约”分析中，则用“<code>句柄</code>”来刻画“可归约串”。</p><p>句柄：直接短语中的<strong>最左直接短语为该句型的句柄</strong></p><p>素短语：是指一个<strong>短语</strong>至少包含一个<strong>终结符</strong>，并且除它自身之外<strong>不再包含其他素短语</strong></p><p>最左素短语：最左素短语就是句型 定义的素短语</p><p>4.中间代码设计原则是（ ）。<br>A、简洁，占用内存少<br>B、接近自然语言<br>C、可替代编译程序<br>D、容易生成和翻译为目标代码<br>正确答案:D</p><p>第6题,设有文法G[S]： S→S8|S9|Sa|Sc|a|b|c<br>下列句子中符合该文法的有（ ）。①ab9 ②a9c98  ③aaa ④bc89<br>可选项有：<br>A、①<br>B、②③④<br>C、③④<br>D、①②③④<br>正确答案:B</p><p>第7题,编译程序工作的后端包含的阶段有（ ）。<br>A、语义分析、代码优化、代码生成<br>B、词法分析、语法分析、代码生成<br>C、中间代码生成、代码优化、代码生成<br>D、语义分析、中间代码生成、代码优化<br>正确答案:C</p><p>编译前端主要包括词法分析、语法分析、语义分析、中间代码生成这几个部分，后端则包含代码优化和目标代码生成部分。前端的特点是仅与编译的源语言有关，而后端则仅与编译的目标语言及运行环境有关</p><p>编译程序工作时，先分析，后综合，从而得到目标程序。<br>分析指的是：词法分析、语法分析、语义分析。<br>综合指的是：代码优化，存储分配、代码生成。</p><p>第8题,一个句型中称为句柄的是该句型的最左（  ）。<br>A、最左终结符号<br>B、所有短语<br>C、所有句子<br>D、最左直接短语<br>正确答案:D</p><p><strong>同3</strong></p><p>第9题,设文法G[S]：S→SB|B ，B→0|b<br>则对句子0b0，以下推导为规范推导的是（ ）。<br>A、S SB SBBBBB0BB0bB0b0<br>B、S SB SBBBBBBB0Bb00b0<br>C、S SB SBBSB0Sb0Bb00b0<br>D、S SB S0 SB0 Sb0 Bb0 0b0<br>正确答案:D</p><p><strong>最右推导也称为规范推导</strong>,用规范推导推导出的句型称为<strong>规范句型</strong>。<br><strong>规范推导的逆过程</strong>,称为<strong>最左归约</strong>,也称为<strong>规范归约</strong>。</p><p>第11题,一个LR分析器由三部分组成，分别是总控程序、分析表和（ ）。<br>A、运算器<br>B、缓冲器<br>C、记录表<br>D、分析栈<br>正确答案:D</p><p><strong>LR文法是最大的、可以构造出相应的移入-归约语法分析器的文法类，其中L表示的是对输入进行从左到右的扫描，而R代表的就是反向构造出一个最右的推导序列</strong></p><p><strong>LR分析法的归约过程是规范推导的逆过程，所以LR分析过程是一种规范归约过程</strong></p><p>1、<strong>总控程序****，</strong>也可以称为驱动程序。对所有的LR分析器来说，总控程序都是相同的</p><p>2、<strong>分析表或分析函数</strong>。不同的文法分析表会不同，同一个文法采用的LR分析器不同时，分析表也不同，分析表又可以分为动作(ACTION)表和状态转换(GOTO)表两个部分，它们都可用二维数组表示</p><p>3、<strong>分析栈</strong>，包括文法符号栈和相应的状态栈，它们都是先进后出栈分析器不需向前查看输入符号</p><p>第13题,扫描器识别出的具有独立含义的最小语法单位是（ ）。<br>A、算符<br>B、单词<br>C、字符<br>D、表达式<br>正确答案:B</p><p>第16题,占用编译程序绝大多数时间的模块是（ ）。<br>A、出错处理<br>B、词法分析<br>C、目标代码生成<br>D、管理表格<br>正确答案:D</p><p>编译的每个阶段所需要的信息多数从表格中读取，产生的中间结果都记录在相应的表格中，可以说整个编译过程就是造表、查表的过程。</p><p>第17题,一个短语文法G包括以下组成部分：有限个终结符，有限个非终结符，一个开始符号，以及一组（ ）。<br>A、运算符<br>B、产生式<br>C、数符<br>D、句子<br>正确答案:</p><p>由文法G[S]的开始符S经n步(n≥0)推导产生的文法符号序列α是（ ）。<br>A、待选式<br>B、句子<br>C、句型<br>D、正规式<br>正确答案:C</p><p>乔姆斯基（Chomsky）把文法分为四种类型，即0型、1型、2型、3型。其中2型文法<br>是（B）。<br>A、正则文法B、上下文无关文法C、上下文有关文法D、短语文法</p><p>＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝<br>S-&gt; aaS|a是什么型的，为什么<br>S-&gt; aSb|ab是什么型的，为什么<br>S-&gt; SaS|b是什么型的，为什么<br>＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ </p><p>答：<strong>三种文法都属于上下文无关文法</strong>,2型文法。 </p><p>四种文法的判断非常简单，说到到，四种文法就是规定产生式的左和右边的字符的组成规则不同而已，其它的不能理解就不要去想了，你只要知道判断的时候就是以产生式的左边和右边符合的规则进行判断。下面解释一下如何根据产生式左边和右边的特征来进行判断。 </p><p>首先，应该明确，四种文法，从0型到3型，其规则和约定越来越多，限制条件也越来越多，所以，我们判断时可以从最复杂的3型进行判断，依次向下判断，如果不符合3型的，那再看是不是2型的，不是2型的，再看是不是1型的，当然，对于作题作的熟的朋友，不用这么复杂，可以一眼直接看出来。 </p><p>【正规文法】3型文法遵循什么规范呢？<br>第一点：<code>左边</code>必须<code>只有一个</code>字符，且必须是<code>非终结符</code>；<br>第二点：其<code>右边最多</code>只能有<code>两个</code>字符，且当有两个字符时<code>必须有一个为终结符</code>而另<code>一个为非终结符</code>。当右边只有一个字符时，此字符必须为终结符。 【右边至少有一个终结符】<br>第三点：对于3型文法中的所有产生式，其右边有两个字符的产生式，这些产生式右边两个字符中终结符和非终结符的<code>相对位置一定要固定</code>，也就是说如果一个产生式右边的两个字符的排列是：终结符＋非终结符，那么所有产生式右边只要有两个字符的，都必须前面是终结符而后面是非终结符。反之亦然，要么，就全是：非终结符＋终结符。 <strong>S-&gt;aS|bS，不能是S-&gt;aS|Sb</strong></p><p>依以上规则判断，你所给的三个文法显然都不属于3型文法。 </p><p>【上下无关文法】2型文法如何判断：<br>第一点：与3型文法的第一点相同，即：<code>左边必须有且仅有一个非终结符</code>。<br>第二点：2型文法所有产生式的右边可以含有<code>若干个终结符和非终结符</code>（只要是有限的就行，没有个数限制）。 </p><p>依2型文法的判断规则，你的三个文法都属于2型文法，即：上下文无关文法。 </p><p>【上下有关文法】1型文法如何判断：<br>第一点：1型文法所有产生式<code>左边可以含有一个、两个或两个以上的字符</code>，但其中必须<code>至少有一个非终结符</code>。<br>第二点：与2型文法第二点相同。 </p><p>依1型文法判断规则，显然，你的文法也是属于1型的。 </p><p>最后是0型文法，这个就不用看了，只要你能描述出来，都属于这个类型，即0型。 </p><p>所以，取其最高的符合规则，最后的答案是其符合：上下文无关文法规则，即2型。</p><p>本人补充:一般考试里面分辨<code>0型文法</code>(短语结构文法)和<code>2型文法</code>(上下文无关文法)!!!</p><p>左部长度&gt;右部长度一点是0型文法(短语结构文法)</p><p>一个递归文法所产生的语言的句子是（ ）。<br>A、无穷个<br>B、有穷个<br>C、可枚举<br>D、无法确定<br>正确答案:A</p><p>第19题,在自顶向下的语法分析处理中，FIRST集、FOLLOW集、SELECT集均是（ ）。<br>A、非终结符集<br>B、终结符集<br>C、字母表<br>D、状态集合<br>正确答案:</p><p>第22题,编译程序第三步工作是（ ）。<br>A、语义分析<br>B、词法分析<br>C、语法分析<br>D、代码优化<br>正确答案:A</p><p>第23题,常用的中间代码形式有（ ）。<br>A、状态机<br>B、四元式<br>C、转换表<br>D、语法树<br>正确答案:B </p><p>逆波兰表示、四元式、三元式和树表示等</p><p>第28题,编译程序中语法分析器的输入是（ ）。<br>A、单词<br>B、表达式<br>C、直接短语<br>D、句柄<br>正确答案:A</p><p>有限自动机识别的语言是（ ）。<br>A、短语文法语言<br>B、上下文有关文法语言<br>C、上下文无关文法语言<br>D、正规文法语言<br>正确答案:D</p><p>如果一个文法存在某个句子对应两颗不同的语法树，则该文法是二义的。（ ）<br>T、对<br>F、错<br>正确答案:T</p><p><strong>如果一个文法存在某个句子对应两棵不同的语法树,则说这个文法是二义性的</strong>。</p><p>或者说,<strong>若一个文法中存在某个句子,它有两个不同的最左(最右)推导,则这个文法是二义性的</strong>。</p><p>设有文法 G [ E ]:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E → E + E | E * E | ( E ) | i</span><br><span class="line">1</span><br></pre></td></tr></table></figure><p>句子 i * i + i 有两个不同的最左推导,对应两棵不同的<a href="https://so.csdn.net/so/search?q=%E8%AF%AD%E6%B3%95%E6%A0%91&spm=1001.2101.3001.7020">语法树</a>,见图 2.6 和图 2.7 。</p><p>最左推导 1</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> E ⇒ E + E ⇒ E * E + E </span><br><span class="line">    ⇒ i * E + E</span><br><span class="line">     ⇒ i * i + E</span><br><span class="line">    ⇒ i * i + i </span><br><span class="line">    </span><br><span class="line">12345</span><br></pre></td></tr></table></figure><p>最左推导 2</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E ⇒ E * E ⇒ i * E</span><br><span class="line"> ⇒ i * E + E</span><br><span class="line"> ⇒ i * i + E</span><br><span class="line"> ⇒ i * i + i</span><br></pre></td></tr></table></figure><p>第33题,简单优先文法中，任意两个产生式不允许具有相同右部。（ ）<br>T、对<br>F、错<br>正确答案:T</p><p>简单优先文法的性质</p><p>   在文法符号V中，任意两个字符之间只存在唯一的一种关系（等于，小于或者大于）  </p><p>   文法中，任意两个产生式没有相同的右部【如：A → bc，B → bc，这样规约的时候就不知道该规约到谁，保证规约的一致性】</p><p>第36题,已知文法G[S]：S→A B|PQx， A→xy ，B→bc ，P→d P|ε ，Q→aQ|ε<br>该文法是LL（1）文法。（ ）<br>T、对<br>F、错<br>正确答案:T</p><p>第37.  给出奇数集的<strong>上下文无关文法</strong>，且每个奇数不以0开头</p><p>答</p><p>N-&gt;AB|B</p><p>A-&gt;AC|D 【若只有A-&gt;D，则这个数不会出现0】</p><p>B-&gt;1|3|5|7|9</p><p>D-&gt;B|2|4|6|8</p><p>C-&gt;0|D 【C-&gt;0保证这个数可以有0，但0不开头】</p><p>第38. 给出语言L&#x3D;{a^m^ b a^n^ |m,n&gt;&#x3D;0}的正规文法</p><blockquote><p>正规文法：只能是<code>左线性</code>或<code>右线性</code>文法，左边一个非终结符。右边最多两个字符，而且右边必须包含一个终结符</p></blockquote><p>答</p><p>S-&gt;aS|bB</p><p>B-&gt;aB|e[空]</p><p>【给的是右线性文法，右线性文法：A-&gt; αB  或 A-&gt; α  。非终结符只能靠右】</p><p>第39. NFA转DFA题目</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621140729006.png" alt="image-20220621140729006"></p><p>答</p><p>先确定化</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621142538987.png" alt="image-20220621142538987"></p><p>确定化中，因为这是包含空串的，每次求完a&#x2F;b后还要求空串的闭包</p><p>如：{B} 在a下 为{A}，<strong>再求{A}对空串的闭包为{Z}<strong>，所以{B}在a下为</strong>{A,Z}</strong></p><p>再最小化</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621142603336.png" alt="image-20220621142603336"></p><p>最后0、1合并在一起</p><p>题目40. 题目</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621143212269.png" alt="image-20220621143212269"></p><ul><li>消除回溯：提取最左公共因子</li></ul><p>答</p><p>对L-&gt;L,S|S消除左递归</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621144707749.png" alt="image-20220621144707749"></p><p>对S-&gt;(L)|aS|a提取最左公因子</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621144750130.png" alt="image-20220621144750130"></p><p>得到下面四个文法</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621144803195.png" alt="image-20220621144803195"></p><p>First集</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621144841790.png" alt="image-20220621144841790"></p><p>Follow集</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621144903581.png" alt="image-20220621144903581"></p><p>求First原因：不希望回溯，希望【根据读头下面的符号选择相应的后选式】，那就得知道<strong>候选式</strong>的<strong>第一个符号</strong>是什么</p><p>但当<code>某个符号</code> 可以用<strong>空串替换</strong>时，需要求Follow集，知道<code>这个符号</code><strong>后面的符号</strong>是什么</p><p>题目41.题目</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621150650111.png" alt="image-20220621150650111"></p><p>对文法G构造算符优先表</p><ul><li>判断是否为算符文法</li><li>构造FirstVt和LastVt</li><li>根据优先关系构造表</li></ul><p>答</p><ul><li>先对文法进行扩展：S’-&gt;#S#；保证文法<code>开始符号</code>不出现在<strong>任何产生式右部</strong>，即增加产生式S’-&gt;S，并令S’→●S作为初态项目;</li></ul><p>题目42.</p><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220621152327494.png" alt="image-20220621152327494"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;第1题,编译程序的工作情况有三种，分别是解释型、编译型和（ ）。&lt;br&gt;A、综合型&lt;br&gt;B、并列型&lt;br&gt;C、汇编型&lt;br&gt;D、不确定型&lt;</summary>
-      
-    
-    
-    
-    <category term="编译原理" scheme="https://blog.lthero.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-    
-    <category term="编译原理" scheme="https://blog.lthero.cn/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
