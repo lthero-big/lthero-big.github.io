@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>TCP基于丢包的行为分析与缺点</title>
+      <link href="/2022/11/24/TCP-BasedOnDropingAnalysis/"/>
+      <url>/2022/11/24/TCP-BasedOnDropingAnalysis/</url>
+      
+        <content type="html"><![CDATA[<h1 id="TCP基于丢包的CBUIC算法与BBR算法的分析"><a href="#TCP基于丢包的CBUIC算法与BBR算法的分析" class="headerlink" title="TCP基于丢包的CBUIC算法与BBR算法的分析"></a>TCP基于丢包的CBUIC算法与BBR算法的分析</h1><p>原文章：<a href="https://blog.csdn.net/dog250/article/details/52939004">https://blog.csdn.net/dog250/article/details/52939004</a></p><p><img src="https://img-blog.csdn.net/20161026224121325?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="TCP链路"></p><p>假设TCP端节点之间的BDP【<strong>带宽时延积</strong>】为C，那么：<br><strong>C &#x3D; C1 + C2 (其中C1是网络本身的管道容量，而C2是路由器节点缓存的容量)</strong><br>由于路径中最小带宽为B，那么整个链路的带宽将由B决定，在排队未发生时(即没有发生拥塞时)，假设测量RTT为rtt0，发送速率为B0&#x3D;B，则：<br><strong>C1 &#x3D; B0*rtt0<br>C &#x3D; B0*rtt0 +C2 &gt; B*rtt0</strong><br>此时，任何事情均为发生，一切平安无事！继续着TCP“加性增”的行为，此时发送端继续线性增加发送速率，到达B1，此时：<br><strong>B0*rtt0 &lt; B1*rtt1</strong><br>C是客观的不变量，这会导致C2开始被填充，即开始轻微排队。排队会造成RTT的增加。假设C2已经被加性增特性填充到满载的临界，此时发送带宽为B2，即：<br><strong>C &#x3D; B2*rtt2 &#x3D; B*rtt0 + C2</strong></p><p>第二类缓存的时间墙特征导致了排队的发生，而排队会导致一个TCP连接中数据包的RTT变大。为了讨论方便，我们假设TCP端节点之间管道最细处(即Bottleneke处)的带宽为B，那么正如上图所表明的，我把TCP端节点之间的网络中，凡是带宽比B大的网络均包含在第二类缓存中，也就是说，凡是会引起排队的路径，均是第二类缓存。</p><h2 id="TCP之CUBIC算法【基于丢包算法】"><a href="#TCP之CUBIC算法【基于丢包算法】" class="headerlink" title="TCP之CUBIC算法【基于丢包算法】"></a>TCP之CUBIC算法【基于丢包算法】</h2><h3 id="理想功能："><a href="#理想功能：" class="headerlink" title="理想功能："></a>理想功能：</h3><p>TCP在临界点的加性增窗行为，<strong>理想状态下应该让发送方获得第一类缓存</strong>，<strong>也就是链路吞吐量的大小</strong>【C1大小】。</p><h3 id="实际功能："><a href="#实际功能：" class="headerlink" title="实际功能："></a>实际功能：</h3><p>但实际上，因为路由器有了第二类缓存，导致TCP<strong>变成了探测C1+C2的容量</strong>。并且，随着C2的增加而增加，RTT的最终测量值，即rtt2则越大！这就是深队列丢包探测的原因。</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>之所以基于丢包的拥塞控制算法的带宽利用率低，就是由于<strong>其填充第二类缓存</strong>，而<strong>增加了排队延迟</strong>造成的<strong>虚假且逐渐增大的RTT</strong>，最终导致了BDP很大的假象。而这一切的目的，却仅仅是为了探测丢包，自以为在丢包前已经100%的利用了带宽，然而在丢包后，所有的一切都加倍还了回去！是丢包导致了带宽利用率的下降，而不是增加！！</p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>​事实上，通过<strong>探测时间窗口内的最大带宽和最小RTT</strong>，就可以明确知道<strong>是不是已经填满了第一类缓存</strong>，并<strong>停止继续填充第二类缓存</strong>，即向最小化排队的方向收敛！</p><p>​曾经的基于时延的算法，比如Vegas，其实已经在走这条路了，它已经知道RTT的增加意味着排队了，只是它没有采用时间窗口过滤掉常规波动，而是采用了RTT增量窗口来过滤波动，最终甚至由于RTT抖动主动减少窗口，所以会造成竞争性不足。不管怎样，这是一种君子行为，它总是无力对抗<strong>基于丢包算法的流氓行为</strong>。</p><p>​BBR综合了二者，对待君子则君子，即：<strong>不会填充第二类缓存</strong>，就不会造成路由器排队。因为一旦排队，所有连接的RTT均会增加，对类似Vegas的不利。对待流氓则流氓，即：采用滑动时间窗口抗带宽噪声，采用固定超时时间窗口抗RTT噪声，时间窗口内，决不降速。</p><hr><p>从上面的分析看来，<strong>第二类缓存没有必要</strong>？</p><h2 id="第二类缓存【路由器缓存】的用处"><a href="#第二类缓存【路由器缓存】的用处" class="headerlink" title="第二类缓存【路由器缓存】的用处"></a>第二类缓存【路由器缓存】的用处</h2><p>第二类缓存的作用是为了适配统计复用的分组交换网络上路由器<strong>处理不过来到来的数据包</strong>而引入的，并用来缓冲不同链路上的速度。如果没有路由器交换机节点的存在，那么第二类缓存这里什么也没有：</p><p><img src="https://img-blog.csdn.net/20161026224221294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p><p>如果你想最快速度理解上图中泊松到达这个点的入口行为和固定速率发出的出口行为，请考虑丁字路由或十字路口，和路由器一样，只有在交叉点的位置才需要第二类缓存来平滑多方瞬时速率的不匹配特征！我以丁字路口为例：</p><p><img src="https://img-blog.csdn.net/20161026224301779?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p><p>不管哪里为应对瞬时到达率而加入的”缓存“，都是第二类缓存，这类缓存的<strong>目的是临时缓存瞬时到达过快的数据或者车流</strong>，这就是统计复用的分组交换网节点缓存的本质！然而<strong>一旦这些缓存被误用了</strong>，拥塞就一定会发生！误用行为很多，比如<strong>UDP毫无节制的发包</strong>，比如<strong>TCP依靠填满第二类缓存而发现拥塞</strong>，讽刺的是，很大程度上，<strong>拥塞是TCP自己造成的</strong>，要想发现拥塞，就必须要先制造拥塞。</p><h2 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h2><p><strong>尽量减少网络交换节点处队列的排队</strong>！通过上一节的最后，我们知道，交换节点出口的速率恒定，而入口可能会面临突发，虽然在统计意义上，出入口的处理能力匹配即可，然而即便大多数时候到达速率都小于出口速率，只要有一瞬间的突发就可能冲击队列到爆满！事实上队列缓存存在的理由：<strong>解决到达速率大于出口速率</strong></p><h4 id="基于丢包的收敛图"><a href="#基于丢包的收敛图" class="headerlink" title="基于丢包的收敛图"></a>基于丢包的收敛图</h4><p><img src="https://img-blog.csdn.net/20161026224333982?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="基于丢包的收敛图"></p><h3 id="BBR的收敛方案"><a href="#BBR的收敛方案" class="headerlink" title="BBR的收敛方案"></a>BBR的收敛方案</h3><p>BBR收敛过程并<strong>不是独立的，它们是配合的</strong>。BBR算法根本就没有定义收敛点，只是大家互相配合，<strong>满足其带宽之和不超过第一类缓存的大小</strong>，即<strong>真正BDP</strong>的大小，在这个约束条件下，BBR最终自己找到了一个稳定的平衡点。</p><ol><li>如果没有其它连接，一个连接会一直试图占满所有带宽。</li><li>一旦有新连接，则<strong>老连接</strong>尽量一次性或者很短时间内出<strong>让部分带宽</strong>，然后在这些带宽被利用之前，老连接不再抢带宽。</li><li>超过6个RTT周期之后，<strong>老连接重新开始新一轮抢占</strong>，出让，等待被利用的过程，从而和其它的连接一起收敛到平衡点。</li></ol><p>因此，和加性增乘性减的独立收敛方案不同，BBR<strong>一开始</strong>就是考虑到<strong>对方存在</strong>的收敛方案</p><h4 id="BBR的收敛图"><a href="#BBR的收敛图" class="headerlink" title="BBR的收敛图"></a>BBR的收敛图</h4><p><img src="https://img-blog.csdn.net/20161026224529608?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="BBR的收敛图"></p><p>很遗憾，BBR无法识别CUBIC的存在！当BBR将cwnd缩减的时候，CUBIC会继续填充第二类缓存，直到透支掉最后的那一个字节。随后，也许你会认为CUBIC会执行乘性减来缩减cwnd，是的，确实如此，然而即使这样，也不能指望它们会腾出带宽，因为CUBIC的行为是各自独立的，你无法假设它们会同时进入乘性减窗，因此几乎可以肯定，共享链路上的缓存总是趋向与被填满的状态，这都是CUBIC的所为。然而怎能怪它呢，毕竟它的基础就是填满所有两类缓存为止，决不降速(不同于BBR的发现排队之前绝不减速的特性)。因此，BBR和CUBIC共存的时候，很有可能会出现全盘皆输的局面。</p><h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>CUBIC还算是迄今比较伟大的算法，它不会轻易被BBR取代，但是它需要被改进。<br>    首先，在没有AQM时，加性增乘性减本身并没有错，一般的丢包都是尾部拥塞丢包，这对于TCP拥塞控制而言，基于丢包的拥塞探测太容易做了，但是尾部丢包会带来一系列的问题，为了解决这些问题，出现了AQM，比如RED之类的丢包算法，这样一来就无法区别RED丢包，尾部丢包，线路噪声丢包，乱序未丢包这几类现象了。问题的严重性是由拥塞算法对丢包的敏感性造成的，只要有丢包，或者说仅仅是按照自己的逻辑检测到了可能的丢包，就好像出了大事一般，窗口会大幅度下降！！然而，噪声丢包和乱序并不是拥塞，所以如果能过滤掉这两类，CUBIC的效率一定会有大的提高！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+          <category> TCP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> TCP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【操作系统】进程互斥访问&amp;同步问题综合</title>
       <link href="/2022/11/06/semaphore-problems/"/>
       <url>/2022/11/06/semaphore-problems/</url>
