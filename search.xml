@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>局域网连接方案</title>
+      <link href="/2022/12/22/ConnectedDevices/"/>
+      <url>/2022/12/22/ConnectedDevices/</url>
+      
+        <content type="html"><![CDATA[<h1 id="局域网连接方案"><a href="#局域网连接方案" class="headerlink" title="局域网连接方案"></a>局域网连接方案</h1><blockquote><p>主路由：192.168.6.1<br>n1盒子：192.168.6.155<br>主机：192.168.6.116<br>华为路由器：192.168.8.1</p></blockquote><p>1、华为路由器使用<strong>流量卡</strong>上网</p><p>2、主路由<strong>用网线</strong>连接华为路由器。随后，主机连接<strong>主路由的wifi</strong>，进入“网络”将wan口重新连接，直到wan网ip显示为192.168.8.x【主路由外网地址】</p><p>3、n1盒子<strong>用网线</strong>连接主路由，br-lan设置192.168.6.155，dns为192.168.6.1。在n1盒子上运行passwall</p><p>4、主机<strong>用网线</strong>连接主路由，设置网关为192.168.6.155</p><p>信号较好的情况下，外网带宽为50~70Mbps，油管连接速度4w</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>巫师3控制台代码</title>
       <link href="/2022/12/14/TheWitcherConsole/"/>
       <url>/2022/12/14/TheWitcherConsole/</url>
