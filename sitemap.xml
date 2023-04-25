@@ -1620,6 +1620,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://blog.lthero.cn/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/</loc>
+    <lastmod>2023-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -1967,6 +1974,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/categories/openAI/</loc>
+    <lastmod>2023-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2023-04-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
