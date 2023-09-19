@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【研究生课】信息安全技术笔记一</title>
+      <link href="/2023/09/19/MSc-InformationSecurity-1/"/>
+      <url>/2023/09/19/MSc-InformationSecurity-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h1><p>前期非常快地讲下密码学</p><p>研究生的课程会很宽泛，包含不同领域的安全。</p><h1 id="考核"><a href="#考核" class="headerlink" title="考核"></a>考核</h1><h2 id="考核安排"><a href="#考核安排" class="headerlink" title="考核安排"></a>考核安排</h2><p>是个完成一个课题，要交个大报告</p><p>第三周上课前确定要做的课题（在群里发的在线文档），第八、九周做个期中汇报（文献汇报），第十五周开始交最终汇报（研究汇报）</p><p>提交一份研究报告，算法要有完整实现</p><h2 id="可选课题"><a href="#可选课题" class="headerlink" title="可选课题"></a>可选课题</h2><p>网络安全，多媒体内容安全，人工智能安全，区块链及隐私保护</p><h3 id="网络安全-入侵检测"><a href="#网络安全-入侵检测" class="headerlink" title="网络安全-入侵检测"></a>网络安全-入侵检测</h3><p>做个入侵检测系统（IDS,intrusion detection system)，防火墙被攻破后，使用IDS进行防御或检测。</p><p>（硬件部署）可以部署在防火墙与服务器之间，通过监听网络信息，确保攻击数据在进入到服务器之前，将其拦截。<strong>像旁路由</strong></p><p>（软件部署）将IDS部署在服务器上，通过日志来判断。<strong>像软路由</strong>。</p><p>抽象成个二分类问题（是否有攻击）</p><p>通过web日志，使用机器学习手段，训练出一个模型，对每一条（实时的）日志进行判断是<strong>正常行为或异常行为</strong>。将模型部署后，可以对web日志实时进行监控并做出相应处理。</p><p>通过TP矩阵评估，False Negitive 越小越好</p><p>抽象成个多分类问题（具体是什么类型攻击）</p><p>通过web日志，使用机器学习手段，训练出一个模型，对日志<strong>打上标签</strong>（如远程控制|R2L|remote to local，root提权行为|U2R|user to root等）</p><p>通过混淆矩阵评估，对角线越大越好</p><p>课程要求</p><p>有样本，有输出，性能越高越好，不要把正常行为判断为异常行为，误报率要低。更不要把异常判断为正常，遗漏率要低。</p><h4 id="数据集来源"><a href="#数据集来源" class="headerlink" title="数据集来源"></a>数据集来源</h4><p>数据集质量决定任务难度，如果异常行为和正常行为差距很明显，任务会简单。如果异常行为和正常行为相似，任务会蛮难。</p><p>在网上找个<strong>IDS挑战赛的数据集</strong>(搜索：<strong>NSL-KDD</strong>，找近年的)，这类比赛的数据集较好，可以看到比赛优秀的项目代码，还可以看到评判标准。</p><p>某类攻击行为与正常行为相接近，某类攻击行为与正常行为差距很大，要把这些<strong>特征在报告中体现出来</strong></p><h3 id="网络安全-恶意代码分类"><a href="#网络安全-恶意代码分类" class="headerlink" title="网络安全-恶意代码分类"></a>网络安全-恶意代码分类</h3><p>Malware Classification.</p><p>二分类、多分类问题</p><h3 id="网络安全-垃圾邮件、短信检测"><a href="#网络安全-垃圾邮件、短信检测" class="headerlink" title="网络安全-垃圾邮件、短信检测"></a>网络安全-垃圾邮件、短信检测</h3><p>Spam Mail&#x2F;SMS Detection.</p><p>老师不建议选择，不好做。</p><p>思路：对于带有链接的邮件，能否先检测whois注册商来判断是否是正常域名？防止钓鱼网站？</p><p>中文的垃圾邮件有可能使用谐音字、或者把单个字拆开成多个字。</p><h3 id="多媒体内容安全-隐写与隐写分析"><a href="#多媒体内容安全-隐写与隐写分析" class="headerlink" title="多媒体内容安全-隐写与隐写分析"></a>多媒体内容安全-隐写与隐写分析</h3><p>Steganography &amp; Steganalysis</p><p>最简单的隐写方法：LSB隐写</p><p>将私密信息转换成二进制，逐个的写入到像素最低位。</p><p>隐写分析</p><p>检测的问题也可以是二分类问题，通过<strong>机器学习</strong>的方法来做，但隐写分析更难，因为修改很微弱，需要把微弱的痕迹增强并突显。</p><p>参考：<strong>ALASKA</strong>挑战赛（隐写分析挑战赛）</p><h3 id="多媒体内容安全-取证与反取证"><a href="#多媒体内容安全-取证与反取证" class="headerlink" title="多媒体内容安全-取证与反取证"></a>多媒体内容安全-取证与反取证</h3><p>Forensics &amp; Counter-Forensics</p><p>取证：给个照片，判断照片是否被修改（PS过），以及能否<strong>定位</strong>到修改的部分。视频伪造检测，比如deepfake的部分伪造；声音伪造，A的声音变成B的声音这是全局伪造。</p><p>反取证：伪造完成后，不被检测出来（抗取证）</p><h3 id="人工智能安全（这部分可以做攻击，可做防御）"><a href="#人工智能安全（这部分可以做攻击，可做防御）" class="headerlink" title="人工智能安全（这部分可以做攻击，可做防御）"></a>人工智能安全（这部分可以做攻击，可做防御）</h3><p>机器学习的方法本身是否安全？这部分关心模型本身是否安全。</p><p>（相对简单）poisoning attack：在样本训练时，这些样本就是有毒的，打着正常的标签但样本本身有问题。</p><p>（相对简单）adversarial attack：不干预训练过程，但使用一个专门设计过的手段，对某个模型的漏洞进行攻击或者绕过，让模型无法检测出来。比如，身上穿着某种图案的衣服，这个图案是专门设计过的，用来对抗摄像头的检测，让摄像头看不到人！</p><h3 id="人工智能安全-对抗样本攻击与防御"><a href="#人工智能安全-对抗样本攻击与防御" class="headerlink" title="人工智能安全-对抗样本攻击与防御"></a>人工智能安全-对抗样本攻击与防御</h3><p>Adversarial attack &amp; defense</p><p>在一个正常熊猫图片上，添加一个干扰因素，人眼看不出什么区别，但对模型来说，会判断成其它生物（猴子）</p><h3 id="区块链及隐私保护（不要求写代码）"><a href="#区块链及隐私保护（不要求写代码）" class="headerlink" title="区块链及隐私保护（不要求写代码）"></a>区块链及隐私保护（不要求写代码）</h3><p>找个具体的区块链场景，把这个场景的几个典型方法搞透，以及这个场景的发展趋势搞明白</p><p>比如搞一个<strong>食品追溯</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 研究生课程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 研究生课程 </tag>
+            
+            <tag> 信息安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【openwrt】克隆Mac突破校园网</title>
       <link href="/2023/09/15/openwrt-unlockSchoolNetwork/"/>
       <url>/2023/09/15/openwrt-unlockSchoolNetwork/</url>

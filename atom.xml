@@ -6,7 +6,7 @@
   <link href="https://blog.lthero.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.lthero.cn/"/>
-  <updated>2023-09-15T15:37:20.788Z</updated>
+  <updated>2023-09-19T07:24:19.393Z</updated>
   <id>https://blog.lthero.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【研究生课】信息安全技术笔记一</title>
+    <link href="https://blog.lthero.cn/2023/09/19/MSc-InformationSecurity-1/"/>
+    <id>https://blog.lthero.cn/2023/09/19/MSc-InformationSecurity-1/</id>
+    <published>2023-09-19T07:22:51.000Z</published>
+    <updated>2023-09-19T07:24:19.393Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h1><p>前期非常快地讲下密码学</p><p>研究生的课程会很宽泛，包含不同领域的安全。</p><h1 id="考核"><a href="#考核" class="headerlink" title="考核"></a>考核</h1><h2 id="考核安排"><a href="#考核安排" class="headerlink" title="考核安排"></a>考核安排</h2><p>是个完成一个课题，要交个大报告</p><p>第三周上课前确定要做的课题（在群里发的在线文档），第八、九周做个期中汇报（文献汇报），第十五周开始交最终汇报（研究汇报）</p><p>提交一份研究报告，算法要有完整实现</p><h2 id="可选课题"><a href="#可选课题" class="headerlink" title="可选课题"></a>可选课题</h2><p>网络安全，多媒体内容安全，人工智能安全，区块链及隐私保护</p><h3 id="网络安全-入侵检测"><a href="#网络安全-入侵检测" class="headerlink" title="网络安全-入侵检测"></a>网络安全-入侵检测</h3><p>做个入侵检测系统（IDS,intrusion detection system)，防火墙被攻破后，使用IDS进行防御或检测。</p><p>（硬件部署）可以部署在防火墙与服务器之间，通过监听网络信息，确保攻击数据在进入到服务器之前，将其拦截。<strong>像旁路由</strong></p><p>（软件部署）将IDS部署在服务器上，通过日志来判断。<strong>像软路由</strong>。</p><p>抽象成个二分类问题（是否有攻击）</p><p>通过web日志，使用机器学习手段，训练出一个模型，对每一条（实时的）日志进行判断是<strong>正常行为或异常行为</strong>。将模型部署后，可以对web日志实时进行监控并做出相应处理。</p><p>通过TP矩阵评估，False Negitive 越小越好</p><p>抽象成个多分类问题（具体是什么类型攻击）</p><p>通过web日志，使用机器学习手段，训练出一个模型，对日志<strong>打上标签</strong>（如远程控制|R2L|remote to local，root提权行为|U2R|user to root等）</p><p>通过混淆矩阵评估，对角线越大越好</p><p>课程要求</p><p>有样本，有输出，性能越高越好，不要把正常行为判断为异常行为，误报率要低。更不要把异常判断为正常，遗漏率要低。</p><h4 id="数据集来源"><a href="#数据集来源" class="headerlink" title="数据集来源"></a>数据集来源</h4><p>数据集质量决定任务难度，如果异常行为和正常行为差距很明显，任务会简单。如果异常行为和正常行为相似，任务会蛮难。</p><p>在网上找个<strong>IDS挑战赛的数据集</strong>(搜索：<strong>NSL-KDD</strong>，找近年的)，这类比赛的数据集较好，可以看到比赛优秀的项目代码，还可以看到评判标准。</p><p>某类攻击行为与正常行为相接近，某类攻击行为与正常行为差距很大，要把这些<strong>特征在报告中体现出来</strong></p><h3 id="网络安全-恶意代码分类"><a href="#网络安全-恶意代码分类" class="headerlink" title="网络安全-恶意代码分类"></a>网络安全-恶意代码分类</h3><p>Malware Classification.</p><p>二分类、多分类问题</p><h3 id="网络安全-垃圾邮件、短信检测"><a href="#网络安全-垃圾邮件、短信检测" class="headerlink" title="网络安全-垃圾邮件、短信检测"></a>网络安全-垃圾邮件、短信检测</h3><p>Spam Mail&#x2F;SMS Detection.</p><p>老师不建议选择，不好做。</p><p>思路：对于带有链接的邮件，能否先检测whois注册商来判断是否是正常域名？防止钓鱼网站？</p><p>中文的垃圾邮件有可能使用谐音字、或者把单个字拆开成多个字。</p><h3 id="多媒体内容安全-隐写与隐写分析"><a href="#多媒体内容安全-隐写与隐写分析" class="headerlink" title="多媒体内容安全-隐写与隐写分析"></a>多媒体内容安全-隐写与隐写分析</h3><p>Steganography &amp; Steganalysis</p><p>最简单的隐写方法：LSB隐写</p><p>将私密信息转换成二进制，逐个的写入到像素最低位。</p><p>隐写分析</p><p>检测的问题也可以是二分类问题，通过<strong>机器学习</strong>的方法来做，但隐写分析更难，因为修改很微弱，需要把微弱的痕迹增强并突显。</p><p>参考：<strong>ALASKA</strong>挑战赛（隐写分析挑战赛）</p><h3 id="多媒体内容安全-取证与反取证"><a href="#多媒体内容安全-取证与反取证" class="headerlink" title="多媒体内容安全-取证与反取证"></a>多媒体内容安全-取证与反取证</h3><p>Forensics &amp; Counter-Forensics</p><p>取证：给个照片，判断照片是否被修改（PS过），以及能否<strong>定位</strong>到修改的部分。视频伪造检测，比如deepfake的部分伪造；声音伪造，A的声音变成B的声音这是全局伪造。</p><p>反取证：伪造完成后，不被检测出来（抗取证）</p><h3 id="人工智能安全（这部分可以做攻击，可做防御）"><a href="#人工智能安全（这部分可以做攻击，可做防御）" class="headerlink" title="人工智能安全（这部分可以做攻击，可做防御）"></a>人工智能安全（这部分可以做攻击，可做防御）</h3><p>机器学习的方法本身是否安全？这部分关心模型本身是否安全。</p><p>（相对简单）poisoning attack：在样本训练时，这些样本就是有毒的，打着正常的标签但样本本身有问题。</p><p>（相对简单）adversarial attack：不干预训练过程，但使用一个专门设计过的手段，对某个模型的漏洞进行攻击或者绕过，让模型无法检测出来。比如，身上穿着某种图案的衣服，这个图案是专门设计过的，用来对抗摄像头的检测，让摄像头看不到人！</p><h3 id="人工智能安全-对抗样本攻击与防御"><a href="#人工智能安全-对抗样本攻击与防御" class="headerlink" title="人工智能安全-对抗样本攻击与防御"></a>人工智能安全-对抗样本攻击与防御</h3><p>Adversarial attack &amp; defense</p><p>在一个正常熊猫图片上，添加一个干扰因素，人眼看不出什么区别，但对模型来说，会判断成其它生物（猴子）</p><h3 id="区块链及隐私保护（不要求写代码）"><a href="#区块链及隐私保护（不要求写代码）" class="headerlink" title="区块链及隐私保护（不要求写代码）"></a>区块链及隐私保护（不要求写代码）</h3><p>找个具体的区块链场景，把这个场景的几个典型方法搞透，以及这个场景的发展趋势搞明白</p><p>比如搞一个<strong>食品追溯</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;课程安排&quot;&gt;&lt;a href=&quot;#课程安排&quot; class=&quot;headerlink&quot; title=&quot;课程安排&quot;&gt;&lt;/a&gt;课程安排&lt;/h1&gt;&lt;p&gt;前期非常快地讲下密码学&lt;/p&gt;
+&lt;p&gt;研究生的课程会很宽泛，包含不同领域的安全。&lt;/p&gt;
+&lt;h1 id=&quot;考核&quot;&gt;&lt;a hr</summary>
+      
+    
+    
+    
+    <category term="研究生课程" scheme="https://blog.lthero.cn/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="研究生课程" scheme="https://blog.lthero.cn/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/"/>
+    
+    <category term="信息安全" scheme="https://blog.lthero.cn/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>【openwrt】克隆Mac突破校园网</title>
@@ -472,33 +500,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;【linux】学习笔记Chap-13-Shell-variable&quot;&gt;&lt;a href=&quot;#【linux】学习笔记Chap-13-Shell-variable&quot; class=&quot;headerlink&quot; title=&quot;【linux】学习笔记Chap_13_Shell_v</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="https://blog.lthero.cn/categories/linux/"/>
-    
-    
-    <category term="linux" scheme="https://blog.lthero.cn/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【linux】学习笔记Chap_14_Init_file</title>
-    <link href="https://blog.lthero.cn/2022/08/02/linux-learningPathChp14/"/>
-    <id>https://blog.lthero.cn/2022/08/02/linux-learningPathChp14/</id>
-    <published>2022-08-02T13:12:05.000Z</published>
-    <updated>2022-08-07T10:36:17.072Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Init-file"><a href="#Init-file" class="headerlink" title="Init_file"></a>Init_file</h1><blockquote><p>初始文件</p></blockquote><h3 id="命令习惯rc"><a href="#命令习惯rc" class="headerlink" title="命令习惯rc"></a>命令习惯rc</h3><p>run commonds 是一种配置文件，如 .bashrc .exrc</p><p>这些命令后在某个程序启动时自动运行</p><p>作为一个命名习惯， 如 我写了个foo 的程序 那么将<strong>初始化文件</strong></p><p>写作为 <strong>.foorc</strong> (foo 只是随便哪个名字)</p><h2 id="文档编辑器"><a href="#文档编辑器" class="headerlink" title="文档编辑器"></a>文档编辑器</h2><h3 id="nano-和-pico-和-vi"><a href="#nano-和-pico-和-vi" class="headerlink" title="nano 和 pico 和 vi"></a>nano 和 pico 和 vi</h3><p>vi 常用于 CLI 命令行接口</p><p>nano 和 pico 常用于GUI 图形化接口</p><h2 id="Shell-几种形式"><a href="#Shell-几种形式" class="headerlink" title="Shell 几种形式"></a>Shell 几种形式</h2><p>shell 的几种形式 login shell &amp;&amp; non login shell</p><p>交互的划分 interactive shell &amp;&amp; non-interactive shell</p><h3 id="login-shell"><a href="#login-shell" class="headerlink" title="login shell"></a>login shell</h3><p>login 需要用户名密码进入 ，一般的 ssh (secure shell) 登陆都用login shell</p><p>login shell 初始化，会执行 login file 和 环境 file ，顺序如下</p><ol><li>&#x2F;etc&#x2F;profile 这个是全局的配置 不管哪个用户登陆都会读取</li><li>&#x2F;etc&#x2F;profile里面会执行<strong>profile.d文件夹内</strong>的所有sh文件</li><li>&#x2F;root&#x2F;.bash_profile或 &#x2F;root&#x2F;.profile 或 &#x2F;root&#x2F;.bash_login 按顺序找到哪个，就执行哪个，只执行一个<br>这三个文件都会读取 &#x2F;root&#x2F;.bashrc (环境变量文件)</li></ol><h3 id="non-login-shell"><a href="#non-login-shell" class="headerlink" title="non-login shell"></a>non-login shell</h3><p>开non-login shell，例如，在login shell 中</p><ol><li>输入<strong>bash开的新shell</strong></li><li>通过 <strong>su username 开的 shell</strong></li></ol><p>su -username 可以开login shell 不加-开的就是non login shelll</p><h3 id="interactive-shell"><a href="#interactive-shell" class="headerlink" title="interactive shell"></a>interactive shell</h3><p>有交互的 shell 即 等待输入命令并解释执行命令 等待下一个命令</p><h3 id="non-interactive-shell"><a href="#non-interactive-shell" class="headerlink" title="non interactive shell"></a>non interactive shell</h3><p>一般的shell 脚本执行 如 bash hello.sh 即 <strong>不与用户交互 一次性执行脚本,<strong>哪怕sh中</strong>有让用户输入的过程也不是可交互脚本</strong></p><h3 id="echo-查看Shell类型"><a href="#echo-查看Shell类型" class="headerlink" title="echo $-查看Shell类型"></a>echo $-查看Shell类型</h3><p><code>echo $-</code> 可以查看当前是否为交互shell</p><p>输出有“himBH”就是交互shell</p><p>在写shell脚本头部时：</p><p><code>#!bin/bash</code>        是 non login &amp; non interactive shell</p><p><code>#!bin/bash --login</code> 是login non &amp; interactive shell</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Init-file&quot;&gt;&lt;a href=&quot;#Init-file&quot; class=&quot;headerlink&quot; title=&quot;Init_file&quot;&gt;&lt;/a&gt;Init_file&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;初始文件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id</summary>
       
     
     
