@@ -142,31 +142,6 @@
   </entry>
   
   <entry>
-    <title>DLwP-Chapter1</title>
-    <link href="https://blog.lthero.cn/2023/07/03/DLwP-Chapter1/"/>
-    <id>https://blog.lthero.cn/2023/07/03/DLwP-Chapter1/</id>
-    <published>2023-07-03T06:05:16.000Z</published>
-    <updated>2023-07-03T06:15:55.441Z</updated>
-    
-    <content type="html"><![CDATA[<p>1</p><h1 id="DLwP-Chapter1"><a href="#DLwP-Chapter1" class="headerlink" title="DLwP-Chapter1"></a>DLwP-Chapter1</h1><p>notice the difference between machine and deep learning</p><p>machine learning: the machine learns from the data. People input data into system and get answers from the prediction of these data, the output is rules, and the rules are used to predict the future data, hence the machine learns from the data.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;1&lt;/p&gt;
-&lt;h1 id=&quot;DLwP-Chapter1&quot;&gt;&lt;a href=&quot;#DLwP-Chapter1&quot; class=&quot;headerlink&quot; title=&quot;DLwP-Chapter1&quot;&gt;&lt;/a&gt;DLwP-Chapter1&lt;/h1&gt;&lt;p&gt;notice the differ</summary>
-      
-    
-    
-    
-    <category term="DLwP" scheme="https://blog.lthero.cn/categories/DLwP/"/>
-    
-    
-    <category term="DLwP" scheme="https://blog.lthero.cn/tags/DLwP/"/>
-    
-  </entry>
-  
-  <entry>
     <title>BayesTheorem</title>
     <link href="https://blog.lthero.cn/2023/04/24/BayesTheorem/"/>
     <id>https://blog.lthero.cn/2023/04/24/BayesTheorem/</id>
@@ -503,6 +478,30 @@
       
     <summary type="html">&lt;h1 id=&quot;系统进程管理&quot;&gt;&lt;a href=&quot;#系统进程管理&quot; class=&quot;headerlink&quot; title=&quot;系统进程管理&quot;&gt;&lt;/a&gt;系统进程管理&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;在Unix中，所有信息都由某个文件或程序提供，简单来说，文件只是个输入输出对象，而一个进程才是执</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="https://blog.lthero.cn/categories/linux/"/>
+    
+    
+    <category term="linux" scheme="https://blog.lthero.cn/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【linux】学习笔记Chap_13_Shell_variable</title>
+    <link href="https://blog.lthero.cn/2022/08/02/linux-learningPathChp13/"/>
+    <id>https://blog.lthero.cn/2022/08/02/linux-learningPathChp13/</id>
+    <published>2022-08-02T13:13:32.000Z</published>
+    <updated>2022-08-02T13:14:04.072Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="【linux】学习笔记Chap-13-Shell-variable"><a href="#【linux】学习笔记Chap-13-Shell-variable" class="headerlink" title="【linux】学习笔记Chap_13_Shell_variable"></a>【linux】学习笔记Chap_13_Shell_variable</h1><h2 id="子进程或子shell"><a href="#子进程或子shell" class="headerlink" title="子进程或子shell"></a>子进程或子shell</h2><p>在登陆后的shell可以作为父shell</p><p>如果输入vi 命令 进入 另一个进程 则称为子进程</p><p>如果输入 bash 也可以创建一个新的shell 也是子sell</p><h3 id="global-and-local-变量"><a href="#global-and-local-变量" class="headerlink" title="global and local 变量"></a>global and local 变量</h3><p>像IGNOREEOF就是全局变量，他们可以用于任何进程 而且变量唯一</p><p>环境变量全部用<strong>大写表示</strong> 一般以<strong>小写命令局部变量</strong>（shell）变量</p><p>全部变量<strong>既是shell 也是 environment 变量</strong>不存在单纯的环境变量</p><p>想比较<strong>单纯shell变量</strong>和<strong>全部变量</strong>可以使用<strong>env</strong></p><p><strong>若只在set中</strong>,<strong>不在env中</strong>就是纯shell变量 （set中变量也比env多）</p><p><strong>两者都在的就是全部变量</strong></p><p>默认创建的变量都是shell变量</p><h2 id="创建环境变量—–export"><a href="#创建环境变量—–export" class="headerlink" title="创建环境变量—–export"></a>创建环境变量—–export</h2><p>export 来创建一个shell + environment 变量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lthero=smart</span><br><span class="line">export lthero</span><br></pre></td></tr></table></figure><p>即可生效</p><p>或</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lthero=smart;export lthero</span><br></pre></td></tr></table></figure><p>又或</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export lthero=smart HOME=&quot;/etc/home&quot;....</span><br></pre></td></tr></table></figure><h2 id="查看环境变量—–env"><a href="#查看环境变量—–env" class="headerlink" title="查看环境变量—–env"></a>查看环境变量—–env</h2><p>env 可以查看全部的默认变量(环境变量)</p><p>用set 可以查看全部的shell 变量</p><h2 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h2><p>unset 删除一个变量</p><p>unset lthero HOME 只能用unset or un-export 删除shell&amp;环境变量</p><h2 id="echo-引号用法"><a href="#echo-引号用法" class="headerlink" title="echo 引号用法"></a>echo 引号用法</h2><p>echo ‘……’单引号内容的$会失效，将只输出$</p><p>“……”双引号内$() 可以起作用 $()表达执行某个命令</p><h3 id="用-连接长内容"><a href="#用-连接长内容" class="headerlink" title="用\连接长内容"></a>用\连接长内容</h3><p>echo test stetz stet \</p><p>test test ……….. \</p><p>可以换行 但内容是相连的，输出<strong>不会有换行</strong></p><h3 id="用引号连接长内容"><a href="#用引号连接长内容" class="headerlink" title="用引号连接长内容"></a>用引号连接长内容</h3><p>echo **’**test stets stet</p><p>etste**’**</p><p>或者用”” 内容会保留输入格式 即<strong>有换行</strong></p><h2 id="命令分类"><a href="#命令分类" class="headerlink" title="命令分类"></a>命令分类</h2><h3 id="internal-builtin）内部原生命令"><a href="#internal-builtin）内部原生命令" class="headerlink" title="internal(builtin）内部原生命令"></a>internal(builtin）内部原生命令</h3><p>shell会查找命令的程序位置再执行</p><h3 id="external外部命令"><a href="#external外部命令" class="headerlink" title="external外部命令"></a>external外部命令</h3><p>shell 会在 PATH这个环境变量中，优先查找外部命令程序位置</p><p>echo $PATH 可以查看全部外部命令存入位置 可以自己再添加 &#x2F;bin:&#x2F;usr&#x2F;bin: …. 用冒号分隔</p><h3 id="type检测命令类型"><a href="#type检测命令类型" class="headerlink" title="type检测命令类型"></a>type检测命令类型</h3><p>可以用type 检测所用命令是否为原生命令</p><p><code>type date time set</code> 一次查三个</p><p>date is &#x2F;bin&#x2F;date</p><p>time is a shell keyword  &#x2F;&#x2F;<strong>time 是keyword</strong> 也是原生在shell<strong>内部的命令</strong></p><p>set is a shell builtin   &#x2F;&#x2F;<strong>原生命令</strong></p><h3 id="命令help"><a href="#命令help" class="headerlink" title="命令help"></a>命令help</h3><p>help 可以列出全部的builtin命令 其中 help也是builtin命令</p><p>对于<strong>内置命令</strong>，可以查看<strong>基本用法</strong></p><p>” help 命令“ 和“命令 –help”一样</p><p>help -s pwd 将只显示其选项 参数</p><p>对于<strong>外置命令，用</strong></p><p>“命令 –help”</p><h2 id="export—-添加自定义路径"><a href="#export—-添加自定义路径" class="headerlink" title="export—-添加自定义路径"></a>export—-添加自定义路径</h2><p>对于已经设置好的PATH 可以用export 添加自己的路径</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exprot PATH=&quot;$PATH:/usr/bin/myfile&quot;</span><br></pre></td></tr></table></figure><p>其中 myfile 里面可以放入自定义的shell</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exprot PATH=&quot;/usr/bin/myfile:$PATH&quot;</span><br></pre></td></tr></table></figure><p>此用法将自定义路径<strong>添加到前面</strong></p><p>添加到前面后，如果自己有同名的内置sh文件，shell 会<strong>优先执行自定义</strong>的，再执行内置的</p><h3 id="设置PATH"><a href="#设置PATH" class="headerlink" title="设置PATH"></a>设置PATH</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exprot PATH=&quot;/bin:/usr/bin:/usr/local/bin&quot;....</span><br></pre></td></tr></table></figure><h3 id="设置终端命令符号"><a href="#设置终端命令符号" class="headerlink" title="设置终端命令符号"></a>设置终端命令符号</h3><p>在<code>/root/.bashrc</code> 中添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PS1=&quot;\[\e[33;1m\]\u@\h:\w# \[\e[0m\]&quot;</span><br></pre></td></tr></table></figure><p>32是绿色 33淡黄色</p><p>可以设置命令提示符 成为绿色 \u 命令 user \h hostname \w 是当前全路径 \W 只显示当前路径</p><p><strong>修改后立即生效source &#x2F;etc&#x2F;profile</strong></p><p><a href="https://www.cnblogs.com/kevingrace/p/5985970.html">详细</a></p><p>另外：</p><ul><li><code>vim /etc/motd</code> 可以修改连接上linux对话</li></ul><p>如：Hello,Welcome to Linux!</p><ul><li><code>/etc/profile.d</code> 目录下添加自定义sh脚本将连接到linux时执行</li></ul><h4 id="上面PS1中的用法是一种特殊写法"><a href="#上面PS1中的用法是一种特殊写法" class="headerlink" title="上面PS1中的用法是一种特殊写法"></a>上面PS1中的用法是一种特殊写法</h4><p>\u代表 $USER(环境变量) 当前用户</p><p>\w代表$PWD 当前路径</p><p>\h代表$(hostaname) 主机名</p><p>\d代表date 时间</p><p>@代表time  运行时间</p><p>!代表历史命令</p><h2 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h2><h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p>history 将展示全部的历史记录 如果想要运行某条 num是命令编号</p><p>可以<code>!num</code> 将执行那条命令， <code>!!</code> 将自动执行上一条命令</p><h3 id="fc"><a href="#fc" class="headerlink" title="fc"></a>fc</h3><p>fc 将自动调用vim 编辑器修改命令 修改完成并自动r执行</p><p>fc -l 显示历史近20条命令</p><p><code>fc -s num</code> 和 <code>! num</code> 一样 执行指定命令</p><p><code>fc num</code> 将编辑此命令</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;【linux】学习笔记Chap-13-Shell-variable&quot;&gt;&lt;a href=&quot;#【linux】学习笔记Chap-13-Shell-variable&quot; class=&quot;headerlink&quot; title=&quot;【linux】学习笔记Chap_13_Shell_v</summary>
       
     
     

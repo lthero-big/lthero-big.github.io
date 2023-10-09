@@ -115,31 +115,6 @@
     
     
     <entry>
-      <title>DLwP-Chapter1</title>
-      <link href="/2023/07/03/DLwP-Chapter1/"/>
-      <url>/2023/07/03/DLwP-Chapter1/</url>
-      
-        <content type="html"><![CDATA[<p>1</p><h1 id="DLwP-Chapter1"><a href="#DLwP-Chapter1" class="headerlink" title="DLwP-Chapter1"></a>DLwP-Chapter1</h1><p>notice the difference between machine and deep learning</p><p>machine learning: the machine learns from the data. People input data into system and get answers from the prediction of these data, the output is rules, and the rules are used to predict the future data, hence the machine learns from the data.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> DLwP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> DLwP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>BayesTheorem</title>
       <link href="/2023/04/24/BayesTheorem/"/>
       <url>/2023/04/24/BayesTheorem/</url>
