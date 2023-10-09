@@ -1723,6 +1723,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://blog.lthero.cn/tags/ChatGPT/</loc>
+    <lastmod>2023-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -2098,6 +2105,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/</loc>
+    <lastmod>2023-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/categories/ChatGPT/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
