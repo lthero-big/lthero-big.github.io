@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://blog.lthero.cn/2023/12/28/SVM-cpp/</loc>
+    
+    <lastmod>2023-12-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2023/12/16/Linear-transformations/</loc>
     
     <lastmod>2023-12-18</lastmod>
@@ -1817,6 +1826,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/tags/BP/</loc>
+    <lastmod>2023-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/tags/SVM/</loc>
     <lastmod>2023-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
