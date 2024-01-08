@@ -6,7 +6,7 @@
   <link href="https://blog.lthero.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.lthero.cn/"/>
-  <updated>2023-12-28T14:50:29.382Z</updated>
+  <updated>2024-01-08T03:45:29.604Z</updated>
   <id>https://blog.lthero.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网易云音乐导出到spotify</title>
+    <link href="https://blog.lthero.cn/2024/01/08/NetNeaseMUsic2spotify/"/>
+    <id>https://blog.lthero.cn/2024/01/08/NetNeaseMUsic2spotify/</id>
+    <published>2024-01-08T03:42:20.000Z</published>
+    <updated>2024-01-08T03:45:29.604Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用方法">使用方法</h2><ul><li><ol><li>用 Chrome 打开歌单的 web 页面（可以通过分享拿到链接，链接类似这样：<a href="http://music.163.com/playlist?id=xxx&amp;userid=yyy%EF%BC%89">http://music.163.com/playlist?id=xxx&amp;userid=yyy）</a></li></ol></li><li><ol start="2"><li>然后右键“检查”（如果有左上角有 device 选项，需要选择 Laptop 开头的，可以在 Edit/编辑 里添加）</li></ol></li><li><ol start="3"><li>在 console 里输入下面脚本，即可输出 “歌曲名 - 歌手名” 格式的内容：<br>Springsteen - Eric Church<br>Chattahoochee - Alan Jackson<br>Baby Now That I Found You - Alison Krauss<br>Check Yes or No - George Strait<br>Meanwhile Back At Mama’s (feat. Faith Hill) - Tim McGraw/Faith Hill<br>。。</li></ol></li><li><p>4.通过https://www.spotlistr.com/ 或 <a href="https://www.tunemymusic.com/">https://www.tunemymusic.com/</a> 导出到 Apple Music 或者 Spotify 等音乐平台</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> iframeDocument = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;g_iframe&quot;</span>).<span class="property">contentDocument</span>;</span><br><span class="line">  <span class="keyword">let</span> tempElement = iframeDocument.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">getSinger</span>(<span class="params">trNode</span>) &#123;</span><br><span class="line">      tempElement.<span class="property">innerHTML</span> = trNode.<span class="property">innerHTML</span>;</span><br><span class="line">      <span class="keyword">return</span> tempElement.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;span&quot;</span>)[<span class="number">0</span>].<span class="property">title</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">getSongName</span>(<span class="params">trNode</span>) &#123;</span><br><span class="line">      tempElement.<span class="property">innerHTML</span> = trNode.<span class="property">innerHTML</span>;</span><br><span class="line">      <span class="keyword">return</span> tempElement.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;b&quot;</span>)[<span class="number">0</span>].<span class="property">title</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> allSongsTRNode = iframeDocument.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;table.m-table &gt; tbody &gt; tr&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> songsStr = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  allSongsTRNode.<span class="title function_">forEach</span>(<span class="function"><span class="params">songTR</span> =&gt;</span> &#123;</span><br><span class="line">      songsStr += (<span class="title function_">getSongName</span>(songTR.<span class="property">childNodes</span>[<span class="number">1</span>]) + <span class="string">&quot; - &quot;</span> + <span class="title function_">getSinger</span>(songTR.<span class="property">childNodes</span>[<span class="number">3</span>]));</span><br><span class="line">      songsStr += <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(songsStr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;用 Chrome 打开歌单的 web 页面（可以通过分享拿到链接，链接类似这样：&lt;a href=&quot;http://music.163.com/playlist?id=xxx&amp;amp;userid=</summary>
+      
+    
+    
+    
+    <category term="折腾" scheme="https://blog.lthero.cn/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="spotify" scheme="https://blog.lthero.cn/tags/spotify/"/>
+    
+    <category term="网易云音乐" scheme="https://blog.lthero.cn/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
+    
+  </entry>
   
   <entry>
     <title>【SVM】c++实现</title>
@@ -497,30 +527,6 @@
     <category term="折腾" scheme="https://blog.lthero.cn/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="树莓派" scheme="https://blog.lthero.cn/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【邮箱接口调用】</title>
-    <link href="https://blog.lthero.cn/2022/09/25/ltheroMail-api/"/>
-    <id>https://blog.lthero.cn/2022/09/25/ltheroMail-api/</id>
-    <published>2022-09-25T04:35:01.000Z</published>
-    <updated>2023-02-20T01:21:49.010Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="邮箱接口调用"><a href="#邮箱接口调用" class="headerlink" title="邮箱接口调用"></a>邮箱接口调用</h1><h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#接收方</span></span><br><span class="line">receiver=<span class="string">&#x27;111111@qq.com&#x27;</span></span><br><span class="line"><span class="comment">#内容</span></span><br><span class="line">content=<span class="string">&#x27;testtesttesttesttest&#x27;</span></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;reciever&#x27;</span>: receiver,</span><br><span class="line">    <span class="comment">#邮件标题</span></span><br><span class="line">    <span class="string">&#x27;title&#x27;</span>: <span class="string">f&#x27;邮件标题&#x27;</span>,</span><br><span class="line">    <span class="comment">#主要内容</span></span><br><span class="line">    <span class="string">&#x27;content&#x27;</span>:content,</span><br><span class="line">    <span class="comment">#内部大标题</span></span><br><span class="line">    <span class="string">&#x27;innerTitle&#x27;</span>: <span class="string">f&#x27;内置标题&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">res = requests.post(url=<span class="string">&#x27;api&#x27;</span>, data=params)</span><br></pre></td></tr></table></figure><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220925123952216.png" alt="image-20220925123952216"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;邮箱接口调用&quot;&gt;&lt;a href=&quot;#邮箱接口调用&quot; class=&quot;headerlink&quot; title=&quot;邮箱接口调用&quot;&gt;&lt;/a&gt;邮箱接口调用&lt;/h1&gt;&lt;h2 id=&quot;调用&quot;&gt;&lt;a href=&quot;#调用&quot; class=&quot;headerlink&quot; title=&quot;调用&quot;&gt;&lt;</summary>
-      
-    
-    
-    
-    <category term="邮箱接口" scheme="https://blog.lthero.cn/categories/%E9%82%AE%E7%AE%B1%E6%8E%A5%E5%8F%A3/"/>
-    
-    
-    <category term="邮箱接口" scheme="https://blog.lthero.cn/tags/%E9%82%AE%E7%AE%B1%E6%8E%A5%E5%8F%A3/"/>
     
   </entry>
   
