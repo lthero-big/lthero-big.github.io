@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2024/03/25/PersonalFilmStationOnUbuntu/</loc>
+    
+    <lastmod>2024-03-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2024/01/22/DDIM/</loc>
     
     <lastmod>2024-03-25</lastmod>
@@ -1998,6 +2007,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
+    <lastmod>2024-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/tags/Nas/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
