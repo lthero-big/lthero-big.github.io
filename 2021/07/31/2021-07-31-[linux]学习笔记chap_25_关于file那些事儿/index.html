@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【linux】学习笔记Chap_25_关于File那些事儿 | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="touch命令功能 创建文件，touch将创建一个普通空文件，并不会进入编辑模式  vim &#x2F;vi 也可以创建文件，或者用&gt; 将结果写入文件，若文件本身不存在，系统将创建。  大部分时间不需要用touch创建文件，部分情况下用touch可以方便快速创建文件  语法 touch 【-acm】 【-t time】 file file2 file3…  touch 将修改文件的访问时间(acc">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【linux】学习笔记Chap_25_关于File那些事儿 | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="touch命令 功能  创建文件，touch将创建一个普通空文件，并不会进入编辑模式  vim &#x2F;vi 也可以创建文件，或者用&gt; 将结果写入文件，若文件本身不存在，系统将创建。  大部分时间不需要用touch创建文件，部分情况下用touch可以方便快速创建文件  语法  touch 【-acm】 【-t time】 file file2 file3…  touch 将修改文件的访问时间(a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【linux】学习笔记Chap_25_关于File那些事儿">
 <meta property="og:url" content="https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/index.html">
 <meta property="og:site_name" content="lthero">
-<meta property="og:description" content="touch命令功能 创建文件，touch将创建一个普通空文件，并不会进入编辑模式  vim &#x2F;vi 也可以创建文件，或者用&gt; 将结果写入文件，若文件本身不存在，系统将创建。  大部分时间不需要用touch创建文件，部分情况下用touch可以方便快速创建文件  语法 touch 【-acm】 【-t time】 file file2 file3…  touch 将修改文件的访问时间(acc">
+<meta property="og:description" content="touch命令 功能  创建文件，touch将创建一个普通空文件，并不会进入编辑模式  vim &#x2F;vi 也可以创建文件，或者用&gt; 将结果写入文件，若文件本身不存在，系统将创建。  大部分时间不需要用touch创建文件，部分情况下用touch可以方便快速创建文件  语法  touch 【-acm】 【-t time】 file file2 file3…  touch 将修改文件的访问时间(a">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg">
 <meta property="article:published_time" content="2021-07-31T00:00:00.000Z">
 <meta property="article:modified_time" content="2022-06-08T14:16:03.122Z">
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="技术&amp;生活">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -143,128 +143,154 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【linux】学习笔记Chap_25_关于File那些事儿</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-31T00:00:00.000Z" title="发表于 2021-07-31 08:00:00">2021-07-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-08T14:16:03.122Z" title="更新于 2022-06-08 22:16:03">2022-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【linux】学习笔记Chap_25_关于File那些事儿"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p> </p>
-<h2 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h2><h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【linux】学习笔记Chap_25_关于File那些事儿</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-31T00:00:00.000Z" title="发表于 2021-07-31 08:00:00">2021-07-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-08T14:16:03.122Z" title="更新于 2022-06-08 22:16:03">2022-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【linux】学习笔记Chap_25_关于File那些事儿"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p></p>
+<h2 id="touch命令">touch命令</h2>
+<h4 id="功能">功能</h4>
+<ul>
 <li>创建文件，<strong>touch将创建一个普通空文件</strong>，并<strong>不会进入编辑</strong>模式</li>
 </ul>
 <p><code>vim /vi</code> 也可以创建文件，或者用<code>&gt;</code> 将结果写入文件，若文件本身不存在，系统将创建。</p>
 <ul>
 <li>大部分时间不需要用touch创建文件，部分情况下用<strong>touch可以方便快速创建文件</strong></li>
 </ul>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li>touch 【-acm】 【-t time】 file file2 file3…</li>
 </ul>
 <p>touch 将修改文件的访问时间(access time) 和 修改时间（modification)</p>
 <p>如果想将许多文件修改成同一时间，touch * (将文件的访问时间统一）</p>
-<h4 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li>-t 设定时间，时间格式是[[YY]YY]MMDDhhmm[.ss]</li>
 </ul>
-<p>年份可以半省略 21&#x2F;2021 或全省略</p>
+<p>年份可以半省略 21/2021 或全省略</p>
 <ul>
 <li>-a 只修改访问时间</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch -ac -t 202107301330 file</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>-c （no create ）<strong>不创建文件</strong>，touch 将只修改文件的时间，如果某个<strong>文件不存在也不会创建</strong></li>
 </ul>
-<p> </p>
-<p> </p>
-<h2 id="文件命名规则"><a href="#文件命名规则" class="headerlink" title="文件命名规则"></a>文件命名规则</h2><ol>
+<p></p>
+<p></p>
+<h2 id="文件命名规则">文件命名规则</h2>
+<ol>
 <li>最长255个字节</li>
-<li>文件名中除了null(空)和&#x2F;(slash)的其它字符，因为&#x2F;代表路径切换</li>
+<li>文件名中除了null(空)和/(slash)的其它字符，因为/代表路径切换</li>
 <li><strong>不要乱起名</strong></li>
 <li><strong>程序不用要test</strong>，因为系统内置一个test命令，用来比较文件类型和值</li>
 </ol>
-<p> </p>
-<h3 id="特殊符号的文件名"><a href="#特殊符号的文件名" class="headerlink" title="特殊符号的文件名"></a>特殊符号的文件名</h3><p>对于包含特殊符号的文件名，不能用一般方式引用他们，像一个文件<code>info;date</code> 用命令<code>ls -l info;date</code> 就会出错</p>
-<p>要用引号：<code>ls -l &#39;info;date&#39;</code></p>
+<p></p>
+<h3 id="特殊符号的文件名">特殊符号的文件名</h3>
+<p>对于包含特殊符号的文件名，不能用一般方式引用他们，像一个文件<code>info;date</code> 用命令<code>ls -l info;date</code> 就会出错</p>
+<p>要用引号：<code>ls -l 'info;date'</code></p>
 <p>或者用<code>\</code> ：<code>ls -l info\date</code></p>
 <p>用法安全的字符a-zA-Z0-9._- (dot、underscore、hyphen)</p>
-<p> </p>
-<h2 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h2><h4 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h4><ul>
-<li>复制文件&#x2F;文件夹</li>
+<p></p>
+<h2 id="cp命令">cp命令</h2>
+<h4 id="功能：">功能：</h4>
+<ul>
+<li>复制文件/文件夹</li>
 </ul>
-<p> </p>
-<h3 id="复制单个文件"><a href="#复制单个文件" class="headerlink" title="复制单个文件"></a>复制单个文件</h3><h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><ul>
+<p></p>
+<h3 id="复制单个文件">复制单个文件</h3>
+<h4 id="语法：">语法：</h4>
+<ul>
 <li><code>cp -ip file1 file2</code>        #file1是已经存在文件 file2是目的地文件</li>
 </ul>
-<p>如果<strong>file2不存在，cp将创建；</strong>如果存在将<strong>先将内容清除，再替换内容</strong></p>
+<p>如果<strong>file2不存在，cp将创建；<strong>如果存在将</strong>先将内容清除，再替换内容</strong></p>
 <p>所以，同目录下不能出现两个同名文件，不能有以下命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp file1 file1</span><br></pre></td></tr></table></figure>
-
-<h4 id="选项："><a href="#选项：" class="headerlink" title="选项："></a>选项：</h4><ul>
+<h4 id="选项：">选项：</h4>
+<ul>
 <li>-i (interactive) 因为cp容易清除目的文件的内容，所以-i用来<strong>询问是否覆盖目的文件</strong></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp: overwrite extra(yes/no)? 回复y会替换，其它内容则不替换</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<h3 id="复制多个文件"><a href="#复制多个文件" class="headerlink" title="复制多个文件"></a>复制多个文件</h3><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法:"></a>语法:</h4><ul>
+<p></p>
+<h3 id="复制多个文件">复制多个文件</h3>
+<h4 id="语法">语法:</h4>
+<ul>
 <li><code>cp data1 data2 data3 backups</code></li>
 </ul>
-<p> </p>
 <p>将data1 data2 data3三个文件复制到<strong>backups 这个目录中</strong>(backups<strong>只能是目录</strong>，<strong>不能是文件</strong>，目录可以不存在)</p>
-<p> </p>
+<p></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">或者 cp data[123] backups (使用正则)</span><br><span class="line">或者 cp data* backups      (使用正则)</span><br><span class="line">或者 cp d* backups         (如果没有其它d开头的文件)</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<h3 id="复制目录"><a href="#复制目录" class="headerlink" title="复制目录"></a>复制目录</h3><h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法:"></a>语法:</h4><ul>
+<p></p>
+<h3 id="复制目录">复制目录</h3>
+<h4 id="语法">语法:</h4>
+<ul>
 <li><code>cp -r [-ip] directory1 dire2</code>        # -r必须要添加</li>
 </ul>
-<h4 id="选项-1"><a href="#选项-1" class="headerlink" title="选项:"></a>选项:</h4><ul>
+<h4 id="选项">选项:</h4>
+<ul>
 <li><code>-r</code>  (recursive) 将<strong>整个目录子树</strong>全部复制！！！<strong>包含子目录和文件</strong></li>
 </ul>
-<h4 id="命令："><a href="#命令：" class="headerlink" title="命令："></a>命令：</h4><ul>
+<h4 id="命令：">命令：</h4>
+<ul>
 <li>将directory下全部目录（只有目录）拷贝</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp directory/* backups 正则表达</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<h2 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h2><h4 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h4><ul>
+<p></p>
+<h2 id="mv命令">mv命令</h2>
+<h4 id="功能">功能</h4>
+<ul>
 <li>移动一个或多个文件到已经存在的目录中</li>
 </ul>
-<h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li>mv -if file[123] directory  #<strong>最后一个参数只能为目标目录</strong>，默认将<strong>前面</strong>参数当作<strong>源文件（或目录）</strong></li>
 </ul>
-<h4 id="选项-2"><a href="#选项-2" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li><code>-i</code>  interactive 和cp的-i类似，如果目的目录中已经包含要移动的文件，<strong>询问是否覆盖</strong></li>
 <li><code>-f</code>  force 强制移动<strong>不询问</strong></li>
 </ul>
-<h3 id="重命名文件或目录"><a href="#重命名文件或目录" class="headerlink" title="重命名文件或目录"></a>重命名文件或目录</h3><h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><ul>
+<h3 id="重命名文件或目录">重命名文件或目录</h3>
+<h4 id="语法">语法</h4>
+<ul>
 <li><code>mv -if oldname newname</code></li>
 </ul>
-<p> </p>
-<h2 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h2><h4 id="功能-2"><a href="#功能-2" class="headerlink" title="功能"></a>功能</h4><ul>
+<p></p>
+<h2 id="rm命令">rm命令</h2>
+<h4 id="功能">功能</h4>
+<ul>
 <li>删除文件或目录</li>
 </ul>
-<h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li><code>rm [-rfi] name</code></li>
 </ul>
-<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<h4 id="特性">特性</h4>
+<ul>
 <li>删除后不可恢复，危险语句 <code>rm -rf /</code> 删库跑路专用</li>
 </ul>
-<h4 id="选项-3"><a href="#选项-3" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li><code>-r</code>    recursive <strong>递归</strong>，<strong>删除目录使用</strong></li>
 <li><code>-i</code>    interactive 询问</li>
 <li><code>-f</code>    force 不询问强执行,而且权限大于-i</li>
 </ul>
-<p> </p>
-<p> </p>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><ul>
+<p></p>
+<p></p>
+<h2 id="文件权限">文件权限</h2>
+<ul>
 <li>权限分三种：读、写、执行</li>
 <li>对于不同文件权限，出于安全考虑一定要设置好！如：shell脚本可读、可执行。文档文件可读可写。</li>
 </ul>
-<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>读：文件是可读的</p>
+<h3 id="文件">文件</h3>
+<p>读：文件是可读的</p>
 <p>写：修改文件</p>
 <p>执行：shell脚本或其它程序</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>读：查看内容</p>
+<h3 id="目录">目录</h3>
+<p>读：查看内容</p>
 <p>写：复制|删除|移动|目录内创建新文件</p>
 <p>执行：可遍历文件</p>
 <p><strong>目录一般为可读、可执行</strong></p>
 <p>但，若先在目录内创建一个文件，再退出修改目录权限为不可写，经过测试发现，仍然可以删除目录内文件，并仍然可以在目录内创建文件？？？</p>
-<p> </p>
-<p> </p>
-<h2 id="设置userid"><a href="#设置userid" class="headerlink" title="设置userid"></a>设置userid</h2><p>每个用户对系统来说，只能用userid辨识。而为了保证不同用户在同一个文件系统不混乱，为了方便同一个unix上不同用户和小组文件管理，开发者发明了 <strong>拥有者</strong>、<strong>所在组</strong>、<strong>其它人</strong> 三个身份概念</p>
+<p></p>
+<p></p>
+<h2 id="设置userid">设置userid</h2>
+<p>每个用户对系统来说，只能用userid辨识。而为了保证不同用户在同一个文件系统不混乱，为了方便同一个unix上不同用户和小组文件管理，开发者发明了 <strong>拥有者</strong>、<strong>所在组</strong>、<strong>其它人</strong> 三个身份概念</p>
 <ul>
 <li>创建新文件时的userid是文件拥有者，而拥有者是唯一的可以改变文件权限的userid</li>
 </ul>
@@ -272,103 +298,110 @@
 <ul>
 <li>文件权限将分为 <strong>拥有者、所在组、其它人</strong></li>
 </ul>
-<p>当root创建用户时，可以指定用户所在组， groupid保存在&#x2F;etc&#x2F;group中</p>
+<p>当root创建用户时，可以指定用户所在组， groupid保存在/etc/group中</p>
 <ul>
 <li>命令 <code>id</code> 可以查看当前用户id和groupid</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id</span><br><span class="line">uid=0(root) gid=0(root) groups=0(root)</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <ul>
 <li>命令 <code>group</code>  可以查看用户组名字</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">group</span><br><span class="line">root : root</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <p>用户可以同时归属多个不同小组，拥有不同组权限</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">补充 ls</span><br><span class="line">-rw-r--r-- 1 root root 1414 Jul 21 09:31 Chap_9_Manual.txt</span><br><span class="line">-rw-r--r-- 1 root root 67 Jul 22 17:57 DNS.txt</span><br><span class="line">-rw-r--r-- 1 root root 796 Jul 21 09:31 Some_Quick_instructior.txt</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>r  &#x3D;   read 权限 w &#x3D;  wirte x &#x3D;   execute - &#x3D;   无权限</p>
+<p>r  =   read 权限 w =  wirte x =   execute - =   无权限</p>
 </blockquote>
-<p> </p>
-<h2 id="File-Modes"><a href="#File-Modes" class="headerlink" title="File Modes"></a>File Modes</h2><p>用数字代替用文本的<strong>rwx</strong>表示</p>
+<p></p>
+<h2 id="file-modes">File Modes</h2>
+<p>用数字代替用文本的<strong>rwx</strong>表示</p>
 <blockquote>
-<p>4 &#x3D; r &#x3D;read 读权限 2 &#x3D; w &#x3D;write 写 1 &#x3D; e &#x3D;execute执行 0 &#x3D; no</p>
+<p>4 = r =read 读权限 2 = w =write 写 1 = e =execute执行 0 = no</p>
 </blockquote>
 <p>这些数字可以直接相加，得出<strong>总权限</strong></p>
 <blockquote>
-<p>rwx &#x3D; 4+2+1 &#x3D;7 r-x &#x3D; 4+1 &#x3D;5 没有写权限 r– &#x3D; 4 只有读权限</p>
+<p>rwx = 4+2+1 =7 r-x = 4+1 =5 没有写权限 r-- = 4 只有读权限</p>
 <p>755 表示<strong>拥有者</strong>有<strong>全部权限</strong>，所属组和其它人可读可执行 777 <strong>所有人</strong>有<strong>所有权限</strong></p>
 </blockquote>
-<p> </p>
-<h2 id="chmod命令—修改权限"><a href="#chmod命令—修改权限" class="headerlink" title="chmod命令—修改权限"></a>chmod命令—修改权限</h2><h4 id="功能：-1"><a href="#功能：-1" class="headerlink" title="功能："></a>功能：</h4><ul>
+<p></p>
+<h2 id="chmod命令-修改权限">chmod命令—修改权限</h2>
+<h4 id="功能：">功能：</h4>
+<ul>
 <li>可以修改文件权限但只能用mode表示</li>
 </ul>
-<h4 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li>chmod mode file (上面的<strong>file mode  755</strong>)</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 file1 file2</span><br><span class="line">chmod 700 temp.program</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<h2 id="umask命令—修改创建文件默认权限"><a href="#umask命令—修改创建文件默认权限" class="headerlink" title="umask命令—修改创建文件默认权限"></a>umask命令—修改创建文件默认权限</h2><p>默认下，创建新文件时的(file mode)权限为</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<h2 id="umask命令-修改创建文件默认权限">umask命令—修改创建文件默认权限</h2>
+<p>默认下，创建新文件时的(file mode)权限为</p>
 <p>666 一般文件 777 可执行文件 777 目录</p>
 <p>可能通过<code>umask</code> 可调整初始文件权限</p>
-<h4 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li>umask [mode] 这里的mode和file mode是相反的</li>
 </ul>
-<p> </p>
+<p></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">umask 022 相当于rwx = 755 不给owner高限制，而所属组其它人不能写</span><br><span class="line">umask 000 对所有有开放</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<p> </p>
-<h2 id="shred命令"><a href="#shred命令" class="headerlink" title="shred命令"></a>shred命令</h2><p>为保证效率，删除某一文件一般只需删除其在文件系统中的对应项，实际的文件内容则仍完好无损，这一特性也多为常见的数据恢复软件所利用以恢复文件。</p>
+<p></p>
+<p></p>
+<h2 id="shred命令">shred命令</h2>
+<p>为保证效率，删除某一文件一般只需删除其在文件系统中的对应项，实际的文件内容则仍完好无损，这一特性也多为常见的数据恢复软件所利用以恢复文件。</p>
 <p>针对这些特点，<strong>shred</strong>以用能<strong>最大程度破坏</strong>原始数据的模式多次覆写文件的方式来达到<strong>安全删除</strong>的目的</p>
-<h4 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li>shred -fvuz file</li>
 </ul>
-<h4 id="功能-3"><a href="#功能-3" class="headerlink" title="功能"></a>功能</h4><ul>
+<h4 id="功能">功能</h4>
+<ul>
 <li>多次重写已经存在的文件，致使从系统中恢复的<strong>数据也会变星面目全非</strong></li>
 </ul>
-<h4 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h4><ul>
+<h4 id="特性">特性</h4>
+<ul>
 <li>即使原文件只有5KB(分配8KB,两个块) <strong>shred后会将8KB全部覆盖乱写</strong></li>
 </ul>
-<h4 id="选项-4"><a href="#选项-4" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li>-v verbose</li>
 <li>-z 最后一次重写，将全部内容替换成0</li>
 <li>-f force 强制执行</li>
 <li>-u 最后重写完成自动删除文件</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shred -vzu test.txt  #安全删除</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<p> </p>
-<h2 id="Link命令—链接"><a href="#Link命令—链接" class="headerlink" title="Link命令—链接"></a>Link命令—链接</h2><p>Unix创建文件时，系统将做几件事</p>
+<p></p>
+<p></p>
+<h2 id="link命令-链接">Link命令—链接</h2>
+<p>Unix创建文件时，系统将做几件事</p>
 <p>1、在存储设置分配一片空间</p>
 <p>2、创建一个<strong>index node的结构</strong> 保存文件信息，普通用户不用了解这个，文件系统会自动处理</p>
 <p>3、同时自动创建一个用户给的name作为默认的第一个<strong>link （硬链接）</strong></p>
 <p>使用<code>stat</code> 命令 可以查看文件的<code>I-node(index node)</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stat Chap_25_work.txt</span><br><span class="line"></span><br><span class="line">File: Chap_25_work_with_file.txt</span><br><span class="line">Size: 6727 Blocks: 16 IO Block: 4096 regular file</span><br><span class="line">Device: fc01h/64513d Inode: 1053616 Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)</span><br><span class="line">Access: 2021-07-31 13:57:04.850414253 +0800</span><br><span class="line">Modify: 2021-07-31 13:57:01.026275502 +0800</span><br><span class="line">Change: 2021-07-31 13:57:01.026275502 +0800</span><br><span class="line">Birth: -</span><br></pre></td></tr></table></figure>
-
 <p>容量、分配给文件的块、文件类型</p>
-<p>文件实际存在的设备、<strong>i-number(源文件的唯一标识)<strong>、</strong>其它文件链接到此的数量(Links)</strong></p>
+<p>文件实际存在的设备、<strong>i-number(源文件的唯一标识)</strong>、<strong>其它文件链接到此的数量(Links)</strong></p>
 <p>权限、拥有者、所属组</p>
 <p>上次修改时间</p>
 <p>上次访问时间</p>
 <p>上次inode修改时间</p>
-<p> </p>
-<h2 id="I-number"><a href="#I-number" class="headerlink" title="I-number"></a>I-number</h2><p>每个文件都有唯一<strong>Index number</strong> (i-number) 方便文件系统查找和记录</p>
+<p></p>
+<h2 id="i-number">I-number</h2>
+<p>每个文件都有唯一<strong>Index number</strong> (i-number) 方便文件系统查找和记录</p>
 <p>虽然目录下面包含许多文件，但实际上，<strong>目录只包含文件的名字和i-number</strong></p>
 <p>所以，这些<strong>目录实际上占很小容量</strong></p>
 <p>使用<code>ls -i</code> 可以查看<code>i-number</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -i Chap_25....</span><br><span class="line">1053616 Chap_25_work_with_file.txt</span><br></pre></td></tr></table></figure>
-
 <p><strong>结果和stat 查询的i-number一样</strong></p>
-<p> </p>
-<h3 id="Links硬链接"><a href="#Links硬链接" class="headerlink" title="Links硬链接"></a>Links硬链接</h3><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4><ul>
+<p></p>
+<h3 id="links硬链接">Links硬链接</h3>
+<h4 id="特点：">特点：</h4>
+<ul>
 <li>占内存空间</li>
 </ul>
 <p>Unix允许多个链接到同一个文件(stat file 可以查看links),即，<strong>一个文件可以有多个名字</strong></p>
@@ -377,26 +410,32 @@
 <p>如果创建文件<strong>name1</strong>时，链接到已经存在的一个文件<strong>Myfile的i-number</strong></p>
 <p>那name1将是Myfile的一个别名，两个名字指向同一个i-number</p>
 </blockquote>
-<p> </p>
-<h2 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h2><h4 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h4><ul>
+<p></p>
+<h2 id="ln命令">ln命令</h2>
+<h4 id="语法">语法</h4>
+<ul>
 <li>ln file newname   # <strong>file是已经存在</strong>的普通文件 <strong>newname是个链接</strong>文件</li>
 </ul>
-<h4 id="将多个链接放到目录中"><a href="#将多个链接放到目录中" class="headerlink" title="将多个链接放到目录中"></a>将多个链接放到目录中</h4><ul>
-<li>ln file1 file2…. directory file[123]是已经存在的文件，directory 是想要放在的目录</li>
+<h4 id="将多个链接放到目录中">将多个链接放到目录中</h4>
+<ul>
+<li>ln file1 file2… directory file[123]是已经存在的文件，directory 是想要放在的目录</li>
 </ul>
-<p> </p>
-<h3 id="和cp关系"><a href="#和cp关系" class="headerlink" title="和cp关系"></a>和cp关系</h3><p>cp到一个已经存在文件，将目标文件内容清除，再次原文件内容复制到目标文件</p>
+<p></p>
+<h3 id="和cp关系">和cp关系</h3>
+<p>cp到一个已经存在文件，将目标文件内容清除，再次原文件内容复制到目标文件</p>
 <p>如不存在，将创建一个新文件（<strong>有自己的i-node</strong>) 再将原文件内容复制</p>
 <p>源文件和目标文件是<strong>不同的i-number</strong></p>
-<p> </p>
-<h3 id="与mv"><a href="#与mv" class="headerlink" title="与mv"></a>与mv</h3><p>将原文件改名，或移动位置，应该<strong>只修改了存放位置</strong>，<strong>不改变i-number</strong></p>
-<p> </p>
-<h3 id="与rm"><a href="#与rm" class="headerlink" title="与rm"></a>与rm</h3><p>如果删除一个link ，系统将<strong>link从目录中删除</strong>并<strong>断开与i-number的连接</strong></p>
+<p></p>
+<h3 id="与mv">与mv</h3>
+<p>将原文件改名，或移动位置，应该<strong>只修改了存放位置</strong>，<strong>不改变i-number</strong></p>
+<p></p>
+<h3 id="与rm">与rm</h3>
+<p>如果删除一个link ，系统将<strong>link从目录中删除</strong>并<strong>断开与i-number的连接</strong></p>
 <p>如果某个文件<strong>只剩一个link，删除link后会把文件也删除</strong></p>
 <blockquote>
 <p>目前大部分文件只有一个link，所以在rm file时会表现像删除了原文件</p>
 </blockquote>
-<p> </p>
+<p></p>
 <p>如</p>
 <p>现在创建一个<strong>spacewar</strong> 文件，创建一个<strong>lthero链接到spaceware的i-number</strong></p>
 <p>查询 <strong><code>stat spacewar</code>  其中links为2</strong>   # links显示链接到源文件(有i-number直接文件)的链接数目</p>
@@ -404,46 +443,47 @@
 <p>说明 <strong>spacewar和lthero都只是个links</strong>(都是傀儡罢了)</p>
 <p>现在即使<strong>删除spacewar</strong> ，其<strong>i-number的原文件仍然存在</strong>（因为<strong>lthero保持与它连接</strong>)。</p>
 <p>直到lthero也被rm了，文件才真正删除！</p>
-<p> </p>
-<p> </p>
-<h2 id="Symbolic-links软链接—不占内容空间"><a href="#Symbolic-links软链接—不占内容空间" class="headerlink" title="Symbolic links软链接—不占内容空间"></a>Symbolic links软链接—不占内容空间</h2><p>上面说的link有两个缺点</p>
+<p></p>
+<p></p>
+<h2 id="symbolic-links软链接-不占内容空间">Symbolic links软链接—不占内容空间</h2>
+<p>上面说的link有两个缺点</p>
 <ul>
 <li>不能对目录创建link</li>
 <li>不能在不同文件系统（不能跨分区）创建链接</li>
 </ul>
 <p>为了改进上述缺点，使用<strong>Symbolic link</strong> 或Symlink</p>
 <p>使用<code>ln -s</code> 选项</p>
-<p>Symlink不会包含源文件的i-number ，而是<strong>文件的路径pathname，</strong>就像win的快捷方式</p>
-<h4 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h4><ul>
+<p>Symlink不会包含源文件的i-number ，而是**文件的路径pathname，**就像win的快捷方式</p>
+<h4 id="语法：">语法：</h4>
+<ul>
 <li>ln -s 源目录或文件 目标目录或文件</li>
 </ul>
-<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><ul>
+<h4 id="举例">举例</h4>
+<ul>
 <li>查看默认的sh命令，其容量只占4B，足够存放一个路径</li>
 </ul>
-<p> </p>
+<p></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/sh</span><br><span class="line">lrwxrwxrwx 1 root root 4 Jul 18 15:25 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <ul>
 <li>再看bash文件占用很大，才是真正的硬链接位置</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/bash</span><br><span class="line">-rwxr-xr-x 1 root root 1183448 Jun 18 2020 /bin/bash</span><br></pre></td></tr></table></figure>
-
 <p>如果删除了原文件，<strong>symbolic link不会被删除</strong>，<strong>但路径也会失效</strong></p>
-<p> </p>
+<p></p>
 <blockquote>
 <p>默认下将Link以硬链接为代表，记得stat和ls -l会显示硬链接数量，显示软链接无意义</p>
 </blockquote>
-<p> </p>
-<h3 id="Symbolic-link与目录"><a href="#Symbolic-link与目录" class="headerlink" title="Symbolic link与目录"></a>Symbolic link与目录</h3><ul>
-<li>ln -s &#x2F;home&#x2F;lthero &#x2F;home&#x2F;backup</li>
+<p></p>
+<h3 id="symbolic-link与目录">Symbolic link与目录</h3>
+<ul>
+<li>ln -s /home/lthero /home/backup</li>
 </ul>
 <p>给lthero目录创建一个备份软链接 backup</p>
 <p>查看backup属性</p>
-<p> </p>
+<p></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ll backup</span><br><span class="line">lrwxrwxrwx 1 root root 6 Jul 31 15:09 /home/backup -&gt; lthero</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <blockquote>
 <p>如果<code>cd backup</code> 会发生什么</p>
 <p>可以进入backup这个伪目录，但其内容和lthero一样</p>
@@ -452,28 +492,32 @@
 <li>用cd -P 可以进入链接到的真实路径，进入了lthero目录</li>
 <li>cd -L 和默认的一样，进入backup伪目录</li>
 </ul>
-<p> </p>
-<h2 id="whereis-locate-find"><a href="#whereis-locate-find" class="headerlink" title="whereis locate find"></a>whereis locate find</h2><h3 id="whereis命令"><a href="#whereis命令" class="headerlink" title="whereis命令"></a>whereis命令</h3><h4 id="功能：-2"><a href="#功能：-2" class="headerlink" title="功能："></a>功能：</h4><ul>
+<p></p>
+<h2 id="whereis-locate-find">whereis locate find</h2>
+<h3 id="whereis命令">whereis命令</h3>
+<h4 id="功能：">功能：</h4>
+<ul>
 <li>在目录中查找与Unix命令相联系的文件</li>
 </ul>
-<h4 id="语法：-2"><a href="#语法：-2" class="headerlink" title="语法："></a>语法：</h4><ul>
+<h4 id="语法：">语法：</h4>
+<ul>
 <li>whereis -bms command 命令就是unix中命令</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">whereis ls</span><br><span class="line">ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz</span><br><span class="line">#前一个表示ls 位置，后一个表示man ls的位置</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<p> </p>
-<h2 id="locate命令"><a href="#locate命令" class="headerlink" title="locate命令"></a>locate命令</h2><p>locate方便使用但功能相对find少</p>
-<h4 id="语法：-3"><a href="#语法：-3" class="headerlink" title="语法："></a>语法：</h4><ul>
+<p></p>
+<p></p>
+<h2 id="locate命令">locate命令</h2>
+<p>locate方便使用但功能相对find少</p>
+<h4 id="语法：">语法：</h4>
+<ul>
 <li>loacte [-bcirS] pattern     #pattern是要查询的路径名</li>
 </ul>
 <p>如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loacte dict |grep words</span><br></pre></td></tr></table></figure>
-
 <p>会在整个根目录下查找包含’dict’的文件，并返回其路径</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/share/help-langpack/en_GB/gnome-dictionary/similar-words.page</span><br></pre></td></tr></table></figure>
-
-<h4 id="选项-5"><a href="#选项-5" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li>-r 使用正则表达式</li>
 </ul>
 <p>locate -r ‘.jpg$’ 查找全部jpg图片 locate ‘*.jpg’ 也可生效 locate -r ‘^temp&amp;’ 查找名字为temp的文件</p>
@@ -487,8 +531,8 @@
 <li>-S 显示当前系统的数据库</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Database /var/lib/mlocate/mlocate.db:</span><br><span class="line">25,628 directories</span><br><span class="line">196,706 files</span><br><span class="line">12,265,002 bytes in file names</span><br><span class="line">4,844,388 bytes used to store database</span><br></pre></td></tr></table></figure>
-
-<h2 id="find命令—非常好用"><a href="#find命令—非常好用" class="headerlink" title="find命令—非常好用"></a>find命令—非常好用</h2><p>由于whereis 只能查询与系统相关的命令文件</p>
+<h2 id="find命令-非常好用">find命令—非常好用</h2>
+<p>由于whereis 只能查询与系统相关的命令文件</p>
 <p>locate搜索也不完美。它只能在数据库中包含的路径查找指定pattern</p>
 <ul>
 <li>find又是最古老最复杂的，可能也是最好用的</li>
@@ -496,132 +540,141 @@
 <p>1、 可以<strong>查找任何地方的任何文件</strong></p>
 <p>2、可以将<strong>结果以不同方式呈现</strong></p>
 <p>3、可以在<strong>除了unix linux其它平台使用</strong></p>
-<h3 id="find-的通用语法"><a href="#find-的通用语法" class="headerlink" title="find 的通用语法"></a>find 的通用语法</h3><ul>
+<h3 id="find-的通用语法">find 的通用语法</h3>
+<ul>
 <li>find path… test… acton…</li>
 </ul>
 <p>paths : find 将检查整个目录树,包括子树</p>
 <p>tests : 对find查到的每个文件，将逐一检查是否符合要求</p>
 <p>actions 对完成的结果进行近一步操作</p>
-<p> </p>
+<p></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -name Chap -print</span><br></pre></td></tr></table></figure>
-
-<p>path : &#x2F;home 查找此目录及其子目录</p>
+<p>path : /home 查找此目录及其子目录</p>
 <p>test : -name Chap 对每个文件按名字检测是否精准为 Chap</p>
 <p>action -print 输出结果</p>
-<h3 id="paths详解"><a href="#paths详解" class="headerlink" title="paths详解"></a>paths详解</h3><ul>
-<li>find 可以同时查找多个目录 find &#x2F;bin &#x2F;sbin &#x2F;usr&#x2F;bin</li>
+<h3 id="paths详解">paths详解</h3>
+<ul>
+<li>find 可以同时查找多个目录 find /bin /sbin /usr/bin</li>
 </ul>
-<p> </p>
-<h3 id="test详解"><a href="#test详解" class="headerlink" title="test详解"></a>test详解</h3><p>这里才是find复杂的地方</p>
-<h4 id="选项-6"><a href="#选项-6" class="headerlink" title="选项"></a>选项</h4><h3 id="type"><a href="#type" class="headerlink" title="-type"></a>-type</h3><ul>
+<p></p>
+<h3 id="test详解">test详解</h3>
+<p>这里才是find复杂的地方</p>
+<h4 id="选项">选项</h4>
+<h3 id="type">-type</h3>
+<ul>
 <li>-type 查找文件的类型 后面接一个字符</li>
 </ul>
-<p>find &#x2F;etc -type <code>f (file 一般文件)</code></p>
-<p>find &#x2F;etc -type <code>d (directory 一般目录)</code></p>
-<p>find &#x2F;etc -type <code>l (symbolic link软链接)</code></p>
-<p>find &#x2F;etc <code>-print 则查找全部类型</code></p>
-<h3 id="name"><a href="#name" class="headerlink" title="-name"></a>-name</h3><ul>
+<p>find /etc -type <code>f (file 一般文件)</code></p>
+<p>find /etc -type <code>d (directory 一般目录)</code></p>
+<p>find /etc -type <code>l (symbolic link软链接)</code></p>
+<p>find /etc <code>-print 则查找全部类型</code></p>
+<h3 id="name">-name</h3>
+<ul>
 <li>-name 查找文件名字</li>
 </ul>
 <p><strong>可接正则 但用引号</strong>，否则会报错</p>
-<p>find &#x2F;etc -name <code>&#39;*.txt&#39;</code> -print   按全部的**.txt格式**</p>
-<p>find &#x2F;etc -name <strong>Chap_25.txt</strong> -print   查指定的<strong>文件名</strong></p>
-<p>find &#x2F;etc -name <code>&#39;data[123]&#39;</code> -print   正则表达查 <strong>data1 data2 data3</strong></p>
+<p>find /etc -name <code>'*.txt'</code> -print   按全部的**.txt格式**</p>
+<p>find /etc -name <strong>Chap_25.txt</strong> -print   查指定的<strong>文件名</strong></p>
+<p>find /etc -name <code>'data[123]'</code> -print   正则表达查 <strong>data1 data2 data3</strong></p>
 <ul>
 <li>-iname 忽略大小写查找名字</li>
 </ul>
 <p>bin 和 Bin都会被查找</p>
 <ul>
-<li>-empty size&#x3D;0 容量为0的</li>
+<li>-empty size=0 容量为0的</li>
 </ul>
 <p>-perm 指定权限</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -type f -perm 755 -print</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>-size 指定大小 c指1B b指512B k指1KB M指1MB G 1GB</li>
 </ul>
-<p> </p>
-<p>find &#x2F; -size 1k -print 恰好1KB</p>
-<p>find &#x2F; -size -1k -print 小于1kB</p>
-<p>find &#x2F; -size +1k -print 大于1KB</p>
+<p></p>
+<p>find / -size 1k -print 恰好1KB</p>
+<p>find / -size -1k -print 小于1kB</p>
+<p>find / -size +1k -print 大于1KB</p>
 <ul>
 <li>-mmin 查看最近num时间(单位分钟)内被修改的文件</li>
 </ul>
-<p>find &#x2F; -mmin -30 -print</p>
+<p>find / -mmin -30 -print</p>
 <ul>
 <li>-atime 查看num 时间(单位:天)内没用过的文件</li>
 </ul>
-<p>find &#x2F; -atime +180 -print</p>
+<p>find / -atime +180 -print</p>
 <p>**#**删除180天没用过的备份</p>
-<p>find &#x2F; -name ‘<strong>*.backup</strong>‘ -atime +180 <strong>-delete (action是删除)</strong></p>
+<p>find / -name ‘<strong>*.backup</strong>’ -atime +180 <strong>-delete (action是删除)</strong></p>
 <p>#可以<strong>多个test一起用</strong></p>
 <p>find -type f -name ‘*.txt’ -print</p>
-<h4 id="反选"><a href="#反选" class="headerlink" title="反选"></a>反选</h4><ul>
+<h4 id="反选">反选</h4>
+<ul>
 <li>用叹号\! 表示除了后面这个选项</li>
 </ul>
-<p><code>find / \! type -f \! -name &#39;*.jpg&#39; -print</code></p>
-<h4 id="报错了怎么办？"><a href="#报错了怎么办？" class="headerlink" title="报错了怎么办？"></a>报错了怎么办？</h4><ul>
+<p><code>find / \! type -f \! -name '*.jpg' -print</code></p>
+<h4 id="报错了怎么办？">报错了怎么办？</h4>
+<ul>
 <li>对于某些目录或文件，用户无权利查看或遍历</li>
 </ul>
 <p>find此时后报错，将报错信息丢弃</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -type d -name bin -print 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
-
-<p> </p>
-<p> </p>
-<h3 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h3><h4 id="功能：-3"><a href="#功能：-3" class="headerlink" title="功能："></a>功能：</h4><ul>
+<p></p>
+<p></p>
+<h3 id="actions">Actions</h3>
+<h4 id="功能：">功能：</h4>
+<ul>
 <li>actions 将指挥<strong>find查找文件后做什么</strong></li>
 </ul>
 <p>最常用的就是<code>-print</code>  输出 大部分版本下，<code>-print是默认的action</code></p>
-<h4 id="选项-7"><a href="#选项-7" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li>-print 输出路径</li>
 <li>-fprint [file] 将结果写入文件中</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#打印全部视频信息到文件列表中</span><br><span class="line">find / -type f -name &#x27;*.flv&#x27; -fprint videolist 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <ul>
-<li><p>-ls 展示长信息，同ls</p>
-</li>
-<li><p>-fls [file] 同-ls 结果写入文件</p>
-</li>
+<li>-ls 展示长信息，同ls</li>
+</ul>
+<p></p>
+<ul>
+<li>-fls [file] 同-ls 结果写入文件</li>
 </ul>
 <p>-delete <strong>删除结果的文件</strong></p>
-<h3 id="exec选项"><a href="#exec选项" class="headerlink" title="-exec选项"></a>-exec选项</h3><ul>
+<h3 id="exec选项">-exec选项</h3>
+<ul>
 <li>-exec command {} \; 执行 command命令，{}表示符合的文件名</li>
 <li>-exec 可以使用任何程序</li>
 </ul>
 <p>列表全部结果的<strong>详细信息</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -name &#x27;*.mp3&#x27; -exec ls &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <p>将<strong>查找的全部.mp3全部删除</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find ./ -type f -name &#x27;*.mp3&#x27; -exec rm &#123;&#125; \;</span><br><span class="line">find ./ -type f -name &#x27;*.mp3&#x27; -delete</span><br></pre></td></tr></table></figure>
-
-<p> </p>
+<p></p>
 <ul>
 <li>-ok command {} \; 同exec 但运行前将询问</li>
 </ul>
-<p> </p>
-<h2 id="xargs命令"><a href="#xargs命令" class="headerlink" title="xargs命令"></a>xargs命令</h2><h4 id="功能：-4"><a href="#功能：-4" class="headerlink" title="功能："></a>功能：</h4><ul>
+<p></p>
+<h2 id="xargs命令">xargs命令</h2>
+<h4 id="功能：">功能：</h4>
+<ul>
 <li>处理已经发现的文件,将输出作为另一个命令的参数输入，配合<code>find</code> 使用，可以在诸多目录中，查找包含某些内容的文件</li>
 </ul>
-<h4 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h4><ul>
+<h4 id="语法">语法</h4>
+<ul>
 <li>-prt -i string 命令 [参数]</li>
 </ul>
 <p>如上次想将网页的 please input something 替换，但不知道在哪个文件中，就可以用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -type f -name &#x27;*.php&#x27; | xargs grep &#x27;please input somethign&#x27;</span><br></pre></td></tr></table></figure>
-
 <p>而且<strong>不用担心find返回结果过多</strong>，使给grep的参数过多。因为<strong>xargs可以分步将输入传递给grep</strong>,有点像遍历</p>
 <ul>
 <li>find 找到一个结果就把结果传给grep</li>
 </ul>
-<h4 id="选项-8"><a href="#选项-8" class="headerlink" title="选项"></a>选项</h4><ul>
+<h4 id="选项">选项</h4>
+<ul>
 <li>-i 替换结果</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~ -type f -name &#x27;*.txt&#x27; | xargs -i mv &#123;&#125; ~/backup/</span><br></pre></td></tr></table></figure>
-
-<p><strong>{} 里面是每次输出的结果</strong>-–每个文件的路径，可以通过cut或awk获得文件名字</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/02/2021-08-02-%5B%E6%9D%82%E8%B0%88%5D%E5%8F%A4%E4%BA%BA%E8%A8%80vs-%E5%8F%A4%E4%BA%BA%E5%8F%88%E8%A8%80/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【杂谈】古人言vs.古人又言</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/30/2021-07-30-%5Blinux%5D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_20_regular_expression-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【linux】学习笔记Chap_20_regular_expression</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">touch命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">1.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">1.0.3.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">2.</span> <span class="toc-text">文件命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text">特殊符号的文件名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">cp命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">3.0.1.</span> <span class="toc-text">功能：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">复制单个文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">选项：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">复制多个文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">语法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">3.3.</span> <span class="toc-text">复制目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">语法:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">选项:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-number">3.3.3.</span> <span class="toc-text">命令：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mv%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">mv命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD-1"><span class="toc-number">4.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-3"><span class="toc-number">4.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-2"><span class="toc-number">4.0.3.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">4.1.</span> <span class="toc-text">重命名文件或目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-4"><span class="toc-number">4.1.1.</span> <span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">rm命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD-2"><span class="toc-number">5.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-5"><span class="toc-number">5.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">5.0.3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-3"><span class="toc-number">5.0.4.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">6.</span> <span class="toc-text">文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">6.2.</span> <span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEuserid"><span class="toc-number">7.</span> <span class="toc-text">设置userid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-Modes"><span class="toc-number">8.</span> <span class="toc-text">File Modes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chmod%E5%91%BD%E4%BB%A4%E2%80%94%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90"><span class="toc-number">9.</span> <span class="toc-text">chmod命令—修改权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A-1"><span class="toc-number">9.0.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-6"><span class="toc-number">9.0.2.</span> <span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#umask%E5%91%BD%E4%BB%A4%E2%80%94%E4%BF%AE%E6%94%B9%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90"><span class="toc-number">10.</span> <span class="toc-text">umask命令—修改创建文件默认权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-7"><span class="toc-number">10.0.1.</span> <span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shred%E5%91%BD%E4%BB%A4"><span class="toc-number">11.</span> <span class="toc-text">shred命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-8"><span class="toc-number">11.0.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD-3"><span class="toc-number">11.0.2.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-1"><span class="toc-number">11.0.3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-4"><span class="toc-number">11.0.4.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Link%E5%91%BD%E4%BB%A4%E2%80%94%E9%93%BE%E6%8E%A5"><span class="toc-number">12.</span> <span class="toc-text">Link命令—链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-number"><span class="toc-number">13.</span> <span class="toc-text">I-number</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Links%E7%A1%AC%E9%93%BE%E6%8E%A5"><span class="toc-number">13.1.</span> <span class="toc-text">Links硬链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-number">13.1.1.</span> <span class="toc-text">特点：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln%E5%91%BD%E4%BB%A4"><span class="toc-number">14.</span> <span class="toc-text">ln命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-9"><span class="toc-number">14.0.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E5%A4%9A%E4%B8%AA%E9%93%BE%E6%8E%A5%E6%94%BE%E5%88%B0%E7%9B%AE%E5%BD%95%E4%B8%AD"><span class="toc-number">14.0.2.</span> <span class="toc-text">将多个链接放到目录中</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8Ccp%E5%85%B3%E7%B3%BB"><span class="toc-number">14.1.</span> <span class="toc-text">和cp关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8Emv"><span class="toc-number">14.2.</span> <span class="toc-text">与mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8Erm"><span class="toc-number">14.3.</span> <span class="toc-text">与rm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Symbolic-links%E8%BD%AF%E9%93%BE%E6%8E%A5%E2%80%94%E4%B8%8D%E5%8D%A0%E5%86%85%E5%AE%B9%E7%A9%BA%E9%97%B4"><span class="toc-number">15.</span> <span class="toc-text">Symbolic links软链接—不占内容空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A-1"><span class="toc-number">15.0.1.</span> <span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">15.0.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbolic-link%E4%B8%8E%E7%9B%AE%E5%BD%95"><span class="toc-number">15.1.</span> <span class="toc-text">Symbolic link与目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whereis-locate-find"><span class="toc-number">16.</span> <span class="toc-text">whereis locate find</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis%E5%91%BD%E4%BB%A4"><span class="toc-number">16.1.</span> <span class="toc-text">whereis命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A-2"><span class="toc-number">16.1.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A-2"><span class="toc-number">16.1.2.</span> <span class="toc-text">语法：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#locate%E5%91%BD%E4%BB%A4"><span class="toc-number">17.</span> <span class="toc-text">locate命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A-3"><span class="toc-number">17.0.1.</span> <span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-5"><span class="toc-number">17.0.2.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4%E2%80%94%E9%9D%9E%E5%B8%B8%E5%A5%BD%E7%94%A8"><span class="toc-number">18.</span> <span class="toc-text">find命令—非常好用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#find-%E7%9A%84%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="toc-number">18.1.</span> <span class="toc-text">find 的通用语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#paths%E8%AF%A6%E8%A7%A3"><span class="toc-number">18.2.</span> <span class="toc-text">paths详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test%E8%AF%A6%E8%A7%A3"><span class="toc-number">18.3.</span> <span class="toc-text">test详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-6"><span class="toc-number">18.3.1.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type"><span class="toc-number">18.4.</span> <span class="toc-text">-type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#name"><span class="toc-number">18.5.</span> <span class="toc-text">-name</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E9%80%89"><span class="toc-number">18.5.1.</span> <span class="toc-text">反选</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">18.5.2.</span> <span class="toc-text">报错了怎么办？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Actions"><span class="toc-number">18.6.</span> <span class="toc-text">Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A-3"><span class="toc-number">18.6.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-7"><span class="toc-number">18.6.2.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec%E9%80%89%E9%A1%B9"><span class="toc-number">18.7.</span> <span class="toc-text">-exec选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xargs%E5%91%BD%E4%BB%A4"><span class="toc-number">19.</span> <span class="toc-text">xargs命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A-4"><span class="toc-number">19.0.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-10"><span class="toc-number">19.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-8"><span class="toc-number">19.0.3.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+<p><strong>{} 里面是每次输出的结果</strong>—每个文件的路径，可以通过cut或awk获得文件名字</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">https://blog.lthero.cn/2021/07/31/2021-07-31-[linux]%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_25_%E5%85%B3%E4%BA%8Efile%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/02/2021-08-02-%5B%E6%9D%82%E8%B0%88%5D%E5%8F%A4%E4%BA%BA%E8%A8%80vs-%E5%8F%A4%E4%BA%BA%E5%8F%88%E8%A8%80/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【杂谈】古人言vs.古人又言</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/30/2021-07-30-%5Blinux%5D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0chap_20_regular_expression-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【linux】学习笔记Chap_20_regular_expression</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">touch命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">1.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">1.0.3.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">2.</span> <span class="toc-text">文件命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text">特殊符号的文件名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">cp命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">3.0.1.</span> <span class="toc-text">功能：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">复制单个文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">选项：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">复制多个文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">3.2.1.</span> <span class="toc-text">语法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">3.3.</span> <span class="toc-text">复制目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">3.3.1.</span> <span class="toc-text">语法:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">3.3.2.</span> <span class="toc-text">选项:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-number">3.3.3.</span> <span class="toc-text">命令：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mv%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">mv命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">4.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">4.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">4.0.3.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">4.1.</span> <span class="toc-text">重命名文件或目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">rm命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">5.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">5.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">5.0.3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">5.0.4.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">6.</span> <span class="toc-text">文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">6.2.</span> <span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEuserid"><span class="toc-number">7.</span> <span class="toc-text">设置userid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#file-modes"><span class="toc-number">8.</span> <span class="toc-text">File Modes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chmod%E5%91%BD%E4%BB%A4-%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90"><span class="toc-number">9.</span> <span class="toc-text">chmod命令—修改权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">9.0.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">9.0.2.</span> <span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#umask%E5%91%BD%E4%BB%A4-%E4%BF%AE%E6%94%B9%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90"><span class="toc-number">10.</span> <span class="toc-text">umask命令—修改创建文件默认权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">10.0.1.</span> <span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shred%E5%91%BD%E4%BB%A4"><span class="toc-number">11.</span> <span class="toc-text">shred命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">11.0.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">11.0.2.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">11.0.3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">11.0.4.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#link%E5%91%BD%E4%BB%A4-%E9%93%BE%E6%8E%A5"><span class="toc-number">12.</span> <span class="toc-text">Link命令—链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i-number"><span class="toc-number">13.</span> <span class="toc-text">I-number</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#links%E7%A1%AC%E9%93%BE%E6%8E%A5"><span class="toc-number">13.1.</span> <span class="toc-text">Links硬链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-number">13.1.1.</span> <span class="toc-text">特点：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln%E5%91%BD%E4%BB%A4"><span class="toc-number">14.</span> <span class="toc-text">ln命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">14.0.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E5%A4%9A%E4%B8%AA%E9%93%BE%E6%8E%A5%E6%94%BE%E5%88%B0%E7%9B%AE%E5%BD%95%E4%B8%AD"><span class="toc-number">14.0.2.</span> <span class="toc-text">将多个链接放到目录中</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8Ccp%E5%85%B3%E7%B3%BB"><span class="toc-number">14.1.</span> <span class="toc-text">和cp关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8Emv"><span class="toc-number">14.2.</span> <span class="toc-text">与mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8Erm"><span class="toc-number">14.3.</span> <span class="toc-text">与rm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#symbolic-links%E8%BD%AF%E9%93%BE%E6%8E%A5-%E4%B8%8D%E5%8D%A0%E5%86%85%E5%AE%B9%E7%A9%BA%E9%97%B4"><span class="toc-number">15.</span> <span class="toc-text">Symbolic links软链接—不占内容空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">15.0.1.</span> <span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">15.0.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#symbolic-link%E4%B8%8E%E7%9B%AE%E5%BD%95"><span class="toc-number">15.1.</span> <span class="toc-text">Symbolic link与目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whereis-locate-find"><span class="toc-number">16.</span> <span class="toc-text">whereis locate find</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis%E5%91%BD%E4%BB%A4"><span class="toc-number">16.1.</span> <span class="toc-text">whereis命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">16.1.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">16.1.2.</span> <span class="toc-text">语法：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#locate%E5%91%BD%E4%BB%A4"><span class="toc-number">17.</span> <span class="toc-text">locate命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">17.0.1.</span> <span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">17.0.2.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4-%E9%9D%9E%E5%B8%B8%E5%A5%BD%E7%94%A8"><span class="toc-number">18.</span> <span class="toc-text">find命令—非常好用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#find-%E7%9A%84%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="toc-number">18.1.</span> <span class="toc-text">find 的通用语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#paths%E8%AF%A6%E8%A7%A3"><span class="toc-number">18.2.</span> <span class="toc-text">paths详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test%E8%AF%A6%E8%A7%A3"><span class="toc-number">18.3.</span> <span class="toc-text">test详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">18.3.1.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type"><span class="toc-number">18.4.</span> <span class="toc-text">-type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#name"><span class="toc-number">18.5.</span> <span class="toc-text">-name</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E9%80%89"><span class="toc-number">18.5.1.</span> <span class="toc-text">反选</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">18.5.2.</span> <span class="toc-text">报错了怎么办？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#actions"><span class="toc-number">18.6.</span> <span class="toc-text">Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">18.6.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">18.6.2.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec%E9%80%89%E9%A1%B9"><span class="toc-number">18.7.</span> <span class="toc-text">-exec选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xargs%E5%91%BD%E4%BB%A4"><span class="toc-number">19.</span> <span class="toc-text">xargs命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">19.0.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">19.0.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-number">19.0.3.</span> <span class="toc-text">选项</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

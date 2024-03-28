@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>如何更优雅地使用ChatGPT | lthero</title><meta name="keywords" content="ChatGPT"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="大纲获得ChatGPT账号 API访问模式 获得ChatGPT4.0账号 ChatGPT4.0科研相关插件 其它ChatGPT相关软件  全文用得上的链接ChatGPT的官方网址是 https:&#x2F;&#x2F;chat.openai.com 官网注册&#x2F;登录链接 https:&#x2F;&#x2F;chat.openai.com&#x2F;auth&#x2F;login 购买邮箱的网站：https:&#x2F;&#x2F;www.henduohao.com&#x2F;">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>如何更优雅地使用ChatGPT | lthero</title><meta name="keywords" content="ChatGPT"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="大纲 获得ChatGPT账号 API访问模式 获得ChatGPT4.0账号 ChatGPT4.0科研相关插件 其它ChatGPT相关软件  全文用得上的链接 ChatGPT的官方网址是 https:&#x2F;&#x2F;chat.openai.com 官网注册&#x2F;登录链接 https:&#x2F;&#x2F;chat.openai.com&#x2F;auth&#x2F;login 购买邮箱的网站：https:&#x2F;&#x2F;www.henduohao.com&#x2F; 手机验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何更优雅地使用ChatGPT">
 <meta property="og:url" content="https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/index.html">
 <meta property="og:site_name" content="lthero">
-<meta property="og:description" content="大纲获得ChatGPT账号 API访问模式 获得ChatGPT4.0账号 ChatGPT4.0科研相关插件 其它ChatGPT相关软件  全文用得上的链接ChatGPT的官方网址是 https:&#x2F;&#x2F;chat.openai.com 官网注册&#x2F;登录链接 https:&#x2F;&#x2F;chat.openai.com&#x2F;auth&#x2F;login 购买邮箱的网站：https:&#x2F;&#x2F;www.henduohao.com&#x2F;">
+<meta property="og:description" content="大纲 获得ChatGPT账号 API访问模式 获得ChatGPT4.0账号 ChatGPT4.0科研相关插件 其它ChatGPT相关软件  全文用得上的链接 ChatGPT的官方网址是 https:&#x2F;&#x2F;chat.openai.com 官网注册&#x2F;登录链接 https:&#x2F;&#x2F;chat.openai.com&#x2F;auth&#x2F;login 购买邮箱的网站：https:&#x2F;&#x2F;www.henduohao.com&#x2F; 手机验">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg">
 <meta property="article:published_time" content="2023-10-04T10:08:45.000Z">
 <meta property="article:modified_time" content="2023-10-09T05:14:03.227Z">
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="ChatGPT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -143,14 +143,16 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">如何更优雅地使用ChatGPT</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-04T10:08:45.000Z" title="发表于 2023-10-04 18:08:45">2023-10-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-09T05:14:03.227Z" title="更新于 2023-10-09 13:14:03">2023-10-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ChatGPT/">ChatGPT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="如何更优雅地使用ChatGPT"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><p>获得ChatGPT账号</p>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">如何更优雅地使用ChatGPT</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-04T10:08:45.000Z" title="发表于 2023-10-04 18:08:45">2023-10-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-09T05:14:03.227Z" title="更新于 2023-10-09 13:14:03">2023-10-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ChatGPT/">ChatGPT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="如何更优雅地使用ChatGPT"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="大纲">大纲</h1>
+<p>获得ChatGPT账号</p>
 <p>API访问模式</p>
 <p>获得ChatGPT4.0账号</p>
 <p>ChatGPT4.0科研相关插件</p>
 <p>其它ChatGPT相关软件</p>
 <hr>
-<h1 id="全文用得上的链接"><a href="#全文用得上的链接" class="headerlink" title="全文用得上的链接"></a>全文用得上的链接</h1><p>ChatGPT的官方网址是 <a target="_blank" rel="noopener" href="https://chat.openai.com/">https://chat.openai.com</a></p>
-<p>官网注册&#x2F;登录链接 <a target="_blank" rel="noopener" href="https://chat.openai.com/auth/login">https://chat.openai.com/auth/login</a></p>
+<h1 id="全文用得上的链接">全文用得上的链接</h1>
+<p>ChatGPT的官方网址是 <a target="_blank" rel="noopener" href="https://chat.openai.com/">https://chat.openai.com</a></p>
+<p>官网注册/登录链接 <a target="_blank" rel="noopener" href="https://chat.openai.com/auth/login">https://chat.openai.com/auth/login</a></p>
 <p>购买邮箱的网站：<a target="_blank" rel="noopener" href="https://www.henduohao.com/">https://www.henduohao.com/</a></p>
 <p>手机验证码接码平台 <a target="_blank" rel="noopener" href="https://sms-activate.org/">https://sms-activate.org/</a></p>
 <p>两个用于购买ChatGPT账号的网络平台</p>
@@ -159,7 +161,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.z2u.com/chatgpt/accounts-5-20670">https://www.z2u.com/chatgpt/accounts-5-20670</a>（国外网站）</li>
 </ol>
 <p>ChatHub插件项目链接：<a target="_blank" rel="noopener" href="https://github.com/chathub-dev/chathub/releases">https://github.com/chathub-dev/chathub/releases</a></p>
-<p>查看账号额度 <a target="_blank" rel="noopener" href="https://platform.openai.com/account/usage">https://platform.openai.com/account/usage</a> </p>
+<p>查看账号额度 <a target="_blank" rel="noopener" href="https://platform.openai.com/account/usage">https://platform.openai.com/account/usage</a></p>
 <p>生成API Key <a target="_blank" rel="noopener" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a></p>
 <p>两个生成文件直链的网络平台</p>
 <ol>
@@ -169,34 +171,43 @@
 <p>Chathub项目地址：<a target="_blank" rel="noopener" href="https://github.com/chathub-dev/chathub/">https://github.com/chathub-dev/chathub/</a></p>
 <p>ChatGPT For Google项目地址：<a target="_blank" rel="noopener" href="https://github.com/wong2/chatgpt-google-extension">https://github.com/wong2/chatgpt-google-extension</a></p>
 <hr>
-<h1 id="如何获得-ChatGPT-账号"><a href="#如何获得-ChatGPT-账号" class="headerlink" title="如何获得 ChatGPT 账号"></a>如何获得 ChatGPT 账号</h1><blockquote>
+<h1 id="如何获得-chatgpt-账号">如何获得 ChatGPT 账号</h1>
+<blockquote>
 <p>ChatGPT的官方网址是 <a target="_blank" rel="noopener" href="https://chat.openai.com/">https://chat.openai.com</a></p>
 <p>请认准其官方域名 <a target="_blank" rel="noopener" href="https://openai.com/">openai.com</a>，不是这个域名的ChatGPT服务都是镜像站或者假冒伪劣网站，请注意辨别。</p>
 <p>分成<strong>自行注册</strong>和<strong>购买账号</strong>两种方式</p>
 </blockquote>
-<h2 id="自行注册"><a href="#自行注册" class="headerlink" title="自行注册"></a>自行注册</h2><ol>
-<li><p>将网络环境切换成国外ip</p>
+<h2 id="自行注册">自行注册</h2>
 <ol>
-<li><p>注意：必须是国外 ip 如美国、加拿大，日本，新加坡等openai支持的国家，<strong>香港或台湾 ip是不行的</strong> ，且后续整个注册流程都必须在此网络环境下进行。</p>
+<li>
+<p>将网络环境切换成国外ip</p>
+<ol>
+<li>
+<p>注意：必须是国外 ip 如美国、加拿大，日本，新加坡等openai支持的国家，<strong>香港或台湾 ip是不行的</strong> ，且后续整个注册流程都必须在此网络环境下进行。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/register.png" alt="register"></p>
 </li>
 </ol>
 </li>
-<li><p>打开官网注册链接 <a target="_blank" rel="noopener" href="https://chat.openai.com/auth/login">https://chat.openai.com/auth/login</a> 并使用邮箱进行账号注册</p>
+<li>
+<p>打开官网注册链接 <a target="_blank" rel="noopener" href="https://chat.openai.com/auth/login">https://chat.openai.com/auth/login</a> 并使用邮箱进行账号注册</p>
 <ol>
 <li>必须要<strong>gmail，protonmail等国外邮箱</strong>，outlook以前可以但现在不行了。或者直接购买gmail等邮箱，购买邮箱的网站：<a target="_blank" rel="noopener" href="https://www.henduohao.com/">https://www.henduohao.com/</a></li>
 </ol>
 </li>
-<li><p>打开邮箱查收 OpenAI 账号验证邮件，点击验证按钮完成邮箱验证</p>
+<li>
+<p>打开邮箱查收 OpenAI 账号验证邮件，点击验证按钮完成邮箱验证</p>
 </li>
 </ol>
 <hr>
 <ol>
-<li><p>邮箱验证完成后，第一步注册 <a target="_blank" rel="noopener" href="https://chatgptzhanghao.com/">ChatGPT 账号</a>就算完成了，但是到这里我们还不能开始使用 ChatGPT，因为我们还需要进行外国手机号码验证。</p>
+<li>
+<p>邮箱验证完成后，第一步注册 <a target="_blank" rel="noopener" href="https://chatgptzhanghao.com/">ChatGPT 账号</a>就算完成了，但是到这里我们还不能开始使用 ChatGPT，因为我们还需要进行外国手机号码验证。</p>
 </li>
-<li><p>由于 OpenAI 官方限制了中国大陆地区用户使用，所以中国手机号码无法验证，<strong>需要外国手机号</strong>。这时候就要用到下一步的<strong>接码平台</strong> <a target="_blank" rel="noopener" href="https://sms-activate.org/">sms-activate.org</a> ，此平台会提供一个<strong>20分钟内用来接收验证码的手机号</strong>（各国家手机号都有），可使用此手机号用来注册GPT。目前，接码平台一次性<strong>最少要充值2美元</strong>（约15人民币，<strong>支持支付宝</strong>），而这2美元大约可接收12次短信码（即可以注册12个gpt账号）。不过随着现在注册难度增大，有可能会接码失败，失败了就需要再重新购买<strong>接码的号码</strong>。</p>
+<li>
+<p>由于 OpenAI 官方限制了中国大陆地区用户使用，所以中国手机号码无法验证，<strong>需要外国手机号</strong>。这时候就要用到下一步的<strong>接码平台</strong> <a target="_blank" rel="noopener" href="https://sms-activate.org/">sms-activate.org</a> ，此平台会提供一个<strong>20分钟内用来接收验证码的手机号</strong>（各国家手机号都有），可使用此手机号用来注册GPT。目前，接码平台一次性<strong>最少要充值2美元</strong>（约15人民币，<strong>支持支付宝</strong>），而这2美元大约可接收12次短信码（即可以注册12个gpt账号）。不过随着现在注册难度增大，有可能会接码失败，失败了就需要再重新购买<strong>接码的号码</strong>。</p>
 </li>
-<li><p>完成手机号验证后，注册即注册完成，可以正常使用。</p>
+<li>
+<p>完成手机号验证后，注册即注册完成，可以正常使用。</p>
 </li>
 </ol>
 <blockquote>
@@ -205,200 +216,260 @@
 <p>缺点：首次注册可能较麻烦，学习成本小高。</p>
 </blockquote>
 <hr>
-<h2 id="接码平台的注册及使用"><a href="#接码平台的注册及使用" class="headerlink" title="接码平台的注册及使用"></a>接码平台的注册及使用</h2><p>这一步需要用到接码平台完成手机号验证，推荐平台链接地址：<a target="_blank" rel="noopener" href="https://sms-activate.org/?ref=2780512">sms-activate.org</a></p>
+<h2 id="接码平台的注册及使用">接码平台的注册及使用</h2>
+<p>这一步需要用到接码平台完成手机号验证，推荐平台链接地址：<a target="_blank" rel="noopener" href="https://sms-activate.org/?ref=2780512">sms-activate.org</a></p>
 <p>具体过程包含以下几步：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/lanandlogin.png" alt="可以将语言换成中文"></p>
 <ol>
-<li><p>通过自己的邮箱注册   sms-activate.org 账号并完成邮箱验证（其他接码平台同理，但是不一定每个都好用，sms-activate是博主亲自验证过的）</p>
+<li>
+<p>通过自己的邮箱注册   <a target="_blank" rel="noopener" href="http://sms-activate.org">sms-activate.org</a> 账号并完成邮箱验证（其他接码平台同理，但是不一定每个都好用，sms-activate是博主亲自验证过的）</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/registeracc.png" alt="注册SMS平台的账号"></p>
 </li>
-<li><p>打开邮箱查收验证邮件并点击确认完成 sms-activate.org 账号认证</p>
+<li>
+<p>打开邮箱查收验证邮件并点击确认完成 <a target="_blank" rel="noopener" href="http://sms-activate.org">sms-activate.org</a> 账号认证</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/verifyyouremail-1.png" alt="注册后登录"></p>
 </li>
-<li><p>登录sms-activate并且在右上角找到充值按钮，点击进行充值</p>
+<li>
+<p>登录sms-activate并且在右上角找到充值按钮，点击进行充值</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/topup.png" alt="充值"></p>
 </li>
-<li><p>点击充值跳转后，往下滑找到支付宝，充值2美金就可以了</p>
+<li>
+<p>点击充值跳转后，往下滑找到支付宝，充值2美金就可以了</p>
 </li>
-<li><p>充值好了以后回到首页搜索**”openAI”**关键字就可以找到 OpenAI 验证码的临时号码购买链接。</p>
+<li>
+<p>充值好了以后回到首页搜索**“openAI”**关键字就可以找到 OpenAI 验证码的临时号码购买链接。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/openailist.png" alt="搜索OpenAI"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/gowuc.png" alt="点击购物车进行购买"></p>
 </li>
-<li><p>在右侧激活区看到待使用的临时号码，将此号码复制到 OpenAI 的验证码接收区里面。</p>
+<li>
+<p>在右侧激活区看到待使用的临时号码，将此号码复制到 OpenAI 的验证码接收区里面。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/getanumber.png" alt="等待短信"></p>
 </li>
-<li><p>在 OpenAI 的页面点击发送验证码，这样就可以在接码平台接收到验证码（有时候有一点慢需要耐心等待一下），将验证码填进去，这样就完成 ChatGPT 手机号验证了。</p>
+<li>
+<p>在 OpenAI 的页面点击发送验证码，这样就可以在接码平台接收到验证码（有时候有一点慢需要耐心等待一下），将验证码填进去，这样就完成 ChatGPT 手机号验证了。</p>
 </li>
 </ol>
-<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/Nowhatsapp.png" alt="输入购买的手机号"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/Nowhatsapp.png" alt="输入购买的手机号"></p>
 <p>选“No”，然后点“Send code via SMS”，一般一分钟内就可以收到短信，最长不会超过三分钟，收到验证码后返回OpenAI注册页面完成手机号验证。每个号码的有效期是20分钟，超时就自动回收了。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/thecodeiscoming.png" alt="拿到验证码"></p>
 <hr>
-<h2 id="购买账号"><a href="#购买账号" class="headerlink" title="购买账号"></a>购买账号</h2><p>另一个最简单直接的办法就是到<strong>淘宝</strong>、<strong>闲鱼</strong>等平台（网络平台也可）买一个已经注册验证好的号，即买即用，搜索：gpt即可，<strong>成本3到5元左右。</strong></p>
+<h2 id="购买账号">购买账号</h2>
+<p>另一个最简单直接的办法就是到<strong>淘宝</strong>、<strong>闲鱼</strong>等平台（网络平台也可）买一个已经注册验证好的号，即买即用，搜索：gpt即可，<strong>成本3到5元左右。</strong></p>
 <p>购买渠道</p>
 <ol>
 <li>淘宝、闲鱼</li>
-<li>网络平台：<ol>
+<li>网络平台：
+<ol>
 <li><a target="_blank" rel="noopener" href="https://www.gpt777.shop/?categoryId=0">https://www.gpt777.shop/?categoryId=0</a>（推荐）</li>
 <li><a target="_blank" rel="noopener" href="https://www.z2u.com/chatgpt/accounts-5-20670">https://www.z2u.com/chatgpt/accounts-5-20670</a>（国外网站）</li>
 </ol>
 </li>
 </ol>
 <blockquote>
-<p><strong>优点：</strong>方便<strong>、</strong>即买即用</p>
+<p>**优点：<strong>方便</strong>、**即买即用</p>
 <p><strong>缺点：无法体验到自行注册的乐趣</strong></p>
 </blockquote>
 <hr>
-<h1 id="科学上网注意事项"><a href="#科学上网注意事项" class="headerlink" title="科学上网注意事项"></a>科学上网注意事项</h1><p>ChatGPT对访问ip有着严格限制，必须使用ip干净的节点进行访问，否则会被禁止访问。</p>
+<h1 id="科学上网注意事项">科学上网注意事项</h1>
+<p>ChatGPT对访问ip有着严格限制，必须使用ip干净的节点进行访问，否则会被禁止访问。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/blocked.png" alt="blocked"></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
-<li><p><strong>不要使用香港、台湾的代理ip</strong>，推荐<strong>美国、加拿大，日本，新加坡</strong>等ip，或者一些小众国家的代理ip；另外，如果代理ip被openai拉入黑名单也无法访问到chatGPT</p>
+<h2 id="解决方法">解决方法</h2>
+<ol>
+<li>
+<p><strong>不要使用香港、台湾的代理ip</strong>，推荐<strong>美国、加拿大，日本，新加坡</strong>等ip，或者一些小众国家的代理ip；另外，如果代理ip被openai拉入黑名单也无法访问到chatGPT</p>
 <ol>
 <li><strong>更换节点后，可以按ctrl+f5对网页强制刷新，清除缓存</strong></li>
 </ol>
 </li>
-<li><p><strong>（推荐）使用反向代理</strong>，<strong>不使用</strong>chatGPT的<strong>web访问</strong>，<strong>使用api模式</strong>进行访问（后面会具体讲到）</p>
+<li>
+<p><strong>（推荐）使用反向代理</strong>，<strong>不使用</strong>chatGPT的<strong>web访问</strong>，<strong>使用api模式</strong>进行访问（后面会具体讲到）</p>
 </li>
-<li><p>使用翻墙代理协议后，同时使用vpn。从而更换ip和DNS记录，稳定进入。</p>
+<li>
+<p>使用翻墙代理协议后，同时使用vpn。从而更换ip和DNS记录，稳定进入。</p>
 </li>
 </ol>
 <hr>
-<h1 id="Api访问模式"><a href="#Api访问模式" class="headerlink" title="Api访问模式"></a>Api访问模式</h1><blockquote>
+<h1 id="api访问模式">Api访问模式</h1>
+<blockquote>
 <p>一般地，我们是通过 <a target="_blank" rel="noopener" href="https://chat.openai.com/">https://chat.openai.com/</a> 与chatGPT聊天，但还有一种api调用方式可以使用chatGPT，api访问模式响<strong>应速度更快</strong>，而且<strong>无需科学上网。</strong></p>
 </blockquote>
 <ol>
-<li>优点<ol>
+<li>优点
+<ol>
 <li><strong>不需要翻墙，不需要使用代理，可以直接访问</strong></li>
-<li>响应速度更快，可以调整chatGPT模型的精度<strong>（更具体创造力，让回答更准确等）</strong></li>
+<li>响应速度更快，可以调整chatGPT模型的精度**（更具体创造力，让回答更准确等）**</li>
 </ol>
 </li>
-<li>缺点<ol>
+<li>缺点
+<ol>
 <li><strong>需要消耗账号内的api额度</strong>，每个账号自带5美元api额度（限期四个月，过期作废）。api额度用完后，只能使用web访问；或者再注册个新账号继续使用账号内api额度</li>
 </ol>
 </li>
 </ol>
-<h2 id="浏览器插件推荐"><a href="#浏览器插件推荐" class="headerlink" title="浏览器插件推荐"></a>浏览器插件推荐</h2><ol>
+<h2 id="浏览器插件推荐">浏览器插件推荐</h2>
+<ol>
 <li>ChatHub，将目前主流的chat模型集成，包含且不限于：ChatGPT，Bard，New Bing，Claude，通义千问等语言模型。</li>
 </ol>
-<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatHub.png" alt="同时使用chatGPT和Claude示意"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatHub.png" alt="同时使用chatGPT和Claude示意"></p>
 <ol start="2">
 <li>ChatGPT for Google ，向google提问的同时自动向ChatGPT等模型提问，配置API过程与上述相似</li>
 </ol>
-<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatWithGoogle.png" alt="GPT for Google插件"></p>
-<h3 id="ChatHub安装与使用"><a href="#ChatHub安装与使用" class="headerlink" title="ChatHub安装与使用"></a>ChatHub安装与使用</h3><h4 id="安装方式一"><a href="#安装方式一" class="headerlink" title="安装方式一"></a>安装方式一</h4><p><a target="_blank" rel="noopener" href="https://github.com/chathub-dev/chathub/releases">https://github.com/chathub-dev/chathub/releases</a> 下载zip文件，随后将zip文件直接拖动到浏览器里面即可（支持Edge，Chrome）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatWithGoogle.png" alt="GPT for Google插件"></p>
+<h3 id="chathub安装与使用">ChatHub安装与使用</h3>
+<h4 id="安装方式一">安装方式一</h4>
+<p><a target="_blank" rel="noopener" href="https://github.com/chathub-dev/chathub/releases">https://github.com/chathub-dev/chathub/releases</a> 下载zip文件，随后将zip文件直接拖动到浏览器里面即可（支持Edge，Chrome）</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chathub-install2.png" alt="github下载zip扩展文件"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/HowToInstallExtension.png" alt="在chrome安装zip扩展文件"></p>
-<h4 id="安装方式二"><a href="#安装方式二" class="headerlink" title="安装方式二"></a>安装方式二</h4><p>直接在浏览器（Edge或Chrome）的插件商店搜索“ChatHub”</p>
+<h4 id="安装方式二">安装方式二</h4>
+<p>直接在浏览器（Edge或Chrome）的插件商店搜索“ChatHub”</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chathub-install.png" alt="chathub-install"></p>
-<h4 id="填写API-Key等信息"><a href="#填写API-Key等信息" class="headerlink" title="填写API Key等信息"></a>填写API Key等信息</h4><p>安装完ChatHub后，需要填写chatGPT的一些信息，才可以使用api访问模式</p>
+<h4 id="填写api-key等信息">填写API Key等信息</h4>
+<p>安装完ChatHub后，需要填写chatGPT的一些信息，才可以使用api访问模式</p>
 <ol>
 <li><strong>打开设置(Settings)</strong></li>
 </ol>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chathub-settings.png" alt="chathub-settings"></p>
 <ol start="2">
-<li><p><strong>找到ChatGPT区</strong></p>
+<li>
+<p><strong>找到ChatGPT区</strong></p>
 </li>
-<li><p><strong>选择API Mode</strong></p>
+<li>
+<p><strong>选择API Mode</strong></p>
 </li>
-<li><p><strong>填写API key和API Host</strong></p>
+<li>
+<p><strong>填写API key和API Host</strong></p>
 </li>
 </ol>
-<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatHub-2.png" alt="chatHub-需要填写的信息"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatHub-2.png" alt="chatHub-需要填写的信息"></p>
 <blockquote>
-<p>API Host可以填写： <a target="_blank" rel="noopener" href="https://openapi.lthero.top/">https://openapi.lthero.top</a> （借用<strong>cloudflare</strong>平台做的反向代理，对账号无风险）</p>
+<p>API Host可以填写： <a target="_blank" rel="noopener" href="https://openapi.lthero.top">https://openapi.lthero.top</a> （借用<strong>cloudflare</strong>平台做的反向代理，对账号无风险）</p>
 </blockquote>
-<h4 id="Api-Key的获取流程"><a href="#Api-Key的获取流程" class="headerlink" title="Api Key的获取流程"></a>Api Key的获取流程</h4><h5 id="查看额度"><a href="#查看额度" class="headerlink" title="查看额度"></a>查看额度</h5><p>每个账号自带5美元API额度（为期4个月，过期无效），在网址：<a target="_blank" rel="noopener" href="https://platform.openai.com/account/usage">https://platform.openai.com/account/usage</a> 可以查看账号的剩余额度和期限，如下图所示</p>
+<h4 id="api-key的获取流程">Api Key的获取流程</h4>
+<h5 id="查看额度">查看额度</h5>
+<p>每个账号自带5美元API额度（为期4个月，过期无效），在网址：<a target="_blank" rel="noopener" href="https://platform.openai.com/account/usage">https://platform.openai.com/account/usage</a> 可以查看账号的剩余额度和期限，如下图所示</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/openAPIusage.png" alt="openAPIusage"></p>
-<h5 id="生成Key"><a href="#生成Key" class="headerlink" title="生成Key"></a>生成Key</h5><p>打开 <a target="_blank" rel="noopener" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> ，选择API keys，创建新的key即可（注意，key只会在创建时可以明文查看，一定要即可保存出来），</p>
+<h5 id="生成key">生成Key</h5>
+<p>打开 <a target="_blank" rel="noopener" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> ，选择API keys，创建新的key即可（注意，key只会在创建时可以明文查看，一定要即可保存出来），</p>
 <p>Api key格式：sk-fw6Sx65xxxCxqKT3BlbkFJla819XSOrtoKXFmMjPyP</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/API-key.png" alt="API-key"></p>
 <hr>
-<h3 id="ChatGPT-For-Google安装与使用"><a href="#ChatGPT-For-Google安装与使用" class="headerlink" title="ChatGPT For Google安装与使用"></a>ChatGPT For Google安装与使用</h3><h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ChatForGoogle-Google.png" alt="Google搜索同时使用ChatGPT"></p>
+<h3 id="chatgpt-for-google安装与使用">ChatGPT For Google安装与使用</h3>
+<h4 id="效果展示">效果展示</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ChatForGoogle-Google.png" alt="Google搜索同时使用ChatGPT"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ChatForGoogle-bing.png" alt="Bing搜索同时使用ChatGPT"></p>
-<h4 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h4><p><strong>在</strong><a target="_blank" rel="noopener" href="https://chatgpt4google.com/chrome?utm_source=github">Chrome</a>扩展商店 <strong>或</strong> <a target="_blank" rel="noopener" href="https://chatgpt4google.com/firefox?utm_source=github">Firefox</a>（火狐）扩展商店 搜索：ChatGPT for Google即可</p>
+<h4 id="安装方式">安装方式</h4>
+<p><strong>在</strong><a target="_blank" rel="noopener" href="https://chatgpt4google.com/chrome?utm_source=github">Chrome</a>扩展商店 <strong>或</strong> <a target="_blank" rel="noopener" href="https://chatgpt4google.com/firefox?utm_source=github">Firefox</a>（火狐）扩展商店 搜索：ChatGPT for Google即可</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatGPT%20for%20Google%20install.png" alt="在Chrome商店安装"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/chatGPT%20for%20Google%20install-Mozilla.png" alt="在火狐浏览器安装"></p>
-<h4 id="填写API-Key等信息-1"><a href="#填写API-Key等信息-1" class="headerlink" title="填写API Key等信息"></a>填写API Key等信息</h4><p>打开ChatGPT4Google的设置页面，按下面方式进行填写</p>
+<h4 id="填写api-key等信息">填写API Key等信息</h4>
+<p>打开ChatGPT4Google的设置页面，按下面方式进行填写</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ChatGPT%20for%20Google%20settings.png" alt="ChatGPT for Google settings"></p>
-<h2 id="Api-Key的获取流程-1"><a href="#Api-Key的获取流程-1" class="headerlink" title="Api Key的获取流程"></a>Api Key的获取流程</h2><h5 id="查看额度-1"><a href="#查看额度-1" class="headerlink" title="查看额度"></a>查看额度</h5><p>每个账号自带5美元API额度（为期4个月，过期无效），在网址：<a target="_blank" rel="noopener" href="https://platform.openai.com/account/usage">https://platform.openai.com/account/usage</a> 可以查看账号的剩余额度和期限，如下图所示</p>
+<h2 id="api-key的获取流程">Api Key的获取流程</h2>
+<h5 id="查看额度">查看额度</h5>
+<p>每个账号自带5美元API额度（为期4个月，过期无效），在网址：<a target="_blank" rel="noopener" href="https://platform.openai.com/account/usage">https://platform.openai.com/account/usage</a> 可以查看账号的剩余额度和期限，如下图所示</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/openAPIusage.png" alt="openAPIusage"></p>
-<h5 id="生成Key-1"><a href="#生成Key-1" class="headerlink" title="生成Key"></a>生成Key</h5><p>打开 <a target="_blank" rel="noopener" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> ，选择API keys，创建新的key即可（注意，key只会在创建时可以明文查看，一定要即可保存出来），</p>
+<h5 id="生成key">生成Key</h5>
+<p>打开 <a target="_blank" rel="noopener" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> ，选择API keys，创建新的key即可（注意，key只会在创建时可以明文查看，一定要即可保存出来），</p>
 <p>Api key格式：sk-fw6Sx65xxxCxqKT3BlbkFJla819XSOrtoKXFmMjPyP</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/API-key.png" alt="API-key"></p>
 <hr>
-<h1 id="ChatGPT4"><a href="#ChatGPT4" class="headerlink" title="ChatGPT4"></a>ChatGPT4</h1><h2 id="GPT4-0官网购买流程"><a href="#GPT4-0官网购买流程" class="headerlink" title="GPT4.0官网购买流程"></a>GPT4.0官网购买流程</h2><blockquote>
+<h1 id="chatgpt4">ChatGPT4</h1>
+<h2 id="gpt4-0官网购买流程">GPT4.0官网购买流程</h2>
+<blockquote>
 <p>需要：</p>
 <ol>
 <li>一个ChatGPT账号</li>
 <li>科学的上网环境</li>
 <li>iPhone用户需要美区的 Apple ID 账号</li>
-<li>整个开通过程，预计花费150-200人民币 </li>
+<li>整个开通过程，预计花费150-200人民币</li>
 <li>国内的VISA或Master卡不支持，就算开通了也有概率会被封号</li>
 <li>需要虚拟美元信用卡，如Dupay或Hyperpay ，但虚拟信用卡开通后往往有两次验证，验证不通过仍然被封号</li>
 </ol>
 </blockquote>
 <p>综上，不推荐自行购买gpt4，不如直接购买现成的账号，可以找个固定商家，让商家帮续费。</p>
-<h2 id="GPT4-0购买渠道"><a href="#GPT4-0购买渠道" class="headerlink" title="GPT4.0购买渠道"></a>GPT4.0购买渠道</h2><ol>
+<h2 id="gpt4-0购买渠道">GPT4.0购买渠道</h2>
+<ol>
 <li>淘宝、闲鱼，搜索关键词：<strong>gptplus</strong> 或 <strong>4.0升级</strong> 或<strong>api4</strong>（某些关键词会被禁止搜索）</li>
-<li>网络平台：<ol>
+<li>网络平台：
+<ol>
 <li><a target="_blank" rel="noopener" href="https://www.gpt777.shop/?categoryId=0">https://www.gpt777.shop/?categoryId=0</a>（推荐）</li>
 <li><a target="_blank" rel="noopener" href="https://www.z2u.com/chatgpt/accounts-5-20670">https://www.z2u.com/chatgpt/accounts-5-20670</a>（国外网站）</li>
 </ol>
 </li>
 </ol>
 <hr>
-<h2 id="GPT4-0使用特色"><a href="#GPT4-0使用特色" class="headerlink" title="GPT4.0使用特色"></a>GPT4.0使用特色</h2><ol>
+<h2 id="gpt4-0使用特色">GPT4.0使用特色</h2>
+<ol>
 <li>GPT4.0<strong>无字数限制</strong>，但拥有次数限制，例如3小时内限制50次的回答（实测不容易达到这个限制），意味着4.0拥有了更长的记忆，可以进行更长的聊天。</li>
 <li>可以使用<strong>插件</strong>、可以<strong>实时联网、生成图片、阅读长篇pdf文件</strong>（如<strong>几十页</strong>的文献），<strong>分析表格、图片</strong>等超多功能。</li>
 <li>比3.5更智能，4.0写出的代码大多可以直接运行，且效果不错。</li>
 </ol>
 <hr>
-<p>​     </p>
-<h2 id="GPT4-0科研相关插件"><a href="#GPT4-0科研相关插件" class="headerlink" title="GPT4.0科研相关插件"></a>GPT4.0科研相关插件</h2><p>GPT4的插件在插件商场中可以安装，安装后可以询问gpt如何使用这些插件</p>
-<h3 id="WebPilot（多功能）"><a href="#WebPilot（多功能）" class="headerlink" title="WebPilot（多功能）"></a>WebPilot（多功能）</h3><p>插件WebPilot可以访问网页。与联网模式不同，WebPilot是在**特定的网址(url)**进行分析，</p>
-<h4 id="WebPilot安装"><a href="#WebPilot安装" class="headerlink" title="WebPilot安装"></a>WebPilot安装</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-install.png" alt="webpilot-install"></p>
+<p>​</p>
+<h2 id="gpt4-0科研相关插件">GPT4.0科研相关插件</h2>
+<p>GPT4的插件在插件商场中可以安装，安装后可以询问gpt如何使用这些插件</p>
+<h3 id="webpilot-多功能">WebPilot（多功能）</h3>
+<p>插件WebPilot可以访问网页。与联网模式不同，WebPilot是在**特定的网址(url)**进行分析，</p>
+<h4 id="webpilot安装">WebPilot安装</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-install.png" alt="webpilot-install"></p>
 <p>安装后需要勾选以启用WebPilot插件</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-choose.png" alt="webpilot-enable"></p>
-<h4 id="阅读网页"><a href="#阅读网页" class="headerlink" title="阅读网页"></a>阅读网页</h4><p>如果你想了解一个网页的内容，但是没有时间或者精力去阅读整个网页，你可以使用WebPilot插件的visitWebPage功能提取网页信息。</p>
+<h4 id="阅读网页">阅读网页</h4>
+<p>如果你想了解一个网页的内容，但是没有时间或者精力去阅读整个网页，你可以使用WebPilot插件的visitWebPage功能提取网页信息。</p>
 <p>例如，我找到一篇IEEE网站上的文献</p>
 <p>网址如下：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8513859">https://ieeexplore.ieee.org/document/8513859</a> ，随后，可以直接将此url复制给chatGPT，让他阅读并总结。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-useUrl.png" alt="webpilot-直接阅读网页"></p>
-<h4 id="阅读文献"><a href="#阅读文献" class="headerlink" title="阅读文献"></a>阅读文献</h4><p>还可以通过WebPilot访问论文，支持pdf格式，需要将文献转成直链形式，才能让插件访问<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a></p>
+<h4 id="阅读文献">阅读文献</h4>
+<p>还可以通过WebPilot访问论文，支持pdf格式，需要将文献转成直链形式，才能让插件访问<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-readPdfByurl.png" alt="webpilot-通过文件直链阅读文献"></p>
 <p>并且可以直接对文章具体内容进行提问，GPT可以通过这个插件访问到文章里面的所有内容，比如，直接向GPT要问题的分析与解答</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-use2.png" alt="webpilot-深度阅读文献"></p>
-<h4 id="上传文件并生成直链的平台"><a href="#上传文件并生成直链的平台" class="headerlink" title="上传文件并生成直链的平台"></a>上传文件并生成直链的平台</h4><ol>
-<li><p>文件上传后生成直链URL的平台：</p>
+<h4 id="上传文件并生成直链的平台">上传文件并生成直链的平台</h4>
 <ol>
-<li><p><a target="_blank" rel="noopener" href="https://catbox.moe/">https://catbox.moe/</a>  (推荐)</p>
+<li>
+<p>文件上传后生成直链URL的平台：</p>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://catbox.moe/">https://catbox.moe/</a>  (推荐)</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/catbox_upload_2.png" alt="catbox_上传文件后得到直链"></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://tntfiles.com/">https://tntfiles.com/</a> （还支持将文件通过邮件方式发送给其它用户）</p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://tntfiles.com/">https://tntfiles.com/</a> （还支持将文件通过邮件方式发送给其它用户）</p>
 </li>
 </ol>
 </li>
-<li><p>将文件直接上传到上述的平台，并获得对应文件的直链url（如<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a> ），复制这个url再丢到chatGPT的对话中即可。</p>
+<li>
+<p>将文件直接上传到上述的平台，并获得对应文件的直链url（如<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a> ），复制这个url再丢到chatGPT的对话中即可。</p>
 </li>
 </ol>
-<h4 id="搜索文献"><a href="#搜索文献" class="headerlink" title="搜索文献"></a>搜索文献</h4><p>可以让webpilot搜索文献，搭配阅读功能，可以让GPT搜索文献后自行总结摘要，从而加快科研速度。</p>
+<h4 id="搜索文献">搜索文献</h4>
+<p>可以让webpilot搜索文献，搭配阅读功能，可以让GPT搜索文献后自行总结摘要，从而加快科研速度。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-search.png" alt="webpilot-搜索文献"></p>
-<h4 id="翻译网页内容"><a href="#翻译网页内容" class="headerlink" title="翻译网页内容"></a>翻译网页内容</h4><p>在浏览一个外语网站时遇到了困难，还可以使用WebPilot插件翻译网页内容。</p>
+<h4 id="翻译网页内容">翻译网页内容</h4>
+<p>在浏览一个外语网站时遇到了困难，还可以使用WebPilot插件翻译网页内容。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/webpilot-useTranslate.png" alt="webpilot-进行网页翻译"></p>
-<h4 id="Webpilot优点"><a href="#Webpilot优点" class="headerlink" title="Webpilot优点"></a>Webpilot优点</h4><ol>
+<h4 id="webpilot优点">Webpilot优点</h4>
+<ol>
 <li>允许用户直接在聊天界面中提供URL，然后让ChatGPT处理后续的工作，如提取信息，搜索内容等。</li>
 <li>在线搜索、阅读能力极强</li>
 </ol>
-<h4 id="WebPilot局限性"><a href="#WebPilot局限性" class="headerlink" title="WebPilot局限性"></a>WebPilot局限性</h4><ol>
+<h4 id="webpilot局限性">WebPilot局限性</h4>
+<ol>
 <li><strong>无法实时</strong>访问互联网，比如，想要知道今天的天气如何，webpilot则无法从网上直接获得天气情况</li>
 </ol>
-<p>​    </p>
+<p>​</p>
 <hr>
-<h3 id="Askyourpdf（文档阅读）"><a href="#Askyourpdf（文档阅读）" class="headerlink" title="Askyourpdf（文档阅读）"></a>Askyourpdf（文档阅读）</h3><p>Askyourpdf是<strong>专门</strong>用来阅读文件的插件，在后继的对话中，可以<strong>基于这个文件的内容</strong>来进行<strong>对话</strong>，相当于这个文件变成一个小型数据库。目前支持的文件类型有<strong>pdf、ppt、pptx、rtf、txt、epub、csv</strong>这七种类型。目前<strong>支持中文内容</strong>。</p>
-<h4 id="Askyourpdf安装"><a href="#Askyourpdf安装" class="headerlink" title="Askyourpdf安装"></a>Askyourpdf安装</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-install.png" alt="ask-pdf-install"></p>
-<h4 id="Askyourpdf使用"><a href="#Askyourpdf使用" class="headerlink" title="Askyourpdf使用"></a>Askyourpdf使用</h4><p>使用askyourpdf插件有两种方式</p>
+<h3 id="askyourpdf-文档阅读">Askyourpdf（文档阅读）</h3>
+<p>Askyourpdf是<strong>专门</strong>用来阅读文件的插件，在后继的对话中，可以<strong>基于这个文件的内容</strong>来进行<strong>对话</strong>，相当于这个文件变成一个小型数据库。目前支持的文件类型有<strong>pdf、ppt、pptx、rtf、txt、epub、csv</strong>这七种类型。目前<strong>支持中文内容</strong>。</p>
+<h4 id="askyourpdf安装">Askyourpdf安装</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-install.png" alt="ask-pdf-install"></p>
+<h4 id="askyourpdf使用">Askyourpdf使用</h4>
+<p>使用askyourpdf插件有两种方式</p>
 <ol>
-<li>最方便的一种方式就是直接把<strong>文件的直链URL</strong>给到ChatGPT（如<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a>，若我们直接点开这个链接，会跳出下载框）<ol>
-<li>文件上传后生成直链URL的平台：<ol>
+<li>最方便的一种方式就是直接把<strong>文件的直链URL</strong>给到ChatGPT（如<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a>，若我们直接点开这个链接，会跳出下载框）
+<ol>
+<li>文件上传后生成直链URL的平台：
+<ol>
 <li><a target="_blank" rel="noopener" href="https://catbox.moe/">https://catbox.moe/</a>  (推荐)</li>
 <li><a target="_blank" rel="noopener" href="https://tntfiles.com/">https://tntfiles.com/</a> （支持将文件通过邮件方式发送给其它用户）</li>
 </ol>
@@ -410,56 +481,69 @@
 <p>使用直链阅读的方式与webpilot一致</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-use-url.png" alt="ask-文件直链阅读"></p>
 <ol start="2">
-<li>在<strong>askyourpdf的官网</strong>上传文件 （网址：<a target="_blank" rel="noopener" href="https://askyourpdf.com/">https://askyourpdf.com/</a> ），但每天<strong>限制只能上传两篇</strong><ol>
+<li>在<strong>askyourpdf的官网</strong>上传文件 （网址：<a target="_blank" rel="noopener" href="https://askyourpdf.com/">https://askyourpdf.com/</a> ），但每天<strong>限制只能上传两篇</strong>
+<ol>
 <li>上传文件后，可以找到对应文档的ID，将这个ID发送给GPT即可：b6e0d2e9-d9c0-4aa9-b060-450ff384e6fc，效果和直链一样，注意：这个ID仅能使用askyourpdf插件进行阅读</li>
 </ol>
 </li>
 </ol>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-upload-1.png" alt="ask-官网上传按钮"> </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-upload-1.png" alt="ask-官网上传按钮"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-upload.png" alt="ask-上传文档后找到文档ID"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-use-id.png" alt="ask-使用文档ID进行阅读"></p>
 <p>和webpilot一样，askyourpdf也可以全文阅读文件，可以针对文献中某段落或某句进行具体提问，如下图</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ask-pdf-use1.png" alt="ask-具体提问"></p>
 <hr>
-<h3 id="ScholarAI（文献搜索）"><a href="#ScholarAI（文献搜索）" class="headerlink" title="ScholarAI（文献搜索）"></a>ScholarAI（文献搜索）</h3><p>ScholarAI能够实现访问开放科学文献，这些文献来自同行评审的期刊。<strong>只需提供关键词</strong>，就能找到相关的论文及摘要。还可以直接下载原文的pdf</p>
-<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ScholarAI-use.png" alt="ScholarAI-use"></p>
+<h3 id="scholarai-文献搜索">ScholarAI（文献搜索）</h3>
+<p>ScholarAI能够实现访问开放科学文献，这些文献来自同行评审的期刊。<strong>只需提供关键词</strong>，就能找到相关的论文及摘要。还可以直接下载原文的pdf</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/ScholarAI-use.png" alt="ScholarAI-use"></p>
 <hr>
-<h3 id="Askyourcode（代码项目梳理）"><a href="#Askyourcode（代码项目梳理）" class="headerlink" title="Askyourcode（代码项目梳理）"></a>Askyourcode（代码项目梳理）</h3><p>可以梳理github上项目的插件</p>
+<h3 id="askyourcode-代码项目梳理">Askyourcode（代码项目梳理）</h3>
+<p>可以梳理github上项目的插件</p>
 <p><a target="_blank" rel="noopener" href="https://www.whatplugin.ai/plugins/askyourcode">https://www.whatplugin.ai/plugins/askyourcode</a></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/askyourcode.png" alt="askyourcode-梳理项目"></p>
 <p>对于项目中出现的pdf文件，再次使用askyourpdf插件进行阅读</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/askyourcode-pdf.png" alt="askyourcode-阅读pdf"></p>
 <hr>
-<h3 id="Show-me（画图）"><a href="#Show-me（画图）" class="headerlink" title="Show me（画图）"></a>Show me（画图）</h3><p>Show Me通过创建和呈现可视化图表来帮助解释和理解复杂的概念、流程或系统。</p>
+<h3 id="show-me-画图">Show me（画图）</h3>
+<p>Show Me通过创建和呈现可视化图表来帮助解释和理解复杂的概念、流程或系统。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/pluginsIllustrates.png" alt="pluginsIllustrates"></p>
 <p>例如，使用askyourcode对github上项目进行梳理后，再使用show me插件画出项目文件树状图，以及项目的构架图。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/comba-askcode-showme.png" alt="comba-askcode-showme"></p>
 <hr>
-<h2 id="上传文件并生成直链的平台-1"><a href="#上传文件并生成直链的平台-1" class="headerlink" title="上传文件并生成直链的平台"></a>上传文件并生成直链的平台</h2><ol>
-<li><p>文件上传后生成直链URL的平台：</p>
+<h2 id="上传文件并生成直链的平台">上传文件并生成直链的平台</h2>
 <ol>
-<li><p><a target="_blank" rel="noopener" href="https://catbox.moe/">https://catbox.moe/</a>  (推荐)</p>
+<li>
+<p>文件上传后生成直链URL的平台：</p>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://catbox.moe/">https://catbox.moe/</a>  (推荐)</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/catbox_upload_2.png" alt="catbox_上传文件后得到直链"></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://tntfiles.com/">https://tntfiles.com/</a> （还支持将文件通过邮件方式发送给其它用户）</p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://tntfiles.com/">https://tntfiles.com/</a> （还支持将文件通过邮件方式发送给其它用户）</p>
 </li>
 </ol>
 </li>
-<li><p>将文件直接上传到上述的平台，并获得对应文件的直链url（如<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a> ），复制这个url再丢到chatGPT的对话中即可。</p>
+<li>
+<p>将文件直接上传到上述的平台，并获得对应文件的直链url（如<a target="_blank" rel="noopener" href="https://files.catbox.moe/lvfzno.pdf">https://files.catbox.moe/lvfzno.pdf</a> ），复制这个url再丢到chatGPT的对话中即可。</p>
 </li>
 </ol>
 <hr>
-<h2 id="其它ChatGPT相关插件"><a href="#其它ChatGPT相关插件" class="headerlink" title="其它ChatGPT相关插件"></a>其它ChatGPT相关插件</h2><h4 id="代码编辑器中的代码助手"><a href="#代码编辑器中的代码助手" class="headerlink" title="代码编辑器中的代码助手"></a>代码编辑器中的代码助手</h4><p>对于Vscode、以及Jetbrain旗下的各种编辑器（如Pycharm、IDEA等）都有相应的接入了chatGPT的插件，下面，举例说明在Vscode中添加代码助手插件的过程</p>
+<h2 id="其它chatgpt相关插件">其它ChatGPT相关插件</h2>
+<h4 id="代码编辑器中的代码助手">代码编辑器中的代码助手</h4>
+<p>对于Vscode、以及Jetbrain旗下的各种编辑器（如Pycharm、IDEA等）都有相应的接入了chatGPT的插件，下面，举例说明在Vscode中添加代码助手插件的过程</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/genie.png" alt="genie"></p>
 <blockquote>
 <p>插件名：Genie</p>
 <p>接入ChatGPT的api后，无需打开浏览器即可在编辑器中使用chatGPT的功能</p>
 <p>功能：对选中的代码进行解释、分析、优化、找bug等功能</p>
 </blockquote>
-<h4 id="Genie安装方法"><a href="#Genie安装方法" class="headerlink" title="Genie安装方法"></a>Genie安装方法</h4><p>Vscode插件页面搜索genie即可，安装后需要配置api Key和api host，具体流程与之前提到的相似。其它的平台安装插件方式与此相似，在插件商店搜索关键词：chatGPT即可。</p>
+<h4 id="genie安装方法">Genie安装方法</h4>
+<p>Vscode插件页面搜索genie即可，安装后需要配置api Key和api host，具体流程与之前提到的相似。其它的平台安装插件方式与此相似，在插件商店搜索关键词：chatGPT即可。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/genie-install.png" alt="genie-install"></p>
 <hr>
-<h4 id="Copilot"><a href="#Copilot" class="headerlink" title="Copilot"></a>Copilot</h4><p>官网：<a target="_blank" rel="noopener" href="https://copilot.github.com/">https://copilot.github.com</a></p>
+<h4 id="copilot">Copilot</h4>
+<p>官网：<a target="_blank" rel="noopener" href="https://copilot.github.com">https://copilot.github.com</a></p>
 <p>利用网络中的数十亿行公共代码（尤其是开源在GitHub上的），然后基于机器学习算法训练出来的，理论上支持所有编程语言，目前对Python、JS、TS、Ruby、Java、Go这些语言尤为适用。</p>
 <p>支持平台：VsCode、Idea、Pycharm、Neovim等平台</p>
 <blockquote>
@@ -472,31 +556,52 @@
 <p>获取方式</p>
 <p>淘宝购买，成本20~40左右（一年），搜索关键词：copilot，这类购买的账号往往会赠送jetbrain软件全家桶</p>
 <p>购买后，在编译器内搜索copilot插件，安装插件后与账号进行关联即可使用。</p>
-<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>不能像chatGPT根据需要生成大段的自定义代码，而是需要一步一步地写注释与引导它生成代码</p>
+<h5 id="缺点">缺点</h5>
+<p>不能像chatGPT根据需要生成大段的自定义代码，而是需要一步一步地写注释与引导它生成代码</p>
 <hr>
-<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="中文提示词秘籍"><a href="#中文提示词秘籍" class="headerlink" title="中文提示词秘籍"></a>中文提示词秘籍</h2><p><a target="_blank" rel="noopener" href="https://qddmercny4.feishu.cn/sheets/shtcnMklYu0WsXEDUXXanrSEB2m">https://qddmercny4.feishu.cn/sheets/shtcnMklYu0WsXEDUXXanrSEB2m</a></p>
-<h2 id="借用cloudflare搭建chatGPT的反向代理"><a href="#借用cloudflare搭建chatGPT的反向代理" class="headerlink" title="借用cloudflare搭建chatGPT的反向代理"></a>借用cloudflare搭建chatGPT的反向代理</h2><p><a target="_blank" rel="noopener" href="https://github.com/gaboolic/cloudflare-reverse-proxy">https://github.com/gaboolic/cloudflare-reverse-proxy</a></p>
-<h2 id="注册常见问题"><a href="#注册常见问题" class="headerlink" title="注册常见问题"></a>注册常见问题</h2><ol>
-<li><p>注册时ChatGPT提示：You’ve made too many phone verification requests. Please try again later or contact us through our help center at help.openai.com.<br>只能等。或者关掉浏览器，清空厉史记录，重新登录再尝试短信验证。实在不行就换邮箱再注册一个号</p>
+<h1 id="附录">附录</h1>
+<h2 id="中文提示词秘籍">中文提示词秘籍</h2>
+<p><a target="_blank" rel="noopener" href="https://qddmercny4.feishu.cn/sheets/shtcnMklYu0WsXEDUXXanrSEB2m">https://qddmercny4.feishu.cn/sheets/shtcnMklYu0WsXEDUXXanrSEB2m</a></p>
+<h2 id="借用cloudflare搭建chatgpt的反向代理">借用cloudflare搭建chatGPT的反向代理</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/gaboolic/cloudflare-reverse-proxy">https://github.com/gaboolic/cloudflare-reverse-proxy</a></p>
+<h2 id="注册常见问题">注册常见问题</h2>
+<ol>
+<li>
+<p>注册时ChatGPT提示：You’ve made too many phone verification requests. Please try again later or contact us through our help center at <a target="_blank" rel="noopener" href="http://help.openai.com">help.openai.com</a>.<br>
+只能等。或者关掉浏览器，清空厉史记录，重新登录再尝试短信验证。实在不行就换邮箱再注册一个号</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/TooManyVerification.jpg" alt="TooManyVerification"></p>
 </li>
-<li><p>注册时OpenAI提示：We’ve detected suspicious behavior from phone numbers similar to yours. Please try again later or contact us through our help center at help.openai.com.<br>说明这个国家的号码被风控了，换个别的国家的号再试试</p>
+<li>
+<p>注册时OpenAI提示：We’ve detected suspicious behavior from phone numbers similar to yours. Please try again later or contact us through our help center at <a target="_blank" rel="noopener" href="http://help.openai.com">help.openai.com</a>.<br>
+说明这个国家的号码被风控了，换个别的国家的号再试试</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/weve-detected-suspicious-behavior-from-phone-numbers.jpg" alt="weve-detected-suspicious-behavior-from-phone-numbers"></p>
 </li>
-<li><p>注册最后一步，选了用途后提示：Failed to create account. If this issue persists please contact us through our help center at help.openai.com<br>换服务器，换新邮箱注册新号</p>
+<li>
+<p>注册最后一步，选了用途后提示：Failed to create account. If this issue persists please contact us through our help center at <a target="_blank" rel="noopener" href="http://help.openai.com">help.openai.com</a><br>
+换服务器，换新邮箱注册新号</p>
 </li>
-<li><p>注册时提示：Signup is currently unavailable, please try again later<br>换服务器，换新邮箱注册新号</p>
+<li>
+<p>注册时提示：Signup is currently unavailable, please try again later<br>
+换服务器，换新邮箱注册新号</p>
 </li>
-<li><p>短信验证时提示：The carrier associated with this phone is not supported. For help, contact us through our help center at help.openai.com.不支持这个运营商的号码<br>换别的国家的号即可，用加拿大的号时遇到过这种提示：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/notsupport.png" alt="img"></p>
+<li>
+<p>短信验证时提示：The carrier associated with this phone is not supported. For help, contact us through our help center at help.openai.com.不支持这个运营商的号码<br>
+换别的国家的号即可，用加拿大的号时遇到过这种提示：<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/notsupport.png" alt="img"></p>
 </li>
-<li><p>短信验证时提示：This phone number is already linked to the maximum number of accounts. 这个号验证的ChatGPT帐号太多了，大家都在用接码平台，一个号码肯定不只给你一个人用，换一个号即可。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/maximum.png" alt="img"></p>
+<li>
+<p>短信验证时提示：This phone number is already linked to the maximum number of accounts. 这个号验证的ChatGPT帐号太多了，大家都在用接码平台，一个号码肯定不只给你一个人用，换一个号即可。<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/maximum.png" alt="img"></p>
 </li>
-<li><p>收不到短信验证码，换了号码以后提示：Your account was flagged for potential abuse. If you feel this is an error, please contact us at help.openai.com，如图：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/potentialabuse.png" alt="img"></p>
+<li>
+<p>收不到短信验证码，换了号码以后提示：Your account was flagged for potential abuse. If you feel this is an error, please contact us at <a target="_blank" rel="noopener" href="http://help.openai.com">help.openai.com</a>，如图：<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.vpsdawanjia.com/wp-content/uploads/2023/03/potentialabuse.png" alt="img"></p>
 </li>
-<li><p>遇到这种情况，果断换环境、换IP即可解决，收短信验证码的手机号也要换一换（换不同的国家)</p>
+<li>
+<p>遇到这种情况，果断换环境、换IP即可解决，收短信验证码的手机号也要换一换（换不同的国家)</p>
 </li>
 </ol>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/">https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ChatGPT/">ChatGPT</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/13/ssh-remote-connect/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【ssh反向代理】外网访问内网主机</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/19/MSc-InformationSecurity-1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【研究生课】信息安全技术笔记一</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E6%96%87%E7%94%A8%E5%BE%97%E4%B8%8A%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">全文用得上的链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97-ChatGPT-%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">如何获得 ChatGPT 账号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E8%A1%8C%E6%B3%A8%E5%86%8C"><span class="toc-number">3.1.</span> <span class="toc-text">自行注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%B3%A8%E5%86%8C%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">接码平台的注册及使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.3.</span> <span class="toc-text">购买账号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.</span> <span class="toc-text">科学上网注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Api%E8%AE%BF%E9%97%AE%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">Api访问模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="toc-number">5.1.</span> <span class="toc-text">浏览器插件推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ChatHub%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">ChatHub安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">安装方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-number">5.1.1.2.</span> <span class="toc-text">安装方式二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A1%AB%E5%86%99API-Key%E7%AD%89%E4%BF%A1%E6%81%AF"><span class="toc-number">5.1.1.3.</span> <span class="toc-text">填写API Key等信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Api-Key%E7%9A%84%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B"><span class="toc-number">5.1.1.4.</span> <span class="toc-text">Api Key的获取流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%A2%9D%E5%BA%A6"><span class="toc-number">5.1.1.4.1.</span> <span class="toc-text">查看额度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90Key"><span class="toc-number">5.1.1.4.2.</span> <span class="toc-text">生成Key</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChatGPT-For-Google%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.2.</span> <span class="toc-text">ChatGPT For Google安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">安装方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A1%AB%E5%86%99API-Key%E7%AD%89%E4%BF%A1%E6%81%AF-1"><span class="toc-number">5.1.2.3.</span> <span class="toc-text">填写API Key等信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Api-Key%E7%9A%84%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B-1"><span class="toc-number">5.2.</span> <span class="toc-text">Api Key的获取流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%A2%9D%E5%BA%A6-1"><span class="toc-number">5.2.0.0.1.</span> <span class="toc-text">查看额度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90Key-1"><span class="toc-number">5.2.0.0.2.</span> <span class="toc-text">生成Key</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ChatGPT4"><span class="toc-number">6.</span> <span class="toc-text">ChatGPT4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT4-0%E5%AE%98%E7%BD%91%E8%B4%AD%E4%B9%B0%E6%B5%81%E7%A8%8B"><span class="toc-number">6.1.</span> <span class="toc-text">GPT4.0官网购买流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT4-0%E8%B4%AD%E4%B9%B0%E6%B8%A0%E9%81%93"><span class="toc-number">6.2.</span> <span class="toc-text">GPT4.0购买渠道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT4-0%E4%BD%BF%E7%94%A8%E7%89%B9%E8%89%B2"><span class="toc-number">6.3.</span> <span class="toc-text">GPT4.0使用特色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT4-0%E7%A7%91%E7%A0%94%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6"><span class="toc-number">6.4.</span> <span class="toc-text">GPT4.0科研相关插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebPilot%EF%BC%88%E5%A4%9A%E5%8A%9F%E8%83%BD%EF%BC%89"><span class="toc-number">6.4.1.</span> <span class="toc-text">WebPilot（多功能）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WebPilot%E5%AE%89%E8%A3%85"><span class="toc-number">6.4.1.1.</span> <span class="toc-text">WebPilot安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E7%BD%91%E9%A1%B5"><span class="toc-number">6.4.1.2.</span> <span class="toc-text">阅读网页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E6%96%87%E7%8C%AE"><span class="toc-number">6.4.1.3.</span> <span class="toc-text">阅读文献</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%B9%B6%E7%94%9F%E6%88%90%E7%9B%B4%E9%93%BE%E7%9A%84%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.4.1.4.</span> <span class="toc-text">上传文件并生成直链的平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%96%87%E7%8C%AE"><span class="toc-number">6.4.1.5.</span> <span class="toc-text">搜索文献</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9"><span class="toc-number">6.4.1.6.</span> <span class="toc-text">翻译网页内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Webpilot%E4%BC%98%E7%82%B9"><span class="toc-number">6.4.1.7.</span> <span class="toc-text">Webpilot优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebPilot%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">6.4.1.8.</span> <span class="toc-text">WebPilot局限性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Askyourpdf%EF%BC%88%E6%96%87%E6%A1%A3%E9%98%85%E8%AF%BB%EF%BC%89"><span class="toc-number">6.4.2.</span> <span class="toc-text">Askyourpdf（文档阅读）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Askyourpdf%E5%AE%89%E8%A3%85"><span class="toc-number">6.4.2.1.</span> <span class="toc-text">Askyourpdf安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Askyourpdf%E4%BD%BF%E7%94%A8"><span class="toc-number">6.4.2.2.</span> <span class="toc-text">Askyourpdf使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ScholarAI%EF%BC%88%E6%96%87%E7%8C%AE%E6%90%9C%E7%B4%A2%EF%BC%89"><span class="toc-number">6.4.3.</span> <span class="toc-text">ScholarAI（文献搜索）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Askyourcode%EF%BC%88%E4%BB%A3%E7%A0%81%E9%A1%B9%E7%9B%AE%E6%A2%B3%E7%90%86%EF%BC%89"><span class="toc-number">6.4.4.</span> <span class="toc-text">Askyourcode（代码项目梳理）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Show-me%EF%BC%88%E7%94%BB%E5%9B%BE%EF%BC%89"><span class="toc-number">6.4.5.</span> <span class="toc-text">Show me（画图）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%B9%B6%E7%94%9F%E6%88%90%E7%9B%B4%E9%93%BE%E7%9A%84%E5%B9%B3%E5%8F%B0-1"><span class="toc-number">6.5.</span> <span class="toc-text">上传文件并生成直链的平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83ChatGPT%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6"><span class="toc-number">6.6.</span> <span class="toc-text">其它ChatGPT相关插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B"><span class="toc-number">6.6.0.1.</span> <span class="toc-text">代码编辑器中的代码助手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Genie%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-number">6.6.0.2.</span> <span class="toc-text">Genie安装方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Copilot"><span class="toc-number">6.6.0.3.</span> <span class="toc-text">Copilot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">6.6.0.3.1.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%A7%98%E7%B1%8D"><span class="toc-number">7.1.</span> <span class="toc-text">中文提示词秘籍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%9F%E7%94%A8cloudflare%E6%90%AD%E5%BB%BAchatGPT%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">7.2.</span> <span class="toc-text">借用cloudflare搭建chatGPT的反向代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">7.3.</span> <span class="toc-text">注册常见问题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/">https://blog.lthero.cn/2023/10/04/HowToUseChatGPT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ChatGPT/">ChatGPT</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/13/ssh-remote-connect/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【ssh反向代理】外网访问内网主机</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/19/MSc-InformationSecurity-1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【研究生课】信息安全技术笔记一</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E6%96%87%E7%94%A8%E5%BE%97%E4%B8%8A%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">全文用得上的链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97-chatgpt-%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">如何获得 ChatGPT 账号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E8%A1%8C%E6%B3%A8%E5%86%8C"><span class="toc-number">3.1.</span> <span class="toc-text">自行注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%B3%A8%E5%86%8C%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">接码平台的注册及使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.3.</span> <span class="toc-text">购买账号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.</span> <span class="toc-text">科学上网注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#api%E8%AE%BF%E9%97%AE%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">Api访问模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="toc-number">5.1.</span> <span class="toc-text">浏览器插件推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#chathub%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">ChatHub安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">安装方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-number">5.1.1.2.</span> <span class="toc-text">安装方式二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A1%AB%E5%86%99api-key%E7%AD%89%E4%BF%A1%E6%81%AF"><span class="toc-number">5.1.1.3.</span> <span class="toc-text">填写API Key等信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#api-key%E7%9A%84%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B"><span class="toc-number">5.1.1.4.</span> <span class="toc-text">Api Key的获取流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%A2%9D%E5%BA%A6"><span class="toc-number">5.1.1.4.1.</span> <span class="toc-text">查看额度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90key"><span class="toc-number">5.1.1.4.2.</span> <span class="toc-text">生成Key</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chatgpt-for-google%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.2.</span> <span class="toc-text">ChatGPT For Google安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">安装方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A1%AB%E5%86%99api-key%E7%AD%89%E4%BF%A1%E6%81%AF"><span class="toc-number">5.1.2.3.</span> <span class="toc-text">填写API Key等信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api-key%E7%9A%84%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B"><span class="toc-number">5.2.</span> <span class="toc-text">Api Key的获取流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%A2%9D%E5%BA%A6"><span class="toc-number">5.2.0.0.1.</span> <span class="toc-text">查看额度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90key"><span class="toc-number">5.2.0.0.2.</span> <span class="toc-text">生成Key</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chatgpt4"><span class="toc-number">6.</span> <span class="toc-text">ChatGPT4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gpt4-0%E5%AE%98%E7%BD%91%E8%B4%AD%E4%B9%B0%E6%B5%81%E7%A8%8B"><span class="toc-number">6.1.</span> <span class="toc-text">GPT4.0官网购买流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gpt4-0%E8%B4%AD%E4%B9%B0%E6%B8%A0%E9%81%93"><span class="toc-number">6.2.</span> <span class="toc-text">GPT4.0购买渠道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gpt4-0%E4%BD%BF%E7%94%A8%E7%89%B9%E8%89%B2"><span class="toc-number">6.3.</span> <span class="toc-text">GPT4.0使用特色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gpt4-0%E7%A7%91%E7%A0%94%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6"><span class="toc-number">6.4.</span> <span class="toc-text">GPT4.0科研相关插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpilot-%E5%A4%9A%E5%8A%9F%E8%83%BD"><span class="toc-number">6.4.1.</span> <span class="toc-text">WebPilot（多功能）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#webpilot%E5%AE%89%E8%A3%85"><span class="toc-number">6.4.1.1.</span> <span class="toc-text">WebPilot安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E7%BD%91%E9%A1%B5"><span class="toc-number">6.4.1.2.</span> <span class="toc-text">阅读网页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E6%96%87%E7%8C%AE"><span class="toc-number">6.4.1.3.</span> <span class="toc-text">阅读文献</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%B9%B6%E7%94%9F%E6%88%90%E7%9B%B4%E9%93%BE%E7%9A%84%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.4.1.4.</span> <span class="toc-text">上传文件并生成直链的平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%96%87%E7%8C%AE"><span class="toc-number">6.4.1.5.</span> <span class="toc-text">搜索文献</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9"><span class="toc-number">6.4.1.6.</span> <span class="toc-text">翻译网页内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpilot%E4%BC%98%E7%82%B9"><span class="toc-number">6.4.1.7.</span> <span class="toc-text">Webpilot优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpilot%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">6.4.1.8.</span> <span class="toc-text">WebPilot局限性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#askyourpdf-%E6%96%87%E6%A1%A3%E9%98%85%E8%AF%BB"><span class="toc-number">6.4.2.</span> <span class="toc-text">Askyourpdf（文档阅读）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#askyourpdf%E5%AE%89%E8%A3%85"><span class="toc-number">6.4.2.1.</span> <span class="toc-text">Askyourpdf安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#askyourpdf%E4%BD%BF%E7%94%A8"><span class="toc-number">6.4.2.2.</span> <span class="toc-text">Askyourpdf使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scholarai-%E6%96%87%E7%8C%AE%E6%90%9C%E7%B4%A2"><span class="toc-number">6.4.3.</span> <span class="toc-text">ScholarAI（文献搜索）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#askyourcode-%E4%BB%A3%E7%A0%81%E9%A1%B9%E7%9B%AE%E6%A2%B3%E7%90%86"><span class="toc-number">6.4.4.</span> <span class="toc-text">Askyourcode（代码项目梳理）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#show-me-%E7%94%BB%E5%9B%BE"><span class="toc-number">6.4.5.</span> <span class="toc-text">Show me（画图）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%B9%B6%E7%94%9F%E6%88%90%E7%9B%B4%E9%93%BE%E7%9A%84%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.5.</span> <span class="toc-text">上传文件并生成直链的平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83chatgpt%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6"><span class="toc-number">6.6.</span> <span class="toc-text">其它ChatGPT相关插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B"><span class="toc-number">6.6.0.1.</span> <span class="toc-text">代码编辑器中的代码助手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#genie%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-number">6.6.0.2.</span> <span class="toc-text">Genie安装方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copilot"><span class="toc-number">6.6.0.3.</span> <span class="toc-text">Copilot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">6.6.0.3.1.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%A7%98%E7%B1%8D"><span class="toc-number">7.1.</span> <span class="toc-text">中文提示词秘籍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%9F%E7%94%A8cloudflare%E6%90%AD%E5%BB%BAchatgpt%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">7.2.</span> <span class="toc-text">借用cloudflare搭建chatGPT的反向代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">7.3.</span> <span class="toc-text">注册常见问题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

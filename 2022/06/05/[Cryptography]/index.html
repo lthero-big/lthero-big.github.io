@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Cryptography】密码学复习 | lthero</title><meta name="keywords" content="密码学"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="攻击方法唯密文攻击（Ciphertext Only Attack，COA）：仅持有密文。 已知明文攻击：（Known Plaintext Attack，KPA）：掌握了一些明密文对。 选择明文攻击（Chosen Plaintext Attack，CPA）：截获加密机。 选择密文攻击（Chosen Ciphertext Attack，CCA）：截获解密机。 古典密码大写字母AZ和小写字母az分别对应">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Cryptography】密码学复习 | lthero</title><meta name="keywords" content="密码学"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="攻击方法 唯密文攻击（Ciphertext Only Attack，COA）：仅持有密文。 已知明文攻击：（Known Plaintext Attack，KPA）：掌握了一些明密文对。 选择明文攻击（Chosen Plaintext Attack，CPA）：截获加密机。 选择密文攻击（Chosen Ciphertext Attack，CCA）：截获解密机。 古典密码 大写字母AZ和小写字母az分别">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Cryptography】密码学复习">
 <meta property="og:url" content="https://blog.lthero.cn/2022/06/05/[Cryptography]/index.html">
 <meta property="og:site_name" content="lthero">
-<meta property="og:description" content="攻击方法唯密文攻击（Ciphertext Only Attack，COA）：仅持有密文。 已知明文攻击：（Known Plaintext Attack，KPA）：掌握了一些明密文对。 选择明文攻击（Chosen Plaintext Attack，CPA）：截获加密机。 选择密文攻击（Chosen Ciphertext Attack，CCA）：截获解密机。 古典密码大写字母AZ和小写字母az分别对应">
+<meta property="og:description" content="攻击方法 唯密文攻击（Ciphertext Only Attack，COA）：仅持有密文。 已知明文攻击：（Known Plaintext Attack，KPA）：掌握了一些明密文对。 选择明文攻击（Chosen Plaintext Attack，CPA）：截获加密机。 选择密文攻击（Chosen Ciphertext Attack，CCA）：截获解密机。 古典密码 大写字母AZ和小写字母az分别">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg">
 <meta property="article:published_time" content="2022-06-05T13:15:21.000Z">
 <meta property="article:modified_time" content="2022-06-15T14:30:54.979Z">
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/06/05/[Cryptography]/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/06/05/[Cryptography]/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -143,21 +143,34 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/z8dp1v.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Cryptography】密码学复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-05T13:15:21.000Z" title="发表于 2022-06-05 21:15:21">2022-06-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-15T14:30:54.979Z" title="更新于 2022-06-15 22:30:54">2022-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Cryptography】密码学复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="攻击方法"><a href="#攻击方法" class="headerlink" title="攻击方法"></a>攻击方法</h2><p>唯密文攻击（Ciphertext Only Attack，COA）：仅持有密文。</p>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Cryptography】密码学复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-05T13:15:21.000Z" title="发表于 2022-06-05 21:15:21">2022-06-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-15T14:30:54.979Z" title="更新于 2022-06-15 22:30:54">2022-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Cryptography】密码学复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="攻击方法">攻击方法</h2>
+<p>唯密文攻击（Ciphertext Only Attack，COA）：仅持有密文。</p>
 <p>已知明文攻击：（Known Plaintext Attack，KPA）：掌握了一些明密文对。</p>
 <p>选择明文攻击（Chosen Plaintext Attack，CPA）：截获加密机。</p>
 <p>选择密文攻击（Chosen Ciphertext Attack，CCA）：截获解密机。</p>
-<h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><p>大写字母A<del>Z和小写字母a</del>z分别对应数字0~25（考试会给出表格）。</p>
+<h2 id="古典密码">古典密码</h2>
+<p>大写字母A<s>Z和小写字母a</s>z分别对应数字0~25（考试会给出表格）。</p>
 <p>重点是<strong>置换密码</strong>：</p>
 <ol>
 <li>单表：加法、乘法、仿射</li>
 <li>多表：Playfair、Vigenere</li>
 </ol>
 <p>安全性分析（包括抗暴力破解强度，即密钥空间大小）</p>
-<h2 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h2><h3 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h3><h4 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.ax1x.com/2019/01/19/k9vf00.png" alt="img"></p>
-<h4 id="计算：S盒"><a href="#计算：S盒" class="headerlink" title="计算：S盒"></a>计算：S盒</h4><p>查表，最高位和最低位对应行号，中间位对应列号。</p>
-<h4 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h4><h5 id="互补性"><a href="#互补性" class="headerlink" title="互补性"></a>互补性</h5><h5 id="弱密钥"><a href="#弱密钥" class="headerlink" title="弱密钥"></a>弱密钥</h5><h4 id="双重、三重DES分析（加密的强度：密钥空间）"><a href="#双重、三重DES分析（加密的强度：密钥空间）" class="headerlink" title="双重、三重DES分析（加密的强度：密钥空间）"></a>双重、三重DES分析（加密的强度：密钥空间）</h4><h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><h4 id="算法过程（加密-x2F-解密）"><a href="#算法过程（加密-x2F-解密）" class="headerlink" title="算法过程（加密&#x2F;解密）"></a>算法过程（加密&#x2F;解密）</h4><p>解密是加密的逆过程。</p>
-<h4 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h4><p>字节上的计算。</p>
+<h2 id="分组密码">分组密码</h2>
+<h3 id="des">DES</h3>
+<h4 id="算法过程">算法过程</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.ax1x.com/2019/01/19/k9vf00.png" alt="img"></p>
+<h4 id="计算：s盒">计算：S盒</h4>
+<p>查表，最高位和最低位对应行号，中间位对应列号。</p>
+<h4 id="安全性">安全性</h4>
+<h5 id="互补性">互补性</h5>
+<h5 id="弱密钥">弱密钥</h5>
+<h4 id="双重-三重des分析-加密的强度：密钥空间">双重、三重DES分析（加密的强度：密钥空间）</h4>
+<h3 id="aes">AES</h3>
+<h4 id="算法过程-加密-解密">算法过程（加密/解密）</h4>
+<p>解密是加密的逆过程。</p>
+<h4 id="计算">计算</h4>
+<p>字节上的计算。</p>
 <p><strong>字节代换（S 盒）</strong></p>
 <p>简单的查表。</p>
 <p>逆：也是查表。</p>
@@ -171,7 +184,8 @@
 <p>乘法两种方法：</p>
 <ol>
 <li>用定义</li>
-<li>用简便方法（乘2情况下）<ul>
+<li>用简便方法（乘2情况下）
+<ul>
 <li>最高位是0：直接左移1位。</li>
 <li>最高位是1：左移1位后和 <code>00011011</code> 异或。</li>
 </ul>
@@ -186,8 +200,8 @@
 <p>128 位密钥形成4个4字节组成的（32位）字：w[0],w[1],w[2],w[3]w[0],w[1],w[2],w[3] ，这是初始密钥加用到的。</p>
 <p>扩充40个新列，以如下算法生成：</p>
 <ol>
-<li>若 ii 不是4的倍数，那么 w[i]&#x3D;w[i−4]⊕w[i−1]w[i]&#x3D;w[i−4]⊕w[i−1] 。</li>
-<li>若 ii 是4的倍数，那么 w[i]&#x3D;w[i−4]⊕T(w[i−1])w[i]&#x3D;w[i−4]⊕T(w[i−1]) 。</li>
+<li>若 ii 不是4的倍数，那么 w[i]=w[i−4]⊕w[i−1]w[i]=w[i−4]⊕w[i−1] 。</li>
+<li>若 ii 是4的倍数，那么 w[i]=w[i−4]⊕T(w[i−1])w[i]=w[i−4]⊕T(w[i−1]) 。</li>
 </ol>
 <p>其中，T()T() 是一个很复杂的函数，定义如下：</p>
 <ol>
@@ -195,7 +209,8 @@
 <li>字节代换：用字节代换中的 S 盒，直接查表。</li>
 <li>轮常量异或。</li>
 </ol>
-<h3 id="工作模式"><a href="#工作模式" class="headerlink" title="工作模式"></a>工作模式</h3><p>根据加密图画出解密图。</p>
+<h3 id="工作模式">工作模式</h3>
+<p>根据加密图画出解密图。</p>
 <p>根据图写出算法。</p>
 <p>错误传播分析。</p>
 <ol>
@@ -205,49 +220,74 @@
 <li>输出反馈模式（OFB）</li>
 <li>计数器模式（CTR）</li>
 </ol>
-<h2 id="流密码"><a href="#流密码" class="headerlink" title="流密码"></a>流密码</h2><p>给定初始状态，写出输出序列。线性反馈移位寄存器（LFSR）。</p>
+<h2 id="流密码">流密码</h2>
+<p>给定初始状态，写出输出序列。线性反馈移位寄存器（LFSR）。</p>
 <p>周期、游程分析。</p>
 <p>本原多项式、m序列。</p>
-<h2 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h2><p>不要求掌握完整算法。</p>
+<h2 id="哈希函数">哈希函数</h2>
+<p>不要求掌握完整算法。</p>
 <p>因为不考记忆算法，后面的也很难算，能考的或许只有<strong>数据填充</strong>（99.9%考）。</p>
 <p>本身含义、安全性分析（碰撞性）。</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><em><strong>Hash</strong></em> 函数是密码学的一个重要分支，是将<strong>任意长度的输入</strong>变换为<strong>固定长度的输出</strong>的不可逆的<strong>单向</strong>密码体制。</p>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
+<h3 id="基本概念">基本概念</h3>
+<p><em><strong>Hash</strong></em> 函数是密码学的一个重要分支，是将<strong>任意长度的输入</strong>变换为<strong>固定长度的输出</strong>的不可逆的<strong>单向</strong>密码体制。</p>
+<h3 id="性质">性质</h3>
+<ol>
 <li>任意长度输入。</li>
 <li>固定长度输出。</li>
 <li>对于任意给定的消息 xx ，计算 H(x)H(x) 比较容易，硬件软件均可实现。</li>
-<li>单向性（抗原像性）：从散列值 h&#x3D;H(m)h&#x3D;H(m) 推回消息 mm 在计算上不可行。</li>
-<li>抗弱碰撞性：对任意<strong>给定</strong>的消息 xx ，找到 y≠xy≠x 且 H(x)&#x3D;H(y)H(x)&#x3D;H(y) 在计算上不可行。</li>
-<li>抗强碰撞性：找到<strong>任何</strong>满足 H(x)&#x3D;H(y)H(x)&#x3D;H(y) 的两个不同消息 x,yx,y 在计算上不可行。</li>
+<li>单向性（抗原像性）：从散列值 h=H(m)h=H(m) 推回消息 mm 在计算上不可行。</li>
+<li>抗弱碰撞性：对任意<strong>给定</strong>的消息 xx ，找到 y≠xy≠x 且 H(x)=H(y)H(x)=H(y) 在计算上不可行。</li>
+<li>抗强碰撞性：找到<strong>任何</strong>满足 H(x)=H(y)H(x)=H(y) 的两个不同消息 x,yx,y 在计算上不可行。</li>
 </ol>
-<h3 id="数据填充"><a href="#数据填充" class="headerlink" title="数据填充"></a>数据填充</h3><p>填充一个1和若干个0，使得消息长度模 512 与 448 同余。</p>
+<h3 id="数据填充">数据填充</h3>
+<p>填充一个1和若干个0，使得消息长度模 512 与 448 同余。</p>
 <p>特别注意：若原消息长度刚好满足这个条件，则再填充 512 位（1 个 1 和 511 个 0）。</p>
 <p>填充完后再把原始消息长度以 64 比特表示附加在后面。</p>
 <p>这样，最终消息长度恰好为 512 的整数倍。</p>
-<h3 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h3><p>分组长度为 512 比特，最终输出 128 位（即 16 字节，32 个十六进制位）的消息摘要。</p>
+<h3 id="md5">MD5</h3>
+<p>分组长度为 512 比特，最终输出 128 位（即 16 字节，32 个十六进制位）的消息摘要。</p>
 <p>过程为 4 轮，每轮 16 步，共 64 步。</p>
-<h3 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h3><p>最终输出 160 位（即 20 字节，40 个十六进制位）的消息摘要。（因此比 MD5 抗穷举能力更强）</p>
+<h3 id="sha1">SHA1</h3>
+<p>最终输出 160 位（即 20 字节，40 个十六进制位）的消息摘要。（因此比 MD5 抗穷举能力更强）</p>
 <p>过程为 4 轮，每轮 20 步，共 80 步。</p>
 <p>看到后面的步骤，心中呐喊：打扰了。</p>
-<h2 id="公钥密码"><a href="#公钥密码" class="headerlink" title="公钥密码"></a>公钥密码</h2><p>相当于单向陷门函数，陷门是私钥。</p>
-<h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><h4 id="算法流程（加密、解密）"><a href="#算法流程（加密、解密）" class="headerlink" title="算法流程（加密、解密）"></a>算法流程（加密、解密）</h4><h4 id="计算-1"><a href="#计算-1" class="headerlink" title="计算"></a>计算</h4><p>给出 p,q,ep,q,e 求 dd</p>
-<p>n&#x3D;p⋅q φ(n)&#x3D;(p−1)⋅(q−1) d≡e−1(modφ(n))n&#x3D;p⋅q φ(n)&#x3D;(p−1)⋅(q−1) d≡e−1(modφ(n))</p>
+<h2 id="公钥密码">公钥密码</h2>
+<p>相当于单向陷门函数，陷门是私钥。</p>
+<h3 id="rsa">RSA</h3>
+<h4 id="算法流程-加密-解密">算法流程（加密、解密）</h4>
+<h4 id="计算">计算</h4>
+<p>给出 p,q,ep,q,e 求 dd</p>
+<p>n=p⋅q φ(n)=(p−1)⋅(q−1) d≡e−1(modφ(n))n=p⋅q φ(n)=(p−1)⋅(q−1) d≡e−1(modφ(n))</p>
 <p>加密：给出 mm 求 cc</p>
 <p>c≡me(modn)c≡me(modn)</p>
 <p>解密：给出 cc 求 mm</p>
 <p>m≡cd(modn)m≡cd(modn)</p>
-<h4 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h4><h4 id="正确性验证"><a href="#正确性验证" class="headerlink" title="正确性验证"></a>正确性验证</h4><ol>
-<li>(m,e)&#x3D;1(m,e)&#x3D;1</li>
+<h4 id="安全性分析">安全性分析</h4>
+<h4 id="正确性验证">正确性验证</h4>
+<ol>
+<li>(m,e)=1(m,e)=1</li>
 <li>(m,e)≠1(m,e)≠1</li>
 </ol>
-<h4 id="攻击与防范（肯定考）"><a href="#攻击与防范（肯定考）" class="headerlink" title="攻击与防范（肯定考）"></a>攻击与防范（肯定考）</h4><p>共模攻击</p>
+<h4 id="攻击与防范-肯定考">攻击与防范（肯定考）</h4>
+<p>共模攻击</p>
 <p>低指数攻击</p>
-<h3 id="ElGamal"><a href="#ElGamal" class="headerlink" title="ElGamal"></a>ElGamal</h3><p>不考安全性分析。</p>
-<h4 id="加密解密算法（必须记住）"><a href="#加密解密算法（必须记住）" class="headerlink" title="加密解密算法（必须记住）"></a>加密解密算法（必须记住）</h4><h4 id="计算-2"><a href="#计算-2" class="headerlink" title="计算"></a>计算</h4><h4 id="正确性验证-1"><a href="#正确性验证-1" class="headerlink" title="正确性验证"></a>正确性验证</h4><h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>签名用私钥，验证用公钥。</p>
-<h3 id="RSA-1"><a href="#RSA-1" class="headerlink" title="RSA"></a>RSA</h3><h3 id="ElGamal（如果考会给出算法）"><a href="#ElGamal（如果考会给出算法）" class="headerlink" title="ElGamal（如果考会给出算法）"></a>ElGamal（如果考会给出算法）</h3><h3 id="特殊：盲签名"><a href="#特殊：盲签名" class="headerlink" title="特殊：盲签名"></a>特殊：盲签名</h3><h3 id="安全性分析-1"><a href="#安全性分析-1" class="headerlink" title="安全性分析"></a>安全性分析</h3><p>若不加 Hash 会怎么样？（没有Hash函数有什么缺点？）</p>
+<h3 id="elgamal">ElGamal</h3>
+<p>不考安全性分析。</p>
+<h4 id="加密解密算法-必须记住">加密解密算法（必须记住）</h4>
+<h4 id="计算">计算</h4>
+<h4 id="正确性验证">正确性验证</h4>
+<h2 id="数字签名">数字签名</h2>
+<p>签名用私钥，验证用公钥。</p>
+<h3 id="rsa">RSA</h3>
+<h3 id="elgamal-如果考会给出算法">ElGamal（如果考会给出算法）</h3>
+<h3 id="特殊：盲签名">特殊：盲签名</h3>
+<h3 id="安全性分析">安全性分析</h3>
+<p>若不加 Hash 会怎么样？（没有Hash函数有什么缺点？）</p>
 <p>可以伪造签名。</p>
 <p>看P246 6.</p>
-<h3 id="正确性分析"><a href="#正确性分析" class="headerlink" title="正确性分析"></a>正确性分析</h3><h2 id="密码协议"><a href="#密码协议" class="headerlink" title="密码协议"></a>密码协议</h2><p>联系《密码学课程设计》的综合实验。</p>
+<h3 id="正确性分析">正确性分析</h3>
+<h2 id="密码协议">密码协议</h2>
+<p>联系《密码学课程设计》的综合实验。</p>
 <p>对称密码用到的密钥用公钥密码体制传输。</p>
 <ol>
 <li>Alice 用 Bob 的公钥加密对称密码的密钥，发送给 Bob 。</li>
@@ -255,13 +295,17 @@
 </ol>
 <p>给出具体密码协议，分析合理性，验证可靠性，证明安全性。</p>
 <p>综合，会涉及到前面学的。</p>
-<h2 id="一些题目"><a href="#一些题目" class="headerlink" title="一些题目"></a>一些题目</h2><h3 id="仿射密码"><a href="#仿射密码" class="headerlink" title="仿射密码"></a>仿射密码</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>若 ci&#x3D;E(mi)&#x3D;(11⋅mi+6)mod26ci&#x3D;E(mi)&#x3D;(11⋅mi+6)mod26：</p>
+<h2 id="一些题目">一些题目</h2>
+<h3 id="仿射密码">仿射密码</h3>
+<h4 id="题目">题目</h4>
+<p>若 ci=E(mi)=(11⋅mi+6)mod26ci=E(mi)=(11⋅mi+6)mod26：</p>
 <ol>
 <li>若明文为 cumtcumt ，请计算相应的密文。</li>
 <li>写出解密变换。</li>
 <li>若密文文 cumtcumt，请计算相应的明文。</li>
 </ol>
-<h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><p>字母-数字对应表：（考试会给出）</p>
+<h4 id="解答">解答</h4>
+<p>字母-数字对应表：（考试会给出）</p>
 <table>
 <thead>
 <tr>
@@ -293,7 +337,8 @@
 <th>Z</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>1</td>
 <td>2</td>
@@ -321,21 +366,25 @@
 <td>24</td>
 <td>25</td>
 </tr>
-</tbody></table>
-<p>由 ci&#x3D;E(mi)&#x3D;(11⋅mi+6)mod26ci&#x3D;E(mi)&#x3D;(11⋅mi+6)mod26</p>
+</tbody>
+</table>
+<p>由 ci=E(mi)=(11⋅mi+6)mod26ci=E(mi)=(11⋅mi+6)mod26</p>
 <p>cc 对应 2，对应密文为 2，对应 cc；</p>
 <p>uu 对应 20，对应密文为 18，对应 ss；</p>
 <p>mm 对应12，对应密文为 8，对应 ii ；</p>
 <p>tt 对应 19，对应密文为 1，对应 bb 。</p>
 <p>故 cumtcumt 对应的密文为 csibcsib 。</p>
-<p>∵11−1≡19(mod26) ∴解密变换为mi&#x3D;[19⋅(y−6)]mod26∵11−1≡19(mod26) ∴解密变换为mi&#x3D;[19⋅(y−6)]mod26</p>
-<h3 id="RSA-2"><a href="#RSA-2" class="headerlink" title="RSA"></a>RSA</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>RSA 加密算法是当前使用最为广泛的公钥加密算法。假设消息接收方选择 p&#x3D;43,q&#x3D;59,e&#x3D;13p&#x3D;43,q&#x3D;59,e&#x3D;13 ，请回答以下问题：</p>
+<p>∵11−1≡19(mod26) ∴解密变换为mi=[19⋅(y−6)]mod26∵11−1≡19(mod26) ∴解密变换为mi=[19⋅(y−6)]mod26</p>
+<h3 id="rsa">RSA</h3>
+<h4 id="题目">题目</h4>
+<p>RSA 加密算法是当前使用最为广泛的公钥加密算法。假设消息接收方选择 p=43,q=59,e=13p=43,q=59,e=13 ，请回答以下问题：</p>
 <ol>
 <li>发送方预加密消息 224224 并发送给接收方，请计算密文。</li>
 <li>请计算解密方的解密密钥 dd。</li>
 <li>若收到的密文为 803803 ，请计算相应的明文。</li>
 </ol>
-<h4 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h4><p>n&#x3D;p⋅q&#x3D;43⋅59&#x3D;2537 φ(n)&#x3D;(p−1)⋅(q−1)&#x3D;42⋅58&#x3D;2436 c≡me≡22413≡1692(modn) ∴密文为1692n&#x3D;p⋅q&#x3D;43⋅59&#x3D;2537 φ(n)&#x3D;(p−1)⋅(q−1)&#x3D;42⋅58&#x3D;2436 c≡me≡22413≡1692(modn) ∴密文为1692</p>
+<h4 id="解答">解答</h4>
+<p>n=p⋅q=43⋅59=2537 φ(n)=(p−1)⋅(q−1)=42⋅58=2436 c≡me≡22413≡1692(modn) ∴密文为1692n=p⋅q=43⋅59=2537 φ(n)=(p−1)⋅(q−1)=42⋅58=2436 c≡me≡22413≡1692(modn) ∴密文为1692</p>
 <p>使用扩展 <em><strong>Euclid</strong></em> 算法求模逆：</p>
 <table>
 <thead>
@@ -347,7 +396,8 @@
 <th>rjrj</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-2</td>
 <td></td>
 <td></td>
@@ -396,7 +446,8 @@
 <td>2</td>
 <td>0</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>使用 Python 验算：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.ax1x.com/2019/01/04/FTtv40.png" alt="img"></p>
 <p>∴d≡e−1≡937(modφ(n))∴d≡e−1≡937(modφ(n))</p>
@@ -404,8 +455,11 @@
 <p>m≡cd≡803937≡1727(modn)m≡cd≡803937≡1727(modn)</p>
 <p>即明文为 17271727 。</p>
 <hr>
-<h1 id="第一章-密码学概论"><a href="#第一章-密码学概论" class="headerlink" title="第一章 密码学概论"></a>第一章 密码学概论</h1><h2 id="信息安全（密码编码学：认证体制-保密体制）"><a href="#信息安全（密码编码学：认证体制-保密体制）" class="headerlink" title="信息安全（密码编码学：认证体制+保密体制）"></a><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8&spm=1001.2101.3001.7020">信息安全</a>（密码编码学：认证体制+保密体制）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527210609308.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-信息安全基础概念"><a href="#1-信息安全基础概念" class="headerlink" title="1.信息安全基础概念"></a>1.信息安全基础概念</h2><p>攻击的主要形式和分类：</p>
+<h1 id="第一章-密码学概论">第一章 密码学概论</h1>
+<h2 id="信息安全-密码编码学：认证体制-保密体制"><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8&amp;spm=1001.2101.3001.7020">信息安全</a>（密码编码学：认证体制+保密体制）</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527210609308.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="1-信息安全基础概念">1.信息安全基础概念</h2>
+<p>攻击的主要形式和分类：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527211355215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>主动攻击：</p>
 <p>对数据流进行窜改或产生假的数据流</p>
@@ -414,8 +468,10 @@
 <p>（2）篡改：对完整性进行攻击</p>
 <p>修改文件中的数据(数据修改后存储)，替换某一程序使其执行不同功能</p>
 <p>修改网络中传送消息的内容等，比如中间节点对转发的图象进行了压缩</p>
-<p>（3）伪造：对真实性进行攻击<br>在网络中插入伪造的消息冒充消息发送者，在文件中插入伪造记录等</p>
-<p>安全攻击的主要形式：<br>（1）中断</p>
+<p>（3）伪造：对真实性进行攻击<br>
+在网络中插入伪造的消息冒充消息发送者，在文件中插入伪造记录等</p>
+<p>安全攻击的主要形式：<br>
+（1）中断</p>
 <p>（2）截取</p>
 <p>（3）伪造</p>
 <p>（4）篡改</p>
@@ -426,7 +482,8 @@
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527212206344.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527212145730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527212229967.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527212306288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="2-信息基本安全目标"><a href="#2-信息基本安全目标" class="headerlink" title="2.信息基本安全目标"></a>2.信息基本安全目标</h2><ul>
+<h2 id="2-信息基本安全目标">2.信息基本安全目标</h2>
+<ul>
 <li>保密性(<code>C</code>onfidentiality)：确保秘密信息不向非授权者泄露</li>
 <li>完整性(<code>I</code>ntegrity)：确保信息和程序只能以特定和授权的方式进行改变</li>
 <li>可用性(<code>A</code>vailability)：确保系统能工作迅速，对授权用户不能拒绝</li>
@@ -437,33 +494,37 @@
 <li>可追溯性(Accountability)：要求实体的行为可以唯一追溯到该实体</li>
 </ul>
 <hr>
-<h1 id="第二章-密码学基础"><a href="#第二章-密码学基础" class="headerlink" title="第二章 密码学基础"></a>第二章 密码学基础</h1><h2 id="1-密码学的相关概念"><a href="#1-密码学的相关概念" class="headerlink" title="1.密码学的相关概念"></a>1.密码学的相关概念</h2><h3 id="密码学分类："><a href="#密码学分类：" class="headerlink" title="密码学分类："></a>密码学分类：</h3><p>(1)密码编码学:主要研究<strong>对信息进行编码，实现信息的隐蔽</strong>。常见的“密码学”通常指<strong>密码编码学</strong></p>
+<h1 id="第二章-密码学基础">第二章 密码学基础</h1>
+<h2 id="1-密码学的相关概念">1.密码学的相关概念</h2>
+<h3 id="密码学分类：">密码学分类：</h3>
+<p>(1)密码编码学:主要研究<strong>对信息进行编码，实现信息的隐蔽</strong>。常见的“密码学”通常指<strong>密码编码学</strong></p>
 <p>(2)密码分析学:研究<strong>如何分析或破解各种密码、编码</strong>体制的一门科学</p>
 <ul>
 <li>密码分析也称为<strong>密码破译</strong>，是指在密码通信过程中，非授权者在<strong>不知道密钥的条件下对密文进行分析</strong>，试图得到明文或密钥的过程。</li>
 <li>主要研究加密消息的破译或消息的伪造。</li>
 </ul>
 <p>(3)二者相互独立，又相互依存，在矛盾与斗争中发展，对立统一。</p>
-<h3 id="密码分析分类："><a href="#密码分析分类：" class="headerlink" title="密码分析分类："></a>密码分析分类：</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220605213440794.png" alt="image-20220605213440794"></p>
+<h3 id="密码分析分类：">密码分析分类：</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220605213440794.png" alt="image-20220605213440794"></p>
 <p>(1)唯密文攻击（Ciphertext only）</p>
-<p>​	破译者已知：加密算法、待破译的密文  </p>
+<p>​	破译者已知：加密算法、待破译的密文</p>
 <ul>
-<li>只知道密文，也就是<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.zhihu.com/equation?tex=c_1,c_2,c_3" alt="[公式]">，那<strong>只能通过统计特性分析</strong>其中有什么规律了</li>
+<li>只知道密文，也就是<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.zhihu.com/equation?tex=c_1%2Cc_2%2Cc_3" alt="[公式]">，那<strong>只能通过统计特性分析</strong>其中有什么规律了</li>
 </ul>
 <p>(2)已知明文攻击（Known plaintext）</p>
-<p>​	破译者已知：加密算法、一定数量的明文和对应的密文 </p>
+<p>​	破译者已知：加密算法、一定数量的明文和对应的密文</p>
 <ul>
-<li>得到了<strong>一些给定的明文和对应的密文</strong>，在这里可以是<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.zhihu.com/equation?tex=%5Cleft%5C%7B+%7B%5Cleft(+%7B%7Bp_1%7D,%7Bc_1%7D%7D+%5Cright),%5Cleft(+%7B%7Bp_2%7D,%7Bc_2%7D%7D+%5Cright),%5Cleft(+%7B%7Bp_3%7D,%7Bc_3%7D%7D+%5Cright)%7D+%5Cright%5C%7D" alt="[公式]">的任意非空子集。</li>
+<li>得到了<strong>一些给定的明文和对应的密文</strong>，在这里可以是<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.zhihu.com/equation?tex=%5Cleft%5C%7B+%7B%5Cleft%28+%7B%7Bp_1%7D%2C%7Bc_1%7D%7D+%5Cright%29%2C%5Cleft%28+%7B%7Bp_2%7D%2C%7Bc_2%7D%7D+%5Cright%29%2C%5Cleft%28+%7B%7Bp_3%7D%2C%7Bc_3%7D%7D+%5Cright%29%7D+%5Cright%5C%7D" alt="[公式]">的任意非空子集。</li>
 <li>攻击人<strong>只能得到这些明文及对应的密文</strong>，无法自己创建明文或密文</li>
 </ul>
-<p>(3)选择明文攻击（Chosen plaintext） </p>
+<p>(3)选择明文攻击（Chosen plaintext）</p>
 <p>​	破译者已知：加密算法、选定的明文和对应的密文</p>
 <ul>
 <li>除了上面的基础，攻击者还可以<strong>任意创造一条明文比如“Excited”</strong>，并得到其加密后的密文。</li>
 <li>比如用一定的手段<strong>渗透Sharon的系统</strong>，但是不能直接攻破秘钥，于是只能<strong>以她的身份发“Excited”</strong>，然后用抓包或者别的方法<strong>得到她发送出去的加密文</strong>。</li>
 <li>攻击人创建一个明文，让Sharon加密，再截获加密后密文，用来统计</li>
 </ul>
-<p>(4)选择密文攻击（Chosen ciphertext） </p>
+<p>(4)选择密文攻击（Chosen ciphertext）</p>
 <p>​	破译者已知：加密算法、选定的密文和对应的明文</p>
 <ul>
 <li>除了已知明文攻击的基础，攻击者还可以任意制造或者选择一些密文，并得到其解密后的明文。</li>
@@ -473,25 +534,30 @@
 <p>(5)选择文本攻击（Chosen text）</p>
 <p>​	破译者已知：加密算法、选定的明文和对应的密文、选定的密文和对应的明文</p>
 <ul>
-<li>可以制造任意明文&#x2F;密文并得到对应的密文&#x2F;明文，就是上面两者的结合。</li>
+<li>可以制造任意明文/密文并得到对应的密文/明文，就是上面两者的结合。</li>
 </ul>
 <blockquote>
 <p>以上攻击强度自上至下由弱到强。选择密文攻击和选择明文攻击的不同之处就是加解密方向不同。</p>
 </blockquote>
-<h3 id="攻击密码体制的常用方法"><a href="#攻击密码体制的常用方法" class="headerlink" title="攻击密码体制的常用方法"></a>攻击密码体制的常用方法</h3><p>(1)穷举攻击</p>
+<h3 id="攻击密码体制的常用方法">攻击密码体制的常用方法</h3>
+<p>(1)穷举攻击</p>
 <p>(2)统计分析攻击</p>
 <p>(3)数学分析攻击</p>
-<h2 id="2-密码学加密系统的五元组"><a href="#2-密码学加密系统的五元组" class="headerlink" title="2.密码学加密系统的五元组"></a>2.密码学加密系统的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%94%E5%85%83%E7%BB%84&spm=1001.2101.3001.7020">五元组</a></h2><blockquote>
-<p>明文，密文，密钥，加密算法，解密算法。 </p>
+<h2 id="2-密码学加密系统的五元组">2.密码学加密系统的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%94%E5%85%83%E7%BB%84&amp;spm=1001.2101.3001.7020">五元组</a></h2>
+<blockquote>
+<p>明文，密文，密钥，加密算法，解密算法。</p>
 </blockquote>
-<h2 id="3-对加密系统的攻击类型"><a href="#3-对加密系统的攻击类型" class="headerlink" title="3.对加密系统的攻击类型"></a>3.对加密系统的攻击类型</h2><ol>
-<li>唯密文攻击 （只知道一些密文）   </li>
+<h2 id="3-对加密系统的攻击类型">3.对加密系统的攻击类型</h2>
+<ol>
+<li>唯密文攻击 （只知道一些密文）</li>
 <li>已知明文攻击 （知道一些<strong>明文与密文对儿</strong>）</li>
 <li>选择明文攻击 （可以<strong>用任意明文来得到密文</strong>）</li>
 <li>选择密文攻击（可以<strong>用任意密文得到对应明文</strong>）</li>
 <li>选择文本攻击（任意明文&lt;-&gt;任意密文）</li>
 </ol>
-<h2 id="4-kerchkoffs原则"><a href="#4-kerchkoffs原则" class="headerlink" title="4.kerchkoffs原则"></a>4.kerchkoffs原则</h2><p>假设攻击者是在已知密码体制的前提下来破译密码系统的密钥<br>1883年Kerchkoffs第一次明确提出编码原则：</p>
+<h2 id="4-kerchkoffs原则">4.kerchkoffs原则</h2>
+<p>假设攻击者是在已知密码体制的前提下来破译密码系统的密钥<br>
+1883年Kerchkoffs第一次明确提出编码原则：</p>
 <blockquote>
 <p>加密算法应建立在<strong>算法的公开</strong>不影响明文和密钥的安全</p>
 <p>实际在我们的网络安全模型中一般假设<strong>所有的加密算法都是公开的</strong>，密码体系的安全性<strong>依赖于秘钥的安全性</strong>，秘钥只有发送方和接收方知道，一旦第三方得知这个秘钥，那他们的通信就被攻破了。</p>
@@ -500,22 +566,24 @@
 <p>Kerchkhoffs假设：</p>
 <ul>
 <li>假定：密码分析者知道对方所使用的密码系统</li>
-<li>包括明文的统计特性，加密体制（操作方式，处理方法和加&#x2F;解密算法），密钥空间及统计特性</li>
+<li>包括明文的统计特性，加密体制（操作方式，处理方法和加/解密算法），密钥空间及统计特性</li>
 <li>不知道密钥</li>
 <li>成功的密码分析不仅能够恢复出消息明文和密钥，而且能够发现密码体制的弱点，从而控制通信在设计一个密码系统时，目标是在Kerchkhoffs假设的前提下实现安全。</li>
 </ul>
-<h2 id="5-两大密码体制"><a href="#5-两大密码体制" class="headerlink" title="5.两大密码体制"></a>5.两大密码体制</h2><blockquote>
+<h2 id="5-两大密码体制">5.两大密码体制</h2>
+<blockquote>
 <p>各自的优缺点并分析原因，各自的应用场景</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>优点&#x2F;缺点</th>
+<th>优点/缺点</th>
 <th>对称密码</th>
 <th>非对称密码</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>优点</td>
 <td>1.<strong>算法运算速度较快</strong>2.密钥相对较短3.<strong>密文明文长度相同</strong></td>
 <td>1.密钥分发管理比较简单 2.支持数字签名（解决了不可否认问题）</td>
@@ -525,14 +593,18 @@
 <td>1.密钥分发需要安全的通道 2.<strong>密钥量大，密钥难于管理</strong> 3.难以解决不可否认问题</td>
 <td>1.<strong>算法复杂</strong>，处理速度慢</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h1 id="第三章-古典密码体制"><a href="#第三章-古典密码体制" class="headerlink" title="第三章 古典密码体制"></a>第三章 古典密码体制</h1><h2 id="1-理解“代替”和“置换”"><a href="#1-理解“代替”和“置换”" class="headerlink" title="1.理解“代替”和“置换”"></a>1.理解“代替”和“置换”</h2><p><strong>置换</strong>:只<strong>打乱明文的次序</strong></p>
-<p><strong>代替</strong>:需要用<strong>密文来替换掉明文</strong>                                                                                                                                                                                                                                                                       </p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190109833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70"></p>
+<h1 id="第三章-古典密码体制">第三章 古典密码体制</h1>
+<h2 id="1-理解-代替-和-置换">1.理解“代替”和“置换”</h2>
+<p><strong>置换</strong>:只<strong>打乱明文的次序</strong></p>
+<p><strong>代替</strong>:需要用<strong>密文来替换掉明文</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190109833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt=""></p>
 <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2019052719024131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt=""  />
-
-<h2 id="Playfair置换密码"><a href="#Playfair置换密码" class="headerlink" title="Playfair置换密码"></a>Playfair置换密码</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><ul>
+<h2 id="playfair置换密码">Playfair置换密码</h2>
+<h3 id="第一步">第一步</h3>
+<ul>
 <li>编制密码表。在这个<strong>5*5的密码表</strong>中，共有5行5列字母。<code>将密钥</code>（<strong>去除重复字符</strong>）<code>从左向右填入</code>,其余按照字母顺序。</li>
 <li>密钥是一个单词或词组，<strong>若有重复字母，可将后面重复的字母去掉</strong>。当然也要把使用频率最少的字母去掉。</li>
 <li>如：密钥是Live and learn,去掉后则为liveandr。如果密钥过长可占用第二列或行。</li>
@@ -549,7 +621,8 @@
 <th>T</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>R</code></td>
 <td><code>O</code></td>
 <td>H</td>
@@ -577,41 +650,48 @@
 <td>S</td>
 <td>X</td>
 </tr>
-</tbody></table>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><ul>
+</tbody>
+</table>
+<h3 id="none"></h3>
+<h3 id="第二步">第二步</h3>
+<ul>
 <li>整理明文。将明文每<strong>两个字母组成一对</strong>。如果成对后有两个相同字母紧挨或最后一个字母是单个的，就插入一个字母X（或者Q）。</li>
 </ul>
 <p>如，communist，应成为co,mx,mu,ni,st。</p>
-<h3 id="编写密文"><a href="#编写密文" class="headerlink" title="编写密文"></a>编写密文</h3><p>对明文加密规则如下：</p>
+<h3 id="编写密文">编写密文</h3>
+<p>对明文加密规则如下：</p>
 <p>1 若p1 p2在<strong>同一行</strong>，对应密文c1 c2分别是紧靠p1 p2 <strong>右端</strong>的字母。其中<strong>第一列被看做是最后一列的右方</strong>。</p>
 <p>2 若p1 p2在<strong>同一列</strong>，对应密文c1 c2分别是紧靠p1 p2 <strong>下方</strong>的字母。其中<strong>第一行被看做是最后一行的下方</strong>。</p>
 <p>3 若p1 p2不在同一行，不在同一列，则c1 c2是由p1 p2确定的矩形的其他两角的字母（至于横向替换还是纵向替换要事先约好，或自行尝试）</p>
-<p> 密文：<strong>KQ</strong>  SA   MF    PA   OP   MF    PA</p>
-<p> 明文：dk  ay   fn    ir   mo   fn    ir</p>
-<p>   s   h    <code>i</code>    y    <strong>a</strong></p>
-<p>   n   b    c    d    e</p>
-<p>   f   g    j    k    l</p>
-<p>   m   o    <strong>p</strong>    q    <code>r</code> </p>
-<p>   t   u    v    w    x</p>
+<p>密文：<strong>KQ</strong>  SA   MF    PA   OP   MF    PA</p>
+<p>明文：dk  ay   fn    ir   mo   fn    ir</p>
+<p>s   h    <code>i</code>    y    <strong>a</strong></p>
+<p>n   b    c    d    e</p>
+<p>f   g    j    k    l</p>
+<p>m   o    <strong>p</strong>    q    <code>r</code></p>
+<p>t   u    v    w    x</p>
 <ul>
 <li><strong>p a</strong>与<code>i r</code>形成的矩阵</li>
 <li></li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190311863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="Hill密码"><a href="#Hill密码" class="headerlink" title="Hill密码"></a>Hill密码</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190345819.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="hill密码">Hill密码</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190345819.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190408559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190438425.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190457868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190545988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190607475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="Caesar密码"><a href="#Caesar密码" class="headerlink" title="Caesar密码"></a>Caesar密码</h2><blockquote>
+<h2 id="caesar密码">Caesar密码</h2>
+<blockquote>
 <p>Caesar是最早的“代替”加密</p>
 </blockquote>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190641795.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>对明文p,密文<code>C=(p+k)mod 26</code>，其中k为1~25任意整数</p>
 <p>对密文C,明文<code>p=(C-k)mod 26</code></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527190712226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="维吉尼亚密码"><a href="#维吉尼亚密码" class="headerlink" title="维吉尼亚密码"></a>维吉尼亚密码</h2><p>在一个<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC">凯撒密码</a>中，字母表中的每一字母都会作一定的偏移，例如偏移量为3时，<code>A</code>就转换为了<code>D</code>、<code>B</code>转换为了<code>E</code>……而维吉尼亚密码则是由一些偏移量不同的恺撒密码组成。</p>
+<h2 id="维吉尼亚密码">维吉尼亚密码</h2>
+<p>在一个<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC">凯撒密码</a>中，字母表中的每一字母都会作一定的偏移，例如偏移量为3时，<code>A</code>就转换为了<code>D</code>、<code>B</code>转换为了<code>E</code>……而维吉尼亚密码则是由一些偏移量不同的恺撒密码组成。</p>
 <p>为了生成密码，需要使用<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/%E8%A1%A8%E6%A0%BC%E6%B3%95">表格法</a>。这一表格包括了26行字母表，每一行都由前一行向左偏移一位得到。具体使用哪一行字母表进行编译是基于密钥进行的，在过程中会不断地变换。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220605222403022.png" alt="image-20220605222403022"></p>
 <p>例如，假设<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/%E6%98%8E%E6%96%87">明文</a>为：</p>
@@ -624,44 +704,58 @@
 </blockquote>
 <p>对于明文的第一个字母<code>A</code>，对应密钥的第一个字母<code>L</code>，于是使用表格中<code>L</code>行字母表进行加密，得到<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/%E5%AF%86%E6%96%87">密文</a>第一个字母<code>L</code>。类似地，明文第二个字母为<code>T</code>，在表格中使用对应的<code>E</code>行进行加密，得到密文第二个字母<code>X</code>。以此类推，可以得到：</p>
 <blockquote>
-<p>明文：ATTACKATDAWN<br>密钥：LEMONLEMONLE<br>密文：LXFOPVEFRNHR</p>
+<p>明文：ATTACKATDAWN<br>
+密钥：LEMONLEMONLE<br>
+密文：LXFOPVEFRNHR</p>
 </blockquote>
 <p>解密的过程则与加密相反。例如：根据密钥第一个字母<code>L</code>所对应的<code>L</code>行字母表，发现密文第一个字母<code>L</code>位于<code>A</code>列，因而明文第一个字母为<code>A</code>。密钥第二个字母<code>E</code>对应<code>E</code>行字母表，而密文第二个字母<code>X</code>位于此行<code>T</code>列，因而明文第二个字母为<code>T</code>。以此类推便可得到明文。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<h4 id="优点">优点</h4>
+<ul>
 <li>一个明文字母可以对应多种密文字母</li>
 <li>且每个密文字母使用唯一密钥字母</li>
 </ul>
-<h2 id="一次一密"><a href="#一次一密" class="headerlink" title="一次一密"></a>一次一密</h2><blockquote>
+<h2 id="一次一密">一次一密</h2>
+<blockquote>
 <p>使用<strong>与消息一样长</strong>且无重复的随机密钥来加密,并且,<strong>加密后密钥就丢弃不用</strong></p>
 </blockquote>
 <p>这样的加密是不可攻破的</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<h3 id="缺点">缺点</h3>
+<ul>
 <li>产生大规模随机密钥困难</li>
 <li><strong>发送与消息等长的密钥本身就不安全</strong></li>
 </ul>
-<p>​     </p>
-<h2 id="2-能够对使用古典密码加密的密文进行破译"><a href="#2-能够对使用古典密码加密的密文进行破译" class="headerlink" title="2.能够对使用古典密码加密的密文进行破译"></a>2.能够对使用古典密码加密的密文进行破译</h2><ul>
-<li>对于<strong>Caesar加密</strong>，使用<strong>穷举攻击</strong>，只要对密文进行测试<strong>最多25种</strong>可能性（将k&#x3D;1,k&#x3D;2……依次测试）</li>
+<p>​</p>
+<h2 id="2-能够对使用古典密码加密的密文进行破译">2.能够对使用古典密码加密的密文进行破译</h2>
+<ul>
+<li>对于<strong>Caesar加密</strong>，使用<strong>穷举攻击</strong>，只要对密文进行测试<strong>最多25种</strong>可能性（将k=1,k=2……依次测试）</li>
 <li>对于<strong>单表替换加密</strong>，使用<strong>字母频率或双字母组合频率</strong></li>
 </ul>
 <hr>
-<h1 id="第四章-分组密码"><a href="#第四章-分组密码" class="headerlink" title="第四章 分组密码"></a>第四章 分组密码</h1><h2 id="1-理解分组密码算法如何实现“扩散”和“混乱”的"><a href="#1-理解分组密码算法如何实现“扩散”和“混乱”的" class="headerlink" title="1.理解分组密码算法如何实现“扩散”和“混乱”的"></a>1.理解分组密码算法如何实现“扩散”和“混乱”的</h2><p>eg:DES的E盒扩展S盒压缩，一起引起引起雪崩效应</p>
-<h2 id="2-S-P网络、雪崩效应"><a href="#2-S-P网络、雪崩效应" class="headerlink" title="2.S-P网络、雪崩效应"></a>2.S-P网络、雪崩效应</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527192256415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="第四章-分组密码">第四章 分组密码</h1>
+<h2 id="1-理解分组密码算法如何实现-扩散-和-混乱-的">1.理解分组密码算法如何实现“扩散”和“混乱”的</h2>
+<p>eg:DES的E盒扩展S盒压缩，一起引起引起雪崩效应</p>
+<h2 id="2-s-p网络-雪崩效应">2.S-P网络、雪崩效应</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527192256415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527192314950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>雪崩效应：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527192518101.png" alt="在这里插入图片描述"></p>
+<p>雪崩效应：<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527192518101.png" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527192356313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="DES加密流程图"><a href="#DES加密流程图" class="headerlink" title="DES加密流程图"></a>DES加密流程图</h2><blockquote>
+<h2 id="des加密流程图">DES加密流程图</h2>
+<blockquote>
 <p>DES加密是“对称密码”算法中的<code>分组加密</code>，与之对应的是<code>流密码</code>：逐个字节就行加密</p>
 <p>分组长度：<strong>明文</strong>和<strong>密文</strong>为64位分组长度</p>
 <p>迭代轮数：每个组合先代换后置换，共16轮</p>
-<p>密钥长度：56位（64位-8位奇偶校验位&#x3D;56位），但存在弱密钥，容易避开。</p>
+<p>密钥长度：56位（64位-8位奇偶校验位=56位），但存在弱密钥，容易避开。</p>
 </blockquote>
 <p>当n个64位明文数据块经过DES加密后，得到的n个64位密文数据块，将他们串在一起就是密文</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615140620660.png" alt="image-20220615140620660"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615140627417.png" alt="image-20220615140627417"></p>
-<h3 id="步骤一、进行IP置换"><a href="#步骤一、进行IP置换" class="headerlink" title="步骤一、进行IP置换"></a>步骤一、进行IP置换</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615141212380.png" alt="image-20220615141212380"></p>
+<h3 id="步骤一-进行ip置换">步骤一、进行IP置换</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615141212380.png" alt="image-20220615141212380"></p>
 <p>例如：58表示，将原来的64位中，第58个放到目前的第1位；后面都按这个规则</p>
-<h3 id="步骤二、F轮函数"><a href="#步骤二、F轮函数" class="headerlink" title="步骤二、F轮函数"></a>步骤二、F轮函数</h3><h4 id="2-1-E扩展"><a href="#2-1-E扩展" class="headerlink" title="2.1 E扩展"></a>2.1 E扩展</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615141408886.png" alt="image-20220615141408886"></p>
+<h3 id="步骤二-f轮函数">步骤二、F轮函数</h3>
+<h4 id="2-1-e扩展">2.1 E扩展</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615141408886.png" alt="image-20220615141408886"></p>
 <ul>
 <li>将32位扩展为48位，方法：将32位分成8组，每组4个bit</li>
 <li>在每组<strong>最前面</strong>加上【前一组<strong>原始</strong>】的第4位。把32位首尾连接，那第一组的最前面，要加上最后一组最后一个bit</li>
@@ -669,8 +763,10 @@
 </ul>
 <p>另一个图，也可以加强解释</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615141758831.png" alt="image-20220615141758831"></p>
-<h4 id="2-2-异或"><a href="#2-2-异或" class="headerlink" title="2.2 异或"></a>2.2 异或</h4><p>将E扩展出来的48位，与48位密钥进行异或</p>
-<h4 id="2-3-S盒压缩"><a href="#2-3-S盒压缩" class="headerlink" title="2.3 S盒压缩"></a>2.3 S盒压缩</h4><p><strong>直观图</strong></p>
+<h4 id="2-2-异或">2.2 异或</h4>
+<p>将E扩展出来的48位，与48位密钥进行异或</p>
+<h4 id="2-3-s盒压缩">2.3 S盒压缩</h4>
+<p><strong>直观图</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/201905271937410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="S盒压缩"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615141942964.png" alt="image-20220615141942964"></p>
 <ul>
@@ -690,7 +786,8 @@
 <li>1101就是最终4bit输出</li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615142243140.png" alt="S盒压缩举例"></p>
-<h4 id="2-4-P置换"><a href="#2-4-P置换" class="headerlink" title="2.4 P置换"></a>2.4 P置换</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615142454149.png" alt="image-20220615142454149"></p>
+<h4 id="2-4-p置换">2.4 P置换</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220615142454149.png" alt="image-20220615142454149"></p>
 <p>这个P置换和前面的ip置换相近，比如将第16位放到第1位</p>
 <blockquote>
 <p>至此一轮完成，再将<code>P置换的结果</code>与<code>L0</code>进行<code>异或</code>。得到的结果赋值给R1</p>
@@ -700,15 +797,23 @@
 </blockquote>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527193518295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527194140540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="3-DES（分组长度、迭代轮数、密钥长度、S盒、P盒、加密思想）"><a href="#3-DES（分组长度、迭代轮数、密钥长度、S盒、P盒、加密思想）" class="headerlink" title="3.DES（分组长度、迭代轮数、密钥长度、S盒、P盒、加密思想）"></a>3.DES（分组长度、迭代轮数、<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AF%86%E9%92%A5&spm=1001.2101.3001.7020">密钥</a>长度、S盒、P盒、加密思想）</h2><p>E盒：（E盒扩展S盒压缩，一起引起引起雪崩效应）</p>
+<h2 id="3-des-分组长度-迭代轮数-密钥长度-s盒-p盒-加密思想">3.DES（分组长度、迭代轮数、<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AF%86%E9%92%A5&amp;spm=1001.2101.3001.7020">密钥</a>长度、S盒、P盒、加密思想）</h2>
+<p>E盒：（E盒扩展S盒压缩，一起引起引起雪崩效应）</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527194749275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>S盒：（压缩作用）</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2019052719380248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527193817436.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>P盒：（进行位置置换）(原理：将1~32位的表代换成P盒对应的表)</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527194902721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="4-3DES、AES主要特点"><a href="#4-3DES、AES主要特点" class="headerlink" title="4.3DES、AES主要特点"></a>4.3DES、AES主要特点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527200518265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="5-AES的字节代换和列混淆"><a href="#5-AES的字节代换和列混淆" class="headerlink" title="5.AES的字节代换和列混淆"></a>5.AES的字节代换和列混淆</h2><h3 id="AES流程图"><a href="#AES流程图" class="headerlink" title="AES流程图"></a>AES流程图</h3><p>AES的基本运算：<br>（1）字节代换（AES的S盒）<br>（2）行位移<br>（3）列混淆<br>（4）轮密钥加</p>
+<h2 id="4-3des-aes主要特点">4.3DES、AES主要特点</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527200518265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="5-aes的字节代换和列混淆">5.AES的字节代换和列混淆</h2>
+<h3 id="aes流程图">AES流程图</h3>
+<p>AES的基本运算：<br>
+（1）字节代换（AES的S盒）<br>
+（2）行位移<br>
+（3）列混淆<br>
+（4）轮密钥加</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527200618151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>（1）字节代换（AES的S盒)</p>
 <p>功能：将一个字节代换为S表对应的一个新字节</p>
@@ -735,27 +840,83 @@
 <p>（3）轮密钥加</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527202047431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <hr>
-<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h2 id="1-安全的哈希函数的性质和应用"><a href="#1-安全的哈希函数的性质和应用" class="headerlink" title="1.安全的哈希函数的性质和应用"></a>1.安全的哈希函数的性质和应用</h2><p>给定消息x容易计算哈希值单向性抗弱碰撞抗强碰撞性输入任意长度输出固定长度</p>
+<h1 id="第六章">第六章</h1>
+<h2 id="1-安全的哈希函数的性质和应用">1.安全的哈希函数的性质和应用</h2>
+<p>给定消息x容易计算哈希值单向性抗弱碰撞抗强碰撞性输入任意长度输出固定长度</p>
 <p>哈希函数的性质：</p>
-<p>1.可用于“任意”长度的消息<br>2.产生定长的输出<br>3.对于给定的消息x，计算H（x）比较容易，用于硬件软件均可实现<br>4.单向性<br>5.抗弱碰撞性<br>6.抗强碰撞性</p>
-<p>hash 函数的重要应用：<br>1.数字签名<br>2.数据完整性的保证<br>3.安全存储口令<br>4.快速进行关键字查找</p>
-<h2 id="2-MD5和SHA1的主要特点"><a href="#2-MD5和SHA1的主要特点" class="headerlink" title="2.MD5和SHA1的主要特点"></a>2.MD5和SHA1的主要特点</h2><p>MD5的主要特点：<br>输入：最大长度为小于2^64位（2^64  -1位）的消息————&gt;输出：128位消息摘要<br> 处理：输入消息以512比的分组为单位处理</p>
-<p>SHA1的主要特点：<br>输入：最大长度为小于2^64位（2^64  -1位）的消息————&gt;输出：160位消息摘要<br> 处理：输入消息以512比的分组为单位处理</p>
-<h2 id="3-消息认证的目的和方法"><a href="#3-消息认证的目的和方法" class="headerlink" title="3. 消息认证的目的和方法"></a>3. 消息认证的目的和方法</h2><p>消息认证的目的：<br>1.验证消息的真实性(身份认证)，验证消息的来源是真实的而不是冒充的<br>2.验证消息的完整性（消息认证），检查消息在传送或存储过程中是否被修改</p>
-<h2 id="4-认证函数的三种实现方法"><a href="#4-认证函数的三种实现方法" class="headerlink" title="4.认证函数的三种实现方法"></a>4.认证函数的三种实现方法</h2><p>1.基于消息加密的认证<br>2.基于消息认证码(MAC)的认证<br>3.基于哈希函数的认证</p>
+<p>1.可用于“任意”长度的消息<br>
+2.产生定长的输出<br>
+3.对于给定的消息x，计算H（x）比较容易，用于硬件软件均可实现<br>
+4.单向性<br>
+5.抗弱碰撞性<br>
+6.抗强碰撞性</p>
+<p>hash 函数的重要应用：<br>
+1.数字签名<br>
+2.数据完整性的保证<br>
+3.安全存储口令<br>
+4.快速进行关键字查找</p>
+<h2 id="2-md5和sha1的主要特点">2.MD5和SHA1的主要特点</h2>
+<p>MD5的主要特点：<br>
+输入：最大长度为小于2^64位（2^64  -1位）的消息————&gt;输出：128位消息摘要<br>
+处理：输入消息以512比的分组为单位处理</p>
+<p>SHA1的主要特点：<br>
+输入：最大长度为小于2^64位（2^64  -1位）的消息————&gt;输出：160位消息摘要<br>
+处理：输入消息以512比的分组为单位处理</p>
+<h2 id="3-消息认证的目的和方法">3. 消息认证的目的和方法</h2>
+<p>消息认证的目的：<br>
+1.验证消息的真实性(身份认证)，验证消息的来源是真实的而不是冒充的<br>
+2.验证消息的完整性（消息认证），检查消息在传送或存储过程中是否被修改</p>
+<h2 id="4-认证函数的三种实现方法">4.认证函数的三种实现方法</h2>
+<p>1.基于消息加密的认证<br>
+2.基于消息认证码(MAC)的认证<br>
+3.基于哈希函数的认证</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526135546527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526135627604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526135659814.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526135719493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="5-能够对一个认证协议进行分析"><a href="#5-能够对一个认证协议进行分析" class="headerlink" title="5.能够对一个认证协议进行分析"></a>5.能够对一个认证协议进行分析</h2><h1 id="第八章-数字签名"><a href="#第八章-数字签名" class="headerlink" title="第八章 数字签名"></a>第八章 数字签名</h1><h2 id="1-数字签名要解决的问题"><a href="#1-数字签名要解决的问题" class="headerlink" title="1.数字签名要解决的问题"></a>1.数字签名要解决的问题</h2><p>A发送消息给B：A（不可抵赖）——————&gt;B（不可伪造）（不可重用）<br>(1)不可抵赖     (假如：A可以否认发过该消息，B无法证明A确实发了该消息)<br>(2)不可伪造 	    (假如：B伪造一个不同的消息，但声称是从A收到的）<br>(3)不可重用		(假如：签名没有和消息绑定)</p>
-<p>eg:<br>问题的提出：<br>普通的报文鉴别能用来保护通信双方免受任何第三方的攻击,<br> 然而, 它无法防止通信双方互相攻击<br>假定A发送一个经过鉴别的消息给B，双方之间的争议可能有多种形式：<br>    1）B伪造一个不同的消息，但声称是从A收到的<br>    2）A可以否认发过该消息，B无法证明A确实发了该消息<br>解决以上问题可以用数字签名技术，它是对传统笔迹签名的模拟<br>传统笔迹签名：<br>一般认为，传统的手写签名具有以下特点：<br>  1）手写签名是“不可伪造”的<br>  2）手写签名是“不可抵赖”的<br>  3）手写签名是“不可重用”的<br>数字签名至少应该具有这些能力</p>
-<h2 id="2-数字签名的安全模型、性质"><a href="#2-数字签名的安全模型、性质" class="headerlink" title="2.数字签名的安全模型、性质"></a>2.数字签名的安全模型、性质</h2><h2 id="3-RSA签名算法以及存在的安全问题"><a href="#3-RSA签名算法以及存在的安全问题" class="headerlink" title="3.RSA签名算法以及存在的安全问题"></a>3.RSA签名算法以及存在的安全问题</h2><p>如果不使用HASH函数</p>
-<p>1.（存在性伪造）使用“已知消息攻击”<br>利用RSA的乘法特性，可以进行如下攻击<br>假设 y1&#x3D;sigk(m1)和y2&#x3D;sigk(m2) 是签名者曾经签署的有效签名，<br>那么 verk (m1m2 mod n, y1y2 mod n) &#x3D; true</p>
+<h2 id="5-能够对一个认证协议进行分析">5.能够对一个认证协议进行分析</h2>
+<h1 id="第八章-数字签名">第八章 数字签名</h1>
+<h2 id="1-数字签名要解决的问题">1.数字签名要解决的问题</h2>
+<p>A发送消息给B：A（不可抵赖）——————&gt;B（不可伪造）（不可重用）<br>
+(1)不可抵赖     (假如：A可以否认发过该消息，B无法证明A确实发了该消息)<br>
+(2)不可伪造 	    (假如：B伪造一个不同的消息，但声称是从A收到的）<br>
+(3)不可重用		(假如：签名没有和消息绑定)</p>
+<p>eg:<br>
+问题的提出：<br>
+普通的报文鉴别能用来保护通信双方免受任何第三方的攻击,<br>
+然而, 它无法防止通信双方互相攻击<br>
+假定A发送一个经过鉴别的消息给B，双方之间的争议可能有多种形式：<br>
+1）B伪造一个不同的消息，但声称是从A收到的<br>
+2）A可以否认发过该消息，B无法证明A确实发了该消息<br>
+解决以上问题可以用数字签名技术，它是对传统笔迹签名的模拟<br>
+传统笔迹签名：<br>
+一般认为，传统的手写签名具有以下特点：<br>
+1）手写签名是“不可伪造”的<br>
+2）手写签名是“不可抵赖”的<br>
+3）手写签名是“不可重用”的<br>
+数字签名至少应该具有这些能力</p>
+<h2 id="2-数字签名的安全模型-性质">2.数字签名的安全模型、性质</h2>
+<h2 id="3-rsa签名算法以及存在的安全问题">3.RSA签名算法以及存在的安全问题</h2>
+<p>如果不使用HASH函数</p>
+<p>1.（存在性伪造）使用“已知消息攻击”<br>
+利用RSA的乘法特性，可以进行如下攻击<br>
+假设 y1=sigk(m1)和y2=sigk(m2) 是签名者曾经签署的有效签名，<br>
+那么 verk (m1m2 mod n, y1y2 mod n) = true</p>
 <ol start="2">
-<li>（选择性伪造）利用“选择消息攻击”<br>假设攻击者要对消息 m 伪造一个签名，m&#x3D;m1m2mod n。<br>假设攻击者能请求签名者为 m1 和 m2 签名(结果分别为y1和y2)，<br>那么， y1 y2 mod n 就是消息 m 的有效签名</li>
+<li>（选择性伪造）利用“选择消息攻击”<br>
+假设攻击者要对消息 m 伪造一个签名，m=m1m2mod n。<br>
+假设攻击者能请求签名者为 m1 和 m2 签名(结果分别为y1和y2)，<br>
+那么， y1 y2 mod n 就是消息 m 的有效签名</li>
 </ol>
 <p>对抗攻击的方法：使用HASH函数</p>
-<p>私钥签名，公钥验证<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155535386.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155603822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155700187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155722510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526160106657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="4-ElGamal签名算法以及主要的问题"><a href="#4-ElGamal签名算法以及主要的问题" class="headerlink" title="4.ElGamal签名算法以及主要的问题"></a>4.ElGamal签名算法以及主要的问题</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161630512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161656909.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161726143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161825253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161847886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161924399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="5-特殊的签名算法以及适应的应用场景"><a href="#5-特殊的签名算法以及适应的应用场景" class="headerlink" title="5.特殊的签名算法以及适应的应用场景"></a>5.特殊的签名算法以及适应的应用场景</h2><p>特殊的数字签名：</p>
-<p>不可否认签名<br>盲签名<br>代理签名<br>群签名<br>环签名</p>
+<p>私钥签名，公钥验证<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155535386.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155603822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155700187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526155722510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526160106657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="4-elgamal签名算法以及主要的问题">4.ElGamal签名算法以及主要的问题</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161630512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161656909.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161726143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161825253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161847886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190526161924399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="5-特殊的签名算法以及适应的应用场景">5.特殊的签名算法以及适应的应用场景</h2>
+<p>特殊的数字签名：</p>
+<p>不可否认签名<br>
+盲签名<br>
+代理签名<br>
+群签名<br>
+环签名</p>
 <p>应用场景：</p>
 <ol>
 <li>为了防止签名的非法复制，产生了不可否认的签名；（电子现金，加密货币）</li>
@@ -763,27 +924,52 @@
 <li>为了保护签名者身份的隐私，产生了群签名和环签名；（选举投票）</li>
 <li>为了实现签名权的安全传递，产生了代理签名；</li>
 </ol>
-<h1 id="第九章-密码协议"><a href="#第九章-密码协议" class="headerlink" title="第九章 密码协议"></a>第九章 密码协议</h1><h2 id="1-各种协议的特点，解决的问题"><a href="#1-各种协议的特点，解决的问题" class="headerlink" title="1.各种协议的特点，解决的问题"></a>1.各种协议的特点，解决的问题</h2><p>（1） 零知识证明<br> 特点：<br> 解决的问题：向别人证明拥有某个信息，但不需要透露该信息具体内容</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527103702491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527103726733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527103817125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527104525722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>(2)比特承诺<br> 特点：<br> 解决的问题：A想对B承诺一个比特，但暂时不能告诉B 承诺的信息，直到某个时间才公开车能诺；另一方面B可确信在A承诺后到公开前，A没有改变承诺。</p>
+<h1 id="第九章-密码协议">第九章 密码协议</h1>
+<h2 id="1-各种协议的特点-解决的问题">1.各种协议的特点，解决的问题</h2>
+<p>（1） 零知识证明<br>
+特点：<br>
+解决的问题：向别人证明拥有某个信息，但不需要透露该信息具体内容</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527103702491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527103726733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527103817125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527104525722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>(2)比特承诺<br>
+特点：<br>
+解决的问题：A想对B承诺一个比特，但暂时不能告诉B 承诺的信息，直到某个时间才公开车能诺；另一方面B可确信在A承诺后到公开前，A没有改变承诺。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527104713416.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527104752281.png" alt="在这里插入图片描述"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527105653301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>(3)公平投币协议<br>特点：<br>解决的问题：网络中实现公平投币问题</p>
+<p>(3)公平投币协议<br>
+特点：<br>
+解决的问题：网络中实现公平投币问题</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527105838152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527105854777.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>(4)安全多方计算<br>特点：<br>解决问题：</p>
+<p>(4)安全多方计算<br>
+特点：<br>
+解决问题：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527110403164.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="第十章-密钥管理"><a href="#第十章-密钥管理" class="headerlink" title="第十章 密钥管理"></a>第十章 密钥管理</h1><h2 id="1-几类密钥的作用"><a href="#1-几类密钥的作用" class="headerlink" title="1.几类密钥的作用"></a>1.几类密钥的作用</h2><p>主密钥<br>密钥加密密钥<br>会话密钥</p>
+<h1 id="第十章-密钥管理">第十章 密钥管理</h1>
+<h2 id="1-几类密钥的作用">1.几类密钥的作用</h2>
+<p>主密钥<br>
+密钥加密密钥<br>
+会话密钥</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527133738625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="2-密钥的生成"><a href="#2-密钥的生成" class="headerlink" title="2.密钥的生成"></a>2.密钥的生成</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2019052713042960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="3-密钥的存储"><a href="#3-密钥的存储" class="headerlink" title="3.密钥的存储"></a>3.密钥的存储</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527130532109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="4-密钥的分发"><a href="#4-密钥的分发" class="headerlink" title="4.密钥的分发"></a>4.密钥的分发</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527130606434.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>密钥分配方法<br>（1）对称密码（双方事先有相同密钥）<br>（2）公钥加密（基于公钥）<br>（3）第三方（分配中心）</p>
+<h2 id="2-密钥的生成">2.密钥的生成</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2019052713042960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="3-密钥的存储">3.密钥的存储</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527130532109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="4-密钥的分发">4.密钥的分发</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527130606434.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>密钥分配方法<br>
+（1）对称密码（双方事先有相同密钥）<br>
+（2）公钥加密（基于公钥）<br>
+（3）第三方（分配中心）</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527130934199.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="5-集中式密钥分发"><a href="#5-集中式密钥分发" class="headerlink" title="5.集中式密钥分发"></a>5.集中式密钥分发</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527133258245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2019052713224170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="6-分布式密钥分发（DeffieHellman密钥协商）"><a href="#6-分布式密钥分发（DeffieHellman密钥协商）" class="headerlink" title="6.分布式密钥分发（DeffieHellman密钥协商）"></a>6.分布式密钥分发（DeffieHellman密钥协商）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527132307138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527132335477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="7-为什么要进行公钥认证"><a href="#7-为什么要进行公钥认证" class="headerlink" title="7.为什么要进行公钥认证"></a>7.为什么要进行公钥认证</h2><p>公钥的目录需要保护，公钥证书实现用户公钥的真实性</p>
+<h2 id="5-集中式密钥分发">5.集中式密钥分发</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527133258245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2019052713224170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="6-分布式密钥分发-deffiehellman密钥协商">6.分布式密钥分发（DeffieHellman密钥协商）</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527132307138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527132335477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="7-为什么要进行公钥认证">7.为什么要进行公钥认证</h2>
+<p>公钥的目录需要保护，公钥证书实现用户公钥的真实性</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527133325652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190527133415399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTczNzE4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/06/05/[Cryptography]/">https://blog.lthero.cn/2022/06/05/[Cryptography]/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/09/%5BAlgorithm-dp%5D/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Algorithm】动态规划</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/05/%5BCompiler%5D-8/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Compiler】-8 中间代码生成</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/16/Cryptography-Authentication/" title="【Cryptography】用户认证"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-16</div><div class="title">【Cryptography】用户认证</div></div></a></div><div><a href="/2022/06/15/Cryptography-DES-AES/" title="【Cryptography】DES、AES对称加密"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】DES、AES对称加密</div></div></a></div><div><a href="/2022/06/16/Cryptography-IPsec/" title="【Cryptography】IP安全"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-16</div><div class="title">【Cryptography】IP安全</div></div></a></div><div><a href="/2022/06/15/Cryptography-Digital-Signature/" title="【Cryptography】密钥管理与分发"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】密钥管理与分发</div></div></a></div><div><a href="/2022/06/15/Cryptography-Integrity/" title="【Cryptography】数据完整性"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】数据完整性</div></div></a></div><div><a href="/2022/06/15/Cryptography-RSA/" title="【Cryptography】公钥、RSA、DH密钥交换"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】公钥、RSA、DH密钥交换</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">攻击方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">古典密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DES"><span class="toc-number">3.1.</span> <span class="toc-text">DES</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%BF%87%E7%A8%8B"><span class="toc-number">3.1.1.</span> <span class="toc-text">算法过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%EF%BC%9AS%E7%9B%92"><span class="toc-number">3.1.2.</span> <span class="toc-text">计算：S盒</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">3.1.3.</span> <span class="toc-text">安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%92%E8%A1%A5%E6%80%A7"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">互补性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%B1%E5%AF%86%E9%92%A5"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">弱密钥</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E9%87%8D%E3%80%81%E4%B8%89%E9%87%8DDES%E5%88%86%E6%9E%90%EF%BC%88%E5%8A%A0%E5%AF%86%E7%9A%84%E5%BC%BA%E5%BA%A6%EF%BC%9A%E5%AF%86%E9%92%A5%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="toc-number">3.1.4.</span> <span class="toc-text">双重、三重DES分析（加密的强度：密钥空间）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AES"><span class="toc-number">3.2.</span> <span class="toc-text">AES</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%BF%87%E7%A8%8B%EF%BC%88%E5%8A%A0%E5%AF%86-x2F-%E8%A7%A3%E5%AF%86%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">算法过程（加密&#x2F;解密）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97"><span class="toc-number">3.2.2.</span> <span class="toc-text">计算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">工作模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">流密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">哈希函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">5.2.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A1%AB%E5%85%85"><span class="toc-number">5.3.</span> <span class="toc-text">数据填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5"><span class="toc-number">5.4.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SHA1"><span class="toc-number">5.5.</span> <span class="toc-text">SHA1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">公钥密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA"><span class="toc-number">6.1.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%EF%BC%88%E5%8A%A0%E5%AF%86%E3%80%81%E8%A7%A3%E5%AF%86%EF%BC%89"><span class="toc-number">6.1.1.</span> <span class="toc-text">算法流程（加密、解密）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-1"><span class="toc-number">6.1.2.</span> <span class="toc-text">计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">6.1.3.</span> <span class="toc-text">安全性分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E9%AA%8C%E8%AF%81"><span class="toc-number">6.1.4.</span> <span class="toc-text">正确性验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E8%8C%83%EF%BC%88%E8%82%AF%E5%AE%9A%E8%80%83%EF%BC%89"><span class="toc-number">6.1.5.</span> <span class="toc-text">攻击与防范（肯定考）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElGamal"><span class="toc-number">6.2.</span> <span class="toc-text">ElGamal</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95%EF%BC%88%E5%BF%85%E9%A1%BB%E8%AE%B0%E4%BD%8F%EF%BC%89"><span class="toc-number">6.2.1.</span> <span class="toc-text">加密解密算法（必须记住）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-2"><span class="toc-number">6.2.2.</span> <span class="toc-text">计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E9%AA%8C%E8%AF%81-1"><span class="toc-number">6.2.3.</span> <span class="toc-text">正确性验证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">7.</span> <span class="toc-text">数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA-1"><span class="toc-number">7.1.</span> <span class="toc-text">RSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElGamal%EF%BC%88%E5%A6%82%E6%9E%9C%E8%80%83%E4%BC%9A%E7%BB%99%E5%87%BA%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">ElGamal（如果考会给出算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%EF%BC%9A%E7%9B%B2%E7%AD%BE%E5%90%8D"><span class="toc-number">7.3.</span> <span class="toc-text">特殊：盲签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90-1"><span class="toc-number">7.4.</span> <span class="toc-text">安全性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">7.5.</span> <span class="toc-text">正确性分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%8D%8F%E8%AE%AE"><span class="toc-number">8.</span> <span class="toc-text">密码协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="toc-number">9.</span> <span class="toc-text">一些题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81"><span class="toc-number">9.1.</span> <span class="toc-text">仿射密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">9.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-number">9.1.2.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA-2"><span class="toc-number">9.2.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">9.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-1"><span class="toc-number">9.2.2.</span> <span class="toc-text">解答</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%AE%BA"><span class="toc-number"></span> <span class="toc-text">第一章 密码学概论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%EF%BC%88%E5%AF%86%E7%A0%81%E7%BC%96%E7%A0%81%E5%AD%A6%EF%BC%9A%E8%AE%A4%E8%AF%81%E4%BD%93%E5%88%B6-%E4%BF%9D%E5%AF%86%E4%BD%93%E5%88%B6%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">信息安全（密码编码学：认证体制+保密体制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">1.信息安全基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%A1%E6%81%AF%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E7%9B%AE%E6%A0%87"><span class="toc-number">3.</span> <span class="toc-text">2.信息基本安全目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number"></span> <span class="toc-text">第二章 密码学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1.密码学的相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">密码学分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">密码分析分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">攻击密码体制的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%8A%A0%E5%AF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%94%E5%85%83%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">2.密码学加密系统的五元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%B9%E5%8A%A0%E5%AF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%94%BB%E5%87%BB%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">3.对加密系统的攻击类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-kerchkoffs%E5%8E%9F%E5%88%99"><span class="toc-number">4.</span> <span class="toc-text">4.kerchkoffs原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%A4%E5%A4%A7%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">5.两大密码体制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6"><span class="toc-number"></span> <span class="toc-text">第三章 古典密码体制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%90%86%E8%A7%A3%E2%80%9C%E4%BB%A3%E6%9B%BF%E2%80%9D%E5%92%8C%E2%80%9C%E7%BD%AE%E6%8D%A2%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">1.理解“代替”和“置换”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Playfair%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">Playfair置换密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">2.1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">2.3.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E5%AF%86%E6%96%87"><span class="toc-number">2.4.</span> <span class="toc-text">编写密文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hill%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">Hill密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caesar%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">Caesar密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">维吉尼亚密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">5.0.1.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E4%B8%80%E5%AF%86"><span class="toc-number">6.</span> <span class="toc-text">一次一密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">6.1.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%83%BD%E5%A4%9F%E5%AF%B9%E4%BD%BF%E7%94%A8%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AF%86%E6%96%87%E8%BF%9B%E8%A1%8C%E7%A0%B4%E8%AF%91"><span class="toc-number">7.</span> <span class="toc-text">2.能够对使用古典密码加密的密文进行破译</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number"></span> <span class="toc-text">第四章 分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%90%86%E8%A7%A3%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%80%9C%E6%89%A9%E6%95%A3%E2%80%9D%E5%92%8C%E2%80%9C%E6%B7%B7%E4%B9%B1%E2%80%9D%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">1.理解分组密码算法如何实现“扩散”和“混乱”的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-S-P%E7%BD%91%E7%BB%9C%E3%80%81%E9%9B%AA%E5%B4%A9%E6%95%88%E5%BA%94"><span class="toc-number">2.</span> <span class="toc-text">2.S-P网络、雪崩效应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">DES加密流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%E3%80%81%E8%BF%9B%E8%A1%8CIP%E7%BD%AE%E6%8D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">步骤一、进行IP置换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E3%80%81F%E8%BD%AE%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">步骤二、F轮函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-E%E6%89%A9%E5%B1%95"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.1 E扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%BC%82%E6%88%96"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2 异或</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-S%E7%9B%92%E5%8E%8B%E7%BC%A9"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.3 S盒压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-P%E7%BD%AE%E6%8D%A2"><span class="toc-number">3.2.4.</span> <span class="toc-text">2.4 P置换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-DES%EF%BC%88%E5%88%86%E7%BB%84%E9%95%BF%E5%BA%A6%E3%80%81%E8%BF%AD%E4%BB%A3%E8%BD%AE%E6%95%B0%E3%80%81%E5%AF%86%E9%92%A5%E9%95%BF%E5%BA%A6%E3%80%81S%E7%9B%92%E3%80%81P%E7%9B%92%E3%80%81%E5%8A%A0%E5%AF%86%E6%80%9D%E6%83%B3%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">3.DES（分组长度、迭代轮数、密钥长度、S盒、P盒、加密思想）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3DES%E3%80%81AES%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">4.3DES、AES主要特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-AES%E7%9A%84%E5%AD%97%E8%8A%82%E4%BB%A3%E6%8D%A2%E5%92%8C%E5%88%97%E6%B7%B7%E6%B7%86"><span class="toc-number">6.</span> <span class="toc-text">5.AES的字节代换和列混淆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AES%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">6.1.</span> <span class="toc-text">AES流程图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第六章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E5%85%A8%E7%9A%84%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1.安全的哈希函数的性质和应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MD5%E5%92%8CSHA1%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">2.MD5和SHA1的主要特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">3. 消息认证的目的和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%A4%E8%AF%81%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">4.认证函数的三种实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%83%BD%E5%A4%9F%E5%AF%B9%E4%B8%80%E4%B8%AA%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E8%BF%9B%E8%A1%8C%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">5.能够对一个认证协议进行分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number"></span> <span class="toc-text">第八章 数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">1.数字签名要解决的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E3%80%81%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text">2.数字签名的安全模型、性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-RSA%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">3.RSA签名算法以及存在的安全问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ElGamal%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%B8%BB%E8%A6%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">4.ElGamal签名算法以及主要的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%89%B9%E6%AE%8A%E7%9A%84%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E9%80%82%E5%BA%94%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">5.</span> <span class="toc-text">5.特殊的签名算法以及适应的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%8D%8F%E8%AE%AE"><span class="toc-number"></span> <span class="toc-text">第九章 密码协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%8C%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">1.各种协议的特点，解决的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86"><span class="toc-number"></span> <span class="toc-text">第十章 密钥管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%A0%E7%B1%BB%E5%AF%86%E9%92%A5%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1.几类密钥的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%86%E9%92%A5%E7%9A%84%E7%94%9F%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">2.密钥的生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%86%E9%92%A5%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">3.</span> <span class="toc-text">3.密钥的存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AF%86%E9%92%A5%E7%9A%84%E5%88%86%E5%8F%91"><span class="toc-number">4.</span> <span class="toc-text">4.密钥的分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">5.</span> <span class="toc-text">5.集中式密钥分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91%EF%BC%88DeffieHellman%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">6.分布式密钥分发（DeffieHellman密钥协商）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%85%AC%E9%92%A5%E8%AE%A4%E8%AF%81"><span class="toc-number">7.</span> <span class="toc-text">7.为什么要进行公钥认证</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/06/05/[Cryptography]/">https://blog.lthero.cn/2022/06/05/[Cryptography]/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/09/%5BAlgorithm-dp%5D/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Algorithm】动态规划</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/05/%5BCompiler%5D-8/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Compiler】-8 中间代码生成</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/16/Cryptography-Authentication/" title="【Cryptography】用户认证"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-16</div><div class="title">【Cryptography】用户认证</div></div></a></div><div><a href="/2022/06/15/Cryptography-DES-AES/" title="【Cryptography】DES、AES对称加密"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】DES、AES对称加密</div></div></a></div><div><a href="/2022/06/15/Cryptography-Digital-Signature/" title="【Cryptography】密钥管理与分发"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】密钥管理与分发</div></div></a></div><div><a href="/2022/06/16/Cryptography-IPsec/" title="【Cryptography】IP安全"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-16</div><div class="title">【Cryptography】IP安全</div></div></a></div><div><a href="/2022/06/15/Cryptography-Integrity/" title="【Cryptography】数据完整性"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】数据完整性</div></div></a></div><div><a href="/2022/06/15/Cryptography-RSA/" title="【Cryptography】公钥、RSA、DH密钥交换"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-15</div><div class="title">【Cryptography】公钥、RSA、DH密钥交换</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">攻击方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">古典密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#des"><span class="toc-number">3.1.</span> <span class="toc-text">DES</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%BF%87%E7%A8%8B"><span class="toc-number">3.1.1.</span> <span class="toc-text">算法过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%EF%BC%9As%E7%9B%92"><span class="toc-number">3.1.2.</span> <span class="toc-text">计算：S盒</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">3.1.3.</span> <span class="toc-text">安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%92%E8%A1%A5%E6%80%A7"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">互补性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%B1%E5%AF%86%E9%92%A5"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">弱密钥</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E9%87%8D-%E4%B8%89%E9%87%8Ddes%E5%88%86%E6%9E%90-%E5%8A%A0%E5%AF%86%E7%9A%84%E5%BC%BA%E5%BA%A6%EF%BC%9A%E5%AF%86%E9%92%A5%E7%A9%BA%E9%97%B4"><span class="toc-number">3.1.4.</span> <span class="toc-text">双重、三重DES分析（加密的强度：密钥空间）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aes"><span class="toc-number">3.2.</span> <span class="toc-text">AES</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%BF%87%E7%A8%8B-%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-number">3.2.1.</span> <span class="toc-text">算法过程（加密&#x2F;解密）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97"><span class="toc-number">3.2.2.</span> <span class="toc-text">计算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">工作模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">流密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">哈希函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">5.2.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A1%AB%E5%85%85"><span class="toc-number">5.3.</span> <span class="toc-text">数据填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5"><span class="toc-number">5.4.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sha1"><span class="toc-number">5.5.</span> <span class="toc-text">SHA1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">公钥密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa"><span class="toc-number">6.1.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B-%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-number">6.1.1.</span> <span class="toc-text">算法流程（加密、解密）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97"><span class="toc-number">6.1.2.</span> <span class="toc-text">计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">6.1.3.</span> <span class="toc-text">安全性分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E9%AA%8C%E8%AF%81"><span class="toc-number">6.1.4.</span> <span class="toc-text">正确性验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E8%8C%83-%E8%82%AF%E5%AE%9A%E8%80%83"><span class="toc-number">6.1.5.</span> <span class="toc-text">攻击与防范（肯定考）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elgamal"><span class="toc-number">6.2.</span> <span class="toc-text">ElGamal</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95-%E5%BF%85%E9%A1%BB%E8%AE%B0%E4%BD%8F"><span class="toc-number">6.2.1.</span> <span class="toc-text">加密解密算法（必须记住）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97"><span class="toc-number">6.2.2.</span> <span class="toc-text">计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E9%AA%8C%E8%AF%81"><span class="toc-number">6.2.3.</span> <span class="toc-text">正确性验证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">7.</span> <span class="toc-text">数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa"><span class="toc-number">7.1.</span> <span class="toc-text">RSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elgamal-%E5%A6%82%E6%9E%9C%E8%80%83%E4%BC%9A%E7%BB%99%E5%87%BA%E7%AE%97%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text">ElGamal（如果考会给出算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%EF%BC%9A%E7%9B%B2%E7%AD%BE%E5%90%8D"><span class="toc-number">7.3.</span> <span class="toc-text">特殊：盲签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">7.4.</span> <span class="toc-text">安全性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">7.5.</span> <span class="toc-text">正确性分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%8D%8F%E8%AE%AE"><span class="toc-number">8.</span> <span class="toc-text">密码协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="toc-number">9.</span> <span class="toc-text">一些题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81"><span class="toc-number">9.1.</span> <span class="toc-text">仿射密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">9.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-number">9.1.2.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa"><span class="toc-number">9.2.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">9.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-number">9.2.2.</span> <span class="toc-text">解答</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%AE%BA"><span class="toc-number"></span> <span class="toc-text">第一章 密码学概论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E7%BC%96%E7%A0%81%E5%AD%A6%EF%BC%9A%E8%AE%A4%E8%AF%81%E4%BD%93%E5%88%B6-%E4%BF%9D%E5%AF%86%E4%BD%93%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">信息安全（密码编码学：认证体制+保密体制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">1.信息安全基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%A1%E6%81%AF%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E7%9B%AE%E6%A0%87"><span class="toc-number">3.</span> <span class="toc-text">2.信息基本安全目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number"></span> <span class="toc-text">第二章 密码学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1.密码学的相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">密码学分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">密码分析分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">攻击密码体制的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%8A%A0%E5%AF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%94%E5%85%83%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">2.密码学加密系统的五元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%B9%E5%8A%A0%E5%AF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%94%BB%E5%87%BB%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">3.对加密系统的攻击类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-kerchkoffs%E5%8E%9F%E5%88%99"><span class="toc-number">4.</span> <span class="toc-text">4.kerchkoffs原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%A4%E5%A4%A7%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">5.两大密码体制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6"><span class="toc-number"></span> <span class="toc-text">第三章 古典密码体制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%90%86%E8%A7%A3-%E4%BB%A3%E6%9B%BF-%E5%92%8C-%E7%BD%AE%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">1.理解“代替”和“置换”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#playfair%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">Playfair置换密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">2.1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#none"><span class="toc-number">2.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">2.3.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E5%AF%86%E6%96%87"><span class="toc-number">2.4.</span> <span class="toc-text">编写密文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hill%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">Hill密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#caesar%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">Caesar密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">维吉尼亚密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">5.0.1.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E4%B8%80%E5%AF%86"><span class="toc-number">6.</span> <span class="toc-text">一次一密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">6.1.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%83%BD%E5%A4%9F%E5%AF%B9%E4%BD%BF%E7%94%A8%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AF%86%E6%96%87%E8%BF%9B%E8%A1%8C%E7%A0%B4%E8%AF%91"><span class="toc-number">7.</span> <span class="toc-text">2.能够对使用古典密码加密的密文进行破译</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number"></span> <span class="toc-text">第四章 分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%90%86%E8%A7%A3%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0-%E6%89%A9%E6%95%A3-%E5%92%8C-%E6%B7%B7%E4%B9%B1-%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">1.理解分组密码算法如何实现“扩散”和“混乱”的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-s-p%E7%BD%91%E7%BB%9C-%E9%9B%AA%E5%B4%A9%E6%95%88%E5%BA%94"><span class="toc-number">2.</span> <span class="toc-text">2.S-P网络、雪崩效应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#des%E5%8A%A0%E5%AF%86%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">DES加密流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80-%E8%BF%9B%E8%A1%8Cip%E7%BD%AE%E6%8D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">步骤一、进行IP置换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C-f%E8%BD%AE%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">步骤二、F轮函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-e%E6%89%A9%E5%B1%95"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.1 E扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%BC%82%E6%88%96"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2 异或</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-s%E7%9B%92%E5%8E%8B%E7%BC%A9"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.3 S盒压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-p%E7%BD%AE%E6%8D%A2"><span class="toc-number">3.2.4.</span> <span class="toc-text">2.4 P置换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-des-%E5%88%86%E7%BB%84%E9%95%BF%E5%BA%A6-%E8%BF%AD%E4%BB%A3%E8%BD%AE%E6%95%B0-%E5%AF%86%E9%92%A5%E9%95%BF%E5%BA%A6-s%E7%9B%92-p%E7%9B%92-%E5%8A%A0%E5%AF%86%E6%80%9D%E6%83%B3"><span class="toc-number">4.</span> <span class="toc-text">3.DES（分组长度、迭代轮数、密钥长度、S盒、P盒、加密思想）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3des-aes%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">4.3DES、AES主要特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-aes%E7%9A%84%E5%AD%97%E8%8A%82%E4%BB%A3%E6%8D%A2%E5%92%8C%E5%88%97%E6%B7%B7%E6%B7%86"><span class="toc-number">6.</span> <span class="toc-text">5.AES的字节代换和列混淆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#aes%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">6.1.</span> <span class="toc-text">AES流程图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第六章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E5%85%A8%E7%9A%84%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1.安全的哈希函数的性质和应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-md5%E5%92%8Csha1%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">2.MD5和SHA1的主要特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">3. 消息认证的目的和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%A4%E8%AF%81%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">4.认证函数的三种实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%83%BD%E5%A4%9F%E5%AF%B9%E4%B8%80%E4%B8%AA%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E8%BF%9B%E8%A1%8C%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">5.能够对一个认证协议进行分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number"></span> <span class="toc-text">第八章 数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">1.数字签名要解决的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B-%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text">2.数字签名的安全模型、性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-rsa%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">3.RSA签名算法以及存在的安全问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-elgamal%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%B8%BB%E8%A6%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">4.ElGamal签名算法以及主要的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%89%B9%E6%AE%8A%E7%9A%84%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E9%80%82%E5%BA%94%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">5.</span> <span class="toc-text">5.特殊的签名算法以及适应的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%8D%8F%E8%AE%AE"><span class="toc-number"></span> <span class="toc-text">第九章 密码协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9-%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">1.各种协议的特点，解决的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86"><span class="toc-number"></span> <span class="toc-text">第十章 密钥管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%A0%E7%B1%BB%E5%AF%86%E9%92%A5%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1.几类密钥的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%86%E9%92%A5%E7%9A%84%E7%94%9F%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">2.密钥的生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%86%E9%92%A5%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">3.</span> <span class="toc-text">3.密钥的存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AF%86%E9%92%A5%E7%9A%84%E5%88%86%E5%8F%91"><span class="toc-number">4.</span> <span class="toc-text">4.密钥的分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">5.</span> <span class="toc-text">5.集中式密钥分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91-deffiehellman%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86"><span class="toc-number">6.</span> <span class="toc-text">6.分布式密钥分发（DeffieHellman密钥协商）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%85%AC%E9%92%A5%E8%AE%A4%E8%AF%81"><span class="toc-number">7.</span> <span class="toc-text">7.为什么要进行公钥认证</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

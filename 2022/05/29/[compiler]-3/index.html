@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【compiler】-3-词法分析 | lthero</title><meta name="keywords" content="编译原理"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="词法分析是编译的第一个阶段，在单词的级别上分析和翻译源程序。  理论基础 有限自动机理论 有限自动机理论与正规文法、正规式之间在描述语言方面有一对一的关系。  学习目标 掌握有限自动机与正规文法、正规式之间的转换。 能够构造词法分析程序。   正规文法、正规集、正规式正规文法 正规文法是compiler-2中提到的3型文法   正规文法是描述正规集的文法，可用于描述程序设计语言的语法部分。 例如">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【compiler】-3-词法分析 | lthero</title><meta name="keywords" content="编译原理"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="词法分析是编译的第一个阶段，在单词的级别上分析和翻译源程序。  理论基础  有限自动机理论 有限自动机理论与正规文法、正规式之间在描述语言方面有一对一的关系。  学习目标  掌握有限自动机与正规文法、正规式之间的转换。 能够构造词法分析程序。   正规文法、正规集、正规式 正规文法  正规文法是compiler-2中提到的3型文法   正规文法是描述正规集的文法，可用于描述程序设计语言的语法部分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【compiler】-3-词法分析">
 <meta property="og:url" content="https://blog.lthero.cn/2022/05/29/[compiler]-3/index.html">
 <meta property="og:site_name" content="lthero">
-<meta property="og:description" content="词法分析是编译的第一个阶段，在单词的级别上分析和翻译源程序。  理论基础 有限自动机理论 有限自动机理论与正规文法、正规式之间在描述语言方面有一对一的关系。  学习目标 掌握有限自动机与正规文法、正规式之间的转换。 能够构造词法分析程序。   正规文法、正规集、正规式正规文法 正规文法是compiler-2中提到的3型文法   正规文法是描述正规集的文法，可用于描述程序设计语言的语法部分。 例如">
+<meta property="og:description" content="词法分析是编译的第一个阶段，在单词的级别上分析和翻译源程序。  理论基础  有限自动机理论 有限自动机理论与正规文法、正规式之间在描述语言方面有一对一的关系。  学习目标  掌握有限自动机与正规文法、正规式之间的转换。 能够构造词法分析程序。   正规文法、正规集、正规式 正规文法  正规文法是compiler-2中提到的3型文法   正规文法是描述正规集的文法，可用于描述程序设计语言的语法部分">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg">
 <meta property="article:published_time" content="2022-05-29T02:19:14.000Z">
@@ -143,57 +143,68 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/x8d8gz.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【compiler】-3-词法分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-29T02:19:14.000Z" title="发表于 2022-05-29 10:19:14">2022-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-18T06:18:16.177Z" title="更新于 2022-06-18 14:18:16">2022-06-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【compiler】-3-词法分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/x8d8gz.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【compiler】-3-词法分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-29T02:19:14.000Z" title="发表于 2022-05-29 10:19:14">2022-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-18T06:18:16.177Z" title="更新于 2022-06-18 14:18:16">2022-06-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【compiler】-3-词法分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p>词法分析是<strong>编译的第一个阶段</strong>，在单词的级别上分析和翻译源程序。</p>
 </blockquote>
-<h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><ul>
+<h2 id="理论基础">理论基础</h2>
+<ul>
 <li>有限自动机理论</li>
 <li>有限自动机理论与正规文法、正规式之间在描述语言方面有一对一的关系。</li>
 </ul>
-<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul>
+<h2 id="学习目标">学习目标</h2>
+<ul>
 <li>掌握有限自动机与正规文法、正规式之间的转换。</li>
 <li>能够构造词法分析程序。</li>
 </ul>
 <hr>
-<h1 id="正规文法、正规集、正规式"><a href="#正规文法、正规集、正规式" class="headerlink" title="正规文法、正规集、正规式"></a>正规文法、正规集、正规式</h1><h2 id="正规文法"><a href="#正规文法" class="headerlink" title="正规文法"></a>正规文法</h2><blockquote>
+<h1 id="正规文法-正规集-正规式">正规文法、正规集、正规式</h1>
+<h2 id="正规文法">正规文法</h2>
+<blockquote>
 <p>正规文法是compiler-2中提到的<strong>3型文法</strong></p>
 </blockquote>
 <ul>
 <li>正规文法是<strong>描述正规集的文法</strong>，可用于描述程序设计<strong>语言的语法部分</strong>。</li>
-<li>例如:标识符这种单词可以用下面的规则描述。<ul>
+<li>例如:标识符这种单词可以用下面的规则描述。
+<ul>
 <li>&lt;标识符&gt;→&lt;字母&gt;|标识符&gt;(&lt;字母&gt;|&lt;数字&gt;）</li>
 <li>&lt;字母&gt;表示在意英文字母</li>
 <li>&lt;数字&gt;表示任意数字</li>
 </ul>
 </li>
 </ul>
-<h2 id="正规集"><a href="#正规集" class="headerlink" title="正规集"></a>正规集</h2><blockquote>
+<h2 id="正规集">正规集</h2>
+<blockquote>
 <p>由正规文法产生的语言</p>
 </blockquote>
 <ul>
 <li>正规集是集合，可有穷也可无穷。可通过<strong>正规式</strong>来形式化表示。</li>
 </ul>
-<h2 id="正规式"><a href="#正规式" class="headerlink" title="正规式"></a>正规式</h2><h3 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h3><ol>
-<li>设A是非空的有限字母表，A&#x3D;{a,&#x2F; i&#x3D;1,2,…. ..n},则<strong>空串、空集</strong>，字母表中<strong>任一字母</strong>【a<del>i</del> (i&#x3D;1,2,…. ..n)】都是正规式。<br>心</li>
+<h2 id="正规式">正规式</h2>
+<h3 id="规则：">规则：</h3>
+<ol>
+<li>设A是非空的有限字母表，A={a,/ i=1,2,… …n},则<strong>空串、空集</strong>，字母表中<strong>任一字母</strong>【a~i~ (i=1,2,… …n)】都是正规式。<br>
+心</li>
 <li>若α、β是正规式，则α|β、α*β 、α*、β*也是正规式。【α的正闭包一定是正规式】</li>
 <li>正规式只能通过<strong>有限次使用1，2规则</strong>获得</li>
 </ol>
-<h3 id="注"><a href="#注" class="headerlink" title="注:"></a>注:</h3><p>1）</p>
+<h3 id="注">注:</h3>
+<p>1）</p>
 <ul>
-<li>“|”读作为“或”，也可写作为“+或”，”</li>
+<li>“|”读作为“或”，也可写作为“+或&quot;，”</li>
 <li>“*”读作连接</li>
 </ul>
 <ol start="2">
 <li></li>
 </ol>
 <ul>
-<li>仅由字母表A&#x3D;{a<del>i</del>|i&#x3D;1,2,……n}上的<strong>正规式α所组成的语言</strong>称作正规集，记作L(α),L表示一种语言</li>
+<li>仅由字母表A={a~i~|i=1,2,…n}上的<strong>正规式α所组成的语言</strong>称作正规集，记作L(α),L表示一种语言</li>
 </ul>
 <p>3）</p>
 <ul>
 <li>利用正规集相同，可用来证明相应正规式等价。<strong>如果两个正规集相同，则对应的正规式等价</strong></li>
 </ul>
-<h2 id="三个概念间关系"><a href="#三个概念间关系" class="headerlink" title="三个概念间关系"></a>三个概念间关系</h2><ul>
+<h2 id="三个概念间关系">三个概念间关系</h2>
+<ul>
 <li>一个<strong>正规语言</strong>可以用<strong>正规文法定义</strong>，也可以用<strong>正规式定义</strong></li>
 <li>【<code>对任意一个正规文法，存在一个定义同一个语言的正规式</code>】</li>
 <li>【<code>对任意一个正规式，存在一个生成同一语言的正规文法</code>】</li>
@@ -202,53 +213,65 @@
 <li>由<strong>正规文法或正规式定义</strong>的正规语言的集合构成<strong>正规集</strong>。</li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529103611642.png" alt="image-20220529103611642"></p>
-<h3 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h3><blockquote>
-<p>证明b(ab)*&#x3D;(ba)*b</p>
+<h3 id="举例：">举例：</h3>
+<blockquote>
+<p>证明b(ab)*=(ba)*b</p>
 </blockquote>
 <p>原则：根据正规式，写出正规集，如果正规集相同，则正规式等价</p>
-<p>L(b(ab)*)&#x3D;{b,bab,babab,….}</p>
-<p>L((ba)*b)&#x3D;{b,bab,babab,…… }</p>
+<p>L(b(ab)*)={b,bab,babab,…}</p>
+<p>L((ba)*b)={b,bab,babab,… }</p>
 <p>又∵<strong>正规集的前n项相同</strong></p>
-<p>可知它们的正规集是相等的，所以正规式b(ab)*&#x3D;(ba)*b</p>
-<h3 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h3><p>若α， β， γ都是正规式，有以下定理1</p>
+<p>可知它们的正规集是相等的，所以正规式b(ab)*=(ba)*b</p>
+<h3 id="定理1">定理1</h3>
+<p>若α， β， γ都是正规式，有以下定理1</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529104048227.png" alt="image-20220529104048227"></p>
-<h3 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h3><p>将α-&gt;β|αγ，不断展开，变成α-&gt;{βγγγγγγγγ……}，也就是α-&gt;{βγ*}</p>
+<h3 id="定理2">定理2</h3>
+<p>将α-&gt;β|αγ，不断展开，变成α-&gt;{βγγγγγγγγ……}，也就是α-&gt;{βγ*}</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529104750544.png" alt="image-20220529104750544"></p>
 <hr>
-<h1 id="正规文法转换成正规式"><a href="#正规文法转换成正规式" class="headerlink" title="正规文法转换成正规式"></a>正规文法转换成正规式</h1><h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><ol>
+<h1 id="正规文法转换成正规式">正规文法转换成正规式</h1>
+<h2 id="原则">原则</h2>
+<ol>
 <li>由正规文法G的各个产生式写出<strong>对应的正规方程式</strong>，得到<strong>联立方程组</strong></li>
 <li>把方程组中的<strong>非终结符当作变元</strong>。</li>
-<li>求此<strong>正规式方程组的解</strong>（解由终结符构成），得到关于开始符号S的解:S&#x3D;w , w ∈VT*，w就是所求正规式。</li>
+<li>求此<strong>正规式方程组的解</strong>（解由终结符构成），得到关于开始符号S的解:S=w , w ∈VT*，w就是所求正规式。</li>
 </ol>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105248406.png" alt="image-20220529105248406"></p>
-<h3 id="解："><a href="#解：" class="headerlink" title="解："></a>解：</h3><p>1、由产生式<strong>写出对应的联立方程组</strong></p>
+<h2 id="举例">举例</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105248406.png" alt="image-20220529105248406"></p>
+<h3 id="解：">解：</h3>
+<p>1、由产生式<strong>写出对应的联立方程组</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105300191.png" alt="image-20220529105300191"></p>
 <p>2、根据上面的定理2，对（1）式进行变形</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105426072.png" alt="image-20220529105426072"></p>
 <p>同理，对（2），（3）进行转换</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105447089.png" alt="image-20220529105447089"></p>
-<p>转换后，发现<strong>（4）、（5）中仍然包含非终结符</strong>，（6）已经是正规式</p>
+<p>转换后，发现**（4）、（5）中仍然包含非终结符**，（6）已经是正规式</p>
 <p>3、将（6）带入到（4），（5）中，得到<strong>不含非终结符的式子</strong>，即为<strong>正规式</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105621730.png" alt="image-20220529105621730"></p>
-<p>4、所以：正规式S&#x3D;a^+^ b^+^ c^+^</p>
+<p>4、所以：正规式S=a^+^ b^+^ c^+^</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529105749216.png" alt="image-20220529105749216"></p>
 <hr>
-<h1 id="正规式转换成正规文法"><a href="#正规式转换成正规文法" class="headerlink" title="正规式转换成正规文法"></a>正规式转换成正规文法</h1><blockquote>
+<h1 id="正规式转换成正规文法">正规式转换成正规文法</h1>
+<blockquote>
 <p>由正规式转换成正规文法，需要<strong>借助“有限自动机”这个工具</strong>，所以先讲有限自动机</p>
 </blockquote>
 <hr>
-<h1 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h1><blockquote>
+<h1 id="有限自动机">有限自动机</h1>
+<blockquote>
 <p>有限自动机是一种识别装置，<strong>它能准确地识别正规集</strong>。它为词法分析程序的构造提供了方法和工具。</p>
 </blockquote>
 <p>有限自动机是具有离散输入输出系统的数学模型。它具有<strong>有限数目的内部状态</strong>（初始、中间、终止），系统根据<strong>当前所处的状态</strong>和<strong>面临的输入字符</strong>决定系统的后继行为。其当前状态概括了过去输入处理的信息。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529131437919.png" alt="image-20220529131437919"></p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
-<li><p>读头在a，状态为<strong>初始状态</strong></p>
+<h2 id="过程">过程</h2>
+<ol>
+<li>
+<p>读头在a，状态为<strong>初始状态</strong></p>
 <ol>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529131556440.png" alt="image-20220529131556440"></li>
 </ol>
 </li>
-<li><p><strong>读头不断改变</strong>，状态为<strong>中间状态</strong></p>
+<li>
+<p><strong>读头不断改变</strong>，状态为<strong>中间状态</strong></p>
 <ol>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529131619921.png" alt="image-20220529131619921"></li>
 </ol>
@@ -256,46 +279,55 @@
 <li>如果状态为<strong>中间状态</strong>，但读头的某个字符，是<strong>绝对不会遇到的符号</strong>，<code>出错</code></li>
 </ul>
 </li>
-<li><p>读头到<strong>最后一个符号</strong>，并且<strong>状态为终态</strong>，<code>正确</code></p>
+<li>
+<p>读头到<strong>最后一个符号</strong>，并且<strong>状态为终态</strong>，<code>正确</code></p>
 <ol>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529131640550.png" alt="image-20220529131640550"></li>
 </ol>
 </li>
-<li><p>如果读头到<strong>最后一个符号</strong>，但<strong>状态不是终止状态</strong>，<code>出错</code></p>
+<li>
+<p>如果读头到<strong>最后一个符号</strong>，但<strong>状态不是终止状态</strong>，<code>出错</code></p>
 <ol>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529131720967.png" alt="image-20220529131720967"></li>
 </ol>
 </li>
 </ol>
-<h2 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h2><blockquote>
+<h2 id="举例">举例</h2>
+<blockquote>
 <p>如标识符的自动机</p>
 </blockquote>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529132137220.png" alt="image-20220529132137220"></p>
 <p>由上图可见，最终能进入2号状态，<strong>2号状态是个终态</strong>，xtemp是正确的标识符。</p>
 <p>如果输入<strong>2xtemp</strong>，在1号状态无法进入2号状态，会留在1号状态，1号状态不是终态，则<code>错误</code></p>
 <hr>
-<h1 id="确定的自动机"><a href="#确定的自动机" class="headerlink" title="确定的自动机"></a>确定的自动机</h1><p>DFA(Deterministic FA)</p>
+<h1 id="确定的自动机">确定的自动机</h1>
+<p>DFA(Deterministic FA)</p>
 <blockquote>
 <p>由一个状态和一个输入<strong>得到一个结果</strong>，如上面的<strong>标识符自动机</strong></p>
 </blockquote>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133004269.png" alt="image-20220529133004269"></p>
+<h2 id="定义">定义</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133004269.png" alt="image-20220529133004269"></p>
 <ul>
 <li>s0 <strong>唯一的初态</strong></li>
 <li>Z 终止状态集，Z是S的子集，<strong>可以是空集</strong>（<strong>出错状态不在终止状态集中</strong>）</li>
 </ul>
-<p>关键在于：f(s,a)&#x3D;s’，由一个状态和一个输入，得到一个结果。<strong>是单值映射</strong></p>
-<h2 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133806220.png" alt="image-20220529133806220"></p>
-<h2 id="状态转换矩阵"><a href="#状态转换矩阵" class="headerlink" title="状态转换矩阵"></a>状态转换矩阵</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133756072.png" alt="image-20220529133756072"></p>
-<h2 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133750570.png" alt="image-20220529133750570"></p>
+<p>关键在于：f(s,a)=s’，由一个状态和一个输入，得到一个结果。<strong>是单值映射</strong></p>
+<h2 id="举例">举例</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133806220.png" alt="image-20220529133806220"></p>
+<h2 id="状态转换矩阵">状态转换矩阵</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133756072.png" alt="image-20220529133756072"></p>
+<h2 id="状态转换图">状态转换图</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529133750570.png" alt="image-20220529133750570"></p>
 <ul>
-<li>在整个状态转换图中<strong>只有一个初始状态结点</strong>，用<strong>“→”射入的结点表示初始</strong>状态。</li>
+<li>在整个状态转换图中<strong>只有一个初始状态结点</strong>，用**“→”射入的结点表示初始**状态。</li>
 <li>可有若干终止状态(也可能没有)，<strong>用双圆圈表示</strong>。</li>
 <li>若初始状态结点同时又是终止状态结点，<strong>则表示空串</strong>可为相应DFA识别。</li>
 </ul>
-<h2 id="构造DFA"><a href="#构造DFA" class="headerlink" title="构造DFA"></a>构造DFA</h2><p>比如：</p>
+<h2 id="构造dfa">构造DFA</h2>
+<p>比如：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529134224428.png" alt="image-20220529134224428"></p>
 <ul>
-<li>1号状态：以a&#x2F;b开头</li>
+<li>1号状态：以a/b开头</li>
 <li>2号状态：以c开头，但没有a</li>
 <li>3号状态：以c开头，但只有一个a</li>
 </ul>
@@ -311,7 +343,8 @@
 <th>c</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>1</td>
 <td>1</td>
@@ -335,7 +368,8 @@
 <td>3</td>
 <td>3</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p>能被有限自动机（DFA）M（M只是个名字）所识别的字符串的集合，称为DFA M能识别的语言，<strong>记为L(M)</strong></p>
 </blockquote>
@@ -348,7 +382,8 @@
 <li>在读过程中<strong>出现不存在的映射</strong>，使自动机无法继续动作（如，标识符自动机中，输入2xtemp，<strong>第一个数字2就不能被映射</strong>）</li>
 </ul>
 <hr>
-<h1 id="不确定的有限自动机"><a href="#不确定的有限自动机" class="headerlink" title="不确定的有限自动机"></a>不确定的有限自动机</h1><p>NFA(Non-deterministic FA)</p>
+<h1 id="不确定的有限自动机">不确定的有限自动机</h1>
+<p>NFA(Non-deterministic FA)</p>
 <blockquote>
 <p>DFA只是NFA的特例,NFA也是个五元式</p>
 </blockquote>
@@ -356,34 +391,40 @@
 <ul>
 <li>S0:<strong>非空的初态集</strong>（至少有一个元素），S0是S的真子集。不像DFA，只能有一个初始态</li>
 <li>Z:终止状态集，Z是S的子集，可以是空集</li>
-<li>f:一个状态+一个符号 &#x3D; <strong>一些状态</strong>，可以到达2^S个状态</li>
+<li>f:一个状态+一个符号 = <strong>一些状态</strong>，可以到达2^S个状态</li>
 </ul>
 <p>注</p>
 <ul>
 <li>1)非确定主要是指后继状态可有多个。</li>
 <li>2)DFA是NFA的特例</li>
 </ul>
-<h2 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529141430426.png" alt="image-20220529141430426"></p>
-<p>0* 1^+^ 0* 1* 0* </p>
-<p>上图的自动机，识别：<strong>至少包含一个1的二进制串</strong> </p>
+<h2 id="举例">举例</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529141430426.png" alt="image-20220529141430426"></p>
+<p>0* 1^+^ 0* 1* 0*</p>
+<p>上图的自动机，识别：<strong>至少包含一个1的二进制串</strong></p>
 <p>解释</p>
 <ul>
 <li>如果初始是0，则递归q0；如果<strong>初始是1，则可以进入终态q1</strong></li>
-<li>进入q1后，读头可以是0&#x2F;1，如果是1，</li>
+<li>进入q1后，读头可以是0/1，如果是1，</li>
 </ul>
 <hr>
-<h1 id="两个自动机等价"><a href="#两个自动机等价" class="headerlink" title="两个自动机等价"></a>两个自动机等价</h1><ul>
-<li><p>任何两个有限自动机M和M’，若它们识别的语言相同(L(M)&#x3D;L(M’))，则称M和M’等价。</p>
+<h1 id="两个自动机等价">两个自动机等价</h1>
+<ul>
+<li>
+<p>任何两个有限自动机M和M’，若它们识别的语言相同(L(M)=L(M’))，则称M和M’等价。</p>
 </li>
-<li><p>注:存在判定任何两个有限自动机等价性的算法。</p>
+<li>
+<p>注:存在判定任何两个有限自动机等价性的算法。</p>
 </li>
 </ul>
 <hr>
-<h1 id="NFA的转换为DFA-确定化"><a href="#NFA的转换为DFA-确定化" class="headerlink" title="NFA的转换为DFA(确定化)"></a>NFA的转换为DFA(确定化)</h1><blockquote>
+<h1 id="nfa的转换为dfa-确定化">NFA的转换为DFA(确定化)</h1>
+<blockquote>
 <p>使用子集法对NFA进行确定化</p>
 </blockquote>
-<h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><ul>
-<li>对于每个NFA M，存在一个DFA M’，使得L(M)&#x3D;L(M’)。即，设L是NFA接受的正规集，则存在一个DFA接受L。</li>
+<h2 id="定理">定理</h2>
+<ul>
+<li>对于每个NFA M，存在一个DFA M’，使得L(M)=L(M’)。即，设L是NFA接受的正规集，则存在一个DFA接受L。</li>
 </ul>
 <p>原来的<strong>NFA</strong>中的<strong>起点</strong>打包在一起（<strong>成为一个起点</strong>），指向不同的节点</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529144034063.png" alt="image-20220529144034063"></p>
@@ -394,44 +435,53 @@
 <li>NFA确定化的实质是以<strong>原有状态集上的覆盖片</strong>(COVER)作为DFA上的一个状态(将NFA几个状态打包)，将原状态间的转换改为覆盖片间的转换，从而将不确定问题确定化。</li>
 <li>通常，经确定化后，状态数增加，而且可能出现一些等价状态，这时需要化简。</li>
 </ul>
-<h2 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529150622498.png" alt="image-20220529150622498"></p>
+<h2 id="举例">举例</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529150622498.png" alt="image-20220529150622498"></p>
 <ol>
-<li>M的初态:I0&#x3D;{q0}。则<code>状态集Q</code>中就有I0状态。</li>
-<li>由Q中的状态I0&#x3D;{q0}，查看NFA M的原图有:<ul>
-<li>({q0},0)&#x3D;{q0}</li>
-<li>({q0},1)&#x3D;{q1}&#x3D;I1, 因为I1不存在<code>状态集Q</code>中，所以把I1放入<code>状态集Q</code>,Q&#x3D;{I0,I1}</li>
+<li>M的初态:I0={q0}。则<code>状态集Q</code>中就有I0状态。</li>
+<li>由Q中的状态I0={q0}，查看NFA M的原图有:
+<ul>
+<li>({q0},0)={q0}</li>
+<li>({q0},1)={q1}=I1, 因为I1不存在<code>状态集Q</code>中，所以把I1放入<code>状态集Q</code>,Q={I0,I1}</li>
 </ul>
 </li>
-<li>因为I0已经看过了，那由Q中的状态<code>I1=&#123;q1&#125;</code>，查看NFA M的原图有:<ul>
-<li>({q1},0)&#x3D;{q0,q1}&#x3D;I2, 因为I2不存在<code>状态集Q</code>中，所以把I2放入<code>状态集Q</code>,Q&#x3D;{I0,I1.I2}</li>
-<li>({q1},1)&#x3D;{q0}&#x3D;I0</li>
+<li>因为I0已经看过了，那由Q中的状态<code>I1=&#123;q1&#125;</code>，查看NFA M的原图有:
+<ul>
+<li>({q1},0)={q0,q1}=I2, 因为I2不存在<code>状态集Q</code>中，所以把I2放入<code>状态集Q</code>,Q={I0,I1.I2}</li>
+<li>({q1},1)={q0}=I0</li>
 </ul>
 </li>
-<li>因为I0,I1已经看过了，那由Q中的状态I2&#x3D;{q0,q1}，查看NFA M的原图有:<ul>
-<li>I2里面的q0：({q0},0)&#x3D;{q0}; I2里面的q1：({q1},0)&#x3D;{q0,q1}； 所以(<code>取前面两个结果并集</code>)({q0,q1},0)&#x3D;{q0,q1}&#x3D;I2</li>
-<li>I2里面的q0：({q0},1)&#x3D;{q1}; I2里面的q1：({q1},1)&#x3D;{q0}；所以(<code>取前面两个结果并集</code>)({q0,q1},1)&#x3D;{q0,q1}&#x3D;I2</li>
-<li>因为I2在状态集里面，所以不用添加，Q&#x3D;{I0,I1.I2}</li>
+<li>因为I0,I1已经看过了，那由Q中的状态I2={q0,q1}，查看NFA M的原图有:
+<ul>
+<li>I2里面的q0：({q0},0)={q0}; I2里面的q1：({q1},0)={q0,q1}； 所以(<code>取前面两个结果并集</code>)({q0,q1},0)={q0,q1}=I2</li>
+<li>I2里面的q0：({q0},1)={q1}; I2里面的q1：({q1},1)={q0}；所以(<code>取前面两个结果并集</code>)({q0,q1},1)={q0,q1}=I2</li>
+<li>因为I2在状态集里面，所以不用添加，Q={I0,I1.I2}</li>
 </ul>
 </li>
-<li>初态：<strong>I0</strong>，因为I0是NFA的初态；终态是<strong>包含q1</strong>的状态：I1&#x3D;{q1},I2&#x3D;{q0,q1}，因为q1是NFA的终态，所有包含q1的都是终态</li>
+<li>初态：<strong>I0</strong>，因为I0是NFA的初态；终态是<strong>包含q1</strong>的状态：I1={q1},I2={q0,q1}，因为q1是NFA的终态，所有包含q1的都是终态</li>
 </ol>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529151753125.png" alt="image-20220529151753125"></p>
 <p>状态转换图如下：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529151812002.png" alt="image-20220529151812002"></p>
 <hr>
-<h1 id="DFA化简（最小化）"><a href="#DFA化简（最小化）" class="headerlink" title="DFA化简（最小化）"></a>DFA化简（最小化）</h1><h2 id="划分法"><a href="#划分法" class="headerlink" title="划分法"></a>划分法</h2><p>化简(最小化)算法基本思想-<strong>划分法</strong></p>
+<h1 id="dfa化简-最小化">DFA化简（最小化）</h1>
+<h2 id="划分法">划分法</h2>
+<p>化简(最小化)算法基本思想-<strong>划分法</strong></p>
 <ul>
 <li>1.将DFAM 中的状态划分为互不相交的子集，<strong>每个子集内部的状态都等价</strong>;而在<strong>不同子集间的状态均不等价</strong>。</li>
 <li>2.从每个子集中<strong>任选一个状态作为代表</strong>，消去其它等价状态。</li>
-<li>3.把那些原来射入其它等价状态的弧改为射入相应的代表状态。<ul>
+<li>3.把那些原来射入其它等价状态的弧改为射入相应的代表状态。
+<ul>
 <li>如下图的1-&gt;4,2-&gt;3；转换成（1，2）-&gt;（3，4）</li>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529152219061.png" alt="image-20220529152219061"></li>
 </ul>
 </li>
 </ul>
-<h2 id="状态等价与状态可区别"><a href="#状态等价与状态可区别" class="headerlink" title="状态等价与状态可区别"></a>状态等价与状态可区别</h2><p>如果s与t<strong>识别相同的串</strong>，并<strong>得到了相同的结果</strong>，则s与t<strong>状态等价</strong>（不是相等）。<strong>否则就是状态可区别</strong></p>
+<h2 id="状态等价与状态可区别">状态等价与状态可区别</h2>
+<p>如果s与t<strong>识别相同的串</strong>，并<strong>得到了相同的结果</strong>，则s与t<strong>状态等价</strong>（不是相等）。<strong>否则就是状态可区别</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529152702429.png" alt="image-20220529152702429"></p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529153045719.png" alt="image-20220529153045719"></p>
+<h2 id="算法">算法</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529153045719.png" alt="image-20220529153045719"></p>
 <p>比如，对I0中，<strong>1号识别0到I02中</strong>，<strong>2号识别0到I01中</strong>，说明1和2还要继续划分。</p>
 <p>也就是说，目前的<strong>I0如果识别0，会到达不同的状态，说明需要继续划分</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529153215402.png" alt="image-20220529153215402"></p>
@@ -439,24 +489,29 @@
 <ul>
 <li>1)当一个自动机没有任何多余的状态，并且<strong>它的状态中没有两个是互相等价的时</strong>，我们说这个有限自动机是化简了的。</li>
 </ul>
-<h2 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529153755895.png" alt="image-20220529153755895"></p>
-<h3 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h3><ul>
+<h2 id="举例">举例</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529153755895.png" alt="image-20220529153755895"></p>
+<h3 id="做法">做法</h3>
+<ul>
 <li>刚开始把<strong>0,1,2归为非终态集</strong>，<strong>3,4,5,6为终态集</strong></li>
-<li>看<strong>非终态集</strong>，如果识别a<ul>
-<li>({0,1,2},a)&#x3D;{1,3}不属于II0的任何一个子集，所以{0，1，2}要分开</li>
-<li>得到:<code>II1&#39;</code>&#x3D;{ {1}，{0,2},{3,4,5,6} }</li>
+<li>看<strong>非终态集</strong>，如果识别a
+<ul>
+<li>({0,1,2},a)={1,3}不属于II0的任何一个子集，所以{0，1，2}要分开</li>
+<li>得到:<code>II1'</code>={ {1}，{0,2},{3,4,5,6} }</li>
 </ul>
 </li>
-<li>再看:({0,2},a)&#x3D;{1}属于<code>II1&#39;</code>的子集,({0,2},b)&#x3D;{2,5}不属于<code>II1&#39;</code>的任何子集，所以{0,2}要分开<ul>
-<li>得到:<code>II1&#39;&#39;</code>&#x3D;{ {1}，{0}，{2},{3,4,5,6} }</li>
+<li>再看:({0,2},a)={1}属于<code>II1'</code>的子集,({0,2},b)={2,5}不属于<code>II1'</code>的任何子集，所以{0,2}要分开
+<ul>
+<li>得到:<code>II1''</code>={ {1}，{0}，{2},{3,4,5,6} }</li>
 </ul>
 </li>
 </ul>
 <p>现在<strong>非终态集就划分完成</strong></p>
 <ul>
 <li>看<strong>终态集</strong>，分别识别a,b</li>
-<li>({3.4,5.6},a)&#x3D;{3,6}包含于<code>II1&#39;&#39;</code>的子集{3,4,5,6}中</li>
-<li>({3.4.5.6},b)&#x3D;{4,5}包含于<code>II1&#39;&#39;</code>的子集{3,4,5,6}<ul>
+<li>({3.4,5.6},a)={3,6}包含于<code>II1''</code>的子集{3,4,5,6}中</li>
+<li>({3.4.5.6},b)={4,5}包含于<code>II1''</code>的子集{3,4,5,6}
+<ul>
 <li>所以{3,4,5,6}不可再划分，所以3,4,5,6是等价的</li>
 </ul>
 </li>
@@ -465,37 +520,47 @@
 <ul>
 <li>令状态<strong>3代表</strong>{3,4,5,6}，把原来到达状态4，5，6的<strong>弧都导入3</strong>，并删除4，5，6。得下图</li>
 </ul>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>在3,4,5,6<strong>内部相互指向</strong>的全部<strong>由3指向自己</strong></p>
+<h3 id="结果">结果</h3>
+<p>在3,4,5,6<strong>内部相互指向</strong>的全部<strong>由3指向自己</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529154605100.png" alt="image-20220529154605100"></p>
 <hr>
-<h1 id="正规式与有限自动机关系"><a href="#正规式与有限自动机关系" class="headerlink" title="正规式与有限自动机关系"></a>正规式与有限自动机关系</h1><h2 id="关系定理"><a href="#关系定理" class="headerlink" title="关系定理"></a>关系定理</h2><ul>
+<h1 id="正规式与有限自动机关系">正规式与有限自动机关系</h1>
+<h2 id="关系定理">关系定理</h2>
+<ul>
 <li>由NFA M所能识别的语言L(M)可以用正规式来表示。</li>
-<li>由NFA M，可构造一个正规式α，使得L(α)&#x3D;L(M)</li>
-<li>由正规式α，可构造一个DFA M，使得L(α)&#x3D;L(M)</li>
+<li>由NFA M，可构造一个正规式α，使得L(α)=L(M)</li>
+<li>由正规式α，可构造一个DFA M，使得L(α)=L(M)</li>
 </ul>
 <hr>
-<h2 id="由DFA转换成正规式α"><a href="#由DFA转换成正规式α" class="headerlink" title="由DFA转换成正规式α"></a>由DFA转换成正规式α</h2><ul>
-<li>在M的转换图上<strong>加两个结点:x,y</strong>。从x用<code>空串弧</code>连接到M的所有初态结点;从M的终态结点用<code>空串弧</code>连接到y，这个新的NFA为M，且L(M)&#x3D;L(M’)。如下图<ul>
+<h2 id="由dfa转换成正规式α">由DFA转换成正规式α</h2>
+<ul>
+<li>在M的转换图上<strong>加两个结点:x,y</strong>。从x用<code>空串弧</code>连接到M的所有初态结点;从M的终态结点用<code>空串弧</code>连接到y，这个新的NFA为M，且L(M)=L(M’)。如下图
+<ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529155800541.png" alt="image-20220529155800541"></li>
 </ul>
 </li>
 <li>通过引入的<strong>3条替换规则</strong>逐步消去M’中的所有结点，直到只剩下x和y为止。</li>
 <li>这样，在x至y的弧线上的标记就是的正规式，也就是M接受的正规式。</li>
 </ul>
-<h3 id="替换规则"><a href="#替换规则" class="headerlink" title="替换规则"></a>替换规则</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529155530350.png" alt="image-20220529155530350"></p>
-<h3 id="举例-6"><a href="#举例-6" class="headerlink" title="举例"></a>举例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529160002741.png" alt="image-20220529160002741"></p>
+<h3 id="替换规则">替换规则</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529155530350.png" alt="image-20220529155530350"></p>
+<h3 id="举例">举例</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529160002741.png" alt="image-20220529160002741"></p>
 <ul>
-<li><p>第一步，对1节点进行转换</p>
+<li>
+<p>第一步，对1节点进行转换</p>
 <ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190249405.png" alt="image-20220529190249405"></li>
 </ul>
 </li>
-<li><p>对2节点转换</p>
+<li>
+<p>对2节点转换</p>
 <ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190308233.png" alt="image-20220529190308233"></li>
 </ul>
 </li>
-<li><p>将上述结果合并</p>
+<li>
+<p>将上述结果合并</p>
 <ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190313446.png" alt="image-20220529190313446"></li>
 </ul>
@@ -504,23 +569,27 @@
 <p>结果如下：</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190421652.png" alt="image-20220529190421652"></p>
 <ul>
-<li>现在优化3号节点，<ul>
+<li>现在优化3号节点，
+<ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190505811.png" alt="image-20220529190505811"></li>
 </ul>
-<p>	</p>
 </li>
-<li><strong>利用规则3</strong>，去掉节点3<ul>
+<li><strong>利用规则3</strong>，去掉节点3
+<ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190543657.png" alt="image-20220529190543657"></li>
 </ul>
 </li>
-<li><strong>利用规则2</strong>，去掉节点0。<strong>外面加一个闭包</strong>，因为可以通过<code>x-&gt;空串-&gt;空串-&gt;y</code><ul>
+<li><strong>利用规则2</strong>，去掉节点0。<strong>外面加一个闭包</strong>，因为可以通过<code>x-&gt;空串-&gt;空串-&gt;y</code>
+<ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190638245.png" alt="image-20220529190638245"></li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="由正规式转换成DFA"><a href="#由正规式转换成DFA" class="headerlink" title="由正规式转换成DFA"></a>由正规式转换成DFA</h2><ul>
-<li>1)由正规式α构造一个如下仅有两个结点x,y的状态<ul>
+<h2 id="由正规式转换成dfa">由正规式转换成DFA</h2>
+<ul>
+<li>1)由正规式α构造一个如下仅有两个结点x,y的状态
+<ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529190948172.png" alt="image-20220529190948172"></li>
 </ul>
 </li>
@@ -528,16 +597,21 @@
 <li>3)重复步骤2直到每个弧上的标记是字符集上的<strong>一个字符或空串为止</strong>。</li>
 <li>4)将所得的NFA (<strong>因为包含空串弧</strong>)进行<strong>确定化</strong>就得到DFA。下面会提到</li>
 </ul>
-<h3 id="替换规则-1"><a href="#替换规则-1" class="headerlink" title="替换规则"></a>替换规则</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529191157587.png" alt="image-20220529191157587"></p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529191448207.png" alt="image-20220529191448207"></p>
-<h3 id="举例-7"><a href="#举例-7" class="headerlink" title="举例"></a>举例</h3><p>根据正规式(a|b)*(aa|bb)(a|b)*构造DFA M</p>
+<h3 id="替换规则">替换规则</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529191157587.png" alt="image-20220529191157587"></p>
+<h3 id="注意">注意</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529191448207.png" alt="image-20220529191448207"></p>
+<h3 id="举例">举例</h3>
+<p>根据正规式(a|b)*(aa|bb)(a|b)*构造DFA M</p>
 <ul>
-<li><p>分别使用规则3、规则2、规则3，得到下图</p>
+<li>
+<p>分别使用规则3、规则2、规则3，得到下图</p>
 <ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529191713478.png" alt="image-20220529191713478"></li>
 </ul>
 </li>
-<li><p>再分别使用规则2、规则1、规则2，得到下图</p>
+<li>
+<p>再分别使用规则2、规则1、规则2，得到下图</p>
 <ul>
 <li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529191810000.png" alt="image-20220529191810000"></li>
 </ul>
@@ -546,31 +620,45 @@
 <p>最后，会得到NFA，并且进而包含空串，<strong>所以需要对NFA进行确定化</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529193259240.png" alt="image-20220529193259240"></p>
 <hr>
-<h2 id="对含有空串ε的NFA进行确定化"><a href="#对含有空串ε的NFA进行确定化" class="headerlink" title="对含有空串ε的NFA进行确定化"></a>对含有空串ε的NFA进行确定化</h2><blockquote>
+<h2 id="对含有空串ε的nfa进行确定化">对含有空串ε的NFA进行确定化</h2>
+<blockquote>
 <p>因为正规式在转换成DFA时，只能先转换成NFA，再由NFA确定化转换成DFA</p>
 </blockquote>
-<h3 id="举例-8"><a href="#举例-8" class="headerlink" title="举例"></a>举例</h3><ul>
-<li><p>I0是包含<code>初始态</code>和<code>只用空串到达的状态</code>，I0&#x3D;{x,5,1}</p>
+<h3 id="举例">举例</h3>
+<ul>
+<li>
+<p>I0是包含<code>初始态</code>和<code>只用空串到达的状态</code>，I0={x,5,1}</p>
 </li>
-<li><p>再对I0，<code>识别字母a和空串ε到达的状态</code>，5经过<strong>a</strong>到<code>5</code>，1经过a到<code>3</code>。再求5和3的闭包，5经过<code>空串</code>到达1，所以<code>I1=&#123;5,3,1&#125;</code></p>
+<li>
+<p>再对I0，<code>识别字母a和空串ε到达的状态</code>，5经过<strong>a</strong>到<code>5</code>，1经过a到<code>3</code>。再求5和3的闭包，5经过<code>空串</code>到达1，所以<code>I1=&#123;5,3,1&#125;</code></p>
 </li>
-<li><p>再对I0，<code>识别字母a到空串ε达的状态</code>，5经过<strong>b</strong>到<code>5</code>,1经过b到<code>4</code>。再求5和4的闭包，5经过<code>空串</code>到达1，所以<code>I2=&#123;5,4,1&#125;</code></p>
+<li>
+<p>再对I0，<code>识别字母a到空串ε达的状态</code>，5经过<strong>b</strong>到<code>5</code>,1经过b到<code>4</code>。再求5和4的闭包，5经过<code>空串</code>到达1，所以<code>I2=&#123;5,4,1&#125;</code></p>
 </li>
-<li><p>对<code>I1=&#123;5,3,1&#125;</code>,识别<code>字母a和空串ε</code>到达的状态，5经过a到<code>5</code>，3经过a到<code>2</code>，5经过空串ε到<code>1</code>，1经过a到<code>3</code>，2经过空串ε到<code>6</code>，6经过空串ε到<code>y</code>，所以<code>I3=&#123;5,2,1,3,6,y&#125;</code></p>
+<li>
+<p>对<code>I1=&#123;5,3,1&#125;</code>,识别<code>字母a和空串ε</code>到达的状态，5经过a到<code>5</code>，3经过a到<code>2</code>，5经过空串ε到<code>1</code>，1经过a到<code>3</code>，2经过空串ε到<code>6</code>，6经过空串ε到<code>y</code>，所以<code>I3=&#123;5,2,1,3,6,y&#125;</code></p>
 </li>
-<li><p>以此类推……，得到下面的表，如果过程中，产生的Ix已经出现，就无需添加新的：比如，I1识别b时产生的和I2一致</p>
+<li>
+<p>以此类推……，得到下面的表，如果过程中，产生的Ix已经出现，就无需添加新的：比如，I1识别b时产生的和I2一致</p>
 </li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529193348819.png" alt="image-20220529193348819"></p>
-<h4 id="对应的DFA为"><a href="#对应的DFA为" class="headerlink" title="对应的DFA为"></a>对应的DFA为</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529194917073.png" alt="image-20220529194917073"></p>
-<h4 id="可以再对上图的DFA进行最小化"><a href="#可以再对上图的DFA进行最小化" class="headerlink" title="可以再对上图的DFA进行最小化"></a>可以再对上图的DFA进行最小化</h4><p>最小化的结果和上面例题中一样</p>
+<h4 id="对应的dfa为">对应的DFA为</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529194917073.png" alt="image-20220529194917073"></p>
+<h4 id="可以再对上图的dfa进行最小化">可以再对上图的DFA进行最小化</h4>
+<p>最小化的结果和上面例题中一样</p>
 <hr>
-<h1 id="正规文法与有限自动机关系"><a href="#正规文法与有限自动机关系" class="headerlink" title="正规文法与有限自动机关系"></a>正规文法与有限自动机关系</h1><h2 id="关系定理-1"><a href="#关系定理-1" class="headerlink" title="关系定理"></a>关系定理</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529195323380.png" alt="image-20220529195323380"></p>
-<h3 id="注-1"><a href="#注-1" class="headerlink" title="注:"></a>注:</h3><ul>
+<h1 id="正规文法与有限自动机关系">正规文法与有限自动机关系</h1>
+<h2 id="关系定理">关系定理</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529195323380.png" alt="image-20220529195323380"></p>
+<h3 id="注">注:</h3>
+<ul>
 <li>1)正规文法分为<strong>右线性文法和左线性文法</strong>。但对一个正规文法，<strong>不能既是左线性，又是右线性</strong>。</li>
-<li>2)对每个<strong>有限自动机（DFA ）M</strong>，都存在一个右线性正规文法G<del>R</del><strong>和</strong>左线性正规文法G<del>L</del>，使得L(M)&#x3D;L(G<del>R</del>)&#x3D;L(G<del>L</del>)</li>
+<li>2)对每个<strong>有限自动机（DFA ）M</strong>，都存在一个右线性正规文法G~R~<strong>和</strong>左线性正规文法G~L~，使得L(M)=L(G~R~)=L(G~L~)</li>
 </ul>
-<h2 id="右线性文法转换成自动机"><a href="#右线性文法转换成自动机" class="headerlink" title="右线性文法转换成自动机"></a>右线性文法转换成自动机</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>式子：a^i^ b^j^ c^k^ i,j,k&gt;&#x3D;1；对应的<strong>自动机图</strong>为：</p>
+<h2 id="右线性文法转换成自动机">右线性文法转换成自动机</h2>
+<h3 id="引言">引言</h3>
+<p>式子：a^i^ b^j^ c^k^ i,j,k&gt;=1；对应的<strong>自动机图</strong>为：</p>
 <p>这个例子，就是前面讲过的，用正规方法变成正规式的例子，只是现在反过来</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529200230071.png" alt="正规式生成正规方法"></p>
 <p>对应的文法：</p>
@@ -580,14 +668,18 @@
 <li>C-&gt;cC|c   分别对应上图的2号递归；2号结束</li>
 </ul>
 <p>由文法的<code>非终结符S、B、C</code>与自动机的<code>状态0、1、2</code>非常相近</p>
-<h3 id="转换步骤"><a href="#转换步骤" class="headerlink" title="转换步骤"></a>转换步骤</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529200819511.png" alt="image-20220529200819511"></p>
-<h3 id="对产生式的映射关系"><a href="#对产生式的映射关系" class="headerlink" title="对产生式的映射关系"></a>对产生式的映射关系</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529200933498.png" alt="image-20220529200933498"></p>
-<h3 id="举例-9"><a href="#举例-9" class="headerlink" title="举例"></a>举例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529201013283.png" alt="image-20220529201013283"></p>
+<h3 id="转换步骤">转换步骤</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529200819511.png" alt="image-20220529200819511"></p>
+<h3 id="对产生式的映射关系">对产生式的映射关系</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529200933498.png" alt="image-20220529200933498"></p>
+<h3 id="举例">举例</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529201013283.png" alt="image-20220529201013283"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529201111278.png" alt="image-20220529201111278"></p>
 <blockquote>
 <p>最后得到一个NFA，再转换成DFA，再最小化，DFA再得到正规式</p>
 </blockquote>
-<h2 id="自动机转换成正规文法"><a href="#自动机转换成正规文法" class="headerlink" title="自动机转换成正规文法"></a>自动机转换成正规文法</h2><p>若<strong>S0起点就是终点</strong>，则需要添加一个s0’指向s0</p>
+<h2 id="自动机转换成正规文法">自动机转换成正规文法</h2>
+<p>若<strong>S0起点就是终点</strong>，则需要添加一个s0’指向s0</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220529201546011.png" alt="image-20220529201546011"></p>
 <ul>
 <li>由M可以看到起点A,终点B</li>
@@ -597,7 +689,7 @@
 <li>C-&gt;0B|1D|0 (终结符为0)</li>
 <li>D-&gt;0D|1D</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/05/29/[compiler]-3/">https://blog.lthero.cn/2022/05/29/[compiler]-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/29/%5Bhexo%5D%E5%9C%A8typora%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91oss/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【hexo】在typora添加图片并上传到阿里云oss</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/28/%5BCompiler%5D-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Compiler】-2-编译原理基础知识</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/Compiler-9/" title="【Compiler】期末题目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">【Compiler】期末题目</div></div></a></div><div><a href="/2022/05/27/%5BCompiler%5D-1/" title="【Compiler】-1-编译原理概述"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-27</div><div class="title">【Compiler】-1-编译原理概述</div></div></a></div><div><a href="/2022/05/28/%5BCompiler%5D-2/" title="【Compiler】-2-编译原理基础知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">【Compiler】-2-编译原理基础知识</div></div></a></div><div><a href="/2022/05/29/%5BCompiler%5D-4/" title="【Compiler】-4-词法分析程序"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="title">【Compiler】-4-词法分析程序</div></div></a></div><div><a href="/2022/06/01/%5BCompiler%5D-5/" title="【Compiler】-5 自上而下的语法分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-01</div><div class="title">【Compiler】-5 自上而下的语法分析</div></div></a></div><div><a href="/2022/06/02/%5BCompiler%5D-6/" title="【Compiler-6】自上而下分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-02</div><div class="title">【Compiler-6】自上而下分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">理论基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">2.</span> <span class="toc-text">学习目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E3%80%81%E6%AD%A3%E8%A7%84%E9%9B%86%E3%80%81%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">正规文法、正规集、正规式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">正规文法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">正规集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">正规式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">规则：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8"><span class="toc-number">3.2.</span> <span class="toc-text">注:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E6%A6%82%E5%BF%B5%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">三个概念间关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">举例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%861"><span class="toc-number">4.2.</span> <span class="toc-text">定理1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%862"><span class="toc-number">4.3.</span> <span class="toc-text">定理2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">正规文法转换成正规式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">解：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">正规式转换成正规文法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number"></span> <span class="toc-text">有限自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number"></span> <span class="toc-text">确定的自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-number">3.</span> <span class="toc-text">状态转换矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">状态转换图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0DFA"><span class="toc-number">5.</span> <span class="toc-text">构造DFA</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number"></span> <span class="toc-text">不确定的有限自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-3"><span class="toc-number">1.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%AD%89%E4%BB%B7"><span class="toc-number"></span> <span class="toc-text">两个自动机等价</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NFA%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%BADFA-%E7%A1%AE%E5%AE%9A%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">NFA的转换为DFA(确定化)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-4"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DFA%E5%8C%96%E7%AE%80%EF%BC%88%E6%9C%80%E5%B0%8F%E5%8C%96%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">DFA化简（最小化）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%92%E5%88%86%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">划分法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%AD%89%E4%BB%B7%E4%B8%8E%E7%8A%B6%E6%80%81%E5%8F%AF%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">状态等价与状态可区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-5"><span class="toc-number">4.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9A%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">4.2.</span> <span class="toc-text">结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F%E4%B8%8E%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%85%B3%E7%B3%BB"><span class="toc-number"></span> <span class="toc-text">正规式与有限自动机关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">关系定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B1DFA%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E5%BC%8F%CE%B1"><span class="toc-number">2.</span> <span class="toc-text">由DFA转换成正规式α</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-number">2.1.</span> <span class="toc-text">替换规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-6"><span class="toc-number">2.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B1%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%88%90DFA"><span class="toc-number">3.</span> <span class="toc-text">由正规式转换成DFA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99-1"><span class="toc-number">3.1.</span> <span class="toc-text">替换规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">3.2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-7"><span class="toc-number">3.3.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%90%AB%E6%9C%89%E7%A9%BA%E4%B8%B2%CE%B5%E7%9A%84NFA%E8%BF%9B%E8%A1%8C%E7%A1%AE%E5%AE%9A%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">对含有空串ε的NFA进行确定化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-8"><span class="toc-number">4.1.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84DFA%E4%B8%BA"><span class="toc-number">4.1.1.</span> <span class="toc-text">对应的DFA为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%86%8D%E5%AF%B9%E4%B8%8A%E5%9B%BE%E7%9A%84DFA%E8%BF%9B%E8%A1%8C%E6%9C%80%E5%B0%8F%E5%8C%96"><span class="toc-number">4.1.2.</span> <span class="toc-text">可以再对上图的DFA进行最小化</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E4%B8%8E%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%85%B3%E7%B3%BB"><span class="toc-number"></span> <span class="toc-text">正规文法与有限自动机关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%9A%E7%90%86-1"><span class="toc-number">1.</span> <span class="toc-text">关系定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8-1"><span class="toc-number">1.1.</span> <span class="toc-text">注:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95%E8%BD%AC%E6%8D%A2%E6%88%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">右线性文法转换成自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.2.</span> <span class="toc-text">转换步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%A7%E7%94%9F%E5%BC%8F%E7%9A%84%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.</span> <span class="toc-text">对产生式的映射关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-9"><span class="toc-number">2.4.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">自动机转换成正规文法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/05/29/[compiler]-3/">https://blog.lthero.cn/2022/05/29/[compiler]-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/29/%5Bhexo%5D%E5%9C%A8typora%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91oss/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【hexo】在typora添加图片并上传到阿里云oss</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/28/%5BCompiler%5D-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Compiler】-2-编译原理基础知识</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/Compiler-9/" title="【Compiler】期末题目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">【Compiler】期末题目</div></div></a></div><div><a href="/2022/05/28/%5BCompiler%5D-2/" title="【Compiler】-2-编译原理基础知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">【Compiler】-2-编译原理基础知识</div></div></a></div><div><a href="/2022/05/27/%5BCompiler%5D-1/" title="【Compiler】-1-编译原理概述"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-27</div><div class="title">【Compiler】-1-编译原理概述</div></div></a></div><div><a href="/2022/05/29/%5BCompiler%5D-4/" title="【Compiler】-4-词法分析程序"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="title">【Compiler】-4-词法分析程序</div></div></a></div><div><a href="/2022/06/01/%5BCompiler%5D-5/" title="【Compiler】-5 自上而下的语法分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-01</div><div class="title">【Compiler】-5 自上而下的语法分析</div></div></a></div><div><a href="/2022/06/02/%5BCompiler%5D-6/" title="【Compiler-6】自上而下分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-02</div><div class="title">【Compiler-6】自上而下分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">理论基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">2.</span> <span class="toc-text">学习目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95-%E6%AD%A3%E8%A7%84%E9%9B%86-%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">正规文法、正规集、正规式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">正规文法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">正规集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">正规式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">规则：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8"><span class="toc-number">3.2.</span> <span class="toc-text">注:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E6%A6%82%E5%BF%B5%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">三个概念间关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">举例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%861"><span class="toc-number">4.2.</span> <span class="toc-text">定理1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%862"><span class="toc-number">4.3.</span> <span class="toc-text">定理2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">正规文法转换成正规式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">解：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">正规式转换成正规文法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number"></span> <span class="toc-text">有限自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number"></span> <span class="toc-text">确定的自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-number">3.</span> <span class="toc-text">状态转换矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">状态转换图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0dfa"><span class="toc-number">5.</span> <span class="toc-text">构造DFA</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number"></span> <span class="toc-text">不确定的有限自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%AD%89%E4%BB%B7"><span class="toc-number"></span> <span class="toc-text">两个自动机等价</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nfa%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%BAdfa-%E7%A1%AE%E5%AE%9A%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">NFA的转换为DFA(确定化)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dfa%E5%8C%96%E7%AE%80-%E6%9C%80%E5%B0%8F%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">DFA化简（最小化）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%92%E5%88%86%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">划分法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%AD%89%E4%BB%B7%E4%B8%8E%E7%8A%B6%E6%80%81%E5%8F%AF%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">状态等价与状态可区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9A%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">4.2.</span> <span class="toc-text">结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F%E4%B8%8E%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%85%B3%E7%B3%BB"><span class="toc-number"></span> <span class="toc-text">正规式与有限自动机关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">关系定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B1dfa%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E5%BC%8F%CE%B1"><span class="toc-number">2.</span> <span class="toc-text">由DFA转换成正规式α</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-number">2.1.</span> <span class="toc-text">替换规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B1%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%88%90dfa"><span class="toc-number">3.</span> <span class="toc-text">由正规式转换成DFA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-number">3.1.</span> <span class="toc-text">替换规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">3.2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">3.3.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%90%AB%E6%9C%89%E7%A9%BA%E4%B8%B2%CE%B5%E7%9A%84nfa%E8%BF%9B%E8%A1%8C%E7%A1%AE%E5%AE%9A%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">对含有空串ε的NFA进行确定化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">4.1.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84dfa%E4%B8%BA"><span class="toc-number">4.1.1.</span> <span class="toc-text">对应的DFA为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%86%8D%E5%AF%B9%E4%B8%8A%E5%9B%BE%E7%9A%84dfa%E8%BF%9B%E8%A1%8C%E6%9C%80%E5%B0%8F%E5%8C%96"><span class="toc-number">4.1.2.</span> <span class="toc-text">可以再对上图的DFA进行最小化</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E4%B8%8E%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%85%B3%E7%B3%BB"><span class="toc-number"></span> <span class="toc-text">正规文法与有限自动机关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">关系定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8"><span class="toc-number">1.1.</span> <span class="toc-text">注:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95%E8%BD%AC%E6%8D%A2%E6%88%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">右线性文法转换成自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.2.</span> <span class="toc-text">转换步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%A7%E7%94%9F%E5%BC%8F%E7%9A%84%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.</span> <span class="toc-text">对产生式的映射关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E8%BD%AC%E6%8D%A2%E6%88%90%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">自动机转换成正规文法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

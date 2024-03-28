@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Compiler】-5 自上而下的语法分析 | lthero</title><meta name="keywords" content="编译原理"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="自上而下的语法分析1、语法分析的地位  是编译程序的核心部分  2、语法分析的任务  识别由词法分析得出的单词序列是否是给定文法的句子。  3、语法分析的理论基础  上下文无关文法和下推自动机  4、语法分析的方式  自上而下语法分析：从开始符号-&gt;符号串。反复使用不同产生式进行推导以谋求与输入符号串相匹配  自下而上语法分析：从符号串-&gt;开始符号。对输入符号串，寻找不同产生式进行归约">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Compiler】-5 自上而下的语法分析 | lthero</title><meta name="keywords" content="编译原理"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="自上而下的语法分析 1、语法分析的地位  是编译程序的核心部分  2、语法分析的任务  识别由词法分析得出的单词序列是否是给定文法的句子。  3、语法分析的理论基础  上下文无关文法和下推自动机  4、语法分析的方式   自上而下语法分析：从开始符号-&gt;符号串。反复使用不同产生式进行推导以谋求与输入符号串相匹配   自下而上语法分析：从符号串-&gt;开始符号。对输入符号串，寻找不同产生式进">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Compiler】-5 自上而下的语法分析">
 <meta property="og:url" content="https://blog.lthero.cn/2022/06/01/[Compiler]-5/index.html">
 <meta property="og:site_name" content="lthero">
-<meta property="og:description" content="自上而下的语法分析1、语法分析的地位  是编译程序的核心部分  2、语法分析的任务  识别由词法分析得出的单词序列是否是给定文法的句子。  3、语法分析的理论基础  上下文无关文法和下推自动机  4、语法分析的方式  自上而下语法分析：从开始符号-&gt;符号串。反复使用不同产生式进行推导以谋求与输入符号串相匹配  自下而上语法分析：从符号串-&gt;开始符号。对输入符号串，寻找不同产生式进行归约">
+<meta property="og:description" content="自上而下的语法分析 1、语法分析的地位  是编译程序的核心部分  2、语法分析的任务  识别由词法分析得出的单词序列是否是给定文法的句子。  3、语法分析的理论基础  上下文无关文法和下推自动机  4、语法分析的方式   自上而下语法分析：从开始符号-&gt;符号串。反复使用不同产生式进行推导以谋求与输入符号串相匹配   自下而上语法分析：从符号串-&gt;开始符号。对输入符号串，寻找不同产生式进">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg">
 <meta property="article:published_time" content="2022-06-01T01:11:36.000Z">
 <meta property="article:modified_time" content="2022-06-18T10:19:25.576Z">
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/06/01/[Compiler]-5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/06/01/[Compiler]-5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -143,7 +143,8 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Compiler】-5 自上而下的语法分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-01T01:11:36.000Z" title="发表于 2022-06-01 09:11:36">2022-06-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-18T10:19:25.576Z" title="更新于 2022-06-18 18:19:25">2022-06-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Compiler】-5 自上而下的语法分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="自上而下的语法分析"><a href="#自上而下的语法分析" class="headerlink" title="自上而下的语法分析"></a>自上而下的语法分析</h1><p>1、语法分析的地位</p>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/x8d8gz.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Compiler】-5 自上而下的语法分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-01T01:11:36.000Z" title="发表于 2022-06-01 09:11:36">2022-06-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-18T10:19:25.576Z" title="更新于 2022-06-18 18:19:25">2022-06-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Compiler】-5 自上而下的语法分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="自上而下的语法分析">自上而下的语法分析</h1>
+<p>1、语法分析的地位</p>
 <ul>
 <li>是编译程序的<strong>核心</strong>部分</li>
 </ul>
@@ -157,14 +158,18 @@
 </ul>
 <p>4、语法分析的方式</p>
 <ul>
-<li><p><strong>自上而下</strong>语法分析：从开始符号-&gt;符号串。反复使用不同产生式进行<strong>推导</strong>以谋求与<strong>输入符号串相匹配</strong></p>
+<li>
+<p><strong>自上而下</strong>语法分析：从开始符号-&gt;符号串。反复使用不同产生式进行<strong>推导</strong>以谋求与<strong>输入符号串相匹配</strong></p>
 </li>
-<li><p><strong>自下而上</strong>语法分析：从符号串-&gt;开始符号。对输入符号串，寻找不同产生式进行<strong>归约</strong>直到文法<strong>开始符号</strong>。</p>
+<li>
+<p><strong>自下而上</strong>语法分析：从符号串-&gt;开始符号。对输入符号串，寻找不同产生式进行<strong>归约</strong>直到文法<strong>开始符号</strong>。</p>
 </li>
 </ul>
-<h1 id="下推自动机"><a href="#下推自动机" class="headerlink" title="下推自动机"></a>下推自动机</h1><p>相对于一个自动机，多出了个<strong>下推栈</strong></p>
+<h1 id="下推自动机">下推自动机</h1>
+<p>相对于一个自动机，多出了个<strong>下推栈</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601092911457.png" alt="image-20220601092911457"></p>
-<h2 id="定义如下"><a href="#定义如下" class="headerlink" title="定义如下"></a>定义如下</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601093002149.png" alt="image-20220601093002149"></p>
+<h2 id="定义如下">定义如下</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601093002149.png" alt="image-20220601093002149"></p>
 <ul>
 <li>H下推栈内字母表</li>
 <li>z0是一个标志，表示栈到底了（栈空状态）</li>
@@ -172,20 +177,25 @@
 <li>q0是初始状态</li>
 <li>q是状态</li>
 </ul>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601093303650.png" alt="image-20220601093303650"></p>
+<h2 id="举例">举例</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601093303650.png" alt="image-20220601093303650"></p>
 <p>输入：在q状态下，如果栈顶元素为z，输入符号（读头的符号）为a</p>
 <p>使用这个函数</p>
 <p>输出：将q变成不同状态q’，并且让栈顶元素z变成r1,r2,r3……</p>
 <blockquote>
 <p>因为这个PDA是<strong>不确定的PDA</strong></p>
 </blockquote>
-<h2 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601133054336.png" alt="基本构成"></p>
+<h2 id="基本构成">基本构成</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601133054336.png" alt="基本构成"></p>
 <ul>
-<li><p>将<strong>栈顶元素</strong>和<strong>读头</strong>进行比较，如果相同，就top–，读头++；</p>
+<li>
+<p>将<strong>栈顶元素</strong>和<strong>读头</strong>进行比较，如果相同，就top–，读头++；</p>
 </li>
-<li><p>如果不相同，就从语法表中找到<strong>这个非终结符的产生式</strong>，用产生式替换非终结符（栈顶元素）位置，<strong>再取栈顶符号</strong></p>
+<li>
+<p>如果不相同，就从语法表中找到<strong>这个非终结符的产生式</strong>，用产生式替换非终结符（栈顶元素）位置，<strong>再取栈顶符号</strong></p>
 </li>
-<li><p>当栈中的开始符号“#”和读头里面的“#”相遇时，整个过程就完成了</p>
+<li>
+<p>当栈中的开始符号“#”和读头里面的“#”相遇时，整个过程就完成了</p>
 </li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601133540167.png" alt="算法的三种情况"></p>
@@ -197,35 +207,48 @@
 </ol>
 <p>面临上面的两个问题，需要改进成“<strong>不带回溯的自上而下算法</strong>”</p>
 </blockquote>
-<h1 id="不带回溯的自上而下算法"><a href="#不带回溯的自上而下算法" class="headerlink" title="不带回溯的自上而下算法"></a>不带回溯的自上而下算法</h1><blockquote>
+<h1 id="不带回溯的自上而下算法">不带回溯的自上而下算法</h1>
+<blockquote>
 <p>在讲不带回溯的自上而下算法前，先学习“消除左递归”</p>
 </blockquote>
-<h1 id="消除左递归"><a href="#消除左递归" class="headerlink" title="消除左递归"></a>消除左递归</h1><h3 id="左递归定义"><a href="#左递归定义" class="headerlink" title="左递归定义"></a>左递归定义</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134217242.png" alt="直接左递归与间接左递归"></p>
-<h3 id="消除左递归-1"><a href="#消除左递归-1" class="headerlink" title="消除左递归"></a>消除左递归</h3><ul>
+<h1 id="消除左递归">消除左递归</h1>
+<h3 id="左递归定义">左递归定义</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134217242.png" alt="直接左递归与间接左递归"></p>
+<h3 id="消除左递归">消除左递归</h3>
+<ul>
 <li>消除直接左递归</li>
 <li>消除间接左递归</li>
 </ul>
-<h2 id="消除直接左递归"><a href="#消除直接左递归" class="headerlink" title="消除直接左递归"></a>消除直接左递归</h2><h3 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134519425.png" alt="举例算法"></p>
-<h3 id="通用性算法"><a href="#通用性算法" class="headerlink" title="通用性算法"></a>通用性算法</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134550207.png" alt="通用性算法"></p>
-<h3 id="举例1"><a href="#举例1" class="headerlink" title="举例1"></a>举例1</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134959565.png" alt="复杂点的例子"></p>
+<h2 id="消除直接左递归">消除直接左递归</h2>
+<h3 id="举例">举例</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134519425.png" alt="举例算法"></p>
+<h3 id="通用性算法">通用性算法</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134550207.png" alt="通用性算法"></p>
+<h3 id="举例1">举例1</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601134959565.png" alt="复杂点的例子"></p>
 <p>结果</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601135027680.png" alt="答案"></p>
-<h3 id="举例2"><a href="#举例2" class="headerlink" title="举例2"></a>举例2</h3><p>如果非终结符在右式子有多个，也要分清楚</p>
+<h3 id="举例2">举例2</h3>
+<p>如果非终结符在右式子有多个，也要分清楚</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601135158133.png" alt="非终结符在右侧有多个"></p>
-<h2 id="消除左递归（通用法）"><a href="#消除左递归（通用法）" class="headerlink" title="消除左递归（通用法）"></a>消除左递归（通用法）</h2><blockquote>
+<h2 id="消除左递归-通用法">消除左递归（通用法）</h2>
+<blockquote>
 <p>通用算法，对直接或间接左递归都适用</p>
 </blockquote>
-<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601135547824.png" alt="image-20220601135547824"></p>
+<h3 id="算法">算法</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601135547824.png" alt="image-20220601135547824"></p>
 <blockquote>
 <p>这个算法<strong>不适合</strong>于<strong>包含P-&gt;Px的产生式，或包含空串</strong>的产生式；如果对P-&gt;P的产生式，用上面的方式</p>
 </blockquote>
-<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p>对每个非终结符，如果<strong>右边</strong>的非终结符的号<strong>大于</strong>自己的号，则不处理</p>
+<h3 id="举例">举例</h3>
+<p>对每个非终结符，如果<strong>右边</strong>的非终结符的号<strong>大于</strong>自己的号，则不处理</p>
 <p>如果小于自己的号，则把<strong>右边的非终结符</strong>替换成<strong>右边的非终结符的候选式</strong>。比如：Q-&gt;Rb|b，R小于Q的号，用R-&gt;Sa|a的<code>Sa|a</code>替换掉<code>R</code></p>
-<p>&#x3D;&#x3D;&#x3D;&#x3D;&gt;<code>Q-&gt;(Sa|a)b|b</code></p>
-<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601140225691.png" alt="顺序为Q-R-S的结果"></p>
+<p>====&gt;<code>Q-&gt;(Sa|a)b|b</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601140225691.png" alt="顺序为Q-R-S的结果"></p>
 <p>当然，刚开始的非终结符顺序可以不同</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601141813341.png" alt="注意"></p>
-<h3 id="举例2-1"><a href="#举例2-1" class="headerlink" title="举例2"></a>举例2</h3><p>题目：</p>
+<h3 id="举例2">举例2</h3>
+<p>题目：</p>
 <ul>
 <li>E-&gt;ET+|T</li>
 <li>T-&gt;TF*|F</li>
@@ -233,35 +256,52 @@
 </ul>
 <p>解：</p>
 <blockquote>
-<p>使用消除直接左递归，代替法。不是排序法<br>E-&gt;TE’<br>E’-&gt;T+E’|ε</p>
-<p>T-&gt;FT’<br>T’-&gt;F*T’|ε</p>
-<p>F-&gt;把处理后的E、T代入<br>F-&gt;FT’E’|i<br>再对F消除左递归<br>F-&gt;iF’<br>F’-&gt;T’E’F’|ε</p>
+<p>使用消除直接左递归，代替法。不是排序法<br>
+E-&gt;TE’<br>
+E’-&gt;T+E’|ε</p>
+<p>T-&gt;FT’<br>
+T’-&gt;F*T’|ε</p>
+<p>F-&gt;把处理后的E、T代入<br>
+F-&gt;FT’E’|i<br>
+再对F消除左递归<br>
+F-&gt;iF’<br>
+F’-&gt;T’E’F’|ε</p>
 </blockquote>
-<h2 id="消除回溯"><a href="#消除回溯" class="headerlink" title="消除回溯"></a>消除回溯</h2><h3 id="产生回溯的原因"><a href="#产生回溯的原因" class="headerlink" title="产生回溯的原因"></a>产生回溯的原因</h3><blockquote>
+<h2 id="消除回溯">消除回溯</h2>
+<h3 id="产生回溯的原因">产生回溯的原因</h3>
+<blockquote>
 <p>进行推导时，若产生式存在多个候选式，选择哪个候选式进行推导<strong>存在不确定性</strong>。</p>
 </blockquote>
-<h3 id="消除回溯的基本原则"><a href="#消除回溯的基本原则" class="headerlink" title="消除回溯的基本原则"></a>消除回溯的基本原则</h3><p>对文法的任何非终结符，若能根据当前读头下的符号，准确的选择一个候选式进行推导，那么回溯就可以消除。</p>
-<h3 id="两种消除回溯的方法"><a href="#两种消除回溯的方法" class="headerlink" title="两种消除回溯的方法"></a>两种消除回溯的方法</h3><ul>
+<h3 id="消除回溯的基本原则">消除回溯的基本原则</h3>
+<p>对文法的任何非终结符，若能根据当前读头下的符号，准确的选择一个候选式进行推导，那么回溯就可以消除。</p>
+<h3 id="两种消除回溯的方法">两种消除回溯的方法</h3>
+<ul>
 <li>预测</li>
 <li>提左因子</li>
 </ul>
-<h2 id="预测法"><a href="#预测法" class="headerlink" title="预测法"></a>预测法</h2><p>根据读头下符号选择候选式，使其第一个符号与读头下符号相同，或该候选式可推导出的第一个符号与读头下符号相同。这相当于向前看了一个符号，所以称为预测。</p>
-<h3 id="求首符集"><a href="#求首符集" class="headerlink" title="求首符集"></a>求首符集</h3><blockquote>
+<h2 id="预测法">预测法</h2>
+<p>根据读头下符号选择候选式，使其第一个符号与读头下符号相同，或该候选式可推导出的第一个符号与读头下符号相同。这相当于向前看了一个符号，所以称为预测。</p>
+<h3 id="求首符集">求首符集</h3>
+<blockquote>
 <p>Frist()集</p>
 </blockquote>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601152333663.png" alt="First算法"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601143515238.png" alt="得到首符集"></p>
-<h4 id="求候选式的终结首符集"><a href="#求候选式的终结首符集" class="headerlink" title="求候选式的终结首符集"></a>求候选式的终结首符集</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601143255886.png" alt="输入符号为a，选择候选式的4种情况"></p>
-<h4 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601152630310.png" alt="求首符集举例"></p>
-<h2 id="提取公共左因子"><a href="#提取公共左因子" class="headerlink" title="提取公共左因子"></a>提取公共左因子</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601143754864.png" alt="image-20220601143754864"></p>
+<h4 id="求候选式的终结首符集">求候选式的终结首符集</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601143255886.png" alt="输入符号为a，选择候选式的4种情况"></p>
+<h4 id="举例">举例</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601152630310.png" alt="求首符集举例"></p>
+<h2 id="提取公共左因子">提取公共左因子</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601143754864.png" alt="image-20220601143754864"></p>
 <p>注:</p>
 <ul>
 <li>1)通过反复提取左因子，就能把所有非终结符的所有候选首符集变为两两不相交。</li>
 <li>2)反复提取左因子也有一定代价，因为在提取过程中会大量引入非终结符和s产生式，增加语法分析的复杂性。</li>
 </ul>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>题目：</p>
+<h3 id="例子">例子</h3>
+<p>题目：</p>
 <ul>
-<li>A -&gt; id | <code>B</code>_B  </li>
+<li>A -&gt; id | <code>B</code>_B</li>
 <li>B -&gt; S I |id</li>
 </ul>
 <p>解：A-&gt;id | id_B | S I _B【将A中第一个B替换成对应的产生式，可以发现有公共左因子】</p>
@@ -271,7 +311,10 @@
 <li>A’-&gt; ε | _B</li>
 </ul>
 <hr>
-<h1 id="预测分析程序"><a href="#预测分析程序" class="headerlink" title="预测分析程序"></a>预测分析程序</h1><h2 id="求随符集"><a href="#求随符集" class="headerlink" title="求随符集"></a>求随符集</h2><h3 id="求随符集的原因"><a href="#求随符集的原因" class="headerlink" title="求随符集的原因"></a>求随符集的原因</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601154152358.png" alt="随符集的原因"></p>
+<h1 id="预测分析程序">预测分析程序</h1>
+<h2 id="求随符集">求随符集</h2>
+<h3 id="求随符集的原因">求随符集的原因</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601154152358.png" alt="随符集的原因"></p>
 <ul>
 <li>当<strong>栈顶为F</strong>，读头为a时，但<code>F-&gt;bc|ε</code>，正确应该用<strong>F后面的E来替换</strong></li>
 <li>所以应该存在一个方法，<strong>能求出Follow(F)是不是a</strong></li>
@@ -280,28 +323,34 @@
 <p>Follow()集</p>
 </blockquote>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601153132692.png" alt="随符集定义"></p>
-<h3 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h3><p>对于非终结符A，求A的Follow(A)</p>
+<h3 id="算法">算法</h3>
+<p>对于非终结符A，求A的Follow(A)</p>
 <ul>
 <li>1)对文法<strong>开始符号S</strong>，将开始符号入栈之前，肯定有个#号已经在栈中，所以将‘#’加入到Follow(S)中;</li>
 <li>2)若<code>B→αAβ</code>是文法G的一个产生式，则将<code>First(β)-ε</code>（减去空串ε）加入到Follow(A)中;</li>
 <li>3)若<code>B→αA</code>是文法G的一个产生式,或<code>B→αAβ</code>是文法G的一个产生式,且β-&gt;ε(<strong>β经过多步推出空串ε</strong>)，则将Follow(B)加入到Follow(A)中;</li>
 </ul>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<h3 id="注意">注意</h3>
+<ul>
 <li>这里的方法必须是<strong>消除了左递归</strong>并且<strong>提取了左因子</strong>后的文法</li>
 </ul>
-<h3 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601160042763.png" alt="求随符集举例"></p>
-<h4 id="求Follow-E"><a href="#求Follow-E" class="headerlink" title="求Follow(E)"></a>求Follow(E)</h4><ul>
+<h3 id="举例">举例</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601160042763.png" alt="求随符集举例"></p>
+<h4 id="求follow-e">求Follow(E)</h4>
+<ul>
 <li>先求Follow(E)，因为E是开始符号，所以<code>#</code>一定在，则得到#</li>
 <li>再看E出现在了F-&gt;<code>(E)</code> 的产生式，所以还要<code>并</code>上First( <code>)</code> )(这里的 <code>) </code>)已经是终结符了，所以没必要再求First，如果是非终结符（假如是X），需要再求First(X)。</li>
-<li>所以Follow(E)&#x3D;{<code>#,)</code>}</li>
+<li>所以Follow(E)={<code>#,)</code>}</li>
 </ul>
-<h4 id="求Follow-E’"><a href="#求Follow-E’" class="headerlink" title="求Follow(E’)"></a>求Follow(E’)</h4><ul>
-<li>E’出现在E-&gt;<code>TE&#39;</code>的产生式中，符合上面<code>算法第三条B→αA</code>，所以Follow(E’)&#x3D;Follow(E)&#x3D;{<code>#,)</code>}</li>
-<li>E’出现在E’-&gt;+TE’，也符合上面<code>算法第三条B→αA</code>，Follow(E’)&#x3D;Follow(E’)就是自身……这步没必要</li>
+<h4 id="求follow-e">求Follow(E’)</h4>
+<ul>
+<li>E’出现在E-&gt;<code>TE'</code>的产生式中，符合上面<code>算法第三条B→αA</code>，所以Follow(E’)=Follow(E)={<code>#,)</code>}</li>
+<li>E’出现在E’-&gt;+TE’，也符合上面<code>算法第三条B→αA</code>，Follow(E’)=Follow(E’)就是自身……这步没必要</li>
 </ul>
-<h4 id="求Follow-T-重要！！"><a href="#求Follow-T-重要！！" class="headerlink" title="求Follow(T)重要！！"></a>求Follow(T)重要！！</h4><ul>
-<li>T出现在E’-&gt;<code>+TE&#39;</code>，符合上面<code>算法第二条B→αAβ</code>（应该求出<code>First(β)-ε</code>再加入到A中），所以Follow(T)&#x3D;First(E’)</li>
-<li>因为First(E’)&#x3D;{+,ε}，但要<code>把ε减去</code>，所以Follow(T)&#x3D;{+}</li>
+<h4 id="求follow-t-重要">求Follow(T)重要！！</h4>
+<ul>
+<li>T出现在E’-&gt;<code>+TE'</code>，符合上面<code>算法第二条B→αAβ</code>（应该求出<code>First(β)-ε</code>再加入到A中），所以Follow(T)=First(E’)</li>
+<li>因为First(E’)={+,ε}，但要<code>把ε减去</code>，所以Follow(T)={+}</li>
 </ul>
 <table>
 <thead>
@@ -310,7 +359,8 @@
 <th>对应实际式子</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>B</td>
 <td>E’</td>
 </tr>
@@ -326,43 +376,49 @@
 <td><strong>β</strong></td>
 <td><strong>E’</strong></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
-<li>T出现在E-&gt;<code>TE&#39;</code>，由上面知，<strong>First(E’)会产生空串</strong>，用ε把E-&gt;T<code>E&#39;</code>的E’代替，变成<code>E-&gt;T</code>，那跟在E后面的其实也跟在T后面，所以<code>Follow(T)=&#123;+&#125; U Follow(E)=&#123;+,#,)&#125;</code>，这步很重要，因为E’可能会被空串代替，就需要变化到<code>算法第三条B→αA</code></li>
+<li>T出现在E-&gt;<code>TE'</code>，由上面知，<strong>First(E’)会产生空串</strong>，用ε把E-&gt;T<code>E'</code>的E’代替，变成<code>E-&gt;T</code>，那跟在E后面的其实也跟在T后面，所以<code>Follow(T)=&#123;+&#125; U Follow(E)=&#123;+,#,)&#125;</code>，这步很重要，因为E’可能会被空串代替，就需要变化到<code>算法第三条B→αA</code></li>
 </ul>
 <blockquote>
-<p>在<code>算法第二条</code>中，如果发现<strong>β会产生空串</strong>，就像上面的First(E’)&#x3D;{+,ε}，就要变化成<code>算法第三条</code></p>
+<p>在<code>算法第二条</code>中，如果发现<strong>β会产生空串</strong>，就像上面的First(E’)={+,ε}，就要变化成<code>算法第三条</code></p>
 </blockquote>
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601161605062.png" alt="求随符集结果"></p>
+<h4 id="结果">结果</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601161605062.png" alt="求随符集结果"></p>
 <blockquote>
 <p>上面求的首符集、随符集都是为了构造预测分析表，下面来看</p>
 </blockquote>
-<h2 id="构造预测分析表"><a href="#构造预测分析表" class="headerlink" title="构造预测分析表"></a>构造预测分析表</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><ul>
+<h2 id="构造预测分析表">构造预测分析表</h2>
+<h3 id="基本思想">基本思想</h3>
+<ul>
 <li>1)若<code>A-&gt;α</code>是一个产生式，a属于<code>First(α)</code>，<strong>说明α可能以a开头</strong>。那么当<strong>A是栈顶元素</strong>且将<strong>读入字符a</strong>时，选择<code>α</code>取代<code>A</code>，这样匹配成功的希望最大。</li>
 <li>故：M[A,a]元素为<code>A→α</code> ，<strong>M为矩阵</strong></li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601162629923.png" alt="1"></p>
 <blockquote>
-<p>若<strong>α会产生空串，或着A-&gt;ε</strong>，就是上面”求随符集”的原因举例。这时，需要<code>判断a是否属于Follow(A)</code>，如果a属于Follow(A)，说明<strong>A就应该被ε替代</strong>，让Follow(A)来和a匹配。</p>
+<p>若<strong>α会产生空串，或着A-&gt;ε</strong>，就是上面&quot;求随符集&quot;的原因举例。这时，需要<code>判断a是否属于Follow(A)</code>，如果a属于Follow(A)，说明<strong>A就应该被ε替代</strong>，让Follow(A)来和a匹配。</p>
 </blockquote>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601162729253.png" alt="2"></p>
-<h3 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601163326263.png" alt="image-20220601163326263"></p>
-<h3 id="构造预测分析表-1"><a href="#构造预测分析表-1" class="headerlink" title="构造预测分析表"></a>构造预测分析表</h3><p><strong>根据First和Follow构造</strong></p>
+<h3 id="算法">算法</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601163326263.png" alt="image-20220601163326263"></p>
+<h3 id="构造预测分析表">构造预测分析表</h3>
+<p><strong>根据First和Follow构造</strong></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220601184934132.png" alt="预测分析表"></p>
 <blockquote>
-<p>上面的分析表中，因为First(E’)&#x3D;{<code>+,ε</code>}和First(T’)&#x3D;{<code>*,ε</code>}出现了ε，所以需要考虑他们为ε的情况，也就是在当某个字符在E’或T’的Follow()集中，就需要将E’或T’填写成ε</p>
+<p>上面的分析表中，因为First(E’)={<code>+,ε</code>}和First(T’)={<code>*,ε</code>}出现了ε，所以需要考虑他们为ε的情况，也就是在当某个字符在E’或T’的Follow()集中，就需要将E’或T’填写成ε</p>
 </blockquote>
-<p>比如：First(E’)&#x3D;{+,ε}，所以在<code>+</code>号下面填写<code>E&#39;-&gt;+TE&#39;</code>。又Frist(E’) &#x3D; 包含ε，所以在<code>Follow(E&#39;)</code>&#x3D;{ <code>) , #</code> }，在<code>&quot;)&quot;</code>和<code>&quot;#&quot;</code>处填写<code>E&#39;-&gt;ε</code></p>
+<p>比如：First(E’)={+,ε}，所以在<code>+</code>号下面填写<code>E'-&gt;+TE'</code>。又Frist(E’) = 包含ε，所以在<code>Follow(E')</code>={ <code>) , #</code> }，在<code>&quot;)&quot;</code>和<code>&quot;#&quot;</code>处填写<code>E'-&gt;ε</code></p>
 <p>对T’也是同理</p>
-<p>​    </p>
+<p>​</p>
 <blockquote>
 <p>小结：</p>
 <p>在Follow(X)集出现的位置下，填写 X-&gt;ε</p>
 <p>在First(X)集出现的位置下，填写 X-&gt;……</p>
 </blockquote>
-<h2 id="预测分析表的使用"><a href="#预测分析表的使用" class="headerlink" title="预测分析表的使用"></a>预测分析表的使用</h2><p>如，有得到以下的预测分析表</p>
+<h2 id="预测分析表的使用">预测分析表的使用</h2>
+<p>如，有得到以下的预测分析表</p>
 <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602152223233.png" alt="image-20220602152223233" style="zoom:67%;" />
-
 <p>求式子<code>i+i#</code></p>
 <p>过程：</p>
 <table>
@@ -375,39 +431,40 @@
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>#E</td>
 <td>i+i#</td>
-<td>(E,i)&#x3D;TE’</td>
+<td>(E,i)=TE’</td>
 <td>TE’倒序入栈</td>
 </tr>
 <tr>
 <td>2</td>
-<td>#<code>E&#39;T</code></td>
+<td>#<code>E'T</code></td>
 <td>i+i#</td>
-<td>(T,i)&#x3D;FT’</td>
+<td>(T,i)=FT’</td>
 <td>FT’倒序入栈</td>
 </tr>
 <tr>
 <td>3</td>
-<td>#E’<code>T&#39;F</code></td>
+<td>#E’<code>T'F</code></td>
 <td>i+i#</td>
-<td>(F,i)&#x3D;i</td>
+<td>(F,i)=i</td>
 <td>匹配</td>
 </tr>
 <tr>
 <td>4</td>
 <td>#E’T’</td>
 <td>+i#</td>
-<td>(T’,+)&#x3D;ε</td>
+<td>(T’,+)=ε</td>
 <td>ε入栈</td>
 </tr>
 <tr>
 <td>5</td>
 <td>#E’</td>
 <td>+i#</td>
-<td>(E’,+)&#x3D;+E</td>
+<td>(E’,+)=+E</td>
 <td>+E倒序入栈</td>
 </tr>
 <tr>
@@ -421,7 +478,7 @@
 <td>7</td>
 <td>#E</td>
 <td>i#</td>
-<td>(E,i)&#x3D;TE’</td>
+<td>(E,i)=TE’</td>
 <td>TE’倒序入栈</td>
 </tr>
 <tr>
@@ -438,18 +495,22 @@
 <td></td>
 <td></td>
 </tr>
-</tbody></table>
-<h1 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>若文法G的预测分析表M中<strong>不含有多重定义项，</strong>则称G为LL(1)文法。每一项只有一个候选式</p>
+</tbody>
+</table>
+<h1 id="ll-1-文法">LL(1)文法</h1>
+<h2 id="定义">定义</h2>
+<p>若文法G的预测分析表M中**不含有多重定义项，**则称G为LL(1)文法。每一项只有一个候选式</p>
 <p>注:</p>
 <ul>
 <li>1)LL(1)文法是无二义的，二义文法一定不是LL(1)文法。</li>
 <li>2)LL的含义是<strong>从左到右扫描</strong>输入串，采用<strong>最左推导</strong>分析句子。</li>
 <li>3)数字1表示分析句子时需向前看一个输入符号。</li>
 </ul>
-<h2 id="判断定理"><a href="#判断定理" class="headerlink" title="判断定理"></a>判断定理</h2><p>文法G是LL(1)文法当且仅当，对于G的每个非终结符A的任何两个不同产生式A→α|β有:</p>
+<h2 id="判断定理">判断定理</h2>
+<p>文法G是LL(1)文法当且仅当，对于G的每个非终结符A的任何两个不同产生式A→α|β有:</p>
 <ul>
-<li>1)First(α) ∩ First(β)&#x3D;空</li>
-<li>2)若ε属于First(β)，则First(α) ∩ Follow(A)&#x3D; 空</li>
+<li>1)First(α) ∩ First(β)=空</li>
+<li>2)若ε属于First(β)，则First(α) ∩ Follow(A)= 空</li>
 </ul>
 <blockquote>
 <p>只考虑<strong>会产生两个及两个以上候选式的非终结符</strong>，并且，需要<strong>同时满足上面的两个条件</strong>，对于第二个条件，<code>如果ε属于First(β)</code>才需要判断，否则只要求判断条件1。</p>
@@ -463,34 +524,50 @@
 <li>2)但判断之前，<strong>必须消除左递归和提取公共左因子</strong>,因为<strong>包含左递归和公共左因子</strong>的文法**肯定不是LL(1)**文法。</li>
 <li>LL(1)文法只是上下文无关文法的一个子集。</li>
 </ul>
-<h2 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h2><p>求LL(1)的三个步骤：</p>
+<h2 id="举例">举例</h2>
+<p>求LL(1)的三个步骤：</p>
 <ol>
 <li>消除左递归</li>
 <li>提取公共因子</li>
 <li>求首符集和随符集</li>
 </ol>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602102430824.png" alt="image-20220602102430824"></p>
-<h3 id="1、消除左递归"><a href="#1、消除左递归" class="headerlink" title="1、消除左递归"></a>1、消除左递归</h3><p>这里没有左递归</p>
-<h3 id="2、提取公共左因子"><a href="#2、提取公共左因子" class="headerlink" title="2、提取公共左因子"></a>2、提取公共左因子</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602102505494.png" alt="提取公共左因子"></p>
-<h3 id="3、求首符集和随符集"><a href="#3、求首符集和随符集" class="headerlink" title="3、求首符集和随符集"></a>3、求首符集和随符集</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602102524398.png" alt="求首符集和随符集"></p>
-<h3 id="判断定理-1"><a href="#判断定理-1" class="headerlink" title="判断定理"></a>判断定理</h3><p>根据判断定理<code>第二条</code>：<code>S&#39;-&gt;else S|ε</code>中，因为<code>ε属于First(β)</code>，First(else S)与Follow(S’)交集非空，所以不是LL(1)文法</p>
+<h3 id="1-消除左递归">1、消除左递归</h3>
+<p>这里没有左递归</p>
+<h3 id="2-提取公共左因子">2、提取公共左因子</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602102505494.png" alt="提取公共左因子"></p>
+<h3 id="3-求首符集和随符集">3、求首符集和随符集</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602102524398.png" alt="求首符集和随符集"></p>
+<h3 id="判断定理">判断定理</h3>
+<p>根据判断定理<code>第二条</code>：<code>S'-&gt;else S|ε</code>中，因为<code>ε属于First(β)</code>，First(else S)与Follow(S’)交集非空，所以不是LL(1)文法</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602102638624.png" alt="image-20220602102638624"></p>
-<h2 id="举例2-2"><a href="#举例2-2" class="headerlink" title="举例2"></a>举例2</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602105242881.png" alt="书上题目"></p>
-<h3 id="求出First与Follow"><a href="#求出First与Follow" class="headerlink" title="求出First与Follow"></a>求出First与Follow</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602105309690.png" alt="求出First与Follow"></p>
-<h3 id="判断是否为LL-1-文法"><a href="#判断是否为LL-1-文法" class="headerlink" title="判断是否为LL(1)文法"></a>判断是否为LL(1)文法</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602105340862.png" alt="判断是否为LL(1)文法"></p>
-<h2 id="状态表"><a href="#状态表" class="headerlink" title="状态表"></a>状态表</h2><blockquote>
+<h2 id="举例2">举例2</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602105242881.png" alt="书上题目"></p>
+<h3 id="求出first与follow">求出First与Follow</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602105309690.png" alt="求出First与Follow"></p>
+<h3 id="判断是否为ll-1-文法">判断是否为LL(1)文法</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/compiler/image-20220602105340862.png" alt="判断是否为LL(1)文法"></p>
+<h2 id="状态表">状态表</h2>
+<blockquote>
 <p>不考……跳过</p>
 </blockquote>
 <p>为了节省存储空间并提高算法的效率，可以对预测分析表进行简化。不需把整个产生式放在分析表的各项中，只需要将右部候选式<strong>倒序存放其中</strong>，甚至在分析表中只保存产生式编号，此生式另存在一个语法表中</p>
-<h1 id="递归下降分析法"><a href="#递归下降分析法" class="headerlink" title="递归下降分析法"></a>递归下降分析法</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>若一个文法G<strong>不含有左递归</strong>，而且<strong>每个非终结符的所有候选式的首符集都是两两不相交的</strong>（和LL1一样的要求），那么就能为G中每个非终结符编写一个相应的递归过程。把该文法中所有这样的递归过程组合起来就可能构成一个不带回溯的自上而下分析程序——递归下降分析程序。</p>
-<h2 id="实现思想"><a href="#实现思想" class="headerlink" title="实现思想"></a>实现思想</h2><p>为文法中<strong>每个非终结符编写一个递归过程</strong>，每个过程的功能是识别由该非终结符推出的串，当某非终结符的产生式有多个候选式时，按LL(1)形式唯一确定选择哪个候选式进行推导，若遇到某候选式为s,认为其自动匹配。把这些递归过程组合起来就构成了文法的递归下降分析程序。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="1、使用LL-1-文法"><a href="#1、使用LL-1-文法" class="headerlink" title="1、使用LL(1)文法"></a>1、使用LL(1)文法</h3><p>先将文法<strong>消除左递归</strong>、<strong>提取公共左因子</strong>，<strong>使之成为LL(1)文法</strong>，之后将<strong>每个非终结符对应一个递归过程</strong>,过程体是按照相应产生式的右部符号串顺序编写。每匹配一个终结符，则再读入下一个符号，对产生式右部的每个非终结符，则调用相应的过程。</p>
-<h3 id="2、使用BNF范式"><a href="#2、使用BNF范式" class="headerlink" title="2、使用BNF范式"></a>2、使用BNF范式</h3><p>先将文法改写为BNF形式，后再书写递归子程序。</p>
-<h2 id="递归下降分析法的缺点"><a href="#递归下降分析法的缺点" class="headerlink" title="递归下降分析法的缺点"></a>递归下降分析法的缺点</h2><ol>
+<h1 id="递归下降分析法">递归下降分析法</h1>
+<h2 id="定义">定义</h2>
+<p>若一个文法G<strong>不含有左递归</strong>，而且<strong>每个非终结符的所有候选式的首符集都是两两不相交的</strong>（和LL1一样的要求），那么就能为G中每个非终结符编写一个相应的递归过程。把该文法中所有这样的递归过程组合起来就可能构成一个不带回溯的自上而下分析程序——递归下降分析程序。</p>
+<h2 id="实现思想">实现思想</h2>
+<p>为文法中<strong>每个非终结符编写一个递归过程</strong>，每个过程的功能是识别由该非终结符推出的串，当某非终结符的产生式有多个候选式时，按LL(1)形式唯一确定选择哪个候选式进行推导，若遇到某候选式为s,认为其自动匹配。把这些递归过程组合起来就构成了文法的递归下降分析程序。</p>
+<h2 id="实现">实现</h2>
+<h3 id="1-使用ll-1-文法">1、使用LL(1)文法</h3>
+<p>先将文法<strong>消除左递归</strong>、<strong>提取公共左因子</strong>，<strong>使之成为LL(1)文法</strong>，之后将<strong>每个非终结符对应一个递归过程</strong>,过程体是按照相应产生式的右部符号串顺序编写。每匹配一个终结符，则再读入下一个符号，对产生式右部的每个非终结符，则调用相应的过程。</p>
+<h3 id="2-使用bnf范式">2、使用BNF范式</h3>
+<p>先将文法改写为BNF形式，后再书写递归子程序。</p>
+<h2 id="递归下降分析法的缺点">递归下降分析法的缺点</h2>
+<ol>
 <li>对文法的要求高，必须满足LL(1)文法。</li>
 <li>高深度的递归调用会影响语法分析的效率，速度慢占空间多。</li>
 </ol>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/06/01/[Compiler]-5/">https://blog.lthero.cn/2022/06/01/[Compiler]-5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/02/%5BCompiler%5D-6/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Compiler-6】自上而下分析</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/30/Cryptography-SSH/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Cryptography】ssh的本地端口转发与远程端口转发</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/Compiler-9/" title="【Compiler】期末题目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">【Compiler】期末题目</div></div></a></div><div><a href="/2022/05/27/%5BCompiler%5D-1/" title="【Compiler】-1-编译原理概述"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-27</div><div class="title">【Compiler】-1-编译原理概述</div></div></a></div><div><a href="/2022/05/28/%5BCompiler%5D-2/" title="【Compiler】-2-编译原理基础知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">【Compiler】-2-编译原理基础知识</div></div></a></div><div><a href="/2022/05/29/%5BCompiler%5D-4/" title="【Compiler】-4-词法分析程序"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="title">【Compiler】-4-词法分析程序</div></div></a></div><div><a href="/2022/06/02/%5BCompiler%5D-6/" title="【Compiler-6】自上而下分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-02</div><div class="title">【Compiler-6】自上而下分析</div></div></a></div><div><a href="/2022/06/04/%5BCompiler%5D-7/" title="【Compiler-7】LR分析法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-04</div><div class="title">【Compiler-7】LR分析法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">自上而下的语法分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">下推自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">定义如下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90"><span class="toc-number">2.3.</span> <span class="toc-text">基本构成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6%E5%9B%9E%E6%BA%AF%E7%9A%84%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">不带回溯的自上而下算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">4.</span> <span class="toc-text">消除左递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E9%80%92%E5%BD%92%E5%AE%9A%E4%B9%89"><span class="toc-number">4.0.1.</span> <span class="toc-text">左递归定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92-1"><span class="toc-number">4.0.2.</span> <span class="toc-text">消除左递归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E7%9B%B4%E6%8E%A5%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">4.1.</span> <span class="toc-text">消除直接左递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%AE%97%E6%B3%95"><span class="toc-number">4.1.2.</span> <span class="toc-text">通用性算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B1"><span class="toc-number">4.1.3.</span> <span class="toc-text">举例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2"><span class="toc-number">4.1.4.</span> <span class="toc-text">举例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92%EF%BC%88%E9%80%9A%E7%94%A8%E6%B3%95%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">消除左递归（通用法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.1.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="toc-number">4.2.2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2-1"><span class="toc-number">4.2.3.</span> <span class="toc-text">举例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF"><span class="toc-number">4.3.</span> <span class="toc-text">消除回溯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%9B%9E%E6%BA%AF%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">4.3.1.</span> <span class="toc-text">产生回溯的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-number">4.3.2.</span> <span class="toc-text">消除回溯的基本原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.3.3.</span> <span class="toc-text">两种消除回溯的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E6%B3%95"><span class="toc-number">4.4.</span> <span class="toc-text">预测法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E9%A6%96%E7%AC%A6%E9%9B%86"><span class="toc-number">4.4.1.</span> <span class="toc-text">求首符集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E5%80%99%E9%80%89%E5%BC%8F%E7%9A%84%E7%BB%88%E7%BB%93%E9%A6%96%E7%AC%A6%E9%9B%86"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">求候选式的终结首符集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-3"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E5%B7%A6%E5%9B%A0%E5%AD%90"><span class="toc-number">4.5.</span> <span class="toc-text">提取公共左因子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">4.5.1.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">预测分析程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E9%9A%8F%E7%AC%A6%E9%9B%86"><span class="toc-number">5.1.</span> <span class="toc-text">求随符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E9%9A%8F%E7%AC%A6%E9%9B%86%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">5.1.1.</span> <span class="toc-text">求随符集的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-1"><span class="toc-number">5.1.2.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">5.1.3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-4"><span class="toc-number">5.1.4.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82Follow-E"><span class="toc-number">5.1.4.1.</span> <span class="toc-text">求Follow(E)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82Follow-E%E2%80%99"><span class="toc-number">5.1.4.2.</span> <span class="toc-text">求Follow(E’)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82Follow-T-%E9%87%8D%E8%A6%81%EF%BC%81%EF%BC%81"><span class="toc-number">5.1.4.3.</span> <span class="toc-text">求Follow(T)重要！！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">5.1.4.4.</span> <span class="toc-text">结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">构造预测分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">5.2.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-2"><span class="toc-number">5.2.2.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%A1%A8-1"><span class="toc-number">5.2.3.</span> <span class="toc-text">构造预测分析表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.3.</span> <span class="toc-text">预测分析表的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LL-1-%E6%96%87%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">LL(1)文法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">6.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AE%9A%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">判断定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-5"><span class="toc-number">6.3.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">6.3.1.</span> <span class="toc-text">1、消除左递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E5%B7%A6%E5%9B%A0%E5%AD%90"><span class="toc-number">6.3.2.</span> <span class="toc-text">2、提取公共左因子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%B1%82%E9%A6%96%E7%AC%A6%E9%9B%86%E5%92%8C%E9%9A%8F%E7%AC%A6%E9%9B%86"><span class="toc-number">6.3.3.</span> <span class="toc-text">3、求首符集和随符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AE%9A%E7%90%86-1"><span class="toc-number">6.3.4.</span> <span class="toc-text">判断定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2-2"><span class="toc-number">6.4.</span> <span class="toc-text">举例2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%87%BAFirst%E4%B8%8EFollow"><span class="toc-number">6.4.1.</span> <span class="toc-text">求出First与Follow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BALL-1-%E6%96%87%E6%B3%95"><span class="toc-number">6.4.2.</span> <span class="toc-text">判断是否为LL(1)文法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%A1%A8"><span class="toc-number">6.5.</span> <span class="toc-text">状态表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">递归下降分析法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">7.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E6%83%B3"><span class="toc-number">7.2.</span> <span class="toc-text">实现思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.3.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8LL-1-%E6%96%87%E6%B3%95"><span class="toc-number">7.3.1.</span> <span class="toc-text">1、使用LL(1)文法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8BNF%E8%8C%83%E5%BC%8F"><span class="toc-number">7.3.2.</span> <span class="toc-text">2、使用BNF范式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E5%88%86%E6%9E%90%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">7.4.</span> <span class="toc-text">递归下降分析法的缺点</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/06/01/[Compiler]-5/">https://blog.lthero.cn/2022/06/01/[Compiler]-5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/02/%5BCompiler%5D-6/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Compiler-6】自上而下分析</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/30/Cryptography-SSH/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Cryptography】ssh的本地端口转发与远程端口转发</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/Compiler-9/" title="【Compiler】期末题目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">【Compiler】期末题目</div></div></a></div><div><a href="/2022/05/28/%5BCompiler%5D-2/" title="【Compiler】-2-编译原理基础知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">【Compiler】-2-编译原理基础知识</div></div></a></div><div><a href="/2022/05/27/%5BCompiler%5D-1/" title="【Compiler】-1-编译原理概述"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-27</div><div class="title">【Compiler】-1-编译原理概述</div></div></a></div><div><a href="/2022/05/29/%5BCompiler%5D-4/" title="【Compiler】-4-词法分析程序"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="title">【Compiler】-4-词法分析程序</div></div></a></div><div><a href="/2022/06/02/%5BCompiler%5D-6/" title="【Compiler-6】自上而下分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-02</div><div class="title">【Compiler-6】自上而下分析</div></div></a></div><div><a href="/2022/06/04/%5BCompiler%5D-7/" title="【Compiler-7】LR分析法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-04</div><div class="title">【Compiler-7】LR分析法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">自上而下的语法分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">下推自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">定义如下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90"><span class="toc-number">2.3.</span> <span class="toc-text">基本构成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6%E5%9B%9E%E6%BA%AF%E7%9A%84%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">不带回溯的自上而下算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">4.</span> <span class="toc-text">消除左递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E9%80%92%E5%BD%92%E5%AE%9A%E4%B9%89"><span class="toc-number">4.0.1.</span> <span class="toc-text">左递归定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">4.0.2.</span> <span class="toc-text">消除左递归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E7%9B%B4%E6%8E%A5%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">4.1.</span> <span class="toc-text">消除直接左递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">4.1.1.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%AE%97%E6%B3%95"><span class="toc-number">4.1.2.</span> <span class="toc-text">通用性算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B1"><span class="toc-number">4.1.3.</span> <span class="toc-text">举例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2"><span class="toc-number">4.1.4.</span> <span class="toc-text">举例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92-%E9%80%9A%E7%94%A8%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">消除左递归（通用法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.1.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">4.2.2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2"><span class="toc-number">4.2.3.</span> <span class="toc-text">举例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF"><span class="toc-number">4.3.</span> <span class="toc-text">消除回溯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%9B%9E%E6%BA%AF%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">4.3.1.</span> <span class="toc-text">产生回溯的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-number">4.3.2.</span> <span class="toc-text">消除回溯的基本原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.3.3.</span> <span class="toc-text">两种消除回溯的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E6%B3%95"><span class="toc-number">4.4.</span> <span class="toc-text">预测法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E9%A6%96%E7%AC%A6%E9%9B%86"><span class="toc-number">4.4.1.</span> <span class="toc-text">求首符集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E5%80%99%E9%80%89%E5%BC%8F%E7%9A%84%E7%BB%88%E7%BB%93%E9%A6%96%E7%AC%A6%E9%9B%86"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">求候选式的终结首符集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E5%B7%A6%E5%9B%A0%E5%AD%90"><span class="toc-number">4.5.</span> <span class="toc-text">提取公共左因子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">4.5.1.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">预测分析程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E9%9A%8F%E7%AC%A6%E9%9B%86"><span class="toc-number">5.1.</span> <span class="toc-text">求随符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E9%9A%8F%E7%AC%A6%E9%9B%86%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">5.1.1.</span> <span class="toc-text">求随符集的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">5.1.2.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">5.1.3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">5.1.4.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82follow-e"><span class="toc-number">5.1.4.1.</span> <span class="toc-text">求Follow(E)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82follow-e"><span class="toc-number">5.1.4.2.</span> <span class="toc-text">求Follow(E’)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82follow-t-%E9%87%8D%E8%A6%81"><span class="toc-number">5.1.4.3.</span> <span class="toc-text">求Follow(T)重要！！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">5.1.4.4.</span> <span class="toc-text">结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">构造预测分析表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">5.2.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">5.2.2.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">5.2.3.</span> <span class="toc-text">构造预测分析表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.3.</span> <span class="toc-text">预测分析表的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ll-1-%E6%96%87%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">LL(1)文法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">6.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AE%9A%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">判断定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">6.3.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">6.3.1.</span> <span class="toc-text">1、消除左递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E5%B7%A6%E5%9B%A0%E5%AD%90"><span class="toc-number">6.3.2.</span> <span class="toc-text">2、提取公共左因子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B1%82%E9%A6%96%E7%AC%A6%E9%9B%86%E5%92%8C%E9%9A%8F%E7%AC%A6%E9%9B%86"><span class="toc-number">6.3.3.</span> <span class="toc-text">3、求首符集和随符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AE%9A%E7%90%86"><span class="toc-number">6.3.4.</span> <span class="toc-text">判断定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B2"><span class="toc-number">6.4.</span> <span class="toc-text">举例2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%87%BAfirst%E4%B8%8Efollow"><span class="toc-number">6.4.1.</span> <span class="toc-text">求出First与Follow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BAll-1-%E6%96%87%E6%B3%95"><span class="toc-number">6.4.2.</span> <span class="toc-text">判断是否为LL(1)文法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%A1%A8"><span class="toc-number">6.5.</span> <span class="toc-text">状态表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">递归下降分析法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">7.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E6%83%B3"><span class="toc-number">7.2.</span> <span class="toc-text">实现思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.3.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8ll-1-%E6%96%87%E6%B3%95"><span class="toc-number">7.3.1.</span> <span class="toc-text">1、使用LL(1)文法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8bnf%E8%8C%83%E5%BC%8F"><span class="toc-number">7.3.2.</span> <span class="toc-text">2、使用BNF范式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E5%88%86%E6%9E%90%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">7.4.</span> <span class="toc-text">递归下降分析法的缺点</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

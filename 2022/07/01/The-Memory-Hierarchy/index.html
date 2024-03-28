@@ -1,18 +1,18 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【存储】存储器结构|缓存 | lthero</title><meta name="keywords" content="组成原理,存储器"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="直接映射直接映射  组索引位数（set index）表示去cache中的哪个组找 一个组内可以有一行、可以有多行 如果一个组内只有一行，找到了组号，再确定下tag号和有效位valid就能知道：数据是否被缓存在cache中。再根据偏移位数，拿出数据即可【一组一行是直接映射】 如果一组内有多行，找到了组号，还需要顺序逐个对比tag和有效位……逐个对比地址的tag号和某行的tag号是否相同，若相同并且有">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【存储】存储器结构|缓存 | lthero</title><meta name="keywords" content="组成原理,存储器"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="直接映射 直接映射   组索引位数（set index）表示去cache中的哪个组找 一个组内可以有一行、可以有多行 如果一个组内只有一行，找到了组号，再确定下tag号和有效位valid就能知道：数据是否被缓存在cache中。再根据偏移位数，拿出数据即可【一组一行是直接映射】 如果一组内有多行，找到了组号，还需要顺序逐个对比tag和有效位……逐个对比地址的tag号和某行的tag号是否相同，若相同并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【存储】存储器结构|缓存">
 <meta property="og:url" content="https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/index.html">
 <meta property="og:site_name" content="lthero">
-<meta property="og:description" content="直接映射直接映射  组索引位数（set index）表示去cache中的哪个组找 一个组内可以有一行、可以有多行 如果一个组内只有一行，找到了组号，再确定下tag号和有效位valid就能知道：数据是否被缓存在cache中。再根据偏移位数，拿出数据即可【一组一行是直接映射】 如果一组内有多行，找到了组号，还需要顺序逐个对比tag和有效位……逐个对比地址的tag号和某行的tag号是否相同，若相同并且有">
+<meta property="og:description" content="直接映射 直接映射   组索引位数（set index）表示去cache中的哪个组找 一个组内可以有一行、可以有多行 如果一个组内只有一行，找到了组号，再确定下tag号和有效位valid就能知道：数据是否被缓存在cache中。再根据偏移位数，拿出数据即可【一组一行是直接映射】 如果一组内有多行，找到了组号，还需要顺序逐个对比tag和有效位……逐个对比地址的tag号和某行的tag号是否相同，若相同并">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg">
 <meta property="article:published_time" content="2022-07-01T07:32:59.000Z">
 <meta property="article:modified_time" content="2022-07-21T02:06:49.606Z">
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="组成原理">
 <meta property="article:tag" content="存储器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -144,7 +144,9 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【存储】存储器结构|缓存</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-01T07:32:59.000Z" title="发表于 2022-07-01 15:32:59">2022-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T02:06:49.606Z" title="更新于 2022-07-21 10:06:49">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">组成原理</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E5%99%A8/">存储器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【存储】存储器结构|缓存"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="直接映射"><a href="#直接映射" class="headerlink" title="直接映射"></a>直接映射</h1><h1 id="直接映射-1"><a href="#直接映射-1" class="headerlink" title="直接映射"></a>直接映射</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220701123652106.png" alt="直接映射宏观图"></p>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【存储】存储器结构|缓存</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-01T07:32:59.000Z" title="发表于 2022-07-01 15:32:59">2022-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T02:06:49.606Z" title="更新于 2022-07-21 10:06:49">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">组成原理</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E5%99%A8/">存储器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【存储】存储器结构|缓存"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="直接映射">直接映射</h1>
+<h1 id="直接映射">直接映射</h1>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220701123652106.png" alt="直接映射宏观图"></p>
 <ul>
 <li><code>组索引位数（set index）</code>表示去cache中的哪个组找</li>
 <li>一个组内可以有一行、可以有多行</li>
@@ -164,7 +166,7 @@
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220701124454980.png" alt="image-20220701124454980"></p>
 <hr>
 <p>数据块（Cache block）里面的单位是字？还是字节？</p>
-<p>得看具体要求，有的题目写“每个数据块可以放<strong>4字</strong>”，其实就等价于“每个数据块可以放<strong>16字节</strong>”，从而得到B&#x3D;16，<code>偏移位数b=4</code></p>
+<p>得看具体要求，有的题目写“每个数据块可以放<strong>4字</strong>”，其实就等价于“每个数据块可以放<strong>16字节</strong>”，从而得到B=16，<code>偏移位数b=4</code></p>
 <p>说白了，就是懒……像下面题目，浮点数本身就占用<strong>4字节</strong>，一个数据块最大装入<strong>16字节</strong></p>
 <p>大家都提出个共因数4，变成<strong>浮点数1字</strong>，一个数据块最大装入<strong>4字</strong></p>
 <blockquote>
@@ -172,45 +174,54 @@
 </blockquote>
 <p>可以得到：</p>
 <ul>
-<li>组索引位&#x3D;8【256&#x3D;2^8】</li>
-<li>数据块16字，但有16*4&#x3D;64字节【64&#x3D;2^6】，偏移位&#x3D;6</li>
-<li>标志位&#x3D;32-(8+6)&#x3D;18</li>
+<li>组索引位=8【256=2^8】</li>
+<li>数据块16字，但有16*4=64字节【64=2^6】，偏移位=6</li>
+<li>标志位=32-(8+6)=18</li>
 </ul>
-<p>所以内存地址划分为：标志18位（31~14位）—-组索引8位（13~6位）—–偏移6位【块内偏移4位（5~2位） 和 字节2位（1~0位）】</p>
+<p>所以内存地址划分为：标志18位（31~14位）----组索引8位（13~6位）-----偏移6位【块内偏移4位（5~2位） 和 字节2位（1~0位）】</p>
 <p>如果数据块按<code>字</code>划分，只有<code>16字</code>，那只需<code>4位</code>偏移即可。但实际上需要<code>多出2位表示一字四字节</code></p>
-<p>​    </p>
-<h2 id="Cache容量计算"><a href="#Cache容量计算" class="headerlink" title="Cache容量计算"></a>Cache容量计算</h2><blockquote>
+<p>​</p>
+<h2 id="cache容量计算">Cache容量计算</h2>
+<blockquote>
 <p>公式：<code>总数据块数</code>*（单个数据块容量+标签位+有效位）</p>
 </blockquote>
 <p>【只要有一个数据块，就对应一个对应的有效（valid）位和标签（tag）位】</p>
 <p>例如：假设64位存储地址，使用直接映射【暗示一组一个数据块】，如果数据大小为16KB，每个数据块4字大小，问cache容量多大【用bit表示】</p>
 <p>解：</p>
 <ul>
-<li>求偏移位数b，因为数据块4字【每个字4字节】，所以每个数据块有16Bytes，B&#x3D;16，<code>偏移位数b=4</code></li>
-<li>数据大小为16KB，则需要16KB&#x2F;16&#x3D;<code>1K个数据块</code>，对应S&#x3D;1K，<code>组索引s=10</code></li>
+<li>求偏移位数b，因为数据块4字【每个字4字节】，所以每个数据块有16Bytes，B=16，<code>偏移位数b=4</code></li>
+<li>数据大小为16KB，则需要16KB/16=<code>1K个数据块</code>，对应S=1K，<code>组索引s=10</code></li>
 <li>。。。。。。。。。。。所以标签位<code>t=64-(10+4)=50位</code></li>
 </ul>
 <p>所以根据公式</p>
 <ul>
-<li>sum&#x3D;1K * (16*8 + 50 + 1) &#x3D;179Kb</li>
+<li>sum=1K * (16*8 + 50 + 1) =179Kb</li>
 </ul>
-<h2 id="地址映射到cache组号"><a href="#地址映射到cache组号" class="headerlink" title="地址映射到cache组号"></a>地址映射到cache组号</h2><blockquote>
-<p>公式：组号 &#x3D;（数据块地址） mod (cache中组数)</p>
-<p>数据块地址 &#x3D; 字节地址&#x2F;数据块字节数</p>
+<h2 id="地址映射到cache组号">地址映射到cache组号</h2>
+<blockquote>
+<p>公式：组号 =（数据块地址） mod (cache中组数)</p>
+<p>数据块地址 = 字节地址/数据块字节数</p>
 </blockquote>
 <p>例如：cache有64个组，每数据块大小为16字节，问字节地址为1200的映射到哪个组号？</p>
-<p>先求数据块地址 &#x3D; 1200 &#x2F; 16 &#x3D;75</p>
-<p>再求组号&#x3D; 75 &#x2F; 64</p>
+<p>先求数据块地址 = 1200 / 16 =75</p>
+<p>再求组号= 75 / 64</p>
 <hr>
-<h2 id="抖动与冲突不命中"><a href="#抖动与冲突不命中" class="headerlink" title="抖动与冲突不命中"></a>抖动与冲突不命中</h2><p>P431</p>
+<h2 id="抖动与冲突不命中">抖动与冲突不命中</h2>
+<p>P431</p>
 <p>Suppose that <strong>floats</strong> are <strong>4 bytes</strong>, that x is loaded into the 32 bytes of contiguous memory starting at address 0, and that y starts immediately after at address 32. For simplicity, suppose that a block is <strong>16 bytes</strong></p>
 <p>the cache consists of <strong>two sets</strong>, each set has one line, for a total cache size of <strong>32 bytes</strong>. We will assume that the variable sum is actually stored in a CPU register and thus does not require a memory reference. Given these assumptions, each x[i] and y[i] will map to the identical cache set</p>
 <p>题目中没说内存地址长度，<strong>假设为16位</strong>，够长~</p>
 <p>其中cache为2组，所以<code>s=1</code>;每个数据块有16字节，所以<code>b=4</code></p>
 <p>若y从地址32开始，这些数组的映射关系如下：</p>
 <p>​     标志Tag   组索引Set   偏移b               标志Tag      组索引Set         偏移b</p>
-<p>x0	0	      0		0000 	   y0	   1	          0		     0000<br>x1	0	      0		0100 	   y1	   1	          0		     0100<br>x2	0	      0		1000 	   y2	   1	          0		     1000<br>x3	0	      0		1100 	   y3	   1	          0		     1100</p>
-<p>x4	0	      1		0000 	   y4	   1	          1		     0000<br>x5	0	      1		0100 	   y5	   1	          1		     0100<br>x6	0	      1		1000 	   y6	   1	          1		     1000<br>x7	0	      1		1100 	   y7	   1	          1		     1100</p>
+<p>x0	0	      0		0000 	   y0	   1	          0		     0000<br>
+x1	0	      0		0100 	   y1	   1	          0		     0100<br>
+x2	0	      0		1000 	   y2	   1	          0		     1000<br>
+x3	0	      0		1100 	   y3	   1	          0		     1100</p>
+<p>x4	0	      1		0000 	   y4	   1	          1		     0000<br>
+x5	0	      1		0100 	   y5	   1	          1		     0100<br>
+x6	0	      1		1000 	   y6	   1	          1		     1000<br>
+x7	0	      1		1100 	   y7	   1	          1		     1100</p>
 <blockquote>
 <p>很明显，x[0]~x[3]与y[0]~y[3]会对组0进行争抢</p>
 <p>x[0]未命中后，会将x[0]~x[3]都缓存到cache中的<code>组0</code></p>
@@ -222,25 +233,31 @@
 <hr>
 <p>若y从地址48开始，这些数组的映射关系如下：</p>
 <p>​	标志Tag    组索引Set    偏移b                标志Tag      组索引Set      	 偏移b</p>
-<p>x0	00	      0		0000 	   y0	   01	          1		      0000<br>x1	00	      0		0100 	   y1	   01	          1		      0100<br>x2	00	      0		1000 	   y2	   01	          1		      1000<br>x3	00	      0		1100 	   y3	   01	          1		      1100</p>
-<p>x4	00	      1		0000 	   y4	   10	          0		      0000<br>x5	00	      1		0100 	   y5	   10	          0		      0100<br>x6	00	      1		1000 	   y6	   10	          0		      1000<br>x7	00	      1		1100 	   y7	   10	          0		      1100</p>
+<p>x0	00	      0		0000 	   y0	   01	          1		      0000<br>
+x1	00	      0		0100 	   y1	   01	          1		      0100<br>
+x2	00	      0		1000 	   y2	   01	          1		      1000<br>
+x3	00	      0		1100 	   y3	   01	          1		      1100</p>
+<p>x4	00	      1		0000 	   y4	   10	          0		      0000<br>
+x5	00	      1		0100 	   y5	   10	          0		      0100<br>
+x6	00	      1		1000 	   y6	   10	          0		      1000<br>
+x7	00	      1		1100 	   y7	   10	          0		      1100</p>
 <p>这样的好处是，将x[0]~x[3]与y[0]~y[3]错开，分别使用不同的组，不会因为争抢同一个组而发布抖动</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>P433</p>
-<p>考虑下面代码，它运行在cache形式为(S,E,B,m)&#x3D;(512,1,32,32)【512个组set，每组一行，一个数据块装32字节，内存地址32位】</p>
+<h2 id="例题">例题</h2>
+<p>P433</p>
+<p>考虑下面代码，它运行在cache形式为(S,E,B,m)=(512,1,32,32)【512个组set，每组一行，一个数据块装32字节，内存地址32位】</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">4096</span>];</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">4096</span>;i++)</span><br><span class="line">	sum+=arr[i];</span><br></pre></td></tr></table></figure>
-
 <p>分析这些内存地址如何在cache中分布</p>
 <p>分析：</p>
 <p>因为一个块装32字节，一组一行【一行对应一个数据块】，所以一组装32字节</p>
-<p>int是4字节，所以一组装32&#x2F;4&#x3D;8个int</p>
-<p>所以全部的arr需要4096&#x2F;8&#x3D;512个组</p>
+<p>int是4字节，所以一组装32/4=8个int</p>
+<p>所以全部的arr需要4096/8=512个组</p>
 <p>解：</p>
 <ul>
-<li>块内32字节，对应B&#x3D;32，<strong>b&#x3D;5</strong>【5位二进制可以表示32个】</li>
-<li>一共512个组，对应S&#x3D;512，<strong>s&#x3D;9</strong></li>
-<li>按公式:t&#x3D;m-(b+s)，所以<strong>t&#x3D;32-(5+9)&#x3D;18</strong></li>
+<li>块内32字节，对应B=32，<strong>b=5</strong>【5位二进制可以表示32个】</li>
+<li>一共512个组，对应S=512，<strong>s=9</strong></li>
+<li>按公式:t=m-(b+s)，所以<strong>t=32-(5+9)=18</strong></li>
 </ul>
-<p>按直接映射格式：tag <code>18位</code>—-set <code>9位</code>—-块内偏移 <code>5位</code></p>
+<p>按直接映射格式：tag <code>18位</code>----set <code>9位</code>----块内偏移 <code>5位</code></p>
 <p>将内存32位地址按格式划分，得到下面表格</p>
 <table>
 <thead>
@@ -253,7 +270,8 @@
 <th>arr下标</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0000……0【18个0】</td>
 <td>0000 0000 0</td>
 <td>0 0000</td>
@@ -365,7 +383,8 @@
 <td><code>511</code></td>
 <td><code>4095</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>可以看到：</p>
 <ul>
 <li>arr[0]~arr[7]属于<code>组0</code></li>
@@ -386,7 +405,8 @@
 <th>arr下标</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0000 0000 0000 0000 0<code>1</code></td>
 <td>0000 0000 0</td>
 <td>0 0000</td>
@@ -410,38 +430,47 @@
 <td></td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="块、行、组"><a href="#块、行、组" class="headerlink" title="块、行、组"></a>块、行、组</h2><ul>
+</tbody>
+</table>
+<h2 id="块-行-组">块、行、组</h2>
+<ul>
 <li>block，块，是一个<strong>固定大小</strong>的包，用来<strong>上下两层存储器</strong>之间传输数据</li>
 <li>line，行，人为设定的，cache中的一个空串，行存储了：“块”、“有效位”、“标记位”</li>
-<li>set，组，一行或多行的集合。<ul>
+<li>set，组，一行或多行的集合。
+<ul>
 <li>直接映射一组只有一行；在直接映射里面，组可以等价于行</li>
 <li>组相联或全相联，一组有多行；组和行不能乱用</li>
 </ul>
 </li>
 </ul>
 <p>因为行存储了：“块”、“有效位”、“标记位”。 有时某些场合下，在计算cache容量时，往往忽略了“有效位”和“标记位”，把“行”与“块”就等价了【因为真正存储目标数据的只有“块”】</p>
-<h2 id="偏移位、有效位、标志位"><a href="#偏移位、有效位、标志位" class="headerlink" title="偏移位、有效位、标志位"></a>偏移位、有效位、标志位</h2><ul>
+<h2 id="偏移位-有效位-标志位">偏移位、有效位、标志位</h2>
+<ul>
 <li>偏移位，block index，看英文名就很清楚了，它是在block里面用来区分不同数据的下标，因为一“块”可以装入多个字节，就需要用下标来指定，数据被装入到块内哪个部分</li>
 <li>有效位，valid ，当刚开机时，所有的valid都设置为0，避免一些脏数据。</li>
-<li>标志位，tag，用来确定要找的目标数据是否在cache的其中一个依据<ul>
+<li>标志位，tag，用来确定要找的目标数据是否在cache的其中一个依据
+<ul>
 <li>如果是<code>全相联</code>，就<strong>只能</strong>根据<code>标志位</code>判断数据是否在cache中</li>
 <li>如果是<code>直接映射</code>或<code>组相联</code>，先根据<code>组索引号</code>，找到<strong>对应组</strong>，再判断数据是否在<strong>cache的某个组内</strong></li>
 </ul>
 </li>
 </ul>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="按字节、字、双字、半字寻址"><a href="#按字节、字、双字、半字寻址" class="headerlink" title="按字节、字、双字、半字寻址"></a>按字节、字、双字、半字寻址</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220702091117905.png" alt="回答时会用到"></p>
+<h2 id="题目">题目</h2>
+<h3 id="按字节-字-双字-半字寻址">按字节、字、双字、半字寻址</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/image-20220702091117905.png" alt="回答时会用到"></p>
 <ol>
-<li><p>机器<code>字长32位</code>，容量为<code>16MB</code>的DRAM存储器，如果cpu按<code>半字</code>寻址，则请问可以寻址的单元数是？</p>
+<li>
+<p>机器<code>字长32位</code>，容量为<code>16MB</code>的DRAM存储器，如果cpu按<code>半字</code>寻址，则请问可以寻址的单元数是？</p>
 <ul>
 <li>这题目可以对照着上图，让每个<strong>超单元</strong>大小为<code>半字</code>，也就是<code>2B=16bit</code>，所以<code>16MB</code>的DRAM存储器需要<code>8M*2B</code>，先不管8M中是否分成8片，但<code>超单元总量</code>是<code>8M</code></li>
-<li>所以：答案为8M&#x3D;2^23</li>
+<li>所以：答案为8M=2^23</li>
 </ul>
 </li>
-<li><p>机器<code>字长64位</code>，容量为<code>128MB</code>的DRAM存储器，如果cpu按<code>字</code>寻址，则请问可以寻址的单元数是？</p>
+<li>
+<p>机器<code>字长64位</code>，容量为<code>128MB</code>的DRAM存储器，如果cpu按<code>字</code>寻址，则请问可以寻址的单元数是？</p>
 <ul>
 <li>和上面一样，每个<strong>超单元</strong>大小为<code>一个字，</code>也就是<code>8B=64bit</code>，所以<code>128MB</code>的DRAM存储器需要<code>16M*8B</code>，所以<code>超单元总量</code>是<code>16M</code></li>
-<li>所以：答案为16M&#x3D;2^24</li>
+<li>所以：答案为16M=2^24</li>
 </ul>
 </li>
 </ol>
@@ -449,40 +478,48 @@
 <p>字长<code>32位</code>，那就是32bit，就是<code>4B</code>。上面说的按<code>字</code>编址，<code>半字</code>编址，<code>双字</code>编址里面的“字”指的就是这个<code>字长</code>。</p>
 <p>（现在假设内存容量为<code>64MB</code>）</p>
 <ol>
-<li><p>假如按<code>字节</code>编址，那么，一个内存<strong>超单元</strong>大小为<code>一个字节</code>，就是<code>1B=8bit</code>;那么<code>64MB</code>的内存空间需要由<code>64M*1B</code>构成</p>
+<li>
+<p>假如按<code>字节</code>编址，那么，一个内存<strong>超单元</strong>大小为<code>一个字节</code>，就是<code>1B=8bit</code>;那么<code>64MB</code>的内存空间需要由<code>64M*1B</code>构成</p>
 <ul>
-<li>所以<code>超单元总量</code>为<code>64M</code>&#x3D;2^26</li>
+<li>所以<code>超单元总量</code>为<code>64M</code>=2^26</li>
 <li>寻址范围是0~64M-1（此处注意，不是64-1M而是64M减去1），寻址范围的大小是64M；</li>
 </ul>
 </li>
-<li><p>假如按<code>字</code>编址，那么一个内存<strong>超单元</strong>大小为<code>一个字</code>，就是<code>4B=32bit</code>;那么<code>64MB</code>的内存空间需要由<code>16M*4B</code>构成</p>
+<li>
+<p>假如按<code>字</code>编址，那么一个内存<strong>超单元</strong>大小为<code>一个字</code>，就是<code>4B=32bit</code>;那么<code>64MB</code>的内存空间需要由<code>16M*4B</code>构成</p>
 <ul>
-<li>所以<code>超单元总量</code>为<code>16M</code>&#x3D;2^24</li>
+<li>所以<code>超单元总量</code>为<code>16M</code>=2^24</li>
 <li>其寻址范围是0~16M-1；寻址范围大小是16M；</li>
 </ul>
 </li>
-<li><p>假如按<code>半字</code>编址那就是半个机器字长，就是<code>2B=16bit</code>；</p>
+<li>
+<p>假如按<code>半字</code>编址那就是半个机器字长，就是<code>2B=16bit</code>；</p>
 </li>
-<li><p>假如按<code>双字</code>编址，那就是<code>8B=64bit</code>；</p>
+<li>
+<p>假如按<code>双字</code>编址，那就是<code>8B=64bit</code>；</p>
 </li>
 </ol>
-<h2 id="数据寄存器、地址寄存器"><a href="#数据寄存器、地址寄存器" class="headerlink" title="数据寄存器、地址寄存器"></a>数据寄存器、地址寄存器</h2><p>地址寄存器：用来存放cpu取、存内存单元的<code>地址</code></p>
+<h2 id="数据寄存器-地址寄存器">数据寄存器、地址寄存器</h2>
+<p>地址寄存器：用来存放cpu取、存内存单元的<code>地址</code></p>
 <p>数据寄存器：用来存放cpu取、存内存单元的<code>数据</code></p>
-<p>地址寄存器位数：就是超单元总量8M&#x2F;64M……</p>
-<p>数据寄存器位数：超单元自身的大小1B&#x2F;2B&#x2F;3B……</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>机器<code>字长32位</code>，容量为<code>16MB</code>的DRAM存储器，如果cpu按<code>半字</code>寻址，问地址寄存器位数、数据寄存器位数？</p>
+<p>地址寄存器位数：就是超单元总量8M/64M……</p>
+<p>数据寄存器位数：超单元自身的大小1B/2B/3B……</p>
+<h3 id="举例">举例</h3>
+<p>机器<code>字长32位</code>，容量为<code>16MB</code>的DRAM存储器，如果cpu按<code>半字</code>寻址，问地址寄存器位数、数据寄存器位数？</p>
 <ul>
 <li>这题目可以对照着上图，让每个<strong>超单元</strong>大小为<code>半字</code>，也就是<code>2B=16bit</code>，所以<code>16MB</code>的DRAM存储器需要<code>8M*2B</code>，先不管8M中是否分成8片，但<code>超单元总量</code>是<code>8M</code></li>
-<li>8M&#x3D;2^23，<strong>23位</strong>就是<strong>地址</strong>寄存器位数</li>
-<li>2B&#x3D;16位，<strong>16位</strong>就是<strong>数据</strong>寄存器位数</li>
+<li>8M=2^23，<strong>23位</strong>就是<strong>地址</strong>寄存器位数</li>
+<li>2B=16位，<strong>16位</strong>就是<strong>数据</strong>寄存器位数</li>
 </ul>
-<h3 id="再举例"><a href="#再举例" class="headerlink" title="再举例"></a>再举例</h3><p>机器<code>字长64位</code>，容量为<code>128MB</code>的DRAM存储器，如果cpu按<code>字</code>寻址，问地址寄存器位数、数据寄存器位数？</p>
+<h3 id="再举例">再举例</h3>
+<p>机器<code>字长64位</code>，容量为<code>128MB</code>的DRAM存储器，如果cpu按<code>字</code>寻址，问地址寄存器位数、数据寄存器位数？</p>
 <ul>
 <li>和上面一样，每个<strong>超单元</strong>大小为<code>一个字，</code>也就是<code>8B=64bit</code>，所以<code>128MB</code>的DRAM存储器需要<code>16M*8B</code>，所以<code>超单元总量</code>是<code>16M</code></li>
-<li>16M&#x3D;2^24，<strong>24位</strong>就是<strong>地址</strong>寄存器位数</li>
-<li>8B&#x3D;64位，<strong>64位</strong>就是<strong>数据</strong>寄存器位数</li>
+<li>16M=2^24，<strong>24位</strong>就是<strong>地址</strong>寄存器位数</li>
+<li>8B=64位，<strong>64位</strong>就是<strong>数据</strong>寄存器位数</li>
 </ul>
-<h1 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h1><p>因为DRAM电荷只能维持1~2ms，人为设置2ms为刷新周期，每隔2ms必须刷新一次全部DRAM芯片的全部单元。</p>
+<h1 id="dram">DRAM</h1>
+<p>因为DRAM电荷只能维持1~2ms，人为设置2ms为刷新周期，每隔2ms必须刷新一次全部DRAM芯片的全部单元。</p>
 <p>所谓刷新，就是将单元内数据读出，再重新写回到单元内</p>
 <p>其中，刷新操作有集中刷新、分散刷新、异步刷新</p>
 <p>集中刷新：</p>
@@ -499,16 +536,20 @@
 <ul>
 <li>因为整个DRAM每次只能维持2ms，将<code>2ms/行数</code>，可以就是留给<code>一行的刷新时间t</code>，只要<strong>每一行在自己的t时间内</strong>完成<strong>一行的刷新</strong>即可</li>
 </ul>
-<p>目前常用<strong>“异步刷新”</strong>，因为每行刷新时间有限，所以，<strong>刷新操作刻不容缓</strong></p>
+<p>目前常用**“异步刷新”**，因为每行刷新时间有限，所以，<strong>刷新操作刻不容缓</strong></p>
 <blockquote>
 <p>因此：“刷新”操作比“读写”操作有更高优先权，因为<strong>刷新操作</strong>是周期性，强制性完成的；而读写操作才是偶然发生的，读写操作只能在某行“非刷新”期间完成</p>
 </blockquote>
-<h2 id="DRAM单元"><a href="#DRAM单元" class="headerlink" title="DRAM单元"></a>DRAM单元</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E5%8D%95%E5%85%83.jpg" alt="DRAM单元"></p>
-<h2 id="DRAM超单元"><a href="#DRAM超单元" class="headerlink" title="DRAM超单元"></a>DRAM超单元</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E8%B6%85%E5%8D%95%E5%85%83.jpg" alt="DRAM超单元"></p>
+<h2 id="dram单元">DRAM单元</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E5%8D%95%E5%85%83.jpg" alt="DRAM单元"></p>
+<h2 id="dram超单元">DRAM超单元</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E8%B6%85%E5%8D%95%E5%85%83.jpg" alt="DRAM超单元"></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E8%B6%85%E5%8D%95%E5%85%832.jpg" alt="DRAM超单元2"></p>
-<h2 id="DRAM芯片-chip"><a href="#DRAM芯片-chip" class="headerlink" title="DRAM芯片(chip)"></a>DRAM芯片(chip)</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E8%8A%AF%E7%89%87(chip).jpg" alt="DRAM芯片(chip)"></p>
-<h2 id="DRAM模块"><a href="#DRAM模块" class="headerlink" title="DRAM模块"></a>DRAM模块</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E6%A8%A1%E5%9D%97.jpg" alt="DRAM模块"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/">https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">组成原理</a><a class="post-meta__tags" href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/">存储器</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/02/python-download-mul-thread/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Python爬虫】二次元涩图&amp;多线程下载</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/30/CS-Books/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【CS-Books】计算机专业书籍下载</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84"><span class="toc-number">1.</span> <span class="toc-text">直接映射</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84-1"><span class="toc-number">2.</span> <span class="toc-text">直接映射</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache%E5%AE%B9%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="toc-number">2.1.</span> <span class="toc-text">Cache容量计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E5%88%B0cache%E7%BB%84%E5%8F%B7"><span class="toc-number">2.2.</span> <span class="toc-text">地址映射到cache组号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%96%E5%8A%A8%E4%B8%8E%E5%86%B2%E7%AA%81%E4%B8%8D%E5%91%BD%E4%B8%AD"><span class="toc-number">2.3.</span> <span class="toc-text">抖动与冲突不命中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">2.4.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%97%E3%80%81%E8%A1%8C%E3%80%81%E7%BB%84"><span class="toc-number">2.5.</span> <span class="toc-text">块、行、组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E7%A7%BB%E4%BD%8D%E3%80%81%E6%9C%89%E6%95%88%E4%BD%8D%E3%80%81%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">2.6.</span> <span class="toc-text">偏移位、有效位、标志位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.7.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E5%AD%97%E8%8A%82%E3%80%81%E5%AD%97%E3%80%81%E5%8F%8C%E5%AD%97%E3%80%81%E5%8D%8A%E5%AD%97%E5%AF%BB%E5%9D%80"><span class="toc-number">2.7.1.</span> <span class="toc-text">按字节、字、双字、半字寻址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8%E3%80%81%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.8.</span> <span class="toc-text">数据寄存器、地址寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.8.1.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.8.2.</span> <span class="toc-text">再举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DRAM"><span class="toc-number">3.</span> <span class="toc-text">DRAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DRAM%E5%8D%95%E5%85%83"><span class="toc-number">3.1.</span> <span class="toc-text">DRAM单元</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRAM%E8%B6%85%E5%8D%95%E5%85%83"><span class="toc-number">3.2.</span> <span class="toc-text">DRAM超单元</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRAM%E8%8A%AF%E7%89%87-chip"><span class="toc-number">3.3.</span> <span class="toc-text">DRAM芯片(chip)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRAM%E6%A8%A1%E5%9D%97"><span class="toc-number">3.4.</span> <span class="toc-text">DRAM模块</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+<h2 id="dram芯片-chip">DRAM芯片(chip)</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E8%8A%AF%E7%89%87(chip).jpg" alt="DRAM芯片(chip)"></p>
+<h2 id="dram模块">DRAM模块</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/Cryptography/DRAM%E6%A8%A1%E5%9D%97.jpg" alt="DRAM模块"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/">https://blog.lthero.cn/2022/07/01/The-Memory-Hierarchy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">组成原理</a><a class="post-meta__tags" href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/">存储器</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/02/python-download-mul-thread/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Python爬虫】二次元涩图&amp;多线程下载</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/30/CS-Books/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【CS-Books】计算机专业书籍下载</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">152</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">62</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84"><span class="toc-number">1.</span> <span class="toc-text">直接映射</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84"><span class="toc-number">2.</span> <span class="toc-text">直接映射</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cache%E5%AE%B9%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="toc-number">2.1.</span> <span class="toc-text">Cache容量计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E5%88%B0cache%E7%BB%84%E5%8F%B7"><span class="toc-number">2.2.</span> <span class="toc-text">地址映射到cache组号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%96%E5%8A%A8%E4%B8%8E%E5%86%B2%E7%AA%81%E4%B8%8D%E5%91%BD%E4%B8%AD"><span class="toc-number">2.3.</span> <span class="toc-text">抖动与冲突不命中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">2.4.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%97-%E8%A1%8C-%E7%BB%84"><span class="toc-number">2.5.</span> <span class="toc-text">块、行、组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E7%A7%BB%E4%BD%8D-%E6%9C%89%E6%95%88%E4%BD%8D-%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">2.6.</span> <span class="toc-text">偏移位、有效位、标志位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.7.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E5%AD%97%E8%8A%82-%E5%AD%97-%E5%8F%8C%E5%AD%97-%E5%8D%8A%E5%AD%97%E5%AF%BB%E5%9D%80"><span class="toc-number">2.7.1.</span> <span class="toc-text">按字节、字、双字、半字寻址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8-%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.8.</span> <span class="toc-text">数据寄存器、地址寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.8.1.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.8.2.</span> <span class="toc-text">再举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dram"><span class="toc-number">3.</span> <span class="toc-text">DRAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#dram%E5%8D%95%E5%85%83"><span class="toc-number">3.1.</span> <span class="toc-text">DRAM单元</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dram%E8%B6%85%E5%8D%95%E5%85%83"><span class="toc-number">3.2.</span> <span class="toc-text">DRAM超单元</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dram%E8%8A%AF%E7%89%87-chip"><span class="toc-number">3.3.</span> <span class="toc-text">DRAM芯片(chip)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dram%E6%A8%A1%E5%9D%97"><span class="toc-number">3.4.</span> <span class="toc-text">DRAM模块</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="自建RustDeskServer"/></a><div class="content"><a class="title" href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer">自建RustDeskServer</a><time datetime="2024-03-28T04:33:04.000Z" title="发表于 2024-03-28 12:33:04">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="N1盒子重装Openwrt"/></a><div class="content"><a class="title" href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt">N1盒子重装Openwrt</a><time datetime="2024-03-26T11:12:40.000Z" title="发表于 2024-03-26 19:12:40">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】打造全自动追剧工具"/></a><div class="content"><a class="title" href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具">【Ubuntu】打造全自动追剧工具</a><time datetime="2024-03-25T08:43:40.000Z" title="发表于 2024-03-25 16:43:40">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-z8qldy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="针对SD的Gaussian Shading鲁棒水印实现"/></a><div class="content"><a class="title" href="/2024/03/07/GS-watermark/" title="针对SD的Gaussian Shading鲁棒水印实现">针对SD的Gaussian Shading鲁棒水印实现</a><time datetime="2024-03-07T11:23:21.000Z" title="发表于 2024-03-07 19:23:21">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"/></a><div class="content"><a class="title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
