@@ -81,12 +81,7 @@ blockquote {
     background-color: #fdefee;
     color: black;
 }
-/* h1,h2,h3,h4,h5,h6{
-    position: relative;
-    line-height: 1.4;
-    cursor: text;
-    color:#273849;
-} */
+
 h2{
     position: relative;
     margin: 20px 0 14px;
