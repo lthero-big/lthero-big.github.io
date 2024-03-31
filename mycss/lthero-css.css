@@ -27,7 +27,8 @@ strong{
     color:#273849;
 }
 #article-container p {
-    color:#333333;
+    /* color:#333333; */
+    color:#000000;
     font-family:"Microsoft YaHei";
     margin: 0 0 16px;
     font-size: 18px;
