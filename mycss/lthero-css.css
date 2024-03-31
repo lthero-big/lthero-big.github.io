@@ -31,10 +31,7 @@ strong{
     margin: 0 0 16px;
     font-size: 18px;
 }
-#article-container ul li{
-    font-family:"Microsoft YaHei";
-    font-size: 18px;
-}
+
 #article-container code{
     font-family:"Microsoft YaHei";
     font-size: 16px;
@@ -67,9 +64,15 @@ strong{
 #page-header #site-subtitle {
     font-size: 2.12em;
 }
+
+#article-container ul li{
+    font-family:"Microsoft YaHei";
+    font-size: 18px;
+}
 #article-container ol li, #article-container ul li {
+    font-family:"Microsoft YaHei";
     margin: 4px 0;
-    font-size: 17px;
+    font-size: 18px;
 }
 blockquote {
     margin: 0 0 20px;
