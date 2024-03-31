@@ -30,7 +30,7 @@ strong{
     /* color:#333333; */
     color:#000000;
     font-family:"Microsoft YaHei";
-    margin: 0 0 16px;
+    margin: 0 0 10px;
     font-size: 18px;
 }
 
@@ -74,13 +74,6 @@ strong{
     margin: 4px 0;
     font-size: 18px;
 }
-/* blockquote {
-    margin: 0 0 20px;
-    padding: 12px 15px;
-    border-left: 3px solid #d63200;
-    background-color: #fdefee;
-    color: black;
-} */
 
 blockquote {
     margin: 0 0 16px;
