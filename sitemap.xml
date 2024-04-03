@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2024/04/03/Hysteria2Installion/</loc>
+    
+    <lastmod>2024-04-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2024/04/03/RegionRestrictionCheck/</loc>
     
     <lastmod>2024-04-03</lastmod>
@@ -2071,6 +2080,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/tags/%E6%B5%81%E5%AA%92%E4%BD%93/</loc>
+    <lastmod>2024-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/tags/%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2024-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
