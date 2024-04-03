@@ -6,7 +6,7 @@
   <link href="https://blog.lthero.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.lthero.cn/"/>
-  <updated>2024-03-31T07:40:54.587Z</updated>
+  <updated>2024-04-03T13:30:53.538Z</updated>
   <id>https://blog.lthero.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>流媒体解锁检测</title>
+    <link href="https://blog.lthero.cn/2024/04/03/RegionRestrictionCheck/"/>
+    <id>https://blog.lthero.cn/2024/04/03/RegionRestrictionCheck/</id>
+    <published>2024-04-03T13:29:17.000Z</published>
+    <updated>2024-04-03T13:30:53.538Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="脚本一：regionrestrictioncheck">脚本一：RegionRestrictionCheck</h2><p>RegionRestrictionCheck 检测脚本检测项目比较全面，且支持Docker运行，杜绝污染VPS服务器，检测流媒体除了主流的Netflix、Disney+、YouTube Premium，还可以支持检测Dazn、Viu TV、4GTV和KKTV等比较冷门的流媒体服务。</p><blockquote><p>支持OS/Platform：CentOS 6+, Ubuntu 14.04+, Debian 8+, MacOS, Android with Termux</p></blockquote><h3 id="使用方法">使用方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s check.unlock.media)</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L -s check.unlock.media)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>只检测IPv4结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s check.unlock.media) -M 4</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L -s check.unlock.media) -M 4</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>只检测IPv6结果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s check.unlock.media) -M 6</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L -s check.unlock.media) -M 6</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>指定检测的网卡名称：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s check.unlock.media) -I eth0</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L -s check.unlock.media) -I eth0</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>选择脚本语言为英文：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s check.unlock.media) -E</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L -s check.unlock.media) -E</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>或者直接运行以下Docker命令 (兼容ARM架构)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -ti --net=host lmc999/regioncheck &amp;&amp; docker rmi lmc999/regioncheck</span><br><span class="line"></span><br><span class="line">docker run --rm -ti --net=host lmc999/regioncheck &amp;&amp; docker rmi lmc999/regioncheck</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="例子：">例子：</h3><p><img src="https://cdn.lthero.cn/post_images/course/ML/20221113-001.png.webp" alt="RegionRestrictionCheck 脚本测试结果"></p><h2 id="脚本二：mediaunlocktest">脚本二：MediaUnlockTest</h2><p>MediaUnlockTest 检测与 RegionRestrictionCheck 不一样，MediaUnlockTest 并非bash脚本，而是使用golang，检测项目与 RegionRestrictionCheck 差不多。</p><h3 id="使用方法">使用方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls unlock.moe)</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -Ls unlock.moe)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>只检测IPv4结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls unlock.moe) -m 4</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -Ls unlock.moe) -m 4</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>只检测IPv6结果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls unlock.moe) -m 6</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -Ls unlock.moe) -m 6</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="例子：">例子：</h3><p><img src="https://cdn.lthero.cn/post_images/course/ML/20221113-002.png.webp" alt="MediaUnlockTest 脚本测试结果"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;脚本一：regionrestrictioncheck&quot;&gt;脚本一：RegionRestrictionCheck&lt;/h2&gt;
+&lt;p&gt;RegionRestrictionCheck 检测脚本检测项目比较全面，且支持Docker运行，杜绝污染VPS服务器，检测流媒体除了主流的</summary>
+      
+    
+    
+    
+    <category term="折腾" scheme="https://blog.lthero.cn/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="折腾" scheme="https://blog.lthero.cn/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="流媒体" scheme="https://blog.lthero.cn/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+  </entry>
   
   <entry>
     <title>【DDPM】DiffusionModel原理</title>
@@ -563,38 +590,6 @@
     
     
     <category term="ChatGPT" scheme="https://blog.lthero.cn/tags/ChatGPT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【研究生课】信息安全技术笔记一</title>
-    <link href="https://blog.lthero.cn/2023/09/19/MSc-InformationSecurity-1/"/>
-    <id>https://blog.lthero.cn/2023/09/19/MSc-InformationSecurity-1/</id>
-    <published>2023-09-19T07:22:51.000Z</published>
-    <updated>2023-09-19T07:24:19.393Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="课程安排">课程安排</h1><p>前期非常快地讲下密码学</p><p>研究生的课程会很宽泛，包含不同领域的安全。</p><h1 id="考核">考核</h1><h2 id="考核安排">考核安排</h2><p>是个完成一个课题，要交个大报告</p><p>第三周上课前确定要做的课题（在群里发的在线文档），第八、九周做个期中汇报（文献汇报），第十五周开始交最终汇报（研究汇报）</p><p>提交一份研究报告，算法要有完整实现</p><h2 id="可选课题">可选课题</h2><p>网络安全，多媒体内容安全，人工智能安全，区块链及隐私保护</p><h3 id="网络安全-入侵检测">网络安全-入侵检测</h3><p>做个入侵检测系统（IDS,intrusion detection system)，防火墙被攻破后，使用IDS进行防御或检测。</p><p>（硬件部署）可以部署在防火墙与服务器之间，通过监听网络信息，确保攻击数据在进入到服务器之前，将其拦截。<strong>像旁路由</strong></p><p>（软件部署）将IDS部署在服务器上，通过日志来判断。<strong>像软路由</strong>。</p><p>抽象成个二分类问题（是否有攻击）</p><p>通过web日志，使用机器学习手段，训练出一个模型，对每一条（实时的）日志进行判断是<strong>正常行为或异常行为</strong>。将模型部署后，可以对web日志实时进行监控并做出相应处理。</p><p>通过TP矩阵评估，False Negitive 越小越好</p><p>抽象成个多分类问题（具体是什么类型攻击）</p><p>通过web日志，使用机器学习手段，训练出一个模型，对日志<strong>打上标签</strong>（如远程控制|R2L|remote to local，root提权行为|U2R|user to root等）</p><p>通过混淆矩阵评估，对角线越大越好</p><p>课程要求</p><p>有样本，有输出，性能越高越好，不要把正常行为判断为异常行为，误报率要低。更不要把异常判断为正常，遗漏率要低。</p><h4 id="数据集来源">数据集来源</h4><p>数据集质量决定任务难度，如果异常行为和正常行为差距很明显，任务会简单。如果异常行为和正常行为相似，任务会蛮难。</p><p>在网上找个<strong>IDS挑战赛的数据集</strong>(搜索：<strong>NSL-KDD</strong>，找近年的)，这类比赛的数据集较好，可以看到比赛优秀的项目代码，还可以看到评判标准。</p><p>某类攻击行为与正常行为相接近，某类攻击行为与正常行为差距很大，要把这些<strong>特征在报告中体现出来</strong></p><h3 id="网络安全-恶意代码分类">网络安全-恶意代码分类</h3><p>Malware Classification.</p><p>二分类、多分类问题</p><h3 id="网络安全-垃圾邮件-短信检测">网络安全-垃圾邮件、短信检测</h3><p>Spam Mail/SMS Detection.</p><p>老师不建议选择，不好做。</p><p>思路：对于带有链接的邮件，能否先检测whois注册商来判断是否是正常域名？防止钓鱼网站？</p><p>中文的垃圾邮件有可能使用谐音字、或者把单个字拆开成多个字。</p><h3 id="多媒体内容安全-隐写与隐写分析">多媒体内容安全-隐写与隐写分析</h3><p>Steganography &amp; Steganalysis</p><p>最简单的隐写方法：LSB隐写</p><p>将私密信息转换成二进制，逐个的写入到像素最低位。</p><p>隐写分析</p><p>检测的问题也可以是二分类问题，通过<strong>机器学习</strong>的方法来做，但隐写分析更难，因为修改很微弱，需要把微弱的痕迹增强并突显。</p><p>参考：<strong>ALASKA</strong>挑战赛（隐写分析挑战赛）</p><h3 id="多媒体内容安全-取证与反取证">多媒体内容安全-取证与反取证</h3><p>Forensics &amp; Counter-Forensics</p><p>取证：给个照片，判断照片是否被修改（PS过），以及能否<strong>定位</strong>到修改的部分。视频伪造检测，比如deepfake的部分伪造；声音伪造，A的声音变成B的声音这是全局伪造。</p><p>反取证：伪造完成后，不被检测出来（抗取证）</p><h3 id="人工智能安全-这部分可以做攻击-可做防御">人工智能安全（这部分可以做攻击，可做防御）</h3><p>机器学习的方法本身是否安全？这部分关心模型本身是否安全。</p><p>（相对简单）poisoning attack：在样本训练时，这些样本就是有毒的，打着正常的标签但样本本身有问题。</p><p>（相对简单）adversarial attack：不干预训练过程，但使用一个专门设计过的手段，对某个模型的漏洞进行攻击或者绕过，让模型无法检测出来。比如，身上穿着某种图案的衣服，这个图案是专门设计过的，用来对抗摄像头的检测，让摄像头看不到人！</p><h3 id="人工智能安全-对抗样本攻击与防御">人工智能安全-对抗样本攻击与防御</h3><p>Adversarial attack &amp; defense</p><p>在一个正常熊猫图片上，添加一个干扰因素，人眼看不出什么区别，但对模型来说，会判断成其它生物（猴子）</p><h3 id="区块链及隐私保护-不要求写代码">区块链及隐私保护（不要求写代码）</h3><p>找个具体的区块链场景，把这个场景的几个典型方法搞透，以及这个场景的发展趋势搞明白</p><p>比如搞一个<strong>食品追溯</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;课程安排&quot;&gt;课程安排&lt;/h1&gt;
-&lt;p&gt;前期非常快地讲下密码学&lt;/p&gt;
-&lt;p&gt;研究生的课程会很宽泛，包含不同领域的安全。&lt;/p&gt;
-&lt;h1 id=&quot;考核&quot;&gt;考核&lt;/h1&gt;
-&lt;h2 id=&quot;考核安排&quot;&gt;考核安排&lt;/h2&gt;
-&lt;p&gt;是个完成一个课题，要交个大报告&lt;/p&gt;
-&lt;</summary>
-      
-    
-    
-    
-    <category term="研究生课程" scheme="https://blog.lthero.cn/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="研究生课程" scheme="https://blog.lthero.cn/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/"/>
-    
-    <category term="信息安全" scheme="https://blog.lthero.cn/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
