@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>lthero - 个人博客</title><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习、生活、感悟||各种技术、技巧">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>lthero - 个人博客</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习、生活、感悟||各种技术、技巧">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lthero">
 <meta property="og:url" content="https://blog.lthero.cn/page/6/index.html">
@@ -9,131 +9,13 @@
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="技术&amp;生活">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/page/6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css?v=4.14.0-b3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(()=>{
-      const saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-      
-      window.btf = {
-        saveToLocal: saveToLocal,
-        getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-          const script = document.createElement('script')
-          script.src = url
-          script.async = true
-          script.onerror = reject
-          script.onload = script.onreadystatechange = function() {
-            const loadState = this.readyState
-            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-            script.onload = script.onreadystatechange = null
-            resolve()
-          }
-
-          Object.keys(attr).forEach(key => {
-            script.setAttribute(key, attr[key])
-          })
-
-          document.head.appendChild(script)
-        }),
-
-        getCSS: (url, id = false) => new Promise((resolve, reject) => {
-          const link = document.createElement('link')
-          link.rel = 'stylesheet'
-          link.href = url
-          if (id) link.id = id
-          link.onerror = reject
-          link.onload = link.onreadystatechange = function() {
-            const loadState = this.readyState
-            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-            link.onload = link.onreadystatechange = null
-            resolve()
-          }
-          document.head.appendChild(link)
-        }),
-
-        addGlobalFn: (key, fn, name = false, parent = window) => {
-          const pjaxEnable = false
-          if (!pjaxEnable && key.startsWith('pjax')) return
-
-          const globalFn = parent.globalFn || {}
-          const keyObj = globalFn[key] || {}
-    
-          if (name && keyObj[name]) return
-    
-          name = name || Object.keys(keyObj).length
-          keyObj[name] = fn
-          globalFn[key] = keyObj
-          parent.globalFn = globalFn
-        }
-      }
-    
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-      
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })()</script><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/page/6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -144,7 +26,7 @@
     post: false
   },
   runtime: '天',
-  dateSuffix: {
+  date_suffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -154,48 +36,112 @@
   copyright: undefined,
   lightbox: 'fancybox',
   Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
   },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'lthero',
   isPost: false,
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-07-18 17:02:49'
-}</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
-  const $loadingBox = document.getElementById('loading-box')
-  const $body = document.body
-  const preloader = {
-    endLoading: () => {
-      $body.style.overflow = ''
-      $loadingBox.classList.add('loaded')
-    },
-    initLoading: () => {
-      $body.style.overflow = 'hidden'
-      $loadingBox.classList.remove('loaded')
+  postUpdate: '2024-07-18 17:09:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
     }
-  }
-
-  preloader.initLoading()
-  window.addEventListener('load',() => { preloader.endLoading() })
-
-  if (false) {
-    btf.addGlobalFn('pjaxSend', () => { preloader.initLoading() }, 'preloader_init')
-    btf.addGlobalFn('pjaxComplete', () => { preloader.endLoading() }, 'preloader_end')
-  }
-})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="lthero"><span class="site-name">lthero</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">lthero</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/12/python-download-meipai/" title="【python爬虫】美拍网图片下载"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/12/python-download-meipai/" title="【python爬虫】美拍网图片下载">【python爬虫】美拍网图片下载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-12T12:06:41.000Z" title="发表于 2022-09-12 20:06:41">2022-09-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/python/">python</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/python/">python</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a></span></div><div class="content">美拍网图片下载
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">lthero</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/12/python-download-meipai/" title="【python爬虫】美拍网图片下载"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【python爬虫】美拍网图片下载"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/12/python-download-meipai/" title="【python爬虫】美拍网图片下载">【python爬虫】美拍网图片下载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-12T12:06:41.000Z" title="发表于 2022-09-12 20:06:41">2022-09-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/python/">python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/python/">python</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/09/12/python-download-meipai/#post-comment"><span class="waline-comment-count" id="/2022/09/12/python-download-meipai/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">美拍网图片下载
 
 难度不大，网站对f12和右键有限制，但不是大问题。
 网站没有反爬，至少没有给图片加防盗链，下载的图片并不是最高清，但清晰度还可以。
@@ -210,14 +156,14 @@
 先：输入路径
 后：输入网址,如：‘https://4zipai.net/selfies/202207/139004.html’
 代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758import osimport reimport threadingimport requestsfrom bs4 import BeautifulSoupimport timeheaders = &#123;    &#x27;Cookie&#x27;:  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/07/hexo-cant-update/" title="【hexo更新到GitHub后博客内容未变】"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/x8d8gz.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/07/hexo-cant-update/" title="【hexo更新到GitHub后博客内容未变】">【hexo更新到GitHub后博客内容未变】</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-07T11:02:23.000Z" title="发表于 2022-08-07 19:02:23">2022-08-07</time></span></div><div class="content">hexo更新到GitHub后博客内容未变
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758import osimport reimport threadingimport requestsfrom bs4 import BeautifulSoupimport timeheaders = &#123;    &#x27;Cookie&#x27;:  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/07/hexo-cant-update/" title="【hexo更新到GitHub后博客内容未变】"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【hexo更新到GitHub后博客内容未变】"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/07/hexo-cant-update/" title="【hexo更新到GitHub后博客内容未变】">【hexo更新到GitHub后博客内容未变】</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-07T11:02:23.000Z" title="发表于 2022-08-07 19:02:23">2022-08-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/08/07/hexo-cant-update/#post-comment"><span class="waline-comment-count" id="/2022/08/07/hexo-cant-update/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">hexo更新到GitHub后博客内容未变
 
 问题描述：hexo d -g可以将文章上传到github的仓库，但打开网页(github-page)后，发现内容并未更新
 原因：github-page对私有仓库不免费
 解决方法：将仓库设置为公开
 
 过程：我尝试过网上各种方法，清除.deploy_git、hexo clean等，但都无效。我检查了github-pages 的更新状态，一直是 17 days ago Active。再联想到“github-page”对私有仓库不是免费的，而我虽然之前一直把项目设置为私有，但我开过github学生包，里面包含免费的私有仓库的权益，但最近学生包过期了，于是就不能使用gihub-page。
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span></div><div class="content">系统进程管理
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_26_系统进程管理"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp26/" title="【linux】学习笔记Chap_26_系统进程管理">【linux】学习笔记Chap_26_系统进程管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:15:11.000Z" title="发表于 2022-08-02 21:15:11">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/08/02/linux-learningPathChp26/#post-comment"><span class="waline-comment-count" id="/2022/08/02/linux-learningPathChp26/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">系统进程管理
 
 在Unix中，所有信息都由某个文件或程序提供，简单来说，文件只是个输入输出对象，而一个进程才是执行的对象
 
@@ -243,7 +189,7 @@
 Cpu time
 先介绍Cpu time, 以前电脑只有一个cpu，而单个cpu要面对不同进程任务，为了雨均沾，给每个进程设置一个cputime 如10毫秒。cpu从 等待执行的进程列表中选出一个进程，让其执行10毫秒，时间一到就选出下一个进程，而上一个进程就要记录当前运行的状态，以便下次再继续。
 System call
-当一个程序要执行时，要向内核(ke ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span></div><div class="content">【linux】学习笔记Chap_13_Shell_variable
+当一个程序要执行时，要向内核(ke ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_13_Shell_variable"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp13/" title="【linux】学习笔记Chap_13_Shell_variable">【linux】学习笔记Chap_13_Shell_variable</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:13:32.000Z" title="发表于 2022-08-02 21:13:32">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/08/02/linux-learningPathChp13/#post-comment"><span class="waline-comment-count" id="/2022/08/02/linux-learningPathChp13/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">【linux】学习笔记Chap_13_Shell_variable
 子进程或子shell
 在登陆后的shell可以作为父shell
 如果输入vi 命令 进入 另一个进程 则称为子进程
@@ -263,7 +209,7 @@ export 来创建一个shell + environment 变量
 或
 1lthero=smart;export lthero
 又或
-1export lthero=smart HOME=&quot;/e ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span></div><div class="content">Init_file
+1export lthero=smart HOME=&quot;/e ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_14_Init_file"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp14/" title="【linux】学习笔记Chap_14_Init_file">【linux】学习笔记Chap_14_Init_file</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:12:05.000Z" title="发表于 2022-08-02 21:12:05">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/08/02/linux-learningPathChp14/#post-comment"><span class="waline-comment-count" id="/2022/08/02/linux-learningPathChp14/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">Init_file
 
 初始文件
 
@@ -284,7 +230,7 @@ login 需要用户名密码进入 ，一般的 ssh (secure shell) 登陆都用lo
 login shell 初始化，会执行 login file 和 环境 file ，顺序如下
 
 /etc/profile 这个是全局的配置 不管哪个用户登陆都会读取
-/etc/profile里面会执行profile.d文 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span></div><div class="content">I/O
+/etc/profile里面会执行profile.d文 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_15_I/O"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp15/" title="【linux】学习笔记Chap_15_I/O">【linux】学习笔记Chap_15_I/O</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:10:46.000Z" title="发表于 2022-08-02 21:10:46">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/08/02/linux-learningPathChp15/#post-comment"><span class="waline-comment-count" id="/2022/08/02/linux-learningPathChp15/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">I/O
 标准输入
 一旦登陆 系统就设置一个标准输入（从键盘） 标准输出和标准错误到屏幕
 如果想将输出写入文件中
@@ -302,7 +248,7 @@ set -o noclobber 则生效
 可以同时读入和写入
 sort &lt; rawdata &gt;report 从rawdata 读入到sort 再将 sort 的结果 写入到report
 但读入文件和保存文件不能同一个，否则文件内容清空
- ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span></div><div class="content">VIM
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【linux】学习笔记Chap_22_强大的Vim编程"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/02/linux-learningPathChp22/" title="【linux】学习笔记Chap_22_强大的Vim编程">【linux】学习笔记Chap_22_强大的Vim编程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-02T13:08:44.000Z" title="发表于 2022-08-02 21:08:44">2022-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/linux/">linux</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/08/02/linux-learningPathChp22/#post-comment"><span class="waline-comment-count" id="/2022/08/02/linux-learningPathChp22/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">VIM
 建议全程使用英语输入法
 
 简介：vim 即 vi improved，现在已经全面替代vi，如果想用vi ，只能用vim -C 唤出vi模式。
@@ -327,7 +273,7 @@ k 向上移动光标
 $ 移动光标到行尾
 w 移动到下个单词开始
 e 移动到下个单词结尾
-b 移动到 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/29/Broadcast-Collision/" title="【Broadcast-Collision】冲突域与广播域"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/29/Broadcast-Collision/" title="【Broadcast-Collision】冲突域与广播域">【Broadcast-Collision】冲突域与广播域</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-29T06:58:31.000Z" title="发表于 2022-07-29 14:58:31">2022-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a></span></div><div class="content">冲突域与广播域
+b 移动到 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/29/Broadcast-Collision/" title="【Broadcast-Collision】冲突域与广播域"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Broadcast-Collision】冲突域与广播域"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/29/Broadcast-Collision/" title="【Broadcast-Collision】冲突域与广播域">【Broadcast-Collision】冲突域与广播域</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-29T06:58:31.000Z" title="发表于 2022-07-29 14:58:31">2022-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/07/29/Broadcast-Collision/#post-comment"><span class="waline-comment-count" id="/2022/07/29/Broadcast-Collision/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">冲突域与广播域
 定义：
 
 冲突域（物理层）：
@@ -344,11 +290,11 @@ b 移动到 ...</div></div></div><div class="recent-post-item"><div class="post_
 扩大广播域：
 ​	假如有二层交换机1号，二层交换机2号。1号交换机光纤连接10台主机，2号交换机光纤连接5台主机。1号交换机与2号交换机用光纤相连。如果1号交换机连接的10台主机中，有一台主机发出广播帧。如果1号交换机没连接2号交换机，那这个广播帧，只能由这10台中的9台收到。现在1号交换机连接了2号交换机，那这个广播帧，可以经过1号交换机转发给2号交换机，2号交换机再转发给它连接的5台主机。于是，这个广播帧可以由9+5=14台主机收到。扩大广播域
 隔离冲突域：
-​	目的就是为了“消除碰撞”。还 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/17/Web-socket-server/" title="【Web-socket】服务器程序"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/17/Web-socket-server/" title="【Web-socket】服务器程序">【Web-socket】服务器程序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-17T05:20:54.000Z" title="发表于 2022-07-17 13:20:54">2022-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/socket%E7%BC%96%E7%A8%8B/">socket编程</a></span></div><div class="content">socket编程
+​	目的就是为了“消除碰撞”。还 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/17/Web-socket-server/" title="【Web-socket】服务器程序"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Web-socket】服务器程序"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/17/Web-socket-server/" title="【Web-socket】服务器程序">【Web-socket】服务器程序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-17T05:20:54.000Z" title="发表于 2022-07-17 13:20:54">2022-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/socket%E7%BC%96%E7%A8%8B/">socket编程</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/07/17/Web-socket-server/#post-comment"><span class="waline-comment-count" id="/2022/07/17/Web-socket-server/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">socket编程
 linux服务端代码如下：
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/15/instruction-pointer/" title="instruction-pointer"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/3zexv9.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/15/instruction-pointer/" title="instruction-pointer">instruction-pointer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-15T15:17:20.000Z" title="发表于 2022-07-15 23:17:20">2022-07-15</time></span></div><div class="content">一个小程序的分析
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/15/instruction-pointer/" title="instruction-pointer"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="instruction-pointer"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/15/instruction-pointer/" title="instruction-pointer">instruction-pointer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-15T15:17:20.000Z" title="发表于 2022-07-15 23:17:20">2022-07-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2022/07/15/instruction-pointer/#post-comment"><span class="waline-comment-count" id="/2022/07/15/instruction-pointer/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">一个小程序的分析
 
-</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#content-inner">17</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg"></div></a><div class="content"><a class="title" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装">【vless-reality】安装</a><time datetime="2024-07-18T07:26:50.000Z" title="发表于 2024-07-18 15:26:50">2024-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png"></div></a><div class="content"><a class="title" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内">将Nas共享到虚拟局域网内</a><time datetime="2024-07-04T15:38:11.000Z" title="发表于 2024-07-04 23:38:11">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg"></div></a><div class="content"><a class="title" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告">国外内大模型行业分析报告</a><time datetime="2024-07-01T12:22:11.000Z" title="发表于 2024-07-01 20:22:11">2024-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu"><div style="background: https://cdn.lthero.cn/webPic/background/z8dp1v.jpg"></div></a><div class="content"><a class="title" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu">使用Sunshine软件远程控制Ubuntu</a><time datetime="2024-06-27T12:59:25.000Z" title="发表于 2024-06-27 20:59:25">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg"></div></a><div class="content"><a class="title" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程">禁用每次开机启动的Python进程</a><time datetime="2024-06-10T11:51:29.000Z" title="发表于 2024-06-10 19:51:29">2024-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#content-inner">17</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【vless-reality】安装"/></a><div class="content"><a class="title" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装">【vless-reality】安装</a><time datetime="2024-07-18T07:26:50.000Z" title="发表于 2024-07-18 15:26:50">2024-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="将Nas共享到虚拟局域网内"/></a><div class="content"><a class="title" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内">将Nas共享到虚拟局域网内</a><time datetime="2024-07-04T15:38:11.000Z" title="发表于 2024-07-04 23:38:11">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="国外内大模型行业分析报告"/></a><div class="content"><a class="title" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告">国外内大模型行业分析报告</a><time datetime="2024-07-01T12:22:11.000Z" title="发表于 2024-07-01 20:22:11">2024-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="使用Sunshine软件远程控制Ubuntu"/></a><div class="content"><a class="title" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu">使用Sunshine软件远程控制Ubuntu</a><time datetime="2024-06-27T12:59:25.000Z" title="发表于 2024-06-27 20:59:25">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="禁用每次开机启动的Python进程"/></a><div class="content"><a class="title" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程">禁用每次开机启动的Python进程</a><time datetime="2024-06-10T11:51:29.000Z" title="发表于 2024-06-10 19:51:29">2024-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
@@ -357,85 +303,122 @@ linux服务端代码如下：
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ChatGPT/"><span class="card-category-list-name">ChatGPT</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Diffusion/"><span class="card-category-list-name">Diffusion</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/"><span class="card-category-list-name">Ubuntu</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/html/"><span class="card-category-list-name">html</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">33</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/openAI/"><span class="card-category-list-name">openAI</span><span class="card-category-list-count">1</span></a></li>
             </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/408/" style="font-size: 1.1em; color: #999">408</a> <a href="/tags/AES/" style="font-size: 1.1em; color: #999">AES</a> <a href="/tags/AIGC/" style="font-size: 1.1em; color: #999">AIGC</a> <a href="/tags/BP/" style="font-size: 1.1em; color: #999">BP</a> <a href="/tags/ChatGPT/" style="font-size: 1.1em; color: #999">ChatGPT</a> <a href="/tags/Cross-Attention/" style="font-size: 1.1em; color: #999">Cross-Attention</a> <a href="/tags/DDIM/" style="font-size: 1.1em; color: #999">DDIM</a> <a href="/tags/DDPM/" style="font-size: 1.2em; color: #999da3">DDPM</a> <a href="/tags/DES/" style="font-size: 1.1em; color: #999">DES</a> <a href="/tags/DH%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2/" style="font-size: 1.1em; color: #999">DH密钥交换</a> <a href="/tags/Diffusion/" style="font-size: 1.2em; color: #999da3">Diffusion</a> <a href="/tags/Diffusion%E6%A0%B8%E5%BF%83/" style="font-size: 1.1em; color: #999">Diffusion核心</a> <a href="/tags/FFT/" style="font-size: 1.1em; color: #999">FFT</a> <a href="/tags/Frp%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">Frp配置</a> <a href="/tags/IP%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">IP安全</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/Kerberos/" style="font-size: 1.1em; color: #999">Kerberos</a> <a href="/tags/Nas/" style="font-size: 1.1em; color: #999">Nas</a> <a href="/tags/NewBing/" style="font-size: 1.1em; color: #999">NewBing</a> <a href="/tags/Openwrt/" style="font-size: 1.1em; color: #999">Openwrt</a> <a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 1.1em; color: #999">RSA加密</a> <a href="/tags/RustDesk/" style="font-size: 1.1em; color: #999">RustDesk</a> <a href="/tags/SSH/" style="font-size: 1.1em; color: #999">SSH</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/StableDiffusion/" style="font-size: 1.1em; color: #999">StableDiffusion</a> <a href="/tags/TCP/" style="font-size: 1.1em; color: #999">TCP</a> <a href="/tags/TLS/" style="font-size: 1.1em; color: #999">TLS</a> <a href="/tags/hexo/" style="font-size: 1.3em; color: #99a1ac">hexo</a> <a href="/tags/linux/" style="font-size: 1.4em; color: #99a5b6">linux</a> <a href="/tags/openAI/" style="font-size: 1.1em; color: #999">openAI</a> <a href="/tags/proxychains/" style="font-size: 1.1em; color: #999">proxychains</a> <a href="/tags/python/" style="font-size: 1.5em; color: #99a9bf">python</a> <a href="/tags/shell/" style="font-size: 1.1em; color: #999">shell</a> <a href="/tags/socket%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">socket编程</a> <a href="/tags/spotify/" style="font-size: 1.1em; color: #999">spotify</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/systemctl%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">systemctl管理</a> <a href="/tags/tools/" style="font-size: 1.1em; color: #999">tools</a> <a href="/tags/v2ray/" style="font-size: 1.2em; color: #999da3">v2ray</a> <a href="/tags/watermark/" style="font-size: 1.2em; color: #999da3">watermark</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">169</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">378.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-18T09:02:47.630Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.14.0-b3"></script><script src="/js/main.js?v=4.14.0-b3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
-    window.typed = new Typed('#subtitle', Object.assign({
-      strings: str,
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">169</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">378.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-18T09:09:09.904Z"></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(() => {
+  function loadWaline () {
+    function initWaline () {
+      let initData = {
+        el: null,
+        serverURL: 'vercel-psi-seven.vercel.app',
+        comment: true
+      }
+      const waline = Waline.init(initData)
+    }
+
+    if (typeof Waline === 'function') initWaline() 
+    else getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
+  }
+
+  window.pjax ? loadWaline() : window.addEventListener('load', loadWaline)
+})()</script><script>function subtitleType () {
+  if (false) { 
+    window.typed = new Typed("#subtitle", {
+      strings: ["Never put off till tomorrow what can be done today"],
       startDelay: 300,
       typeSpeed: 150,
-      loop: true,
-      backSpeed: 50,
-    }, ))
-  },
-  run: (subtitleType) => {
-    if (false) {
-      if (typeof Typed === 'function') {
-        subtitleType()
-      } else {
-        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      loop: false,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = 'Never put off till tomorrow what can be done today'
+  }
+}
+
+if (false) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
       }
-    } else {
-      subtitleType()
     }
   }
-}
-btf.addGlobalFn('pjaxSend', () => { typed.destroy() }, 'typedDestroy')
-</script><script>function subtitleType () {
-  if (false) {
-    typedJSFn.init(["Never put off till tomorrow what can be done today"])
-  } else {
-    document.getElementById("subtitle").textContent = "Never put off till tomorrow what can be done today"
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
   }
-}
-typedJSFn.run(subtitleType)</script><script>(() => {
-  const runMermaid = (ele) => {
-    window.loadMermaid = true
-    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
-
-    Array.from(ele).forEach((item, index) => {
-      const mermaidSrc = item.firstElementChild
-      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
-      const mermaidID = 'mermaid-' + index
-      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
-
-      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
-
-      const renderV10 = () => {
-        renderFn.then(({svg}) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svg)
-        })
-      }
-
-      const renderV9 = svg => {
-        mermaidSrc.insertAdjacentHTML('afterend', svg)
-      }
-
-      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
-    })
-  }
-
-  const codeToMermaid = () => {
-    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
-    if (codeMermaidEle.length === 0) return
-    
-    codeMermaidEle.forEach(ele => {
-      const newEle = document.createElement('div')
-      newEle.className = 'mermaid-wrap'
-      newEle.innerHTML = `<pre class="mermaid-src" hidden>${ele.textContent}</pre>`
-      ele.parentNode.replaceWith(newEle)
-    })
-  }
-
-  const loadMermaid = () => {
-    if (false) codeToMermaid()
-    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
-    if ($mermaid.length === 0) return
-
-    const runMermaidFn = () => runMermaid($mermaid)
-    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
-    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js').then(runMermaidFn)
-  }
-  
-  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
-  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.14.0-b3"></script></div></div></body></html>
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

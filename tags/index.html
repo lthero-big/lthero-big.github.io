@@ -1,141 +1,23 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>标签 | lthero</title><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习、生活、感悟||各种技术、技巧">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>标签 | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习、生活、感悟||各种技术、技巧">
 <meta property="og:type" content="website">
 <meta property="og:title" content="标签">
 <meta property="og:url" content="https://blog.lthero.cn/tags/index.html">
 <meta property="og:site_name" content="lthero">
 <meta property="og:description" content="记录学习、生活、感悟||各种技术、技巧">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/3zexv9.jpg">
 <meta property="article:published_time" content="2022-05-27T05:08:31.000Z">
 <meta property="article:modified_time" content="2022-05-31T11:46:52.359Z">
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="技术&amp;生活">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/tags/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css?v=4.14.0-b3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(()=>{
-      const saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-      
-      window.btf = {
-        saveToLocal: saveToLocal,
-        getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-          const script = document.createElement('script')
-          script.src = url
-          script.async = true
-          script.onerror = reject
-          script.onload = script.onreadystatechange = function() {
-            const loadState = this.readyState
-            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-            script.onload = script.onreadystatechange = null
-            resolve()
-          }
-
-          Object.keys(attr).forEach(key => {
-            script.setAttribute(key, attr[key])
-          })
-
-          document.head.appendChild(script)
-        }),
-
-        getCSS: (url, id = false) => new Promise((resolve, reject) => {
-          const link = document.createElement('link')
-          link.rel = 'stylesheet'
-          link.href = url
-          if (id) link.id = id
-          link.onerror = reject
-          link.onload = link.onreadystatechange = function() {
-            const loadState = this.readyState
-            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-            link.onload = link.onreadystatechange = null
-            resolve()
-          }
-          document.head.appendChild(link)
-        }),
-
-        addGlobalFn: (key, fn, name = false, parent = window) => {
-          const pjaxEnable = false
-          if (!pjaxEnable && key.startsWith('pjax')) return
-
-          const globalFn = parent.globalFn || {}
-          const keyObj = globalFn[key] || {}
-    
-          if (name && keyObj[name]) return
-    
-          name = name || Object.keys(keyObj).length
-          keyObj[name] = fn
-          globalFn[key] = keyObj
-          parent.globalFn = globalFn
-        }
-      }
-    
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-      
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })()</script><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/3zexv9.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/tags/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -146,7 +28,7 @@
     post: false
   },
   runtime: '天',
-  dateSuffix: {
+  date_suffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -156,18 +38,15 @@
   copyright: undefined,
   lightbox: 'fancybox',
   Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
   },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '标签',
   isPost: false,
@@ -175,29 +54,96 @@
   isHighlightShrink: false,
   isToc: false,
   postUpdate: '2022-05-31 19:46:52'
-}</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
-  const $loadingBox = document.getElementById('loading-box')
-  const $body = document.body
-  const preloader = {
-    endLoading: () => {
-      $body.style.overflow = ''
-      $loadingBox.classList.add('loaded')
-    },
-    initLoading: () => {
-      $body.style.overflow = 'hidden'
-      $loadingBox.classList.remove('loaded')
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
     }
-  }
-
-  preloader.initLoading()
-  window.addEventListener('load',() => { preloader.endLoading() })
-
-  if (false) {
-    btf.addGlobalFn('pjaxSend', () => { preloader.initLoading() }, 'preloader_init')
-    btf.addGlobalFn('pjaxComplete', () => { preloader.endLoading() }, 'preloader_end')
-  }
-})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/img/wallhaven-wy2ewp.png')"><nav id="nav"><span id="blog-info"><a href="/" title="lthero"><span class="site-name">lthero</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">标签</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list is-center"><a href="/tags/%E8%87%AA%E8%A8%80%E8%87%AA%E8%AF%AD/" style="font-size: 1.2em; color: rgb(152, 67, 132)">自言自语</a><a href="/tags/python/" style="font-size: 1.99em; color: rgb(14, 166, 177)">python</a><a href="/tags/%E7%BD%91%E7%AB%99%E6%B5%8B%E8%AF%95/" style="font-size: 1.2em; color: rgb(59, 5, 22)">网站测试</a><a href="/tags/linux/" style="font-size: 1.88em; color: rgb(127, 87, 90)">linux</a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.65em; color: rgb(173, 170, 81)">操作系统</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.31em; color: rgb(183, 133, 125)">算法</a><a href="/tags/%E5%88%86%E6%94%AF%E7%95%8C%E9%99%90%E7%AE%97%E6%B3%95/" style="font-size: 1.2em; color: rgb(78, 72, 47)">分支界限算法</a><a href="/tags/%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/" style="font-size: 1.2em; color: rgb(87, 1, 183)">自动挂载</a><a href="/tags/shell/" style="font-size: 1.2em; color: rgb(185, 55, 21)">shell</a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 1.2em; color: rgb(150, 99, 68)">自动化</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.43em; color: rgb(79, 42, 172)">机器学习</a><a href="/tags/BP/" style="font-size: 1.2em; color: rgb(88, 109, 57)">BP</a><a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/" style="font-size: 1.2em; color: rgb(47, 55, 185)">贝叶斯</a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.43em; color: rgb(73, 11, 67)">网络</a><a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 1.2em; color: rgb(50, 72, 147)">考研</a><a href="/tags/408/" style="font-size: 1.2em; color: rgb(161, 26, 105)">408</a><a href="/tags/Diffusion/" style="font-size: 1.31em; color: rgb(159, 34, 51)">Diffusion</a><a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 1.2em; color: rgb(57, 159, 76)">分享</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" style="font-size: 1.2em; color: rgb(137, 117, 155)">计算机书籍</a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 1.76em; color: rgb(169, 20, 118)">编译原理</a><a href="/tags/Cross-Attention/" style="font-size: 1.2em; color: rgb(70, 172, 128)">Cross-Attention</a><a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 1.76em; color: rgb(113, 132, 65)">密码学</a><a href="/tags/Kerberos/" style="font-size: 1.2em; color: rgb(179, 70, 177)">Kerberos</a><a href="/tags/%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81/" style="font-size: 1.2em; color: rgb(26, 90, 144)">用户认证</a><a href="/tags/openAI/" style="font-size: 1.2em; color: rgb(111, 136, 165)">openAI</a><a href="/tags/NewBing/" style="font-size: 1.2em; color: rgb(114, 86, 65)">NewBing</a><a href="/tags/AES/" style="font-size: 1.2em; color: rgb(2, 156, 39)">AES</a><a href="/tags/DES/" style="font-size: 1.2em; color: rgb(198, 1, 108)">DES</a><a href="/tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" style="font-size: 1.2em; color: rgb(40, 74, 130)">数字签名</a><a href="/tags/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E5%88%86%E5%8F%91/" style="font-size: 1.2em; color: rgb(18, 47, 24)">密钥管理分发</a><a href="/tags/IP%E5%AE%89%E5%85%A8/" style="font-size: 1.2em; color: rgb(102, 52, 180)">IP安全</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7/" style="font-size: 1.2em; color: rgb(17, 27, 175)">数据完整性</a><a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 1.2em; color: rgb(173, 174, 167)">RSA加密</a><a href="/tags/DH%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2/" style="font-size: 1.2em; color: rgb(98, 165, 105)">DH密钥交换</a><a href="/tags/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E5%BE%A1/" style="font-size: 1.2em; color: rgb(123, 56, 166)">中间人攻击与防御</a><a href="/tags/SSH/" style="font-size: 1.2em; color: rgb(59, 100, 28)">SSH</a><a href="/tags/TLS/" style="font-size: 1.2em; color: rgb(108, 123, 101)">TLS</a><a href="/tags/%E9%A5%A5%E8%8D%92/" style="font-size: 1.2em; color: rgb(72, 112, 112)">饥荒</a><a href="/tags/DDIM/" style="font-size: 1.2em; color: rgb(66, 83, 172)">DDIM</a><a href="/tags/DDPM/" style="font-size: 1.31em; color: rgb(64, 185, 193)">DDPM</a><a href="/tags/Frp%E9%85%8D%E7%BD%AE/" style="font-size: 1.2em; color: rgb(105, 122, 164)">Frp配置</a><a href="/tags/%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%9B%98/" style="font-size: 1.2em; color: rgb(29, 67, 121)">个人云盘</a><a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%A4%9A%E6%8B%A8/" style="font-size: 1.2em; color: rgb(61, 123, 140)">校园网多拨</a><a href="/tags/%E6%8A%98%E8%85%BE/" style="font-size: 2.1em; color: rgb(79, 170, 0)">折腾</a><a href="/tags/watermark/" style="font-size: 1.31em; color: rgb(179, 26, 38)">watermark</a><a href="/tags/ChatGPT/" style="font-size: 1.2em; color: rgb(167, 97, 164)">ChatGPT</a><a href="/tags/RustDesk/" style="font-size: 1.2em; color: rgb(142, 125, 32)">RustDesk</a><a href="/tags/Openwrt/" style="font-size: 1.2em; color: rgb(64, 113, 186)">Openwrt</a><a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/" style="font-size: 1.2em; color: rgb(15, 106, 109)">研究生课程</a><a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" style="font-size: 1.2em; color: rgb(117, 83, 111)">信息安全</a><a href="/tags/%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" style="font-size: 1.2em; color: rgb(40, 143, 94)">英语口语</a><a href="/tags/%E9%A9%AC%E5%85%8B%E6%80%9D/" style="font-size: 1.2em; color: rgb(145, 46, 114)">马克思</a><a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 1.2em; color: rgb(74, 15, 74)">电影</a><a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 1.2em; color: rgb(197, 162, 79)">汇编</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.31em; color: rgb(113, 167, 160)">生活</a><a href="/tags/spotify/" style="font-size: 1.2em; color: rgb(13, 37, 72)">spotify</a><a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 1.2em; color: rgb(149, 75, 38)">网易云音乐</a><a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 1.31em; color: rgb(23, 62, 168)">壁纸</a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.54em; color: rgb(107, 96, 51)">爬虫</a><a href="/tags/Nas/" style="font-size: 1.2em; color: rgb(115, 51, 90)">Nas</a><a href="/tags/Diffusion%E6%A0%B8%E5%BF%83/" style="font-size: 1.2em; color: rgb(139, 62, 91)">Diffusion核心</a><a href="/tags/SVM/" style="font-size: 1.2em; color: rgb(190, 141, 193)">SVM</a><a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" style="font-size: 1.2em; color: rgb(3, 141, 9)">碎碎念</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.2em; color: rgb(11, 89, 98)">计算机网络</a><a href="/tags/TCP/" style="font-size: 1.2em; color: rgb(199, 51, 32)">TCP</a><a href="/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 1.2em; color: rgb(152, 16, 200)">组成原理</a><a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" style="font-size: 1.2em; color: rgb(15, 170, 200)">存储器</a><a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91/" style="font-size: 1.2em; color: rgb(153, 187, 115)">网易云</a><a href="/tags/JavaScript/" style="font-size: 1.2em; color: rgb(150, 200, 146)">JavaScript</a><a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96%E6%9E%B6%E6%9E%84/" style="font-size: 1.2em; color: rgb(152, 28, 105)">虚拟化架构</a><a href="/tags/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1/" style="font-size: 1.2em; color: rgb(131, 175, 176)">自动打卡</a><a href="/tags/%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0/" style="font-size: 1.2em; color: rgb(110, 136, 171)">青年大学习</a><a href="/tags/socket%E7%BC%96%E7%A8%8B/" style="font-size: 1.2em; color: rgb(109, 163, 42)">socket编程</a><a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.2em; color: rgb(101, 30, 172)">动态规划</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.43em; color: rgb(106, 10, 79)">博客</a><a href="/tags/hexo/" style="font-size: 1.54em; color: rgb(186, 59, 7)">hexo</a><a href="/tags/%E7%99%BE%E5%AE%9D%E7%AE%B1/" style="font-size: 1.2em; color: rgb(30, 58, 61)">百宝箱</a><a href="/tags/tools/" style="font-size: 1.2em; color: rgb(171, 51, 196)">tools</a><a href="/tags/systemctl%E7%AE%A1%E7%90%86/" style="font-size: 1.2em; color: rgb(3, 11, 185)">systemctl管理</a><a href="/tags/%E9%82%AE%E7%AE%B1%E6%8E%A5%E5%8F%A3/" style="font-size: 1.2em; color: rgb(137, 168, 82)">邮箱接口</a><a href="/tags/%E4%BA%8C%E6%AC%A1%E5%85%83/" style="font-size: 1.2em; color: rgb(25, 145, 169)">二次元</a><a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.31em; color: rgb(87, 140, 146)">树莓派</a><a href="/tags/ssh/" style="font-size: 1.2em; color: rgb(2, 172, 52)">ssh</a><a href="/tags/v2ray/" style="font-size: 1.31em; color: rgb(23, 78, 173)">v2ray</a><a href="/tags/AIGC/" style="font-size: 1.2em; color: rgb(111, 154, 64)">AIGC</a><a href="/tags/StableDiffusion/" style="font-size: 1.2em; color: rgb(192, 192, 104)">StableDiffusion</a><a href="/tags/proxychains/" style="font-size: 1.2em; color: rgb(141, 82, 79)">proxychains</a><a href="/tags/%E5%8D%B7%E7%A7%AF/" style="font-size: 1.2em; color: rgb(104, 94, 159)">卷积</a><a href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" style="font-size: 1.2em; color: rgb(191, 32, 116)">傅里叶变换</a><a href="/tags/%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6/" style="font-size: 1.2em; color: rgb(146, 41, 162)">快速傅里叶</a><a href="/tags/FFT/" style="font-size: 1.2em; color: rgb(59, 90, 137)">FFT</a><a href="/tags/%E6%B5%81%E5%AA%92%E4%BD%93/" style="font-size: 1.2em; color: rgb(54, 198, 186)">流媒体</a><a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 1.2em; color: rgb(158, 192, 120)">代理</a><a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.2em; color: rgb(110, 142, 54)">运维</a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.2em; color: rgb(104, 156, 64)">大模型</a></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg"></div></a><div class="content"><a class="title" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装">【vless-reality】安装</a><time datetime="2024-07-18T07:26:50.000Z" title="发表于 2024-07-18 15:26:50">2024-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png"></div></a><div class="content"><a class="title" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内">将Nas共享到虚拟局域网内</a><time datetime="2024-07-04T15:38:11.000Z" title="发表于 2024-07-04 23:38:11">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg"></div></a><div class="content"><a class="title" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告">国外内大模型行业分析报告</a><time datetime="2024-07-01T12:22:11.000Z" title="发表于 2024-07-01 20:22:11">2024-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu"><div style="background: https://cdn.lthero.cn/webPic/background/z8dp1v.jpg"></div></a><div class="content"><a class="title" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu">使用Sunshine软件远程控制Ubuntu</a><time datetime="2024-06-27T12:59:25.000Z" title="发表于 2024-06-27 20:59:25">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg"></div></a><div class="content"><a class="title" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程">禁用每次开机启动的Python进程</a><time datetime="2024-06-10T11:51:29.000Z" title="发表于 2024-06-10 19:51:29">2024-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/img/wallhaven-wy2ewp.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">标签</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list is-center"><a href="/tags/%E8%87%AA%E8%A8%80%E8%87%AA%E8%AF%AD/" style="font-size: 1.2em; color: rgb(15, 18, 19)">自言自语</a><a href="/tags/python/" style="font-size: 1.99em; color: rgb(101, 184, 25)">python</a><a href="/tags/%E7%BD%91%E7%AB%99%E6%B5%8B%E8%AF%95/" style="font-size: 1.2em; color: rgb(26, 142, 58)">网站测试</a><a href="/tags/linux/" style="font-size: 1.88em; color: rgb(181, 146, 171)">linux</a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.65em; color: rgb(9, 63, 84)">操作系统</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.31em; color: rgb(136, 4, 76)">算法</a><a href="/tags/%E5%88%86%E6%94%AF%E7%95%8C%E9%99%90%E7%AE%97%E6%B3%95/" style="font-size: 1.2em; color: rgb(30, 136, 98)">分支界限算法</a><a href="/tags/%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/" style="font-size: 1.2em; color: rgb(107, 115, 158)">自动挂载</a><a href="/tags/shell/" style="font-size: 1.2em; color: rgb(40, 109, 74)">shell</a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 1.2em; color: rgb(149, 161, 199)">自动化</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.43em; color: rgb(100, 169, 113)">机器学习</a><a href="/tags/BP/" style="font-size: 1.2em; color: rgb(163, 190, 85)">BP</a><a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/" style="font-size: 1.2em; color: rgb(8, 115, 95)">贝叶斯</a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.43em; color: rgb(179, 173, 177)">网络</a><a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 1.2em; color: rgb(123, 101, 36)">考研</a><a href="/tags/408/" style="font-size: 1.2em; color: rgb(51, 75, 32)">408</a><a href="/tags/Diffusion/" style="font-size: 1.31em; color: rgb(92, 165, 20)">Diffusion</a><a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 1.2em; color: rgb(179, 53, 0)">分享</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" style="font-size: 1.2em; color: rgb(110, 35, 42)">计算机书籍</a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 1.76em; color: rgb(157, 0, 188)">编译原理</a><a href="/tags/Cross-Attention/" style="font-size: 1.2em; color: rgb(183, 199, 100)">Cross-Attention</a><a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 1.76em; color: rgb(68, 24, 189)">密码学</a><a href="/tags/Kerberos/" style="font-size: 1.2em; color: rgb(164, 88, 11)">Kerberos</a><a href="/tags/%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81/" style="font-size: 1.2em; color: rgb(154, 113, 191)">用户认证</a><a href="/tags/openAI/" style="font-size: 1.2em; color: rgb(82, 105, 198)">openAI</a><a href="/tags/NewBing/" style="font-size: 1.2em; color: rgb(25, 96, 87)">NewBing</a><a href="/tags/AES/" style="font-size: 1.2em; color: rgb(75, 116, 18)">AES</a><a href="/tags/DES/" style="font-size: 1.2em; color: rgb(182, 96, 151)">DES</a><a href="/tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" style="font-size: 1.2em; color: rgb(81, 30, 135)">数字签名</a><a href="/tags/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E5%88%86%E5%8F%91/" style="font-size: 1.2em; color: rgb(105, 22, 75)">密钥管理分发</a><a href="/tags/IP%E5%AE%89%E5%85%A8/" style="font-size: 1.2em; color: rgb(76, 43, 93)">IP安全</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7/" style="font-size: 1.2em; color: rgb(3, 194, 142)">数据完整性</a><a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 1.2em; color: rgb(72, 100, 90)">RSA加密</a><a href="/tags/DH%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2/" style="font-size: 1.2em; color: rgb(130, 9, 31)">DH密钥交换</a><a href="/tags/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E5%BE%A1/" style="font-size: 1.2em; color: rgb(36, 141, 121)">中间人攻击与防御</a><a href="/tags/SSH/" style="font-size: 1.2em; color: rgb(183, 23, 194)">SSH</a><a href="/tags/TLS/" style="font-size: 1.2em; color: rgb(167, 86, 133)">TLS</a><a href="/tags/%E9%A5%A5%E8%8D%92/" style="font-size: 1.2em; color: rgb(134, 110, 166)">饥荒</a><a href="/tags/DDIM/" style="font-size: 1.2em; color: rgb(45, 96, 130)">DDIM</a><a href="/tags/DDPM/" style="font-size: 1.31em; color: rgb(10, 5, 187)">DDPM</a><a href="/tags/Frp%E9%85%8D%E7%BD%AE/" style="font-size: 1.2em; color: rgb(52, 126, 90)">Frp配置</a><a href="/tags/%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%9B%98/" style="font-size: 1.2em; color: rgb(109, 192, 177)">个人云盘</a><a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%A4%9A%E6%8B%A8/" style="font-size: 1.2em; color: rgb(191, 187, 180)">校园网多拨</a><a href="/tags/%E6%8A%98%E8%85%BE/" style="font-size: 2.1em; color: rgb(31, 189, 55)">折腾</a><a href="/tags/watermark/" style="font-size: 1.31em; color: rgb(45, 149, 14)">watermark</a><a href="/tags/ChatGPT/" style="font-size: 1.2em; color: rgb(195, 40, 161)">ChatGPT</a><a href="/tags/RustDesk/" style="font-size: 1.2em; color: rgb(119, 147, 14)">RustDesk</a><a href="/tags/Openwrt/" style="font-size: 1.2em; color: rgb(101, 164, 55)">Openwrt</a><a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%AF%BE%E7%A8%8B/" style="font-size: 1.2em; color: rgb(56, 31, 38)">研究生课程</a><a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" style="font-size: 1.2em; color: rgb(103, 172, 177)">信息安全</a><a href="/tags/%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" style="font-size: 1.2em; color: rgb(132, 112, 88)">英语口语</a><a href="/tags/%E9%A9%AC%E5%85%8B%E6%80%9D/" style="font-size: 1.2em; color: rgb(138, 89, 137)">马克思</a><a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 1.2em; color: rgb(47, 60, 13)">电影</a><a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 1.2em; color: rgb(16, 20, 22)">汇编</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.31em; color: rgb(1, 84, 16)">生活</a><a href="/tags/spotify/" style="font-size: 1.2em; color: rgb(187, 192, 104)">spotify</a><a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 1.2em; color: rgb(163, 76, 47)">网易云音乐</a><a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 1.31em; color: rgb(95, 163, 7)">壁纸</a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.54em; color: rgb(26, 22, 30)">爬虫</a><a href="/tags/Nas/" style="font-size: 1.2em; color: rgb(121, 47, 199)">Nas</a><a href="/tags/Diffusion%E6%A0%B8%E5%BF%83/" style="font-size: 1.2em; color: rgb(36, 175, 197)">Diffusion核心</a><a href="/tags/SVM/" style="font-size: 1.2em; color: rgb(144, 148, 29)">SVM</a><a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" style="font-size: 1.2em; color: rgb(166, 163, 9)">碎碎念</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.2em; color: rgb(7, 61, 87)">计算机网络</a><a href="/tags/TCP/" style="font-size: 1.2em; color: rgb(22, 146, 109)">TCP</a><a href="/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 1.2em; color: rgb(8, 117, 22)">组成原理</a><a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" style="font-size: 1.2em; color: rgb(6, 98, 186)">存储器</a><a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91/" style="font-size: 1.2em; color: rgb(75, 26, 82)">网易云</a><a href="/tags/JavaScript/" style="font-size: 1.2em; color: rgb(13, 53, 125)">JavaScript</a><a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96%E6%9E%B6%E6%9E%84/" style="font-size: 1.2em; color: rgb(49, 133, 6)">虚拟化架构</a><a href="/tags/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1/" style="font-size: 1.2em; color: rgb(0, 121, 21)">自动打卡</a><a href="/tags/%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0/" style="font-size: 1.2em; color: rgb(3, 49, 42)">青年大学习</a><a href="/tags/socket%E7%BC%96%E7%A8%8B/" style="font-size: 1.2em; color: rgb(0, 58, 97)">socket编程</a><a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.2em; color: rgb(102, 92, 47)">动态规划</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.43em; color: rgb(152, 17, 157)">博客</a><a href="/tags/hexo/" style="font-size: 1.54em; color: rgb(44, 115, 113)">hexo</a><a href="/tags/%E7%99%BE%E5%AE%9D%E7%AE%B1/" style="font-size: 1.2em; color: rgb(40, 142, 54)">百宝箱</a><a href="/tags/tools/" style="font-size: 1.2em; color: rgb(137, 12, 163)">tools</a><a href="/tags/systemctl%E7%AE%A1%E7%90%86/" style="font-size: 1.2em; color: rgb(174, 14, 89)">systemctl管理</a><a href="/tags/%E9%82%AE%E7%AE%B1%E6%8E%A5%E5%8F%A3/" style="font-size: 1.2em; color: rgb(2, 151, 68)">邮箱接口</a><a href="/tags/%E4%BA%8C%E6%AC%A1%E5%85%83/" style="font-size: 1.2em; color: rgb(115, 187, 180)">二次元</a><a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.31em; color: rgb(163, 40, 24)">树莓派</a><a href="/tags/ssh/" style="font-size: 1.2em; color: rgb(108, 188, 170)">ssh</a><a href="/tags/v2ray/" style="font-size: 1.31em; color: rgb(65, 198, 123)">v2ray</a><a href="/tags/AIGC/" style="font-size: 1.2em; color: rgb(164, 156, 70)">AIGC</a><a href="/tags/StableDiffusion/" style="font-size: 1.2em; color: rgb(147, 103, 198)">StableDiffusion</a><a href="/tags/proxychains/" style="font-size: 1.2em; color: rgb(103, 165, 46)">proxychains</a><a href="/tags/%E5%8D%B7%E7%A7%AF/" style="font-size: 1.2em; color: rgb(200, 32, 125)">卷积</a><a href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" style="font-size: 1.2em; color: rgb(88, 27, 141)">傅里叶变换</a><a href="/tags/%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6/" style="font-size: 1.2em; color: rgb(189, 164, 178)">快速傅里叶</a><a href="/tags/FFT/" style="font-size: 1.2em; color: rgb(116, 101, 59)">FFT</a><a href="/tags/%E6%B5%81%E5%AA%92%E4%BD%93/" style="font-size: 1.2em; color: rgb(150, 51, 55)">流媒体</a><a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 1.2em; color: rgb(54, 169, 92)">代理</a><a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.2em; color: rgb(56, 73, 197)">运维</a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.2em; color: rgb(67, 82, 41)">大模型</a></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【vless-reality】安装"/></a><div class="content"><a class="title" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装">【vless-reality】安装</a><time datetime="2024-07-18T07:26:50.000Z" title="发表于 2024-07-18 15:26:50">2024-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="将Nas共享到虚拟局域网内"/></a><div class="content"><a class="title" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内">将Nas共享到虚拟局域网内</a><time datetime="2024-07-04T15:38:11.000Z" title="发表于 2024-07-04 23:38:11">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="国外内大模型行业分析报告"/></a><div class="content"><a class="title" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告">国外内大模型行业分析报告</a><time datetime="2024-07-01T12:22:11.000Z" title="发表于 2024-07-01 20:22:11">2024-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="使用Sunshine软件远程控制Ubuntu"/></a><div class="content"><a class="title" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu">使用Sunshine软件远程控制Ubuntu</a><time datetime="2024-06-27T12:59:25.000Z" title="发表于 2024-06-27 20:59:25">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="禁用每次开机启动的Python进程"/></a><div class="content"><a class="title" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程">禁用每次开机启动的Python进程</a><time datetime="2024-06-10T11:51:29.000Z" title="发表于 2024-06-10 19:51:29">2024-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
@@ -206,55 +152,84 @@
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ChatGPT/"><span class="card-category-list-name">ChatGPT</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Diffusion/"><span class="card-category-list-name">Diffusion</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/"><span class="card-category-list-name">Ubuntu</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/html/"><span class="card-category-list-name">html</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">33</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/openAI/"><span class="card-category-list-name">openAI</span><span class="card-category-list-count">1</span></a></li>
             </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/408/" style="font-size: 1.1em; color: #999">408</a> <a href="/tags/AES/" style="font-size: 1.1em; color: #999">AES</a> <a href="/tags/AIGC/" style="font-size: 1.1em; color: #999">AIGC</a> <a href="/tags/BP/" style="font-size: 1.1em; color: #999">BP</a> <a href="/tags/ChatGPT/" style="font-size: 1.1em; color: #999">ChatGPT</a> <a href="/tags/Cross-Attention/" style="font-size: 1.1em; color: #999">Cross-Attention</a> <a href="/tags/DDIM/" style="font-size: 1.1em; color: #999">DDIM</a> <a href="/tags/DDPM/" style="font-size: 1.2em; color: #999da3">DDPM</a> <a href="/tags/DES/" style="font-size: 1.1em; color: #999">DES</a> <a href="/tags/DH%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2/" style="font-size: 1.1em; color: #999">DH密钥交换</a> <a href="/tags/Diffusion/" style="font-size: 1.2em; color: #999da3">Diffusion</a> <a href="/tags/Diffusion%E6%A0%B8%E5%BF%83/" style="font-size: 1.1em; color: #999">Diffusion核心</a> <a href="/tags/FFT/" style="font-size: 1.1em; color: #999">FFT</a> <a href="/tags/Frp%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">Frp配置</a> <a href="/tags/IP%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">IP安全</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/Kerberos/" style="font-size: 1.1em; color: #999">Kerberos</a> <a href="/tags/Nas/" style="font-size: 1.1em; color: #999">Nas</a> <a href="/tags/NewBing/" style="font-size: 1.1em; color: #999">NewBing</a> <a href="/tags/Openwrt/" style="font-size: 1.1em; color: #999">Openwrt</a> <a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 1.1em; color: #999">RSA加密</a> <a href="/tags/RustDesk/" style="font-size: 1.1em; color: #999">RustDesk</a> <a href="/tags/SSH/" style="font-size: 1.1em; color: #999">SSH</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/StableDiffusion/" style="font-size: 1.1em; color: #999">StableDiffusion</a> <a href="/tags/TCP/" style="font-size: 1.1em; color: #999">TCP</a> <a href="/tags/TLS/" style="font-size: 1.1em; color: #999">TLS</a> <a href="/tags/hexo/" style="font-size: 1.3em; color: #99a1ac">hexo</a> <a href="/tags/linux/" style="font-size: 1.4em; color: #99a5b6">linux</a> <a href="/tags/openAI/" style="font-size: 1.1em; color: #999">openAI</a> <a href="/tags/proxychains/" style="font-size: 1.1em; color: #999">proxychains</a> <a href="/tags/python/" style="font-size: 1.5em; color: #99a9bf">python</a> <a href="/tags/shell/" style="font-size: 1.1em; color: #999">shell</a> <a href="/tags/socket%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">socket编程</a> <a href="/tags/spotify/" style="font-size: 1.1em; color: #999">spotify</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/systemctl%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">systemctl管理</a> <a href="/tags/tools/" style="font-size: 1.1em; color: #999">tools</a> <a href="/tags/v2ray/" style="font-size: 1.2em; color: #999da3">v2ray</a> <a href="/tags/watermark/" style="font-size: 1.2em; color: #999da3">watermark</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">169</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">378.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-18T09:02:47.630Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.14.0-b3"></script><script src="/js/main.js?v=4.14.0-b3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
-  const runMermaid = (ele) => {
-    window.loadMermaid = true
-    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">169</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">378.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-18T09:09:09.904Z"></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
 
-    Array.from(ele).forEach((item, index) => {
-      const mermaidSrc = item.firstElementChild
-      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
-      const mermaidID = 'mermaid-' + index
-      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
-
-      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
-
-      const renderV10 = () => {
-        renderFn.then(({svg}) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svg)
-        })
-      }
-
-      const renderV9 = svg => {
-        mermaidSrc.insertAdjacentHTML('afterend', svg)
-      }
-
-      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
-    })
   }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-  const codeToMermaid = () => {
-    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
-    if (codeMermaidEle.length === 0) return
-    
-    codeMermaidEle.forEach(ele => {
-      const newEle = document.createElement('div')
-      newEle.className = 'mermaid-wrap'
-      newEle.innerHTML = `<pre class="mermaid-src" hidden>${ele.textContent}</pre>`
-      ele.parentNode.replaceWith(newEle)
-    })
-  }
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
 
-  const loadMermaid = () => {
-    if (false) codeToMermaid()
-    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
-    if ($mermaid.length === 0) return
+document.addEventListener('pjax:send', function () {
 
-    const runMermaidFn = () => runMermaid($mermaid)
-    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
-    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js').then(runMermaidFn)
-  }
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
   
-  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
-  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.14.0-b3"></script></div></div></body></html>
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
