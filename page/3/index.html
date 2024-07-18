@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>lthero - 个人博客</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习、生活、感悟||各种技术、技巧">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>lthero - 个人博客</title><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习、生活、感悟||各种技术、技巧">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lthero">
 <meta property="og:url" content="https://blog.lthero.cn/page/3/index.html">
@@ -9,13 +9,131 @@
 <meta property="article:author" content="lthero">
 <meta property="article:tag" content="技术&amp;生活">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/page/3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/css/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css?v=4.14.0-b3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(()=>{
+      const saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+      
+      window.btf = {
+        saveToLocal: saveToLocal,
+        getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = url
+          script.async = true
+          script.onerror = reject
+          script.onload = script.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            script.onload = script.onreadystatechange = null
+            resolve()
+          }
+
+          Object.keys(attr).forEach(key => {
+            script.setAttribute(key, attr[key])
+          })
+
+          document.head.appendChild(script)
+        }),
+
+        getCSS: (url, id = false) => new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+          link.rel = 'stylesheet'
+          link.href = url
+          if (id) link.id = id
+          link.onerror = reject
+          link.onload = link.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            link.onload = link.onreadystatechange = null
+            resolve()
+          }
+          document.head.appendChild(link)
+        }),
+
+        addGlobalFn: (key, fn, name = false, parent = window) => {
+          const pjaxEnable = false
+          if (!pjaxEnable && key.startsWith('pjax')) return
+
+          const globalFn = parent.globalFn || {}
+          const keyObj = globalFn[key] || {}
+    
+          if (name && keyObj[name]) return
+    
+          name = name || Object.keys(keyObj).length
+          keyObj[name] = fn
+          globalFn[key] = keyObj
+          parent.globalFn = globalFn
+        }
+      }
+    
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+      
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })()</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
   noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -26,7 +144,7 @@
     post: false
   },
   runtime: '天',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -36,112 +154,48 @@
   copyright: undefined,
   lightbox: 'fancybox',
   Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
-  isPhotoFigcaption: true,
-  islazyload: true,
-  isAnchor: false
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'lthero',
   isPost: false,
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-07-18 16:24:35'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
+  postUpdate: '2024-07-18 17:01:04'
+}</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
     }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
-<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">lthero</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【selenium】自动登录校园网"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shell/">shell</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/shell/">shell</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/02/02/AutoNet/#post-comment"><span class="waline-comment-count" id="/2024/02/02/AutoNet/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">实验室自动登录校园网
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', () => { preloader.initLoading() }, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', () => { preloader.endLoading() }, 'preloader_end')
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="lthero"><span class="site-name">lthero</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">lthero</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/02/02/AutoNet/" title="【selenium】自动登录校园网">【selenium】自动登录校园网</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T12:00:27.000Z" title="发表于 2024-02-02 20:00:27">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shell/">shell</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/shell/">shell</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a></span></div><div class="content">实验室自动登录校园网
 
 系统Ubuntu20.04
 仅适用于宁波大学（实验室）网络，寝室网络的认证更简单一些
@@ -159,7 +213,7 @@
 
 https://pypi.org/project/webdriver-manager/
 
-12pip3 install seleniumpip3 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/23/Score-based-generative-models/" title="【Diffusion】基于分数的生成模型"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Diffusion】基于分数的生成模型"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/23/Score-based-generative-models/" title="【Diffusion】基于分数的生成模型">【Diffusion】基于分数的生成模型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-23T04:00:58.000Z" title="发表于 2024-01-23 12:00:58">2024-01-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Diffusion/">Diffusion</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Diffusion%E6%A0%B8%E5%BF%83/">Diffusion核心</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/01/23/Score-based-generative-models/#post-comment"><span class="waline-comment-count" id="/2024/01/23/Score-based-generative-models/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">基于分数的生成模型
+12pip3 install seleniumpip3 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/23/Score-based-generative-models/" title="【Diffusion】基于分数的生成模型"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-j3lpgy.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/23/Score-based-generative-models/" title="【Diffusion】基于分数的生成模型">【Diffusion】基于分数的生成模型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-23T04:00:58.000Z" title="发表于 2024-01-23 12:00:58">2024-01-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Diffusion/">Diffusion</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Diffusion%E6%A0%B8%E5%BF%83/">Diffusion核心</a></span></div><div class="content">基于分数的生成模型
 (Score-based generative models)
 原文链接：
 
@@ -168,13 +222,13 @@ https://www.zhangzhenhu.com/aigc/Score-Based_Generative_Models.html
 通过前面的学习，我们发现扩散模型可以从不同的角度进行解释。 其中一个等价的解释是基于分数的生成模型，前面章节虽然简单介绍了下， 但没有详细说明，本章我们详细讨论下基于分数的生成模型。 基于分数的生成模型是由宋旸等人在2019年提出 [1] 的， 后来他们又提出了基于随机微分方程的更一般的形式 [2]， 本章我们一起讨论学习一下。
 Scored-based的生成模型
 在前面 DDPM 和 DDIM 的章节中，已经探讨了 DDPM 的降噪过程，可以看做是沿着分数（梯度）∇log⁡p(xt)∇log⁡p(x_t)∇log⁡p(xt​)前进。然而宋旸等人提出基于分数(Score-based)的论文 相关工作并不是建立在 DDPM 的基础上，所以论文里不是从DDPM的马尔科夫链式结构讨论和导出的，而是直接从分数匹配估计算法推导。
-首先看下基于分数的生成模型的核心思 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/22/DDIM/" title="【DDIM】详解"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【DDIM】详解"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/22/DDIM/" title="【DDIM】详解">【DDIM】详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-22T09:04:20.000Z" title="发表于 2024-01-22 17:04:20">2024-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Diffusion/">Diffusion</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/DDIM/">DDIM</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/DDPM/">DDPM</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/01/22/DDIM/#post-comment"><span class="waline-comment-count" id="/2024/01/22/DDIM/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">导论
+首先看下基于分数的生成模型的核心思 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/22/DDIM/" title="【DDIM】详解"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wasx.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/22/DDIM/" title="【DDIM】详解">【DDIM】详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-22T09:04:20.000Z" title="发表于 2024-01-22 17:04:20">2024-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Diffusion/">Diffusion</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/DDIM/">DDIM</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/DDPM/">DDPM</a></span></div><div class="content">导论
 在 DDPMDDPMDDPM 中，生成过程被定义为马尔可夫扩散过程的反向过程，在逆向采样过程的每一步，模型预测噪声
 DDIMDDIMDDIM 的作者发现，扩散过程并不是必须遵循马尔科夫链，在之后的基于分数的扩散模型以及基于随机微分等式的理论都有相同的结论。
 基于此，DDIMDDIMDDIM​ 的作者重新定义了扩散过程和去噪过程，并提出了一种新的采样技巧，可以大幅减少采样的步骤，极大的提高了图像生成的效率，代价是牺牲了一定的多样性，图像质量略微下降，但在可接受的范围内。
 DDPM的回顾
 首先回顾一下 DDPM 模型的机制，在 DDPM 中，真实世界的图像数据用随机变量 x0x_0x0​ 表示，它的概率密度记作 q(x0)q(x_0)q(x0​)，然而它的真实分布未知的，即 q(x0)q(x_0)q(x0​) 具体形式是未知的，所以我们没办法直接从 q(x0)q(x_0)q(x0​) 采样生成新的图片。
-幸运的是，我们有很多 x0x_0x0​ 的观测样本，因此我们可以想办法利用这些观测样本估计出 q(x0)q(x_0)q(x0​) 的一个近似表示【近似表示称为 p(x0)p(x_0) ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/21/Cross-Attention-Control/" title="【Cross-Attention】可视化"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Cross-Attention】可视化"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/21/Cross-Attention-Control/" title="【Cross-Attention】可视化">【Cross-Attention】可视化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-21T08:00:53.000Z" title="发表于 2024-01-21 16:00:53">2024-01-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cross-Attention/">Cross-Attention</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/01/21/Cross-Attention-Control/#post-comment"><span class="waline-comment-count" id="/2024/01/21/Cross-Attention-Control/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">Cross-Attention Control
+幸运的是，我们有很多 x0x_0x0​ 的观测样本，因此我们可以想办法利用这些观测样本估计出 q(x0)q(x_0)q(x0​) 的一个近似表示【近似表示称为 p(x0)p(x_0) ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/21/Cross-Attention-Control/" title="【Cross-Attention】可视化"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/z8dp1v.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/21/Cross-Attention-Control/" title="【Cross-Attention】可视化">【Cross-Attention】可视化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-21T08:00:53.000Z" title="发表于 2024-01-21 16:00:53">2024-01-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cross-Attention/">Cross-Attention</a></span></div><div class="content">Cross-Attention Control
 原链接
 https://prompt-to-prompt.github.io/
 自注意力机制
@@ -185,7 +239,7 @@ https://prompt-to-prompt.github.io/
 yi=∑j=1nαij⋅(WQxj)y_i = \sum_{j=1}^{n} \alpha_{ij} \cdot (W^Q x_j)yi​=∑j=1n​αij​⋅(WQxj​)
 其中
 
-$ \alpha_{ij} $ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/20/Classifier-free-guidance/" title="【Diffusion】为什么用Classifier-free-guidance"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Diffusion】为什么用Classifier-free-guidance"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/20/Classifier-free-guidance/" title="【Diffusion】为什么用Classifier-free-guidance">【Diffusion】为什么用Classifier-free-guidance</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-20T15:21:57.000Z" title="发表于 2024-01-20 23:21:57">2024-01-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Diffusion/">Diffusion</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Diffusion/">Diffusion</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/01/20/Classifier-free-guidance/#post-comment"><span class="waline-comment-count" id="/2024/01/20/Classifier-free-guidance/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">参考原文
+$ \alpha_{ij} $ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/20/Classifier-free-guidance/" title="【Diffusion】为什么用Classifier-free-guidance"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/6c7ccc_28_painter_4k.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/20/Classifier-free-guidance/" title="【Diffusion】为什么用Classifier-free-guidance">【Diffusion】为什么用Classifier-free-guidance</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-20T15:21:57.000Z" title="发表于 2024-01-20 23:21:57">2024-01-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Diffusion/">Diffusion</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Diffusion/">Diffusion</a></span></div><div class="content">参考原文
 https://www.zhangzhenhu.com/aigc/Guidance.html
 https://sander.ai/2022/05/26/guidance.html
 https://sander.ai/2023/08/28/geometry.html
@@ -193,7 +247,7 @@ https://forums.fast.ai/t/why-do-we-need-the-unconditioned-embedding/101134?repli
 Guidance: a cheat code for diffusion models
 &quot;Classifier-free guidance&quot;显著改善了&quot;conditional diffusion models&quot;生成的图像（几乎没有额外成本）。它实施简单且极其有效。它也是OpenAI的DALL·E 2和Google的Imagen的关键组成部分，为它们的惊人图像生成结果提供动力。在这篇博文中，我将分享我的观点，并尝试解释它的工作原理。
 引言
-无论是 DDPM 还是 DDIM，这些扩散 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/12/AutoMount/" title="【Ubuntu】未自动挂载问题"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Ubuntu】未自动挂载问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/12/AutoMount/" title="【Ubuntu】未自动挂载问题">【Ubuntu】未自动挂载问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-12T02:25:58.000Z" title="发表于 2024-01-12 10:25:58">2024-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Ubuntu/">Ubuntu</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Ubuntu/%E8%BF%90%E7%BB%B4/">运维</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/">自动挂载</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/01/12/AutoMount/#post-comment"><span class="waline-comment-count" id="/2024/01/12/AutoMount/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">Ubuntu自动设置挂载
+无论是 DDPM 还是 DDIM，这些扩散 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/12/AutoMount/" title="【Ubuntu】未自动挂载问题"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/3_Jewel_4k.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/12/AutoMount/" title="【Ubuntu】未自动挂载问题">【Ubuntu】未自动挂载问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-12T02:25:58.000Z" title="发表于 2024-01-12 10:25:58">2024-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Ubuntu/">Ubuntu</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Ubuntu/%E8%BF%90%E7%BB%B4/">运维</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/">自动挂载</a></span></div><div class="content">Ubuntu自动设置挂载
 
 记录一次Ubuntu未自动挂载问题
 
@@ -206,7 +260,7 @@ Guidance: a cheat code for diffusion models
 使用 blkid 命令：
 
 blkid 命令会列出所有可用驱动器的信息，包括 UUID。
-运行以下命令：1sud ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/08/NetNeaseMUsic2spotify/" title="网易云音乐导出到spotify"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="网易云音乐导出到spotify"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/08/NetNeaseMUsic2spotify/" title="网易云音乐导出到spotify">网易云音乐导出到spotify</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-08T03:42:20.000Z" title="发表于 2024-01-08 11:42:20">2024-01-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/spotify/">spotify</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/">网易云音乐</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2024/01/08/NetNeaseMUsic2spotify/#post-comment"><span class="waline-comment-count" id="/2024/01/08/NetNeaseMUsic2spotify/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">使用方法
+运行以下命令：1sud ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/08/NetNeaseMUsic2spotify/" title="网易云音乐导出到spotify"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wasx.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/08/NetNeaseMUsic2spotify/" title="网易云音乐导出到spotify">网易云音乐导出到spotify</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-08T03:42:20.000Z" title="发表于 2024-01-08 11:42:20">2024-01-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/spotify/">spotify</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/">网易云音乐</a></span></div><div class="content">使用方法
 
 
 
@@ -227,7 +281,7 @@ blkid 命令会列出所有可用驱动器的信息，包括 UUID。
 
 通过https://www.spotlistr.com/ 或 https://www.tunemymusic.com/ 导出到 Apple Music 或者 Spotify 等音乐平台
 
-1234567891011121314151617181920212223(function () &#123;  let iframeDocument = document.getElementById(&quot;g_iframe&quot;).contentDocument;  let tempElement = iframeDocument.createElement(& ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/12/28/SVM-cpp/" title="【SVM】c++实现"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【SVM】c++实现"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/28/SVM-cpp/" title="【SVM】c++实现">【SVM】c++实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-28T14:41:36.000Z" title="发表于 2023-12-28 22:41:36">2023-12-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/SVM/">SVM</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/12/28/SVM-cpp/#post-comment"><span class="waline-comment-count" id="/2023/12/28/SVM-cpp/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">SVM使用c++实现
+1234567891011121314151617181920212223(function () &#123;  let iframeDocument = document.getElementById(&quot;g_iframe&quot;).contentDocument;  let tempElement = iframeDocument.createElement(& ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/12/28/SVM-cpp/" title="【SVM】c++实现"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/28/SVM-cpp/" title="【SVM】c++实现">【SVM】c++实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-28T14:41:36.000Z" title="发表于 2023-12-28 22:41:36">2023-12-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/SVM/">SVM</a></span></div><div class="content">SVM使用c++实现
 
 下面是使用c++实现一个简单的支持向量机（SVM）分类器，并提供了从文件中读取数据、训练模型和对测试数据进行预测的功能。
 SVM 实现是基于线性核函数的，并采用了简化的序列最小优化（SMO）算法进行训练
@@ -260,7 +314,7 @@ yi​(w⋅xi​+b)≥1,∀i
 
 
 通过拉格朗日乘子法引入拉格朗日乘子 αi≥0\alpha_i \geq 0αi​≥0，得到拉格朗日函数：
-L(w,b,α)=12∥w∥2−∑i=1mαi[ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/12/27/BPNetwork_cpp/" title="【BP】c++实现"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【BP】c++实现"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/27/BPNetwork_cpp/" title="【BP】c++实现">【BP】c++实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-27T06:58:31.000Z" title="发表于 2023-12-27 14:58:31">2023-12-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/BP/">BP</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/12/27/BPNetwork_cpp/#post-comment"><span class="waline-comment-count" id="/2023/12/27/BPNetwork_cpp/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">BP网络c++实现
+L(w,b,α)=12∥w∥2−∑i=1mαi[ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/12/27/BPNetwork_cpp/" title="【BP】c++实现"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/z8dp1v.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/27/BPNetwork_cpp/" title="【BP】c++实现">【BP】c++实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-27T06:58:31.000Z" title="发表于 2023-12-27 14:58:31">2023-12-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/BP/">BP</a></span></div><div class="content">BP网络c++实现
 单隐藏层流程
 
 
@@ -276,7 +330,7 @@ q=i∑​xi​wij​−βj​hj​(q)=σ(i∑​xi​wij​−βj​)
 σ(x)=11+e−x\sigma(x) = \frac{1}{1+e^{-x}}
 σ(x)=1+e−x1​
 代码
-12345678910111213//计算h_j(q)int  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/12/16/Linear-transformations/" title="Linear transformations"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/RD2.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="Linear transformations"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/16/Linear-transformations/" title="Linear transformations">Linear transformations</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-16T11:56:44.000Z" title="发表于 2023-12-16 19:56:44">2023-12-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/12/16/Linear-transformations/#post-comment"><span class="waline-comment-count" id="/2023/12/16/Linear-transformations/"></span></a><span class="article-meta-label"> 条评论</span></span></div><div class="content">https://www.youtube.com/watch?v=XkY2DOUCWMU
+12345678910111213//计算h_j(q)int  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/12/16/Linear-transformations/" title="Linear transformations"><div class="post-bg" style="background: https://cdn.lthero.cn/webPic/background/RD2.jpg"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/16/Linear-transformations/" title="Linear transformations">Linear transformations</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-16T11:56:44.000Z" title="发表于 2023-12-16 19:56:44">2023-12-16</time></span></div><div class="content">https://www.youtube.com/watch?v=XkY2DOUCWMU
 线程变换
 设线性变换T的矩阵A为
 A=[3112]A=
@@ -314,7 +368,7 @@ res=[31]∗−1+[12]∗2=[−13]res=
 \begin{bmatrix}
 -1  \\
 3 
-\end{bmatr ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#content-inner">17</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【vless-reality】安装"/></a><div class="content"><a class="title" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装">【vless-reality】安装</a><time datetime="2024-07-18T07:26:50.000Z" title="发表于 2024-07-18 15:26:50">2024-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="将Nas共享到虚拟局域网内"/></a><div class="content"><a class="title" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内">将Nas共享到虚拟局域网内</a><time datetime="2024-07-04T15:38:11.000Z" title="发表于 2024-07-04 23:38:11">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="国外内大模型行业分析报告"/></a><div class="content"><a class="title" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告">国外内大模型行业分析报告</a><time datetime="2024-07-01T12:22:11.000Z" title="发表于 2024-07-01 20:22:11">2024-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/z8dp1v.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="使用Sunshine软件远程控制Ubuntu"/></a><div class="content"><a class="title" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu">使用Sunshine软件远程控制Ubuntu</a><time datetime="2024-06-27T12:59:25.000Z" title="发表于 2024-06-27 20:59:25">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="禁用每次开机启动的Python进程"/></a><div class="content"><a class="title" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程">禁用每次开机启动的Python进程</a><time datetime="2024-06-10T11:51:29.000Z" title="发表于 2024-06-10 19:51:29">2024-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+\end{bmatr ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#content-inner">17</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">64</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg"></div></a><div class="content"><a class="title" href="/2024/07/18/Install-vless-reality/" title="【vless-reality】安装">【vless-reality】安装</a><time datetime="2024-07-18T07:26:50.000Z" title="发表于 2024-07-18 15:26:50">2024-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-6oe337.png"></div></a><div class="content"><a class="title" href="/2024/07/04/ShareNasWithZerotier/" title="将Nas共享到虚拟局域网内">将Nas共享到虚拟局域网内</a><time datetime="2024-07-04T15:38:11.000Z" title="发表于 2024-07-04 23:38:11">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg"></div></a><div class="content"><a class="title" href="/2024/07/01/AReportAboutLLM/" title="国外内大模型行业分析报告">国外内大模型行业分析报告</a><time datetime="2024-07-01T12:22:11.000Z" title="发表于 2024-07-01 20:22:11">2024-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu"><div style="background: https://cdn.lthero.cn/webPic/background/z8dp1v.jpg"></div></a><div class="content"><a class="title" href="/2024/06/27/InstallSunshineStreaming/" title="使用Sunshine软件远程控制Ubuntu">使用Sunshine软件远程控制Ubuntu</a><time datetime="2024-06-27T12:59:25.000Z" title="发表于 2024-06-27 20:59:25">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程"><div style="background: https://cdn.lthero.cn/webPic/background/wallhaven-dpepjo.jpg"></div></a><div class="content"><a class="title" href="/2024/06/10/DisableAuto-StartProcesses/" title="禁用每次开机启动的Python进程">禁用每次开机启动的Python进程</a><time datetime="2024-06-10T11:51:29.000Z" title="发表于 2024-06-10 19:51:29">2024-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
@@ -323,122 +377,85 @@ res=[31]∗−1+[12]∗2=[−13]res=
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ChatGPT/"><span class="card-category-list-name">ChatGPT</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Diffusion/"><span class="card-category-list-name">Diffusion</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/"><span class="card-category-list-name">Ubuntu</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/html/"><span class="card-category-list-name">html</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">33</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/openAI/"><span class="card-category-list-name">openAI</span><span class="card-category-list-count">1</span></a></li>
             </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/408/" style="font-size: 1.1em; color: #999">408</a> <a href="/tags/AES/" style="font-size: 1.1em; color: #999">AES</a> <a href="/tags/AIGC/" style="font-size: 1.1em; color: #999">AIGC</a> <a href="/tags/BP/" style="font-size: 1.1em; color: #999">BP</a> <a href="/tags/ChatGPT/" style="font-size: 1.1em; color: #999">ChatGPT</a> <a href="/tags/Cross-Attention/" style="font-size: 1.1em; color: #999">Cross-Attention</a> <a href="/tags/DDIM/" style="font-size: 1.1em; color: #999">DDIM</a> <a href="/tags/DDPM/" style="font-size: 1.2em; color: #999da3">DDPM</a> <a href="/tags/DES/" style="font-size: 1.1em; color: #999">DES</a> <a href="/tags/DH%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2/" style="font-size: 1.1em; color: #999">DH密钥交换</a> <a href="/tags/Diffusion/" style="font-size: 1.2em; color: #999da3">Diffusion</a> <a href="/tags/Diffusion%E6%A0%B8%E5%BF%83/" style="font-size: 1.1em; color: #999">Diffusion核心</a> <a href="/tags/FFT/" style="font-size: 1.1em; color: #999">FFT</a> <a href="/tags/Frp%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">Frp配置</a> <a href="/tags/IP%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">IP安全</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/Kerberos/" style="font-size: 1.1em; color: #999">Kerberos</a> <a href="/tags/Nas/" style="font-size: 1.1em; color: #999">Nas</a> <a href="/tags/NewBing/" style="font-size: 1.1em; color: #999">NewBing</a> <a href="/tags/Openwrt/" style="font-size: 1.1em; color: #999">Openwrt</a> <a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 1.1em; color: #999">RSA加密</a> <a href="/tags/RustDesk/" style="font-size: 1.1em; color: #999">RustDesk</a> <a href="/tags/SSH/" style="font-size: 1.1em; color: #999">SSH</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/StableDiffusion/" style="font-size: 1.1em; color: #999">StableDiffusion</a> <a href="/tags/TCP/" style="font-size: 1.1em; color: #999">TCP</a> <a href="/tags/TLS/" style="font-size: 1.1em; color: #999">TLS</a> <a href="/tags/hexo/" style="font-size: 1.3em; color: #99a1ac">hexo</a> <a href="/tags/linux/" style="font-size: 1.4em; color: #99a5b6">linux</a> <a href="/tags/openAI/" style="font-size: 1.1em; color: #999">openAI</a> <a href="/tags/proxychains/" style="font-size: 1.1em; color: #999">proxychains</a> <a href="/tags/python/" style="font-size: 1.5em; color: #99a9bf">python</a> <a href="/tags/shell/" style="font-size: 1.1em; color: #999">shell</a> <a href="/tags/socket%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">socket编程</a> <a href="/tags/spotify/" style="font-size: 1.1em; color: #999">spotify</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/systemctl%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">systemctl管理</a> <a href="/tags/tools/" style="font-size: 1.1em; color: #999">tools</a> <a href="/tags/v2ray/" style="font-size: 1.2em; color: #999da3">v2ray</a> <a href="/tags/watermark/" style="font-size: 1.2em; color: #999da3">watermark</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">169</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">378.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-18T08:24:34.064Z"></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/fancybox.umd.js"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/instantpage.min.js" type="module"></script><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
-
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(() => {
-  function loadWaline () {
-    function initWaline () {
-      let initData = {
-        el: null,
-        serverURL: 'vercel-psi-seven.vercel.app',
-        comment: true
-      }
-      const waline = Waline.init(initData)
-    }
-
-    if (typeof Waline === 'function') initWaline() 
-    else getScript('https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/waline.js').then(initWaline)
-  }
-
-  window.pjax ? loadWaline() : window.addEventListener('load', loadWaline)
-})()</script><script>function subtitleType () {
-  if (false) { 
-    window.typed = new Typed("#subtitle", {
-      strings: ["Never put off till tomorrow what can be done today"],
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">169</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">378.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-18T09:01:02.519Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.14.0-b3"></script><script src="/js/main.js?v=4.14.0-b3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
       startDelay: 300,
       typeSpeed: 150,
-      loop: false,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = 'Never put off till tomorrow what can be done today'
-  }
-}
-
-if (false) {
-  if (typeof Typed === 'function') {
-    subtitleType()
-  } else {
-    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
-  }
-} else {
-  subtitleType()
-}</script></div><script src="https://ltherocn2.oss-cn-beijing.aliyuncs.com/cdn/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener scroll 
-  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
-  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
-
-  typeof preloader === 'object' && preloader.initLoading()
-  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
+      loop: true,
+      backSpeed: 50,
+    }, ))
+  },
+  run: (subtitleType) => {
+    if (false) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
       }
+    } else {
+      subtitleType()
     }
   }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
-
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-
-  typeof preloader === 'object' && preloader.endLoading()
-})
-
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
+}
+btf.addGlobalFn('pjaxSend', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (false) {
+    typedJSFn.init(["Never put off till tomorrow what can be done today"])
+  } else {
+    document.getElementById("subtitle").textContent = "Never put off till tomorrow what can be done today"
   }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+}
+typedJSFn.run(subtitleType)</script><script>(() => {
+  const runMermaid = (ele) => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from(ele).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+    
+    codeMermaidEle.forEach(ele => {
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.innerHTML = `<pre class="mermaid-src" hidden>${ele.textContent}</pre>`
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+  
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.14.0-b3"></script></div></div></body></html>

@@ -65,14 +65,14 @@ strong{
     font-size: 2.12em;
 }
 
-#article-container ul li{
+/* #article-container ul li{
     font-family:"Microsoft YaHei";
     font-size: 18px;
-}
+} */
 #article-container ol li, #article-container ul li {
     font-family:"Microsoft YaHei";
     margin: 4px 0;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 blockquote {
