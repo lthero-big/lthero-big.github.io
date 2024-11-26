@@ -82,16 +82,16 @@
     <link href="https://blog.lthero.cn/2024/11/22/CreateHighResolutionPic/"/>
     <id>https://blog.lthero.cn/2024/11/22/CreateHighResolutionPic/</id>
     <published>2024-11-22T05:46:43.000Z</published>
-    <updated>2024-11-22T06:01:17.788Z</updated>
+    <updated>2024-11-26T13:04:38.968Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="步骤">步骤</h2><p>1、新建个PPT（如：export.pptx），在PPT的“设计”-&gt;“幻灯片大小”改成“自定义”，宽度,高度：100cm</p><p><img src="%20https://cdn.lthero.cn/post_images/course/ML/image-20241122134900256.png" alt="image-20241122134900256"></p><p>2、将原来的PPT（包含构架图）一整页直接复制到export.pptx中</p><p>3、选择“文件”-&gt;“导出”-&gt;“导出为pdf”（这里有个“选项”，可以选择导出到具体的某页）</p><p><img src="%20https://cdn.lthero.cn/post_images/course/ML/image-20241122140000983.png" alt="image-20241122140000983"></p><p><img src="%20https://cdn.lthero.cn/post_images/course/ML/image-20241122140030833.png" alt="image-20241122140030833"></p><p>4、导出为pdf后，使用“编辑”功能中的“裁剪”，对图像进行裁剪并保存。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="步骤">步骤</h2><p>1、新建个PPT（如：export.pptx），在PPT的“设计”-&gt;“幻灯片大小”改成“自定义”，宽度,高度：100cm</p><p><img src="https://cdn.lthero.cn/post_images/course/ML/image-20241122134900256.png" alt="image-20241122134900256"></p><p>2、将原来的PPT（包含构架图）一整页直接复制到export.pptx中</p><p>3、选择“文件”-&gt;“导出”-&gt;“导出为pdf”（这里有个“选项”，可以选择导出到具体的某页）</p><p><img src="https://cdn.lthero.cn/post_images/course/ML/image-20241122140000983.png" alt="image-20241122140000983"></p><p><img src="https://cdn.lthero.cn/post_images/course/ML/image-20241122140030833.png" alt="image-20241122140030833"></p><p>4、导出为pdf后，使用“编辑”功能中的“裁剪”，对图像进行裁剪并保存。</p>]]></content>
     
     
       
       
     <summary type="html">&lt;h2 id=&quot;步骤&quot;&gt;步骤&lt;/h2&gt;
 &lt;p&gt;1、新建个PPT（如：export.pptx），在PPT的“设计”-&amp;gt;“幻灯片大小”改成“自定义”，宽度,高度：100cm&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;%20https://cdn.lthero.cn/post_image</summary>
+&lt;p&gt;&lt;img src=&quot;https://cdn.lthero.cn/post_images/c</summary>
       
     
     

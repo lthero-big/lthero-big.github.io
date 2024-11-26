@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2024/11/22/CreateHighResolutionPic/</loc>
+    
+    <lastmod>2024-11-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2024/11/26/BuildYourOwnProxyhub/</loc>
     
     <lastmod>2024-11-26</lastmod>
@@ -41,15 +50,6 @@
     <loc>https://blog.lthero.cn/2024/11/24/OnlineFileSharing/</loc>
     
     <lastmod>2024-11-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.lthero.cn/2024/11/22/CreateHighResolutionPic/</loc>
-    
-    <lastmod>2024-11-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
