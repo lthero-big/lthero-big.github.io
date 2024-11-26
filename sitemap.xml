@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2024/11/26/BuildYourOwnProxyhub/</loc>
+    
+    <lastmod>2024-11-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2024/04/03/Hysteria2Installion/</loc>
     
     <lastmod>2024-11-26</lastmod>
@@ -2268,6 +2277,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/tags/vps/</loc>
+    <lastmod>2024-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/tags/%E6%9C%BA%E5%9C%BA/</loc>
     <lastmod>2024-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
