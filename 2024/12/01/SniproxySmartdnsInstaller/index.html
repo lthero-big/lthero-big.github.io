@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【流媒体一键解锁脚本】 | lthero</title><meta name="keywords" content="折腾,流媒体解锁"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="sniproxy &amp; smartdns 一键配置脚本  开源项目：https:&#x2F;&#x2F;github.com&#x2F;lthero-big&#x2F;Smartdns_sniproxy_installer  写在前面 最近黑五，买了一些机器，但机器解锁不太满意啊，于是在论坛四处找教程，最近东拼四凑出了这个脚本； 现有脚本的痛点： 1、不能方便的配置流媒体平台，sniproxy和smartdns的配置都需要手动修改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【流媒体一键解锁脚本】">
+<meta property="og:url" content="https://blog.lthero.cn/2024/12/01/SniproxySmartdnsInstaller/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="sniproxy &amp; smartdns 一键配置脚本  开源项目：https:&#x2F;&#x2F;github.com&#x2F;lthero-big&#x2F;Smartdns_sniproxy_installer  写在前面 最近黑五，买了一些机器，但机器解锁不太满意啊，于是在论坛四处找教程，最近东拼四凑出了这个脚本； 现有脚本的痛点： 1、不能方便的配置流媒体平台，sniproxy和smartdns的配置都需要手动修改">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg">
+<meta property="article:published_time" content="2024-12-01T09:54:42.000Z">
+<meta property="article:modified_time" content="2024-12-01T14:37:10.239Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="流媒体解锁">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2024/12/01/SniproxySmartdnsInstaller/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【流媒体一键解锁脚本】',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-12-01 22:37:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">176</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">100</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">65</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【流媒体一键解锁脚本】</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-01T09:54:42.000Z" title="发表于 2024-12-01 17:54:42">2024-12-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-01T14:37:10.239Z" title="更新于 2024-12-01 22:37:10">2024-12-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【流媒体一键解锁脚本】"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="sniproxy-smartdns-一键配置脚本">sniproxy &amp; smartdns 一键配置脚本</h1>
+<blockquote>
+<p>开源项目：<a target="_blank" rel="noopener" href="https://github.com/lthero-big/Smartdns_sniproxy_installer">https://github.com/lthero-big/Smartdns_sniproxy_installer</a></p>
+</blockquote>
+<h2 id="写在前面">写在前面</h2>
+<p>最近黑五，买了一些机器，但机器解锁不太满意啊，于是在论坛四处找教程，最近东拼四凑出了这个脚本；</p>
+<p>现有脚本的痛点：</p>
+<p>1、不能方便的配置流媒体平台，sniproxy和smartdns的配置都需要手动修改，而且添加DNS机器也需要手动配置，有点儿麻烦；<br>
+2、大多是使用dnsmasq和sniproxy结合的脚本，没有smartdns的。</p>
+<h3 id="知识">知识</h3>
+<p>sniproxy：一个透明代理，反向代理流媒体网站（如Netflix），80和443端口不得被占用，且需要开放</p>
+<p>smartdns：一个DNS服务器，用来分流DNS域名是否走sniproxy代理</p>
+<h3 id="必要准备">必要准备</h3>
+<ol>
+<li>一台或多台能解锁流媒体的vps，<strong>简称“解锁机”</strong></li>
+<li>没有vps的可以使用免费或付费的dns解锁服务，请注册Alice免费的DNS解锁服务<a target="_blank" rel="noopener" href="https://app.alice.ws/">Alice</a></li>
+<li>一台或多台不能解锁流媒体的vps，<strong>简称“被解锁机”</strong></li>
+</ol>
+<h3 id="实现效果">实现效果</h3>
+<ol>
+<li>让一台vps同时解锁多个地区的流媒体（美国、新加坡、日本、香港）</li>
+<li>实现使用一个节点，同时解锁香港b站，美国油管，新加坡网飞以及日本HBO等</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/PixPin_2024-12-01_16-55-49.png" alt="PixPin_2024-12-01_16-55-49"></p>
+<ol start="3">
+<li>快速添加不同地区</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/post_images/course/ML/image-20241201195650422.png" alt="image-20241201195650422"></p>
+<h3 id="参考项目">参考项目</h3>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/myxuchangbin/dnsmasq_sniproxy_install">https://github.com/myxuchangbin/dnsmasq_sniproxy_install</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bingotl/dns_unlock">https://github.com/bingotl/dns_unlock</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Jimmyzxk/DNS-Alice-Unlock">https://github.com/Jimmyzxk/DNS-Alice-Unlock</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.nodeseek.com/post-180592-1">https://www.nodeseek.com/post-180592-1</a></li>
+</ol>
+<h3 id="优点">优点</h3>
+<ol>
+<li>smartdns 拥有更快查询和更强的广告过滤等功能</li>
+<li>快速添加您想解锁的地区，一键配置，一键修改，不用再使用复杂的编辑功能</li>
+<li>快速配置您想添加的解锁机服务器，方便修改</li>
+<li>解锁机哪怕宕机也不影响被解锁机正常使用</li>
+</ol>
+<hr>
+<h2 id="脚本下载与安装">脚本下载与安装</h2>
+<h3 id="脚本下载">脚本下载</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/lthero-big/Smartdns_sniproxy_installer/refs/heads/main/smtdns_install.sh -O smtdns_install.sh </span><br></pre></td></tr></table></figure>
+<p>脚本将保存在本地 ，命名为smtdns_install.sh ，您可以随时执行</p>
+<h3 id="脚本执行">脚本执行</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash smtdns_install.sh</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="阅读顺序">阅读顺序</h2>
+<blockquote>
+<p>如果您不想配置解锁机，请注册Alice免费的DNS解锁服务<a target="_blank" rel="noopener" href="https://app.alice.ws/">Alice</a>，申请DNS解锁。随后，请阅读“被解锁机”篇章，使用<code>nameserver</code>添加DNS服务器。</p>
+<p>如果您有自己的解锁机，可以先阅读“解锁机”篇章，配置自己的解锁机，随后使用<code>address</code>添加DNS服务器。</p>
+</blockquote>
+<hr>
+<h2 id="被解锁机">被解锁机</h2>
+<h3 id="功能解释">功能解释</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-----------被解锁机--------------</span><br><span class="line">1.  安装 SmartDNS</span><br><span class="line">2.  重新配置 SmartDNS</span><br><span class="line">3.  添加上游 DNS 并分组</span><br><span class="line">4.  查看已配置的上游 DNS 组</span><br><span class="line">5.  查看流媒体平台列表</span><br><span class="line">6.  添加一家流媒体平台到 SmartDNS</span><br><span class="line">7.  添加一个地区流媒体到 SmartDNS</span><br><span class="line">8.  添加所有流媒体平台到 SmartDNS</span><br><span class="line">9.  查看已经添加的流媒体</span><br></pre></td></tr></table></figure>
+<ol>
+<li>输入1，安装smartdns；随后会询问<strong>是否添加上游DNS并分级</strong>
+<ol>
+<li>如果你已经有Alice的解锁服务，或者您自建了DNS服务器，直接输入<code>y</code>；</li>
+<li>随后，会被邀请输入<strong>上游服务器ip地址</strong>，以及给它<strong>命名</strong>，简短即可方便区分
+<ol>
+<li>假设输入了<code>12.23.34.45</code>，命令为<code>alice-hk</code></li>
+</ol>
+</li>
+<li>直到输入<code>N</code>，完成smartdns的初始配置</li>
+</ol>
+</li>
+<li>输入2，会删除已有的smartdns配置，并重新创建</li>
+<li>输入3，会继续添加上游 DNS</li>
+<li>输入6/7/8，添加流媒体平台（注意是一家，一地区，还是所有平台）
+<ol>
+<li>假设输入7，想将香港地区的流媒体，都让<code>alice-hk</code>解锁</li>
+<li>请输入<code>nameserver/address</code>，如果使用Alice解锁服务，选择<code>nameserver</code></li>
+<li>直到输入<code>N</code>，完成地区的添加</li>
+</ol>
+</li>
+<li>输入9，查看已经添加的流媒体及对应的解锁服务器</li>
+</ol>
+<h3 id="关于nameserver与address选择">关于nameserver与address选择</h3>
+<ol>
+<li>
+<p>如果使用Alice解锁服务，选择nameserver</p>
+</li>
+<li>
+<p>如果自建的解锁机运行了smartdns，选择address</p>
+</li>
+<li>
+<p>如果自建的解锁机不运行smartdns，选择address</p>
+</li>
+</ol>
+<h3 id="快速上手">快速上手</h3>
+<p>第一步：输入1，安装smartdns；随后会询问<strong>是否添加上游DNS并分级</strong></p>
+<ol>
+<li>如果你已经有Alice的解锁服务，或者您自建了DNS服务器，直接输入<code>y</code>；</li>
+<li>随后，会被邀请输入<strong>上游服务器ip地址</strong>，以及给它<strong>命名</strong>，简短即可方便区分
+<ol>
+<li>假设输入了<code>12.23.34.45</code>，命令为<code>alice-hk</code></li>
+</ol>
+</li>
+<li>直到输入<code>N</code>，完成smartdns的初始配置</li>
+</ol>
+<p>第二步：输入6/7/8，添加流媒体平台（注意是一家，一地区，还是所有平台）</p>
+<ol>
+<li>假设输入7，如果使用Alice解锁服务，想将香港地区的流媒体都让<code>alice-hk</code>解锁，选择<code>nameserver</code></li>
+<li>直到输入<code>N</code>，完成地区的添加</li>
+</ol>
+<p><strong>确保smartdns服务启动了即可</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SmartDNS 服务状态：运行中</span><br><span class="line">SmartDNS 开机自启：已启用</span><br><span class="line">system DNS 服务状态：已停止</span><br><span class="line">system DNS 开机自启：未启用</span><br><span class="line">sniproxy 服务状态：已停止</span><br><span class="line">sniproxy 开机自启：未启用</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="解锁机">解锁机</h2>
+<h3 id="功能解释">功能解释</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-----------sniproxy相关(解锁机)--------------</span><br><span class="line">11.  安装并启动 sniproxy</span><br><span class="line">12.  添加流媒体平台到 sniproxy</span><br><span class="line">13.  启动/重启 sniproxy 服务并开机自启</span><br><span class="line">14.  停止 sniproxy 并关闭开机自启</span><br><span class="line">15.  一键对被解锁机放开 80/443/53 端口 </span><br><span class="line">16.  一键开启指定 防火墙(ufw) 端口 </span><br></pre></td></tr></table></figure>
+<ol>
+<li>输入11，会安装sniproxy并一键添加一些常用的流媒体平台（不会包含所有的）</li>
+<li>输入12：添加想要的流媒体平台到 sniproxy，与上面一样，可以选择添加一个平台或一个地区的平台</li>
+<li>输入13/14：控制sniproxy服务</li>
+<li>输入15：<strong>必做</strong>，防止被他人利用，需要添加对<strong>被解锁机</strong>的访问权限</li>
+<li>输入16：额外功能，开启某个防火墙端口</li>
+</ol>
+<h3 id="快速上手">快速上手</h3>
+<p>第一步：输入15，添加对<strong>被解锁机</strong>的访问权限，需要输入<strong>被解锁机的ip</strong>即可</p>
+<p>第二步：输入11，会安装sniproxy并一键添加一些常用的流媒体平台</p>
+<p>第三步：输入12：添加想要的流媒体平台到 sniproxy；如果你的机器是美国机，则可以添加美国的流媒体服务到sniproxy中，sniproxy会自动重启；</p>
+<p><strong>确保 sniproxy 服务启动即可</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SmartDNS 服务状态：已停止</span><br><span class="line">SmartDNS 开机自启：未启用</span><br><span class="line">system DNS 服务状态：运行中</span><br><span class="line">system DNS 开机自启：已启用</span><br><span class="line">sniproxy 服务状态：运行中</span><br><span class="line">sniproxy 开机自启：已启用</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="高级玩家">高级玩家</h2>
+<p>前面只让smartDNS运行在了被解锁机上，当然，smartdns可以运行在解锁机上，从而实现<strong>嵌套解锁</strong>。</p>
+<p><strong>嵌套解锁</strong>：将上游的DNS服务器指向DNS商家提供的服务器，从而让解锁机下游的服务器都能享受DNS商家提供的解锁权益（可能会违反商家的规则）</p>
+<p>本脚本当然可以使用在解锁机上，下面是解锁机的smartdns配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server 13.23.33.43 IP -group sg -exclude-default-group</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果解锁机使用解锁机IP，则下游的被解锁机网飞会定位为解锁机的ip（如美国）</span></span><br><span class="line">address /netflix.com/xx.xx.xx.xx</span><br><span class="line">address /netflix.net/xx.xx.xx.xx</span><br><span class="line">address /nflximg.com/xx.xx.xx.xx</span><br><span class="line">address /nflximg.net/xx.xx.xx.xx</span><br><span class="line">address /nflxvideo.net/xx.xx.xx.xx</span><br><span class="line">address /nflxext.com/xx.xx.xx.xx</span><br><span class="line">address /nflxso.net/xx.xx.xx.xx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#&gt; 如果解锁机使用上游的DNS商家提供的IP，则下游的被解锁机网飞会定位为上游ip（如新加坡）</span></span><br><span class="line">nameserver /netflix.com/sg</span><br><span class="line">nameserver /netflix.net/sg</span><br><span class="line">nameserver /nflximg.com/sg</span><br><span class="line">nameserver /nflximg.net/sg</span><br><span class="line">nameserver /nflxvideo.net/sg</span><br><span class="line">nameserver /nflxext.com/sg</span><br><span class="line">nameserver /nflxso.net/sg</span><br></pre></td></tr></table></figure>
+<h1 id="nginx-smartdns">Nginx+smartDNS</h1>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://xcel.me/unlock_netflix_with_nginx_and_dnsmasq/">https://xcel.me/unlock_netflix_with_nginx_and_dnsmasq/</a></p>
+</blockquote>
+<p>说到反代，nginx也能拿来做这事儿，而且好处是443和80端口可以被继续使用</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2024/12/01/SniproxySmartdnsInstaller/">https://blog.lthero.cn/2024/12/01/SniproxySmartdnsInstaller/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%98%E8%85%BE/">折腾</a><a class="post-meta__tags" href="/tags/%E6%B5%81%E5%AA%92%E4%BD%93%E8%A7%A3%E9%94%81/">流媒体解锁</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/12/01/InstallWallo/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Wallos安装】订阅服务统计</div></div></a></div><div class="next-post pull-right"><a href="/2024/11/29/UnlockNetflixWithDNS/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【DNS】流媒体解锁</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/20/Fuck-RuiJie/" title="【校园网连接】认证|校园网多线"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-20</div><div class="title">【校园网连接】认证|校园网多线</div></div></a></div><div><a href="/2024/03/28/InstallRustDeskServerOnYourMachine/" title="自建RustDeskServer"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3z192.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-28</div><div class="title">自建RustDeskServer</div></div></a></div><div><a href="/2024/03/26/Install-openwrt-on-n1/" title="N1盒子重装Openwrt"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wasx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-26</div><div class="title">N1盒子重装Openwrt</div></div></a></div><div><a href="/2024/03/25/PersonalFilmStationOnUbuntu/" title="【Ubuntu】打造全自动追剧工具"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-3z8qjd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-25</div><div class="title">【Ubuntu】打造全自动追剧工具</div></div></a></div><div><a href="/2022/07/08/raspi-car/" title="raspi-car"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-08</div><div class="title">raspi-car</div></div></a></div><div><a href="/2022/10/12/raspi4B-face-tracking/" title="【树莓派脸部追踪】"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/3zexv9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-12</div><div class="title">【树莓派脸部追踪】</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">176</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">100</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">65</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sniproxy-smartdns-%E4%B8%80%E9%94%AE%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">sniproxy &amp; smartdns 一键配置脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E5%87%86%E5%A4%87"><span class="toc-number">1.1.2.</span> <span class="toc-text">必要准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-number">1.1.3.</span> <span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.4.</span> <span class="toc-text">参考项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.1.5.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">脚本下载与安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.1.</span> <span class="toc-text">脚本下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C"><span class="toc-number">1.2.2.</span> <span class="toc-text">脚本执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.3.</span> <span class="toc-text">阅读顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A2%AB%E8%A7%A3%E9%94%81%E6%9C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">被解锁机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E8%A7%A3%E9%87%8A"><span class="toc-number">1.4.1.</span> <span class="toc-text">功能解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Enameserver%E4%B8%8Eaddress%E9%80%89%E6%8B%A9"><span class="toc-number">1.4.2.</span> <span class="toc-text">关于nameserver与address选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text">快速上手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%94%81%E6%9C%BA"><span class="toc-number">1.5.</span> <span class="toc-text">解锁机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E8%A7%A3%E9%87%8A"><span class="toc-number">1.5.1.</span> <span class="toc-text">功能解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">快速上手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%8E%A9%E5%AE%B6"><span class="toc-number">1.6.</span> <span class="toc-text">高级玩家</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx-smartdns"><span class="toc-number">2.</span> <span class="toc-text">Nginx+smartDNS</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/12/01/InstallWallo/" title="【Wallos安装】订阅服务统计"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-l3zmwy.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【Wallos安装】订阅服务统计"/></a><div class="content"><a class="title" href="/2024/12/01/InstallWallo/" title="【Wallos安装】订阅服务统计">【Wallos安装】订阅服务统计</a><time datetime="2024-12-01T13:31:20.000Z" title="发表于 2024-12-01 21:31:20">2024-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/01/SniproxySmartdnsInstaller/" title="【流媒体一键解锁脚本】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【流媒体一键解锁脚本】"/></a><div class="content"><a class="title" href="/2024/12/01/SniproxySmartdnsInstaller/" title="【流媒体一键解锁脚本】">【流媒体一键解锁脚本】</a><time datetime="2024-12-01T09:54:42.000Z" title="发表于 2024-12-01 17:54:42">2024-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/29/UnlockNetflixWithDNS/" title="【DNS】流媒体解锁"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【DNS】流媒体解锁"/></a><div class="content"><a class="title" href="/2024/11/29/UnlockNetflixWithDNS/" title="【DNS】流媒体解锁">【DNS】流媒体解锁</a><time datetime="2024-11-29T13:39:07.000Z" title="发表于 2024-11-29 21:39:07">2024-11-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/BuildYourOwnProxyhub/" title="【自建】建立自己的代理机场"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-285e6x.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【自建】建立自己的代理机场"/></a><div class="content"><a class="title" href="/2024/11/26/BuildYourOwnProxyhub/" title="【自建】建立自己的代理机场">【自建】建立自己的代理机场</a><time datetime="2024-11-26T12:58:48.000Z" title="发表于 2024-11-26 20:58:48">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/24/OnlineFileSharing/" title="在线文件共享平台"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="在线文件共享平台"/></a><div class="content"><a class="title" href="/2024/11/24/OnlineFileSharing/" title="在线文件共享平台">在线文件共享平台</a><time datetime="2024-11-24T09:34:49.000Z" title="发表于 2024-11-24 17:34:49">2024-11-24</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'ltheroblogwaline-comments-ltherobigs-projects.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script src="/assets/mmedia/mmedia-loader.js"></script><!-- hexo injector body_end end --></body></html>
