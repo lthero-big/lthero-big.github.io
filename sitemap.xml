@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2024/12/23/PS5RemotePlay/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2025/01/04/InstallAutolady/</loc>
     
     <lastmod>2025-01-05</lastmod>
@@ -122,15 +131,6 @@
     <loc>https://blog.lthero.cn/2024/05/25/install-zeroTier/</loc>
     
     <lastmod>2024-12-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.lthero.cn/2024/12/23/PS5RemotePlay/</loc>
-    
-    <lastmod>2024-12-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
