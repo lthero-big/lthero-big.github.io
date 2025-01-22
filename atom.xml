@@ -39,6 +39,33 @@
   </entry>
   
   <entry>
+    <title>【RackNerd &amp; DigitalOcean】IP被封|IP被GFW封</title>
+    <link href="https://blog.lthero.cn/2025/01/10/IP-is-blocked-by-GFW/"/>
+    <id>https://blog.lthero.cn/2025/01/10/IP-is-blocked-by-GFW/</id>
+    <published>2025-01-10T09:50:15.000Z</published>
+    <updated>2025-01-22T02:54:26.676Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="racknerd-digitalocean-ip被gfw封了">RackNerd &amp; DigitalOcean IP被GFW封了</h1><blockquote><p>事情起因：最近两台美国服务器被GFW封了（全端口被封，其ip基本就废了）</p></blockquote><h2 id="检测过程">检测过程</h2><p>使用端口检测工具<a href="https://ping.pe/">ping.pe</a> 进行检测，结果如下图1所示，22端口在国外访问正常，国内无法访问；其它端口也是如此，此ip废了。</p><img src="C:/Users/12904/Downloads/PixPin_2025-01-09_20-04-10.png" alt="PixPin_2025-01-09_20-04-10" style="zoom:50%;" /><p>其它检测工具</p><p>1、国内外ping检测 <a href="https://www.itdog.cn/ping/">itdog.cn</a></p><p>2、国内外单个端口检测 <a href="https://www.toolsdaquan.com/ipcheck/">ipcheck</a></p><p>3、国内外ping/端口检测 <a href="https://ping.pe/">ping.pe</a></p><h2 id="解决方案">解决方案</h2><blockquote><p>两台服务器分别是Racknerd和DigitalOcean的，不同商家的解决方案不同。</p></blockquote><h3 id="digitalocean的解决方法">DigitalOcean的解决方法</h3><p>先来说DigitalOcean的解决方法吧</p><h4 id="方案一-推荐">方案一（推荐）</h4><p>不需要删服务器，直接去添加一个免费的<strong>浮动 IP (Reserved IPs)</strong>（每个小鸡可以添加一个，即服务器同时有 2 个 IP）。添加后你什么都不用干，直接就能通过这个 IP 链接服务器了。浮动 IP 可以随时删除，然后重新添加一个（等于换了个浮动 IP）。</p><p><img src="C:/Users/12904/AppData/Roaming/Typora/typora-user-images/image-20250110180758286.png" alt="image-20250110180758286"></p><h4 id="方案二">方案二</h4><p>将服务器关机，然后添加 snapshot。对那个 snapshot 进行 <strong>add to location</strong> 的操作，就能重新选 location 选好再开机，新的 location 以及新的 IP 了，然后旧的 droplet 可以删了</p><h3 id="racknerd的解决方法">Racknerd的解决方法</h3><h4 id="方案一">方案一</h4><p>Racknerd没法添加额外ip，所以只能更换ip；<strong>每台机器有一次免费更换ip的机会</strong>，发起更换ip的请求后系统会自动处理；</p><p>后续更换ip需要钱了，3刀一次；</p><p>如果更换后的ip还是被封了，<s>那……继续换</s>（不是）</p><h4 id="方案二">方案二</h4><p>如果花钱更换后的ip还是被封了，最好就找客服</p><p>描述自己的问题：大概意思是<strong>原ip被封了，然后花钱更换的新ip也被封了</strong></p><p>最好附录两张<a href="https://ping.pe/">ping.pe</a>的检测结果图（要显示22端口，以及其它端口被封了）</p><p>和客服交涉后，客服应该会手动将你的ip换成其它段的，此时应该就能用了（Racknerd大善人！）</p><p>工单申请内容如下：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">I am experiencing an issue where the server with IP address <span class="number">142.171</span><span class="number">.225</span><span class="number">.6</span> is completely inaccessible from mainland China. This applies to all ports<span class="punctuation">,</span> not just port <span class="number">22</span> (SSH). I have confirmed the issue by testing from multiple locations in China using different ISPs<span class="punctuation">,</span> such as China Telecom<span class="punctuation">,</span> China Unicom<span class="punctuation">,</span> and China Mobile. All attempts to connect to the server from these networks have failed.</span><br><span class="line"></span><br><span class="line">I have successfully connected to the server from multiple servers<span class="punctuation">,</span> including those in the USA<span class="punctuation">,</span> Canada<span class="punctuation">,</span> Europe<span class="punctuation">,</span> and Asia-Pacific regions<span class="punctuation">,</span> using SSH on port <span class="number">22.</span></span><br><span class="line"></span><br><span class="line">The problem persisted even after I changed the server&#x27;s IP address from <span class="number">142.171</span><span class="number">.50</span><span class="number">.112</span> to <span class="number">142.171</span><span class="number">.225</span><span class="number">.6</span>. Despite the new IP<span class="punctuation">,</span> the server is still inaccessible from China.</span><br><span class="line"></span><br><span class="line">If you require any additional information or logs<span class="punctuation">,</span> please let me know<span class="punctuation">,</span> and I will provide them promptly.</span><br><span class="line"></span><br><span class="line">Thank you for your attention to this matter. I look forward to your response.</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;racknerd-digitalocean-ip被gfw封了&quot;&gt;RackNerd &amp;amp; DigitalOcean IP被GFW封了&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;事情起因：最近两台美国服务器被GFW封了（全端口被封，其ip基本就废了）&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="折腾" scheme="https://blog.lthero.cn/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="折腾" scheme="https://blog.lthero.cn/tags/%E6%8A%98%E8%85%BE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Autolady安装与配置</title>
     <link href="https://blog.lthero.cn/2025/01/04/InstallAutolady/"/>
     <id>https://blog.lthero.cn/2025/01/04/InstallAutolady/</id>
@@ -519,32 +546,6 @@
     
     
     <category term="运维" scheme="https://blog.lthero.cn/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用pm2管理代码运行</title>
-    <link href="https://blog.lthero.cn/2024/06/05/pm2InstallAndUse/"/>
-    <id>https://blog.lthero.cn/2024/06/05/pm2InstallAndUse/</id>
-    <published>2024-06-05T14:18:07.000Z</published>
-    <updated>2024-06-05T14:24:42.903Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="使用pm2管理代码运行">使用pm2管理代码运行</h1><blockquote><p>要在conda环境下使用pm2管理运行带有参数<code>--listen 0.0.0.0</code>的<code>main.py</code>脚本，可以按照以下步骤操作</p></blockquote><h2 id="安装pm2">安装pm2</h2><p>如果还没有安装pm2，可以使用npm安装。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure><h2 id="创建一个启动脚本">创建一个启动脚本</h2><p>可以创建一个shell脚本，比如<code>start.sh</code>，来激活conda环境并运行<code>main.py</code>。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">source</span> activate sdv3</span><br><span class="line">python main.py --listen 0.0.0.0</span><br></pre></td></tr></table></figure><h2 id="给予执行权限">给予执行权限</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x start.sh</span><br></pre></td></tr></table></figure><h2 id="使用pm2管理脚本">使用pm2管理脚本</h2><p>使用<code>pm2</code>启动shell脚本时，使用<code>--interpreter</code>参数指定使用<code>bash</code>来运行该脚本：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start start.sh --name Comfyui --interpreter bash</span><br></pre></td></tr></table></figure><h2 id="pm2常用命令">pm2常用命令</h2><h3 id="查看所有运行的应用">查看所有运行的应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 list</span><br></pre></td></tr></table></figure><h3 id="查看运行状态">查看运行状态</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 status</span><br></pre></td></tr></table></figure><h3 id="停止应用">停止应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 stop Comfyui</span><br></pre></td></tr></table></figure><h3 id="重启应用">重启应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 restart Comfyui</span><br></pre></td></tr></table></figure><h3 id="查看日志">查看日志</h3><ol><li><p><strong>查看所有应用的实时日志</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs</span><br></pre></td></tr></table></figure></li><li><p><strong>查看特定应用的实时日志</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs &lt;app-name&gt;</span><br></pre></td></tr></table></figure><p>例如，如果你的应用名为<code>sdv3-app</code>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs sdv3-app</span><br></pre></td></tr></table></figure></li><li><p><strong>查看特定应用的错误日志</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs &lt;app-name&gt; --err</span><br></pre></td></tr></table></figure><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs sdv3-app --err</span><br></pre></td></tr></table></figure></li><li><p><strong>查看特定应用的标准输出日志</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs &lt;app-name&gt; --out</span><br></pre></td></tr></table></figure><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs sdv3-app --out</span><br></pre></td></tr></table></figure></li><li><p><strong>查看最近的100行日志</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs --lines 100</span><br></pre></td></tr></table></figure></li><li><p><strong>查看特定应用的最近100行日志</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs &lt;app-name&gt; --lines 100</span><br></pre></td></tr></table></figure><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs sdv3-app --lines 100</span><br></pre></td></tr></table></figure></li><li><p><strong>查看日志文件位置</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 info &lt;app-name&gt;</span><br></pre></td></tr></table></figure><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 info sdv3-app</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;使用pm2管理代码运行&quot;&gt;使用pm2管理代码运行&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;要在conda环境下使用pm2管理运行带有参数&lt;code&gt;--listen 0.0.0.0&lt;/code&gt;的&lt;code&gt;main.py&lt;/code&gt;脚本，可以按照以下步骤操作</summary>
-      
-    
-    
-    
-    <category term="机器学习" scheme="https://blog.lthero.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="机器学习" scheme="https://blog.lthero.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
