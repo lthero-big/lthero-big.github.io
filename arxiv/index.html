@@ -1,0 +1,1025 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>lthero | lthero</title><meta name="keywords" content="技术&amp;生活"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Updated on 2025.01.22 Digital Watermarking    Publish Date Title Authors PDF Code     2025-01-17 Neural Honeytrace: A Robust Plug-and-Play Watermarking Framework against Model Extraction Attacks Yixia">
+<meta property="og:type" content="website">
+<meta property="og:title" content="lthero">
+<meta property="og:url" content="https://blog.lthero.cn/arxiv/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="Updated on 2025.01.22 Digital Watermarking    Publish Date Title Authors PDF Code     2025-01-17 Neural Honeytrace: A Robust Plug-and-Play Watermarking Framework against Model Extraction Attacks Yixia">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg">
+<meta property="article:published_time" content="2025-01-22T02:55:35.966Z">
+<meta property="article:modified_time" content="2025-01-22T02:40:56.861Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="技术&amp;生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/arxiv/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'lthero',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-01-22 10:40:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-3YWJFC5QWY"></script><script>  window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}   gtag('js', new Date()); gtag('config', 'G-3YWJFC5QWY'); </script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">184</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">104</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">66</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/arxiv/"><i class="fa-fw fas fa-video"></i><span> arxiv</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/img/wallhaven-wy2ewp.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/arxiv/"><i class="fa-fw fas fa-video"></i><span> arxiv</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">lthero</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h1 id="updated-on-2025-01-22">Updated on 2025.01.22</h1>
+<h2 id="digital-watermarking">Digital Watermarking</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>Neural Honeytrace: A Robust Plug-and-Play Watermarking Framework against Model Extraction Attacks</strong></td>
+<td style="text-align:left">Yixiao Xu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09328v2">2501.09328v2</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/neurht/neurht">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-15</strong></td>
+<td style="text-align:left"><strong>Watermarking in Diffusion Model: Gaussian Shading with Exact Diffusion Inversion via Coupled Transformations (EDICT)</strong></td>
+<td style="text-align:left">Krishna Panthi <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08604v1">2501.08604v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-31</strong></td>
+<td style="text-align:left"><strong>SAT-LDM: Provably Generalizable Image Watermarking for Latent Diffusion Models with Self-Augmented Training</strong></td>
+<td style="text-align:left">Lu Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.00463v1">2501.00463v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-22</strong></td>
+<td style="text-align:left"><strong>RoboSignature: Robust Signature and Watermarking on Network Attacks</strong></td>
+<td style="text-align:left">Aryaman Shaan <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.19834v1">2412.19834v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/garvitbanga/robosignature">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-21</strong></td>
+<td style="text-align:left"><strong>Inflation of 2D boundary ghosts and digital watermarking</strong></td>
+<td style="text-align:left">Imants Svalbe <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.16789v1">2412.16789v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-17</strong></td>
+<td style="text-align:left"><strong>Invisible Watermarks: Attacks and Robustness</strong></td>
+<td style="text-align:left">Dongjun Hwang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.12511v1">2412.12511v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/tomputer-g/idl_war">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-13</strong></td>
+<td style="text-align:left"><strong>SuperMark: Robust and Training-free Image Watermarking via Diffusion-based Super-Resolution</strong></td>
+<td style="text-align:left">Runyi Hu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.10049v1">2412.10049v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-12</strong></td>
+<td style="text-align:left"><strong>Video Seal: Open and Efficient Video Watermarking</strong></td>
+<td style="text-align:left">Pierre Fernandez <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.09492v1">2412.09492v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/facebookresearch/videoseal">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-06</strong></td>
+<td style="text-align:left"><strong>LVMark: Robust Watermark for latent video diffusion models</strong></td>
+<td style="text-align:left">MinHyuk Jang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.09122v2">2412.09122v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-10</strong></td>
+<td style="text-align:left"><strong>StyleMark: A Robust Watermarking Method for Art Style Images Against Black-Box Arbitrary Style Transfer</strong></td>
+<td style="text-align:left">Yunming Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.07129v1">2412.07129v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diffusion-models">Diffusion Models</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>DiffStereo: High-Frequency Aware Diffusion Model for Stereo Image Restoration</strong></td>
+<td style="text-align:left">Huiyun Cao <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.10325v1">2501.10325v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-20</strong></td>
+<td style="text-align:left"><strong>DiffVSR: Enhancing Real-World Video Super-Resolution with Diffusion Models for Advanced Visual Quality and Temporal Consistency</strong></td>
+<td style="text-align:left">Xiaohui Li <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.10110v2">2501.10110v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>Conditional Latent Diffusion-Based Speech Enhancement Via Dual Context Learning</strong></td>
+<td style="text-align:left">Shengkui Zhao <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.10052v1">2501.10052v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>DiffuEraser: A Diffusion Model for Video Inpainting</strong></td>
+<td style="text-align:left">Xiaowen Li <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.10018v1">2501.10018v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>Enhancing Crash Frequency Modeling Based on Augmented Multi-Type Data by Hybrid VAE-Diffusion-Based Generative Neural Networks</strong></td>
+<td style="text-align:left">Junlan Chen <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.10017v1">2501.10017v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>Physics-informed DeepCT: Sinogram Wavelet Decomposition Meets Masked Diffusion</strong></td>
+<td style="text-align:left">Zekun Zhou <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09935v1">2501.09935v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>Geometry-Preserving Encoder/Decoder in Latent Generative Models</strong></td>
+<td style="text-align:left">Wonjun Lee <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09876v1">2501.09876v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>CrossModalityDiffusion: Multi-Modal Novel View Synthesis with Unified Intermediate Representation</strong></td>
+<td style="text-align:left">Alex Berian <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09838v1">2501.09838v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>PIXELS: Progressive Image Xemplar-based Editing with Latent Surgery</strong></td>
+<td style="text-align:left">Shristi Das Biswas <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09826v1">2501.09826v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/amazon-science/pixels">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>Lossy Compression with Pretrained Diffusion Models</strong></td>
+<td style="text-align:left">Jeremy Vonderfecht <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09815v1">2501.09815v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/jeremyiv/diffc">link</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ai-generated-content">AI Generated Content</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-15</strong></td>
+<td style="text-align:left"><strong>Generative Medical Image Anonymization Based on Latent Code Projection and Optimization</strong></td>
+<td style="text-align:left">Huiyu Li <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09114v1">2501.09114v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/huiyu-li/gmia">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-15</strong></td>
+<td style="text-align:left"><strong>Few-Shot Learner Generalizes Across AI-Generated Image Detection</strong></td>
+<td style="text-align:left">Shiyu Wu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08763v1">2501.08763v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-15</strong></td>
+<td style="text-align:left"><strong>StereoGen: High-quality Stereo Image Generation from a Single Image</strong></td>
+<td style="text-align:left">Xianqi Wang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08654v1">2501.08654v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-15</strong></td>
+<td style="text-align:left"><strong>Yuan: Yielding Unblemished Aesthetics Through A Unified Network for Visual Imperfections Removal in Generated Images</strong></td>
+<td style="text-align:left">Zhenyu Yu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08505v1">2501.08505v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/yuzhenyulindy/yuan">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-15</strong></td>
+<td style="text-align:left"><strong>RoHan: Robust Hand Detection in Operation Room</strong></td>
+<td style="text-align:left">Roi Papo <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08115v2">2501.08115v2</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/roipapo/rohan">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-10</strong></td>
+<td style="text-align:left"><strong>The CIELO Project: The Chemo-dynamical properties of gaLaxies and the cosmic web</strong></td>
+<td style="text-align:left">Patricia Tissera <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.05978v1">2501.05978v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-10</strong></td>
+<td style="text-align:left"><strong>HFMF: Hierarchical Fusion Meets Multi-Stream Models for Deepfake Detection</strong></td>
+<td style="text-align:left">Anant Mehta <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.05631v1">2501.05631v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/taco-group/hfmf">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-08</strong></td>
+<td style="text-align:left"><strong>DRIVINGVQA: Analyzing Visual Chain-of-Thought Reasoning of Vision Language Models in Real-World Scenarios with Driving Theory Tests</strong></td>
+<td style="text-align:left">Charles Corbière <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.04671v1">2501.04671v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-06</strong></td>
+<td style="text-align:left"><strong>License Plate Images Generation with Diffusion Models</strong></td>
+<td style="text-align:left">Mariia Shpir <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.03374v1">2501.03374v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-06</strong></td>
+<td style="text-align:left"><strong>Personalized Fashion Recommendation with Image Attributes and Aesthetics Assessment</strong></td>
+<td style="text-align:left">Chongxian Chen <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.03085v1">2501.03085v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+</tbody>
+</table>
+<h2 id="image-security">Image Security</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>Advancing Image Security with Quantum Key Distribution and Multi-Layer Chaotic Encryption for Quantum Resilient Transmission</strong></td>
+<td style="text-align:left">Tasmin Karim <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09895v1">2501.09895v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>iFADIT: Invertible Face Anonymization via Disentangled Identity Transform</strong></td>
+<td style="text-align:left">Lin Yuan <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.04390v2">2501.04390v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-03</strong></td>
+<td style="text-align:left"><strong>SafeAug: Safety-Critical Driving Data Augmentation from Naturalistic Datasets</strong></td>
+<td style="text-align:left">Zhaobin Mo <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.02143v1">2501.02143v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-08</strong></td>
+<td style="text-align:left"><strong>Anti-Reference: Universal and Immediate Defense Against Reference-Based Generation</strong></td>
+<td style="text-align:left">Yiren Song <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.05980v1">2412.05980v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/songyiren725/AntiReference">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-05</strong></td>
+<td style="text-align:left"><strong>EditScout: Locating Forged Regions from Diffusion-based Edited Images with Multimodal LLM</strong></td>
+<td style="text-align:left">Quang Nguyen <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.03809v1">2412.03809v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-04</strong></td>
+<td style="text-align:left"><strong>Is JPEG AI going to change image forensics?</strong></td>
+<td style="text-align:left">Edoardo Daniele Cannas <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.03261v1">2412.03261v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-01</strong></td>
+<td style="text-align:left"><strong>DIVD: Deblurring with Improved Video Diffusion Model</strong></td>
+<td style="text-align:left">Haoyang Long <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.00773v1">2412.00773v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-22</strong></td>
+<td style="text-align:left"><strong>Omni-IML: Towards Unified Image Manipulation Localization</strong></td>
+<td style="text-align:left">Chenfan Qu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.14823v1">2411.14823v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-10-19</strong></td>
+<td style="text-align:left"><strong>SLIC: Secure Learned Image Codec through Compressed Domain Watermarking to Defend Image Manipulation</strong></td>
+<td style="text-align:left">Chen-Hsiu Huang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2410.15075v1">2410.15075v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-10-09</strong></td>
+<td style="text-align:left"><strong>Large-scale self-assembled nanophotonic scintillators for X-ray imaging</strong></td>
+<td style="text-align:left">Louis Martin-Monier <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2410.07141v1">2410.07141v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deep-watermarking">Deep Watermarking</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-06</strong></td>
+<td style="text-align:left"><strong>Persistence of Backdoor-based Watermarks for Neural Networks: A Comprehensive Evaluation</strong></td>
+<td style="text-align:left">Anh Tu Ngo <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.02704v1">2501.02704v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-02</strong></td>
+<td style="text-align:left"><strong>OmniGuard: Hybrid Manipulation Localization via Augmented Versatile Deep Image Watermarking</strong></td>
+<td style="text-align:left">Xuanyu Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.01615v1">2412.01615v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-20</strong></td>
+<td style="text-align:left"><strong>Bounding-box Watermarking: Defense against Model Extraction Attacks on Object Detectors</strong></td>
+<td style="text-align:left">Satoru Koda <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.13047v1">2411.13047v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-09-29</strong></td>
+<td style="text-align:left"><strong>IDEAW: Robust Neural Audio Watermarking with Invertible Dual-Embedding</strong></td>
+<td style="text-align:left">Pengcheng Li <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2409.19627v1">2409.19627v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-09-16</strong></td>
+<td style="text-align:left"><strong>FreeMark: A Non-Invasive White-Box Watermarking for Deep Neural Networks</strong></td>
+<td style="text-align:left">Yuzhang Chen <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2409.09996v1">2409.09996v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-07-26</strong></td>
+<td style="text-align:left"><strong>SWIFT: Semantic Watermarking for Image Forgery Thwarting</strong></td>
+<td style="text-align:left">Gautier Evennou <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2407.18995v1">2407.18995v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/gautierevn/swift_watermarking">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-07-18</strong></td>
+<td style="text-align:left"><strong>Not Just Change the Labels, Learn the Features: Watermarking Deep Neural Networks with Multi-View Data</strong></td>
+<td style="text-align:left">Yuxuan Li <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2403.10663v2">2403.10663v2</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/liyuxuan-github/mat">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-03-06</strong></td>
+<td style="text-align:left"><strong>DeepEclipse: How to Break White-Box DNN-Watermarking Schemes</strong></td>
+<td style="text-align:left">Alessandro Pegoraro <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2403.03590v1">2403.03590v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-12-10</strong></td>
+<td style="text-align:left"><strong>FedReverse: Multiparty Reversible Deep Neural Network Watermarking</strong></td>
+<td style="text-align:left">Junlong Mao <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2312.05738v1">2312.05738v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-10-25</strong></td>
+<td style="text-align:left"><strong>ClearMark: Intuitive and Robust Model Watermarking via Transposed Model Training</strong></td>
+<td style="text-align:left">Torsten Krauß <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2310.16453v1">2310.16453v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+</tbody>
+</table>
+<h2 id="generative-ai-security">Generative AI Security</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-09</strong></td>
+<td style="text-align:left"><strong>Analyzing Memorization in Large Language Models through the Lens of Model Attribution</strong></td>
+<td style="text-align:left">Tarun Ram Menta <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.05078v1">2501.05078v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/aikyamlab/llm-memorization">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-16</strong></td>
+<td style="text-align:left"><strong>A LoRA is Worth a Thousand Pictures</strong></td>
+<td style="text-align:left">Chenxi Liu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.12048v1">2412.12048v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-08</strong></td>
+<td style="text-align:left"><strong>Cloud Platforms for Developing Generative AI Solutions: A Scoping Review of Tools and Services</strong></td>
+<td style="text-align:left">Dhavalkumar Patel <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.06044v1">2412.06044v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-08</strong></td>
+<td style="text-align:left"><strong>DREAM: Domain-agnostic Reverse Engineering Attributes of Black-box Model</strong></td>
+<td style="text-align:left">Rongqing Li <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.05842v1">2412.05842v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-02</strong></td>
+<td style="text-align:left"><strong>Reject Threshold Adaptation for Open-Set Model Attribution of Deepfake Audio</strong></td>
+<td style="text-align:left">Xinrui Yan <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.01425v1">2412.01425v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-27</strong></td>
+<td style="text-align:left"><strong>Relaxing Constraints on Dark Matter Annihilation Near the Supermassive Black Hole in M87</strong></td>
+<td style="text-align:left">Mehrdad Phoroutan-Mehr <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.18751v1">2411.18751v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-21</strong></td>
+<td style="text-align:left"><strong>Single-Model Attribution for Spoofed Speech via Vocoder Fingerprints in an Open-World Setting</strong></td>
+<td style="text-align:left">Matías Pizarro <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.14013v1">2411.14013v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-10-23</strong></td>
+<td style="text-align:left"><strong>LEIA discovery of the longest-lasting and most energetic stellar X-ray flare ever detected</strong></td>
+<td style="text-align:left">Xuan Mao <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2410.17999v1">2410.17999v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-10-17</strong></td>
+<td style="text-align:left"><strong>Advancing Large Language Model Attribution through Self-Improving</strong></td>
+<td style="text-align:left">Lei Huang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2410.13298v1">2410.13298v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-08-27</strong></td>
+<td style="text-align:left"><strong>Interactive dense pixel visualizations for time series and model attribution explanations</strong></td>
+<td style="text-align:left">Udo Schlegel <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2408.15073v1">2408.15073v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+</tbody>
+</table>
+<h2 id="watermarking-in-generative-models">Watermarking in Generative Models</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-06</strong></td>
+<td style="text-align:left"><strong>LVMark: Robust Watermark for latent video diffusion models</strong></td>
+<td style="text-align:left">MinHyuk Jang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.09122v2">2412.09122v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-12</strong></td>
+<td style="text-align:left"><strong>CLUE-MARK: Watermarking Diffusion Models using CLWE</strong></td>
+<td style="text-align:left">Kareem Shehata <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.11434v3">2411.11434v3</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-07-17</strong></td>
+<td style="text-align:left"><strong>GROOT: Generating Robust Watermark for Diffusion-Model-Based Audio Synthesis</strong></td>
+<td style="text-align:left">Weizhi Liu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2407.10471v2">2407.10471v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-05-06</strong></td>
+<td style="text-align:left"><strong>Gaussian Shading: Provable Performance-Lossless Image Watermarking for Diffusion Models</strong></td>
+<td style="text-align:left">Zijin Yang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2404.04956v3">2404.04956v3</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/bsmhmmlf/Gaussian-Shading">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-07-23</strong></td>
+<td style="text-align:left"><strong>Watermarks in the Sand: Impossibility of Strong Watermarking for Generative Models</strong></td>
+<td style="text-align:left">Hanlin Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2311.04378v4">2311.04378v4</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/hlzhang109/impossibility-watermark">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-11-29</strong></td>
+<td style="text-align:left"><strong>Intellectual Property Protection of Diffusion Models via the Watermark Diffusion Process</strong></td>
+<td style="text-align:left">Sen Peng <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2306.03436v2">2306.03436v2</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/senp98/wdm">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-05-21</strong></td>
+<td style="text-align:left"><strong>Watermarking Diffusion Model</strong></td>
+<td style="text-align:left">Yugeng Liu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2305.12502v1">2305.12502v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-05-21</strong></td>
+<td style="text-align:left"><strong>Generative Model Watermarking Suppressing High-Frequency Artifacts</strong></td>
+<td style="text-align:left">Li Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2305.12391v1">2305.12391v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-04-04</strong></td>
+<td style="text-align:left"><strong>Can AI Put Gamma-Ray Astrophysicists Out of a Job?</strong></td>
+<td style="text-align:left">Samuel T. Spencer <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2303.17853v2">2303.17853v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2023-10-15</strong></td>
+<td style="text-align:left"><strong>A Recipe for Watermarking Diffusion Models</strong></td>
+<td style="text-align:left">Yunqing Zhao <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2303.10137v2">2303.10137v2</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/yunqing-me/watermarkdm">link</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="model-robustness">Model Robustness</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-17</strong></td>
+<td style="text-align:left"><strong>CaFA: Cost-aware, Feasible Attacks With Database Constraints Against Neural Tabular Classifiers</strong></td>
+<td style="text-align:left">Matan Ben-Tov <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.10013v1">2501.10013v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>Unified Face Matching and Physical-Digital Spoofing Attack Detection</strong></td>
+<td style="text-align:left">Arun Kunwar <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09635v1">2501.09635v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-16</strong></td>
+<td style="text-align:left"><strong>Double Visual Defense: Adversarial Pre-training and Instruction Tuning for Improving Vision-Language Model Robustness</strong></td>
+<td style="text-align:left">Zeyu Wang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.09446v1">2501.09446v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-14</strong></td>
+<td style="text-align:left"><strong>I Can Find You in Seconds! Leveraging Large Language Models for Code Authorship Attribution</strong></td>
+<td style="text-align:left">Soohyeon Choi <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08165v1">2501.08165v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-14</strong></td>
+<td style="text-align:left"><strong>Optimizing Speech Multi-View Feature Fusion through Conditional Computation</strong></td>
+<td style="text-align:left">Weiqiao Shan <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.08057v1">2501.08057v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/shanweiqiao/gsgn">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-14</strong></td>
+<td style="text-align:left"><strong>An Adaptive Orthogonal Convolution Scheme for Efficient and Flexible CNN Architectures</strong></td>
+<td style="text-align:left">Thibaut Boissin <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.07930v1">2501.07930v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/thib-s/orthogonium">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-13</strong></td>
+<td style="text-align:left"><strong>A Survey of Early Exit Deep Neural Networks in NLP</strong></td>
+<td style="text-align:left">Divya Jyoti Bajpai <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.07670v1">2501.07670v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-11</strong></td>
+<td style="text-align:left"><strong>Synthetic Feature Augmentation Improves Generalization Performance of Language Models</strong></td>
+<td style="text-align:left">Ashok Choudhary <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.06434v1">2501.06434v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-10</strong></td>
+<td style="text-align:left"><strong>Effective faking of verbal deception detection with target-aligned adversarial attacks</strong></td>
+<td style="text-align:left">Bennett Kleinberg <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.05962v1">2501.05962v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2025-01-09</strong></td>
+<td style="text-align:left"><strong>Uncertainty-aware Knowledge Tracing</strong></td>
+<td style="text-align:left">Weihua Cheng <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.05415v1">2501.05415v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/uncertaintyforknowledgetracing/ukt">link</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ai-security">AI Security</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Publish Date</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">Authors</th>
+<th style="text-align:left">PDF</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>2025-01-08</strong></td>
+<td style="text-align:left"><strong>Rethinking Byzantine Robustness in Federated Recommendation from Sparse Aggregation Perspective</strong></td>
+<td style="text-align:left">Zhongjian Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.03301v2">2501.03301v2</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/zhongjian-zhang/spattack">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-29</strong></td>
+<td style="text-align:left"><strong>On Adversarial Robustness of Language Models in Transfer Learning</strong></td>
+<td style="text-align:left">Bohdan Turbal <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2501.00066v1">2501.00066v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-19</strong></td>
+<td style="text-align:left"><strong>Position: A taxonomy for reporting and describing AI security incidents</strong></td>
+<td style="text-align:left">Lukas Bieringer <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.14855v1">2412.14855v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-16</strong></td>
+<td style="text-align:left"><strong>Deep Learning Model Security: Threats and Defenses</strong></td>
+<td style="text-align:left">Tianyang Wang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.08969v2">2412.08969v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-08</strong></td>
+<td style="text-align:left"><strong>Cloud Platforms for Developing Generative AI Solutions: A Scoping Review of Tools and Services</strong></td>
+<td style="text-align:left">Dhavalkumar Patel <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.06044v1">2412.06044v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-12-03</strong></td>
+<td style="text-align:left"><strong>Sustainable Self-evolution Adversarial Training</strong></td>
+<td style="text-align:left">Wenxuan Wang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2412.02270v1">2412.02270v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-29</strong></td>
+<td style="text-align:left"><strong>Quantized Delta Weight Is Safety Keeper</strong></td>
+<td style="text-align:left">Yule Liu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.19530v1">2411.19530v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-12</strong></td>
+<td style="text-align:left"><strong>RedCode: Risky Code Execution and Generation Benchmark for Code Agents</strong></td>
+<td style="text-align:left">Chengquan Guo <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.07781v1">2411.07781v1</a></td>
+<td style="text-align:left"><strong><a target="_blank" rel="noopener" href="https://github.com/ai-secure/redcode">link</a></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-13</strong></td>
+<td style="text-align:left"><strong>Target-driven Attack for Large Language Models</strong></td>
+<td style="text-align:left">Chong Zhang <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.07268v2">2411.07268v2</a></td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2024-11-09</strong></td>
+<td style="text-align:left"><strong>A Sharded Blockchain-Based Secure Federated Learning Framework for LEO Satellite Networks</strong></td>
+<td style="text-align:left">Wenbo Wu <a target="_blank" rel="noopener" href="http://et.al">et.al</a>.</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://arxiv.org/abs/2411.06137v1">2411.06137v1</a></td>
+<td style="text-align:left">null</td>
+</tr>
+</tbody>
+</table>
+</div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">184</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">104</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">66</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#updated-on-2025-01-22"><span class="toc-number">1.</span> <span class="toc-text">Updated on 2025.01.22</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#digital-watermarking"><span class="toc-number">1.1.</span> <span class="toc-text">Digital Watermarking</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#diffusion-models"><span class="toc-number">1.2.</span> <span class="toc-text">Diffusion Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ai-generated-content"><span class="toc-number">1.3.</span> <span class="toc-text">AI Generated Content</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-security"><span class="toc-number">1.4.</span> <span class="toc-text">Image Security</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#deep-watermarking"><span class="toc-number">1.5.</span> <span class="toc-text">Deep Watermarking</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#generative-ai-security"><span class="toc-number">1.6.</span> <span class="toc-text">Generative AI Security</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watermarking-in-generative-models"><span class="toc-number">1.7.</span> <span class="toc-text">Watermarking in Generative Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#model-robustness"><span class="toc-number">1.8.</span> <span class="toc-text">Model Robustness</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ai-security"><span class="toc-number">1.9.</span> <span class="toc-text">AI Security</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/17/Autoencoder/" title="Autoencoder"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/m9weo1.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="Autoencoder"/></a><div class="content"><a class="title" href="/2025/01/17/Autoencoder/" title="Autoencoder">Autoencoder</a><time datetime="2025-01-17T14:20:31.000Z" title="发表于 2025-01-17 22:20:31">2025-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/10/IP-is-blocked-by-GFW/" title="【RackNerd &amp; DigitalOcean】IP被封|IP被GFW封"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【RackNerd &amp; DigitalOcean】IP被封|IP被GFW封"/></a><div class="content"><a class="title" href="/2025/01/10/IP-is-blocked-by-GFW/" title="【RackNerd &amp; DigitalOcean】IP被封|IP被GFW封">【RackNerd &amp; DigitalOcean】IP被封|IP被GFW封</a><time datetime="2025-01-10T09:50:15.000Z" title="发表于 2025-01-10 17:50:15">2025-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/04/InstallAutolady/" title="Autolady安装与配置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="Autolady安装与配置"/></a><div class="content"><a class="title" href="/2025/01/04/InstallAutolady/" title="Autolady安装与配置">Autolady安装与配置</a><time datetime="2025-01-04T08:34:55.000Z" title="发表于 2025-01-04 16:34:55">2025-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/03/UseProxyInWindows/" title="日常开发中用到的一些代理配置方式"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/x8d8gz.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="日常开发中用到的一些代理配置方式"/></a><div class="content"><a class="title" href="/2025/01/03/UseProxyInWindows/" title="日常开发中用到的一些代理配置方式">日常开发中用到的一些代理配置方式</a><time datetime="2025-01-03T08:56:55.000Z" title="发表于 2025-01-03 16:56:55">2025-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/31/FUCK-U-CDN-STEALER/" title="【阿里cdn】被恶意刷流量!"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/rd3pjw.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="【阿里cdn】被恶意刷流量!"/></a><div class="content"><a class="title" href="/2024/12/31/FUCK-U-CDN-STEALER/" title="【阿里cdn】被恶意刷流量!">【阿里cdn】被恶意刷流量!</a><time datetime="2024-12-31T08:42:46.000Z" title="发表于 2024-12-31 16:42:46">2024-12-31</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AIGC/"><span class="card-category-list-name">AIGC</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ChatGPT/"><span class="card-category-list-name">ChatGPT</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Diffusion/"><span class="card-category-list-name">Diffusion</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/"><span class="card-category-list-name">Ubuntu</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/html/"><span class="card-category-list-name">html</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">33</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/408/" style="font-size: 1.1em; color: #999">408</a> <a href="/tags/AES/" style="font-size: 1.1em; color: #999">AES</a> <a href="/tags/AIGC/" style="font-size: 1.2em; color: #999da3">AIGC</a> <a href="/tags/BP/" style="font-size: 1.1em; color: #999">BP</a> <a href="/tags/ChatGPT/" style="font-size: 1.1em; color: #999">ChatGPT</a> <a href="/tags/Cross-Attention/" style="font-size: 1.1em; color: #999">Cross-Attention</a> <a href="/tags/DDIM/" style="font-size: 1.1em; color: #999">DDIM</a> <a href="/tags/DDPM/" style="font-size: 1.2em; color: #999da3">DDPM</a> <a href="/tags/DES/" style="font-size: 1.1em; color: #999">DES</a> <a href="/tags/DH%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2/" style="font-size: 1.1em; color: #999">DH密钥交换</a> <a href="/tags/Diffusion/" style="font-size: 1.2em; color: #999da3">Diffusion</a> <a href="/tags/Diffusion%E6%A0%B8%E5%BF%83/" style="font-size: 1.1em; color: #999">Diffusion核心</a> <a href="/tags/FFT/" style="font-size: 1.1em; color: #999">FFT</a> <a href="/tags/Frp%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">Frp配置</a> <a href="/tags/IP%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">IP安全</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/Kerberos/" style="font-size: 1.1em; color: #999">Kerberos</a> <a href="/tags/Nas/" style="font-size: 1.1em; color: #999">Nas</a> <a href="/tags/NewBing/" style="font-size: 1.1em; color: #999">NewBing</a> <a href="/tags/Openwrt/" style="font-size: 1.1em; color: #999">Openwrt</a> <a href="/tags/PPT/" style="font-size: 1.1em; color: #999">PPT</a> <a href="/tags/PS5/" style="font-size: 1.1em; color: #999">PS5</a> <a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 1.1em; color: #999">RSA加密</a> <a href="/tags/RustDesk/" style="font-size: 1.1em; color: #999">RustDesk</a> <a href="/tags/SSH/" style="font-size: 1.1em; color: #999">SSH</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/StableDiffusion/" style="font-size: 1.1em; color: #999">StableDiffusion</a> <a href="/tags/TCP/" style="font-size: 1.1em; color: #999">TCP</a> <a href="/tags/TLS/" style="font-size: 1.1em; color: #999">TLS</a> <a href="/tags/cdn%E7%9B%97%E7%94%A8/" style="font-size: 1.1em; color: #999">cdn盗用</a> <a href="/tags/hexo/" style="font-size: 1.3em; color: #99a1ac">hexo</a> <a href="/tags/linux/" style="font-size: 1.4em; color: #99a5b6">linux</a> <a href="/tags/openAI/" style="font-size: 1.1em; color: #999">openAI</a> <a href="/tags/proxychains4/" style="font-size: 1.1em; color: #999">proxychains4</a> <a href="/tags/python/" style="font-size: 1.5em; color: #99a9bf">python</a> <a href="/tags/shell/" style="font-size: 1.1em; color: #999">shell</a> <a href="/tags/socket%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">socket编程</a> <a href="/tags/spotify/" style="font-size: 1.1em; color: #999">spotify</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/systemctl%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">systemctl管理</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">4</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">184</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-07-21T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">420.3k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-22T02:56:06.256Z"></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'ltheroblogwaline-comments-ltherobigs-projects.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
