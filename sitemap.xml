@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2025/06/24/LeetCodeCampsDay1/</loc>
+    
+    <lastmod>2025-06-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2025/04/24/ReleaseNodesForComfyui/</loc>
     
     <lastmod>2025-06-24</lastmod>
@@ -2548,6 +2557,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://blog.lthero.cn/tags/LeetCode/</loc>
+    <lastmod>2025-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -3014,6 +3030,13 @@
   
   <url>
     <loc>https://blog.lthero.cn/categories/zerotier/</loc>
+    <lastmod>2025-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lthero.cn/categories/LeetCode/</loc>
     <lastmod>2025-06-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
