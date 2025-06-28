@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://blog.lthero.cn/2025/06/25/LeetCodeCampsDay2/</loc>
+    
+    <lastmod>2025-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2025/06/26/LeetCodeCampsDay3/</loc>
     
     <lastmod>2025-06-27</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://blog.lthero.cn/2025/04/26/IELTsWriting/</loc>
     
     <lastmod>2025-06-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.lthero.cn/2025/06/26/LeetCodeCampsDay2/</loc>
-    
-    <lastmod>2025-06-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
