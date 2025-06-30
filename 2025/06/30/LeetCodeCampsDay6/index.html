@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>LeetCodeCampsDay6 | lthero</title><meta name="keywords" content="leetcode"><meta name="author" content="lthero"><meta name="copyright" content="lthero"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="LeetCodeCampsDay6  以及几题目主要利用hash table的“唯一性”思想解决题目 关键词：哈希表；快慢指针；双指针；用set&#x2F;dict&#x2F;当成hash表；  242. 有效的字母异位词 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;valid-anagram&#x2F;  给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的 字母异位词。  示例 1: 12输入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCodeCampsDay6">
+<meta property="og:url" content="https://blog.lthero.cn/2025/06/30/LeetCodeCampsDay6/index.html">
+<meta property="og:site_name" content="lthero">
+<meta property="og:description" content="LeetCodeCampsDay6  以及几题目主要利用hash table的“唯一性”思想解决题目 关键词：哈希表；快慢指针；双指针；用set&#x2F;dict&#x2F;当成hash表；  242. 有效的字母异位词 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;valid-anagram&#x2F;  给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的 字母异位词。  示例 1: 12输入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png">
+<meta property="article:published_time" content="2025-06-30T06:37:28.000Z">
+<meta property="article:modified_time" content="2025-06-30T13:31:26.546Z">
+<meta property="article:author" content="lthero">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png"><link rel="shortcut icon" href="https://cdn.lthero.cn/webPic/logo/lthero_logo.png"><link rel="canonical" href="https://blog.lthero.cn/2025/06/30/LeetCodeCampsDay6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="iNo3p5pDMQW3QRCjgVQ_A-4vbPCQipgCC1evSSmk8p8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"这篇文章距离他上一次更新已经过去了……我算算啊……好像是","messageNext":"天吧，不知道是否还有效啊!"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCodeCampsDay6',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-30 21:31:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/mycss/lthero-css.css"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-3YWJFC5QWY"></script><script>  window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}   gtag('js', new Date()); gtag('config', 'G-3YWJFC5QWY'); </script><!-- hexo injector head_end start --><script> let HEXO_MMEDIA_DATA = { js: [], css: [], aplayerData: [], metingData: [], artPlayerData: [], dplayerData: []}; </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="lthero" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">200</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">111</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">70</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/arxiv/"><i class="fa-fw fas fa-newspaper"></i><span> arxiv</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lthero</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/arxiv/"><i class="fa-fw fas fa-newspaper"></i><span> arxiv</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LeetCodeCampsDay6</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-30T06:37:28.000Z" title="发表于 2025-06-30 14:37:28">2025-06-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-30T13:31:26.546Z" title="更新于 2025-06-30 21:31:26">2025-06-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/leetcode/">leetcode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LeetCodeCampsDay6"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="leetcodecampsday6">LeetCodeCampsDay6</h1>
+<blockquote>
+<p>以及几题目主要利用hash table的“唯一性”思想解决题目</p>
+<p>关键词：哈希表；快慢指针；双指针；用set/dict/当成hash表；</p>
+</blockquote>
+<h1 id="242-有效的字母异位词">242. 有效的字母异位词</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/">https://leetcode.cn/problems/valid-anagram/</a></p>
+<blockquote>
+<p>给定两个字符串 <code>s</code> 和 <code>t</code> ，编写一个函数来判断 <code>t</code> 是否是 <code>s</code> 的 字母异位词。</p>
+</blockquote>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;anagram&quot;, t = &quot;nagaram&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;rat&quot;, t = &quot;car&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong></p>
+<ul>
+<li><code>1 &lt;= s.length, t.length &lt;= 5 * 104</code></li>
+<li><code>s</code> 和 <code>t</code> 仅包含小写字母</li>
+</ul>
+<p><strong>进阶:</strong> 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？</p>
+<h2 id="思路">思路</h2>
+<ol>
+<li>使用hash table可解决</li>
+<li>开辟一块26个int型的数组即可，比如对于字符串s，&quot;a&quot;出现一次，则’a’ - ‘a’的下标（应该是0）对应的数据加一；而对于字符串t，就将反着“检查”，比如’n’出现一次，就要将’n’ - 'a’的下标对应的数据减一；</li>
+<li>最后，判断是否有「非零」数，若存在则s与t不是字母异位词</li>
+<li>可以通过判断s与t长度提前判断；</li>
+</ol>
+<p>如动画所示</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://file1.kamacoder.com/i/algo/242.%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D.gif" alt="img"></p>
+<h2 id="代码">代码</h2>
+<p>ord(.)用于获取字符的ascii码</p>
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)，指仅用了26个int型（因为length &lt;= 5*10^4)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        nums = [<span class="number">0</span>] * <span class="number">26</span></span><br><span class="line">        <span class="comment"># 如果两者长度不相等直接False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s)!= <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            nums[<span class="built_in">ord</span>(i) - <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> t:</span><br><span class="line">            nums[<span class="built_in">ord</span>(i) - <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> i != <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>代码改进，可以使用zip减少一次遍历次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        nums = [<span class="number">0</span>] * <span class="number">26</span></span><br><span class="line">        <span class="comment"># 如果两者长度不相等直接False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s)!= <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 仅当长度相等时，同步推进，减少一次遍历次数</span></span><br><span class="line">        <span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">zip</span>(s,t):</span><br><span class="line">            nums[<span class="built_in">ord</span>(i) - <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] += <span class="number">1</span></span><br><span class="line">            nums[<span class="built_in">ord</span>(j) - <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> i != <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<h1 id="349-两个数组的交集">349. 两个数组的交集</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-arrays/">https://leetcode.cn/problems/intersection-of-two-arrays/</a></p>
+<p>给定两个数组 <code>nums1</code> 和 <code>nums2</code> ，返回 <em>它们的 交集</em> 。输出结果中的每个元素一定是 <strong>唯一</strong> 的。我们可以 <strong>不考虑输出结果的顺序</strong> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [1,2,2,1], nums2 = [2,2]</span><br><span class="line">输出：[2]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]</span><br><span class="line">输出：[9,4]</span><br><span class="line">解释：[4,9] 也是可通过的</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums1.length, nums2.length &lt;= 1000</code></li>
+<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
+</ul>
+<h2 id="思路">思路</h2>
+<ol>
+<li>
+<p>如果哈希值比较少、特别分散、跨度非常大，使用数组就造成空间的极大浪费，此时就要使用另一种<strong>结构体set</strong></p>
+</li>
+<li>
+<p>先将nums1转成unordered_set，再将nums2与这unordered_set比较，得到二次筛选后的unordered_set.</p>
+</li>
+<li>
+<p>在python时使用dict字典即可，将nums1的数据添加到字典了（如果已经存在就不用添加了，也是变相地一种set）</p>
+</li>
+</ol>
+<p>如动画所示</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://file1.kamacoder.com/i/algo/20220707173513.png" alt="img"></p>
+<h2 id="代码">代码</h2>
+<p>python提供了集合set函数，可以直接使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">intersection</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">set</span>(nums1) &amp; <span class="built_in">set</span>(nums2))</span><br></pre></td></tr></table></figure>
+<p>手动实现，使用字典dict和列表list实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">		<span class="keyword">def</span> <span class="title function_">intersection</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        dictSet = <span class="built_in">dict</span>()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums1:</span><br><span class="line">          	<span class="comment"># 如果i 不在dictSet中，返回-1，并且添加到dictSet中，赋值为1（随便给）</span></span><br><span class="line">            <span class="comment"># get 方法内部也会进行哈希表查找，一次查询的平均时间复杂度也是 O(1)</span></span><br><span class="line">            <span class="comment"># 与if i in dictSet:一样</span></span><br><span class="line">            <span class="keyword">if</span> dictSet.get(i, -<span class="number">1</span>) == -<span class="number">1</span>:</span><br><span class="line">                dictSet[i] = <span class="number">1</span></span><br><span class="line">        res = <span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums2:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> dictSet:</span><br><span class="line">                res.append(i)</span><br><span class="line">                <span class="comment"># 删除dictSet中的这个数据，防止被反复添加</span></span><br><span class="line">                <span class="keyword">del</span> dictSet[i]</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">      	</span><br><span class="line">        <span class="comment"># 或者将res设置为set，可以减少删除dictSet中数字的步骤</span></span><br><span class="line">        <span class="comment"># res = set()</span></span><br><span class="line">        <span class="comment"># for i in nums2:</span></span><br><span class="line">        <span class="comment">#     if dictSet.get(i, -1) != -1:</span></span><br><span class="line">        <span class="comment">#         res.add(i)</span></span><br><span class="line">        <span class="comment"># return list(res)</span></span><br></pre></td></tr></table></figure>
+<p>当然也可以使用数组（list）实现，这题目限制范围是0&lt;=num&lt;=1000数据，可以开1001个位置的数据并按<code>242. 有效的字母异位词的思路</code>赋值再查询</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   dictSet = [<span class="number">0</span>] * <span class="number">1001</span></span><br><span class="line"><span class="comment"># 在nums1中的数据先在dictSet设置为1</span></span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> nums1:</span><br><span class="line">       dictSet[i] = <span class="number">1</span></span><br><span class="line">   <span class="comment"># 在nums2中的数据，并且在dictSet设置为1的，再设置为2</span></span><br><span class="line">   <span class="comment"># 好处是如果dictSet中有重复的数据，不用被重复设置</span></span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> nums2:</span><br><span class="line">       <span class="keyword">if</span> dictSet[i] == <span class="number">1</span>:</span><br><span class="line">           dictSet[i] = <span class="number">2</span></span><br><span class="line">   res = <span class="built_in">list</span>()</span><br><span class="line">   <span class="comment"># 最后输出dictSet中为2的，就是同时出现在两个nums的并且不重复的数据</span></span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1001</span>):</span><br><span class="line">       <span class="keyword">if</span> dictSet[i] == <span class="number">2</span>:</span><br><span class="line">           res.append(i)</span><br><span class="line">   <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="pytorch版本">Pytorch版本</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">intersection</span>(<span class="params">nums1: <span class="type">List</span>, nums2: <span class="type">List</span></span>)</span><br><span class="line">		<span class="comment"># 转成tensor</span></span><br><span class="line">		nums1_tensor = torch.tensor(nums1)</span><br><span class="line">  	nums2_tensor = troch.tensor(nums2)</span><br><span class="line">    <span class="comment"># 使用unique（与set类似）</span></span><br><span class="line">    unique_nums1 = torch.unique(nums1_tensor)</span><br><span class="line">    <span class="comment"># isin返回一个bool张量，表示每个元素是否在nums2_tensor中</span></span><br><span class="line">    mask = torch.isin(unique_nums1, nums2_tensor)</span><br><span class="line">    <span class="comment"># 傅mask过滤得到交集元素。</span></span><br><span class="line">    intersection_tensor = unique_nums1[mask]</span><br><span class="line">    <span class="comment"># 转回list格式</span></span><br><span class="line">    <span class="keyword">return</span> intersection_tensor.tolist()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例测试</span></span><br><span class="line">nums1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">6</span>]</span><br><span class="line">nums2 = [<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>]</span><br><span class="line">result = intersection(nums1, nums2)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 输出: [2, 6]</span></span><br></pre></td></tr></table></figure>
+<h1 id="202-快乐数">202. 快乐数</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/">https://leetcode.cn/problems/happy-number/</a></p>
+<p>编写一个算法来判断一个数 <code>n</code> 是不是快乐数。</p>
+<p><strong>「快乐数」</strong> 定义为：</p>
+<ul>
+<li>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。</li>
+<li>然后重复这个过程直到这个数变为 1，也可能是 <strong>无限循环</strong> 但始终变不到 1。</li>
+<li>如果这个过程 <strong>结果为</strong> 1，那么这个数就是快乐数。</li>
+</ul>
+<p>如果 <code>n</code> 是 <em>快乐数</em> 就返回 <code>true</code> ；不是，则返回 <code>false</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">12 + 92 = 82</span><br><span class="line">82 + 22 = 68</span><br><span class="line">62 + 82 = 100</span><br><span class="line">12 + 02 + 02 = 1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 231 - 1</code></li>
+</ul>
+<h2 id="思路一">思路一</h2>
+<ol>
+<li>题目中说了会 <strong>无限循环</strong>，那么也就是说<strong>求和的过程中，sum会重复出现，这对解题很重要！</strong></li>
+<li>可以使用Hash Table，如果sum在表中出现了则说明有循环，可以直接退出；否则就一直找，直到sum=1</li>
+</ol>
+<h2 id="代码">代码</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isHappy</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># 设置个set，如果未在set中即可添加进来，否则就出现循环了</span></span><br><span class="line">        table = <span class="built_in">set</span>()</span><br><span class="line">        <span class="keyword">while</span> n != <span class="number">1</span>:</span><br><span class="line">          	<span class="comment"># python中将数字按位划分的最方便形式就是转成str后按数组对付</span></span><br><span class="line">            n_str = <span class="built_in">str</span>(n)</span><br><span class="line">            n = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> n_str:</span><br><span class="line">                n += <span class="built_in">int</span>(i)*<span class="built_in">int</span>(i)</span><br><span class="line">            <span class="keyword">if</span> n <span class="keyword">not</span> <span class="keyword">in</span> table:</span><br><span class="line">                table.add(n)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>相似的思路，如果不在list中就添加进来，一直计算sum直到等于1停止</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isHappy</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># 设置个set，如果未在set中即可添加进来，否则就出现循环了</span></span><br><span class="line">        table = <span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">while</span> n <span class="keyword">not</span> <span class="keyword">in</span> table:</span><br><span class="line">          	table.append(n)</span><br><span class="line">          	<span class="comment"># python中将数字按位划分的最方便形式就是转成str后按数组对付</span></span><br><span class="line">            n_str = <span class="built_in">str</span>(n)</span><br><span class="line">            n = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> n_str:</span><br><span class="line">                n += <span class="built_in">int</span>(i)*<span class="built_in">int</span>(i)</span><br><span class="line">            <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">              	<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="思路二快慢指针">思路二快慢指针</h2>
+<ol>
+<li>这题目可以用快慢指针解决，如果出现了&quot;循环&quot;（sum会重复出现），其实就是“链表有环”的问题</li>
+<li>慢指针每次走一步；快指针每次走两步。即慢指针每次计算sumN(slow)，快指针每次计算sumN(sumN(fast))</li>
+<li>如果slow == fast则说明有环（有重复的sum）返回False</li>
+<li>while跳出条件是sumN(fast)!=1，这和fast.next不为空即可[在有环链表题目中，while fast and fast.next则执行]</li>
+</ol>
+<h2 id="代码">代码</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sumN</span>(<span class="params">self, n:<span class="built_in">int</span></span>):</span><br><span class="line">        n_str = <span class="built_in">str</span>(n)</span><br><span class="line">        new_n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> n_str:</span><br><span class="line">            new_n += <span class="built_in">int</span>(i)*<span class="built_in">int</span>(i)  </span><br><span class="line">        <span class="keyword">return</span> new_n</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sumNByhand</span>(<span class="params">self, n:<span class="built_in">int</span></span>):</span><br><span class="line">        new_n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> n:</span><br><span class="line">            temp = n % <span class="number">10</span></span><br><span class="line">            new_n += temp ** <span class="number">2</span></span><br><span class="line">            n = n // <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> new_n</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isHappy</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        slow = n</span><br><span class="line">        fast = n</span><br><span class="line">        <span class="keyword">while</span> self.sumN(n) != <span class="number">1</span> <span class="keyword">and</span> self.sumN(self.sumN(fast)) != <span class="number">1</span>:</span><br><span class="line">            slow = self.sumN(slow)</span><br><span class="line">            fast = self.sumN(self.sumN(fast))</span><br><span class="line">            <span class="keyword">if</span> slow == fast:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<h1 id="1-两数之和">1. 两数之和</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/">https://leetcode.cn/problems/two-sum/</a></p>
+<p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [2,7,11,15], target = 9</span><br><span class="line">输出：[0,1]</span><br><span class="line">解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,2,4], target = 6</span><br><span class="line">输出：[1,2]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,3], target = 6</span><br><span class="line">输出：[0,1]</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 104</code></li>
+<li><code>-109 &lt;= nums[i] &lt;= 109</code></li>
+<li><code>-109 &lt;= target &lt;= 109</code></li>
+<li><strong>只会存在一个有效答案</strong></li>
+</ul>
+<p>**进阶：**你可以想出一个时间复杂度小于 <code>O(n2)</code> 的算法吗？</p>
+<h2 id="思路">思路</h2>
+<ol>
+<li>使用hash map, 本题目可以使用dict，因为它已经假设每种输入只有一个答案</li>
+<li>记录table[target - nums[i_1]] = i_1，如果target - nums[i_1] == nums[i_2]则说明target == nums[i_1] + nums[i_2]</li>
+<li>如果nums[i_2]在table中，则找到了一个匹配的返回i_1和i_2</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://file1.kamacoder.com/i/algo/20220711202638.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://file1.kamacoder.com/i/algo/20230220223536.png" alt="img"></p>
+<h2 id="代码">代码</h2>
+<p>如果使用双重循环的方式，时间复杂度O(N^2)，但空间复杂度可以到O(1)；所以本质还是空间换时间</p>
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(N)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="comment"># 使用个hash map，记录table[target - nums[i_1]] = i_1</span></span><br><span class="line">        <span class="comment"># 如果nums[i_2]在table中，则找到了一个匹配的返回i_1和i_2</span></span><br><span class="line">        table = <span class="built_in">dict</span>()</span><br><span class="line">        L = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(L):</span><br><span class="line">          	<span class="comment"># 如果当前元素在table内，说明已经找到匹配的了</span></span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">return</span> table[nums[i]], i</span><br><span class="line">            <span class="comment"># 否则，target-nums[i] 就是需要等的数字</span></span><br><span class="line">            table[target - nums[i]] = i</span><br><span class="line">        <span class="keyword">return</span> </span><br></pre></td></tr></table></figure>
+<h2 id="思路二双指针">思路二双指针</h2>
+<ol>
+<li>可以使用双指针做，<strong>但前提是：数组是有序的(从小到大）</strong></li>
+<li>left指针从左向右遍历；right指针从右向左遍历</li>
+<li>每次计算left和right所指数字的和；并与target判断大小；如果current_sum大了，则right向左移动；小了则left向右移动；如果相等，有点儿的麻烦的是，需要将left和right在原nums的下标进行还原；</li>
+<li>初次的还原使用nums.index(nums_sorted[left])，但会出现left_index == right_index的情况，因为题目规定不能使用同一个下标，所以需要将right_index进行调整，调整到nums[left_index+1:].index(nums_sorted[right]) + left_index + 1，也就是强行在nums[left_index+1:]里找right数字对应的下标（返回的是nums[left_index+1:]的下标值，即<code>相对下标</code>）所以需要再加上left_index+1成为<code>绝对下标</code></li>
+</ol>
+<h2 id="代码">代码</h2>
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(N)—因为占用了个空间存放排序后的数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># method2 双指针</span></span><br><span class="line">nums_sorted = <span class="built_in">sorted</span>(nums)</span><br><span class="line"></span><br><span class="line">left = <span class="number">0</span></span><br><span class="line">right = <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> left &lt; right:</span><br><span class="line">    current_sum = nums_sorted[left] + nums_sorted[right]</span><br><span class="line">    <span class="built_in">print</span>(current_sum)</span><br><span class="line">    <span class="keyword">if</span> current_sum == target:</span><br><span class="line">        <span class="comment"># 如果两个数字之和等于target就返回两个数的下标（原nums数组中的）</span></span><br><span class="line">        left_index = nums.index(nums_sorted[left])</span><br><span class="line">        right_index = nums.index(nums_sorted[right])</span><br><span class="line">        <span class="keyword">if</span> left_index == right_index:</span><br><span class="line">            right_index = nums[left_index+<span class="number">1</span>:].index(nums_sorted[right]) + left_index + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> left_index, right_index</span><br><span class="line">    <span class="comment"># 否则left向右移动</span></span><br><span class="line">    <span class="keyword">elif</span> current_sum &lt; target:</span><br><span class="line">        left += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        right -= <span class="number">1</span></span><br><span class="line"><span class="keyword">return</span> </span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn">lthero</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.lthero.cn/2025/06/30/LeetCodeCampsDay6/">https://blog.lthero.cn/2025/06/30/LeetCodeCampsDay6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.lthero.cn" target="_blank">lthero</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/leetcode/">leetcode</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/06/28/LeetCodeCampsDay4/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="onerror=null;src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">LeetCodeCampsDay4</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/06/26/LeetCodeCampsDay3/" title="LeetCodeCampsDay3"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-26</div><div class="title">LeetCodeCampsDay3</div></div></a></div><div><a href="/2025/06/28/LeetCodeCampsDay4/" title="LeetCodeCampsDay4"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-28</div><div class="title">LeetCodeCampsDay4</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/logo/lthero_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lthero</div><div class="author-info__description">喜欢折腾|喜欢尝试各种炫酷玩意儿|      Hacking the world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">200</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">111</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">70</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lthero-big"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lthero-big" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ltherowlh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢github托管|hexo--butterfly主题提供支持</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#leetcodecampsday6"><span class="toc-number">1.</span> <span class="toc-text">LeetCodeCampsDay6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D"><span class="toc-number">2.</span> <span class="toc-text">242. 有效的字母异位词</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#349-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">349. 两个数组的交集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">3.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pytorch%E7%89%88%E6%9C%AC"><span class="toc-number">3.2.1.</span> <span class="toc-text">Pytorch版本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#202-%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">202. 快乐数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="toc-number">4.1.</span> <span class="toc-text">思路一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">4.2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="toc-number">4.3.</span> <span class="toc-text">思路二快慢指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">4.4.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">5.</span> <span class="toc-text">1. 两数之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">5.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">5.2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">5.3.</span> <span class="toc-text">思路二双指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">5.4.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/LeetCodeCampsDay6/" title="LeetCodeCampsDay6"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-73y539.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="LeetCodeCampsDay6"/></a><div class="content"><a class="title" href="/2025/06/30/LeetCodeCampsDay6/" title="LeetCodeCampsDay6">LeetCodeCampsDay6</a><time datetime="2025-06-30T06:37:28.000Z" title="发表于 2025-06-30 14:37:28">2025-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/28/LeetCodeCampsDay4/" title="LeetCodeCampsDay4"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkgkkp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="LeetCodeCampsDay4"/></a><div class="content"><a class="title" href="/2025/06/28/LeetCodeCampsDay4/" title="LeetCodeCampsDay4">LeetCodeCampsDay4</a><time datetime="2025-06-28T03:16:53.000Z" title="发表于 2025-06-28 11:16:53">2025-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/26/LeetCodeCampsDay3/" title="LeetCodeCampsDay3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-pkmpmm.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="LeetCodeCampsDay3"/></a><div class="content"><a class="title" href="/2025/06/26/LeetCodeCampsDay3/" title="LeetCodeCampsDay3">LeetCodeCampsDay3</a><time datetime="2025-06-26T13:54:25.000Z" title="发表于 2025-06-26 21:54:25">2025-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/26/IELTsSpeaking/" title="IELTsSpeaking"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-28wqwg.jpg" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="IELTsSpeaking"/></a><div class="content"><a class="title" href="/2025/06/26/IELTsSpeaking/" title="IELTsSpeaking">IELTsSpeaking</a><time datetime="2025-06-26T12:32:09.000Z" title="发表于 2025-06-26 20:32:09">2025-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/25/LeetCodeCampsDay2/" title="LeetCodeCampsDay2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.lthero.cn/webPic/background/wallhaven-wy2ewp.png" onerror="this.onerror=null;this.src='https://cdn.lthero.cn/webPic/background/wallhaven-rdekew.jpg'" alt="LeetCodeCampsDay2"/></a><div class="content"><a class="title" href="/2025/06/25/LeetCodeCampsDay2/" title="LeetCodeCampsDay2">LeetCodeCampsDay2</a><time datetime="2025-06-24T16:12:32.000Z" title="发表于 2025-06-25 00:12:32">2025-06-25</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By lthero</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="framework-info"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备2021022809号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'ltheroblogwaline-comments-ltherobigs-projects.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script src="/assets/mmedia/mmedia-loader.js"></script><!-- hexo injector body_end end --></body></html>
