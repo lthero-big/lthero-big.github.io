@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.lthero.cn/2025/07/21/LeetCodeCampsDay27/</loc>
+    
+    <lastmod>2025-07-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.lthero.cn/2025/07/21/ExpOfIELTs/</loc>
     
     <lastmod>2025-07-21</lastmod>
