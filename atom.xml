@@ -6,7 +6,7 @@
   <link href="https://blog.lthero.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.lthero.cn/"/>
-  <updated>2025-10-26T12:31:00.159Z</updated>
+  <updated>2025-10-26T12:33:27.133Z</updated>
   <id>https://blog.lthero.cn/</id>
   
   <author>
@@ -17,22 +17,22 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Github-education-Apply</title>
+    <title>Github学生包申请-2025-10月亲测有效</title>
     <link href="https://blog.lthero.cn/2025/10/26/Github-education-Apply/"/>
     <id>https://blog.lthero.cn/2025/10/26/Github-education-Apply/</id>
     <published>2025-10-26T12:18:37.000Z</published>
-    <updated>2025-10-26T12:31:00.159Z</updated>
+    <updated>2025-10-26T12:33:27.133Z</updated>
     
-    <content type="html"><![CDATA[<p>Github的学生认证更新了机制，现在稍微麻烦一些</p><blockquote><p>以下过程，可以全程开代理</p></blockquote><p>0、打开<a href="https://github.com/settings/security">github认证</a>，确保自己打开了<code>二步认证</code></p><p>1、打开<a href="https://github.com/settings/billing/payment_information">github账单信息</a>，确保填写了正确的“姓名”以及学校地址</p><p>注意，FirstName是名字，LastName是姓</p><p>比如张三四，FirstName是SanSi, LastName是Zhang</p><p>2、打开<a href="https://github.com/settings/emails">github邮箱设置</a>，添加学校邮箱，并且需要在学校邮箱里收到认证的邮件，确保状态是’Verified’</p><p>3、打开<a href="https://education.github.com/">github Education</a>，登录github账号，选择<code>join</code></p><p>4、点击开始认证，选择“Student”，然后选择学校并允许定位，物理地址最好是在学校里，然后需要拍照</p><p>把下面的内容，写在纸上，或者打在手机里，对着摄像头拍照</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Student Verification Report </span><br><span class="line"></span><br><span class="line">Name： FirstName LastName(不要写错了，要和bill账单一样)</span><br><span class="line"></span><br><span class="line">School Name： 英文校名 </span><br><span class="line"></span><br><span class="line">Student ID：学号 </span><br><span class="line"></span><br><span class="line">Enrollment Date： 入学时间 </span><br><span class="line"></span><br><span class="line">Expected graduation date： 毕业时间</span><br></pre></td></tr></table></figure><p>5、点击“继续”，可能会问，为什么你不在学校，选择“我是online学习”（应该是第二个选项），然后在补充的内容里写</p><p><code>I am a part-time graduate student of XX University.</code></p><p>将<strong>XX  University</strong>修改成你学校的名字，并且！</p><blockquote><p>需要再次拍照，把上面写的内容，再拍一次！</p></blockquote><p>随后点击提交，理论上，<strong>过一分钟刷新网页就能看到approved</strong></p>]]></content>
+    <content type="html"><![CDATA[<p>Github的学生认证更新了机制，现在稍微麻烦一些</p><blockquote><p>以下过程，<strong>可以全程开代理</strong></p></blockquote><p>0、打开<a href="https://github.com/settings/security">github认证</a>，确保自己打开了<code>二步认证</code></p><p>1、打开<a href="https://github.com/settings/billing/payment_information">github账单信息</a>，确保填写了正确的“姓名”以及学校地址</p><p>注意，FirstName是名字，LastName是姓</p><p>比如张三四，FirstName是SanSi, LastName是Zhang</p><p>2、打开<a href="https://github.com/settings/emails">github邮箱设置</a>，添加学校邮箱，并且需要在学校邮箱里收到认证的邮件，确保状态是’Verified’</p><p>3、打开<a href="https://education.github.com/">github Education</a>，登录github账号，选择<code>join</code></p><p>4、点击开始认证，选择“Student”，然后选择学校并允许定位，物理地址最好是在学校里，然后需要拍照</p><p>把下面的内容，写在纸上，或者打在手机里，对着摄像头拍照</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Student Verification Report </span><br><span class="line"></span><br><span class="line">Name： FirstName LastName(不要写错了，要和bill账单一样)</span><br><span class="line"></span><br><span class="line">School Name： 英文校名 </span><br><span class="line"></span><br><span class="line">Student ID：学号 </span><br><span class="line"></span><br><span class="line">Enrollment Date： 入学时间 </span><br><span class="line"></span><br><span class="line">Expected graduation date： 毕业时间</span><br></pre></td></tr></table></figure><p>5、点击“继续”，可能会问，为什么你不在学校，选择“我是online学习”（应该是第二个选项），然后在补充的内容里写</p><p><code>I am a part-time graduate student of XX University.</code></p><p>将<strong>XX  University</strong>修改成你学校的名字，并且！</p><blockquote><p>需要再次拍照，把上面写的内容，再拍一次！</p></blockquote><p>随后点击提交，理论上，<strong>过一分钟刷新网页就能看到approved</strong></p>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;Github的学生认证更新了机制，现在稍微麻烦一些&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;以下过程，可以全程开代理&lt;/p&gt;
+&lt;p&gt;以下过程，&lt;strong&gt;可以全程开代理&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;0、打开&lt;a href=&quot;https://github.com/settings/security&quot;&gt;github</summary>
+&lt;p&gt;0、打开&lt;a href=&quot;https://github.com/settings</summary>
       
     
     
